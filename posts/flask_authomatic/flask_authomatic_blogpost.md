@@ -13,7 +13,7 @@ sometimes users don't have those other accounts so it's good to provide them
 with a full-proof means of logging into a site. That's username/password
 authentication. Well for your site why don't you give users both options?
 
-In this article I'll talk about how you can login and register users
+In this article I'll talk about how you can log in and register users
 for your flask application with flexibility by allowing either
 oauth2 or username/password authentication. We'll be using
 [Flask](https://flask.palletsprojects.com/en/1.1.x/) for our
@@ -267,7 +267,7 @@ registering your app we the 3 above mentioned providers:
 
 ### Registering with GitHub
 
-1. Login to GitHub
+1. Log in to GitHub
 2. Go to <https://github.com/settings/developers>
 3. Click `New OAuth App`
 4. Fill out `Application name` with your app name
@@ -1091,7 +1091,7 @@ Next lets take a look at the `login` form:
 
 <div class="container text-center">
   <h1>Login</h1><br>
-  <h3>Login through a social platform</h3>
+  <h3>Log in through a social platform</h3>
   <p><a class="btn btn-primary" href="{{ url_for('users.facebook_oauth') }}">Facebook</a></p>
   <p><a class="btn btn-primary" href="{{ url_for('users.google_oauth') }}">Google</a></p>
   <p><a class="btn btn-primary" href="{{ url_for('users.github_oauth') }}">GitHub</a></p>
@@ -1271,7 +1271,7 @@ that we previously defiend in the users `forms.py` file.
 
 Then we have a
 a section where users can add any of the three oauth connections to their
-account (so that they could use those to login later if they like). Again
+account (so that they could use those to log in later if they like). Again
 notice the `href` sends the user to the same route as it does for registering
 and logging a user in through oauth. We'll have to separate all those
 options through logic in the view.
