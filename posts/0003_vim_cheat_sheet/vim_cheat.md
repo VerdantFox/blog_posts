@@ -66,16 +66,16 @@ unless otherwise specified, I'll assume you are in `Normal Mode`
 
 2. **Go to start of file.** Press `g` + `g`.
 
-3. **Go to end of file.** Press capital (`shitft`) `G`.
+3. **Go to end of file.** Press capital `G` (ie `SHIFT-G`).
 
 4. **Go to a specific line in file.** Type `:` + **line number** + `ENTER`
    to go to that line number. Eg. `:` + `25` + `ENTER` to go to line 25.
 
 5. **Go to start of line.** Type `0` (zero). You can also press `^` (carrot)
-   (ie `SHIFT`, `6`) to go to first *non-blank* character of a line.
+   (ie `SHIFT-6`) to go to first *non-blank* character of a line.
    You might recall `^` is the start character for `regex`expressions.
 
-6. **Go to end of line.**  Type `$` (dollar sign)(ie`SHIFT`, `4`).
+6. **Go to end of line.**  Type `$` (dollar sign)(ie`SHIFT-4`).
    You might recall `$` is the end character for `regex` expressions.
 
 7. **Move forward one word.**  Type `w`. I find this
@@ -117,14 +117,147 @@ commands I will assume you are already in `Normal mode` (`Esc`).
    create a new line *above* the line containing your cursor and enter
    `Insert Mode` there.
 
-## Undo, Redo, Copy, Paste
 
-## Deleting things
+## Undo, Redo
 
-## Replace mode
+Sometimes you make a mistake and really need to un-make that mistake.
+You could `:q!` to exit without saving, but lets see if we can use
+less drastic solutions. These commands should be performed from
+`Normal Mode` (`Esc`).
+
+1. **Undo.** Press `u`. Uppercase `U` undoes all latest changes on one line
+   which I don't really use.
+
+2. **Redo.** Press `Ctrl-R`.
+
+## Deleting things (and cut)
+
+There are multiple ways to delete different sized chunks of code in vim.
+Lets take a look at some of the more common ones. `d` stands for delete in vim so
+commands focus around this key. Note that vim *always* saves the last deleted
+thing to the register. So in a sense, there is no `delete`, just `cut` with
+short term memory. All these commands should be performed from `Normal Mode` (`Esc`).
+
+1. **Delete/cut a letter.** Press `d` + `l`.
+
+2. **Delete/cut a word.** Press `d` + `w`.
+
+3. **Delete/cut a line.** Press `d` + `d`.
+
+## Copy/paste
+
+We've already seen how to `cut` above (the same as deleting). Here we see
+how to `copy` items to the register and also to `paste` items from the register.
+Copying in vim is called `yank`ing, so those commands use `y`.
+All these commands should be performed from `Normal Mode` (`Esc`).
+
+1. **Copy/yank a letter.** Press `y` + `l`.
+
+2. **Copy/yank a word.** Press `y` + `w`.
+
+3. **Copy/yank a line.** Press `y` + `d`.
+
+4. **Paste after the cursor.** Press `p`.
+
+5. **Paste beofre the cursor.** Press capital `P`.
+
+Note that copy and paste is a little complicated in vim as you can copy
+and paste to things called `registers` that store multiple copy/cuts under
+character (mostly alphabetical) registers, but I'm not going to go into those
+details. If that interests you, give it a quick google search. For our purposes
+here only the *latest* copy/cut is stored in the *default* register.
+
+Also note these are only for copy/paste from *within* vim. Copying and pasting
+from the system clipboard is trickier. While it is possible with key
+commands, usually I've had success just using good old fashioned mouse
+`right click` + `click dropdown item` for this purpose, so just do that.
+
+## `Replace Mode`
+
+`Replace Mode` is like `Insert Mode`, except all typed characters overwrite
+whatever the cursor is hovering. These commands should begin in `Normal Mode`
+(`Esc`).
+
+1. **Replace single character.** Place cursor over the character to be replaced
+   and press `r` + **new character** (ie `r` + `f`) to replace the hovered
+   character with "f". Vim will immediately re-enter `Normal Mode` after
+   replacing this character.
+
+2. **Replace multiple characters.** Place cursor over the character you want
+   to start replacing at and press capital `R`. Vim will enter `Replace Mode`
+   at that character and all subsequent characters typed will replace the
+   the following characters. For instance with cursor over the the "d" from
+   "dog", I could type `Rcat` to replace "dog" with "cat". To exit replace
+   mode you can hit `Esc`.
 
 ## Doing things in multiples
 
-## Macros?
+Vim has a cool sentence structure like syntax that you can use to perform
+actions. We saw this earlier with commands like `d` + `w` for "delete a word".
+Add a number at the start of these sentence like commands will perform them
+that number of times. For instance to "delete 3 words" I could type
+`3` + `d` + `w` and the hovered word plus the next two will be deleted.
+To copy (yank) 2 lines, I can type `2` + `y` + `y`. And to undo the last 4
+actions I could type `4` + `u`. Neat, eh?
 
-## Vim settings
+## Bonus: Vim settings
+
+I think vim is much nicer when it is configured the way you like it. Here's
+a list of vim settings I like to use when running vim. Put these settings
+into a file `~/.vimrc`. In the file `"` at the start of a line means it is
+a comment.
+
+```vimrc
+" use syntax highlighting
+syntax on
+" Show line number
+set number
+" Show the cursor position
+set ruler
+" Show incomplete commands
+set showcmd
+" Highlight searched words
+set hlsearch
+" Incremental search
+set incsearch
+" Search ignore case unless capitalized letters used in search
+set ignorecase
+set smartcase
+" Don't line-break mid word
+set lbr
+" Set auto indent (auto indent when previous line was indented for coding)
+set autoindent
+" Set smart indent (smartly indent when code indicates indent should occur)
+set smartindent
+" Replace tab with spaces
+set expandtab
+" Set tab spacing to 4
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+```
+
+## Conclusions
+
+These were the vim commands (and settings) I found most useful in breaking
+past the bare minimum of what it takes to code in vim.
+As I said earlier, I am by no means a vim expert. I've only recently been
+using vim commands more complicated than the ones I listed in "vim essentials".
+But now that I am, I have to say, it's not so scary anymore and is actually
+pretty pleasant to code in.
+
+Vim is very powerful and there is a *lot* you can do with it. I'm sure vim
+experts would disagree with my curated list of commands. A couple other vim
+topics I left out that you should look into if you want to get "good" with
+vim are:
+
+- Using the vim manual to look all these commands and ideas up yourself
+- Macros (save a series of vim commands to 1 or 2 keystrokes)
+- vim replace (replace words/phrases found with vim search)
+- `Visual Mode` (make more complex edits in grid like patterns)
+- Many others I can't think of right now
+
+If you are interested in a vim deep dive, I highly recommend the
+[Vim masterclass Udemy Course](https://www.udemy.com/course/vim-commands-cheat-sheet/)
+where you will learn these commands and many others and how to
+"think like a vim user" to really speed up your vim coding.
