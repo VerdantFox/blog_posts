@@ -1,13 +1,13 @@
 # Easy and flexible flask login with authomatic and mongoengine
 
-tags: flask, flask-login, oauth2, authomatic, mongoengine
+tags: flask, flask-login, oauth2, authomatic, mongoengine, python
 
 ## Introduction
 
 FLASK + OAUTH2 PIC
 
 Many users like the simplicity of clicking one button to register and/or
-log in to a website using one of their existing logged in accounts on another
+log into a website using one of their existing logged in accounts on another
 website such as `Facebook` or `Google`. This is oauth user authentication. But
 sometimes users don't have those other accounts so it's good to provide them
 with a full-proof means of logging into a site. That's username/password
@@ -16,11 +16,12 @@ authentication. Well for your site why don't you give users both options?
 In this article I'll talk about how you can log in and register users
 for your flask application with flexibility by allowing either
 oauth2 or username/password authentication. We'll be using
-[Flask](https://flask.palletsprojects.com/en/1.1.x/) for our
-web framework, [mongodb](https://www.mongodb.com/) for our database,
-and [authomatic](https://authomatic.github.io/authomatic/) for our oauth
-authentication framework. But if those don't apply to you, don't fret!
-Many of the concepts discussed here can be applied your web stack too!
+[Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank" }
+for our web framework, [mongodb](https://www.mongodb.com/){: target="_blank" }
+for our database, and
+[authomatic](https://authomatic.github.io/authomatic/){: target="_blank" }
+for our oauth authentication framework. But if those don't apply to you, don't
+fret! Many of the concepts discussed here can be applied your web stack too!
 
 The end product will look something like this:
 
@@ -29,11 +30,13 @@ SITE GIF PIC
 ## The code
 
 If you just want to jump ahead to the code, you can view all files discussed
-here at [this github repository](https://github.com/VerdantFox/flask_authomatic_example).
+here at
+[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank" }.
 
 ## What is Oauth2
 
-[Oauth2](https://oauth.net/2/) is the latest industry-standard protocol for
+[Oauth2](https://oauth.net/2/){: target="_blank" } is the latest
+industry-standard protocol for
 authorization. Its uses can be broad including allowing websites to collect
 information from users or posting to a user's social media on their behalf.
 But one of its most common uses is what we'll be using it for -- simply as
@@ -66,7 +69,8 @@ easily work with a SQL database.
 
 If you don't already have a mongodb database
 but would like to get one managed for free to follow along with this
-article go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas), create
+article, go to
+[MongoDB Atlas](https://www.mongodb.com/cloud/atlas){: target="_blank" }, create
 an account, and click the free tier. In fact, this blog (as of the time
 of writing this article) is run on a free tier of MongoDB Atlas.
 
@@ -122,12 +126,12 @@ flak_authomatic_example/
 You are going to need to pip install a couple packages in your
 virtual environment before getting started:
 
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/)  (our web framework)
-- [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/) (to create flask forms)
-- [flask-login](https://flask-login.readthedocs.io/en/latest/) (our login and session manager)
-- [flask-mongoengine](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/) (mongodb database adapter)
-- [authomatic](https://authomatic.github.io/authomatic/) (our oauth2 handling framework)
-- [python-dotenv](https://pypi.org/project/python-dotenv/) (for managing environment variables)
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank" }  (our web framework)
+- [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/){: target="_blank" } (to create flask forms)
+- [flask-login](https://flask-login.readthedocs.io/en/latest/){: target="_blank" } (our login and session manager)
+- [flask-mongoengine](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/){: target="_blank" } (mongodb database adapter)
+- [authomatic](https://authomatic.github.io/authomatic/){: target="_blank" } (our oauth2 handling framework)
+- [python-dotenv](https://pypi.org/project/python-dotenv/){: target="_blank" } (for managing environment variables)
 
 Your `requirements.txt` should look something like this:
 
@@ -231,7 +235,7 @@ registering your app we the 3 above mentioned providers:
 ### Registering with Facebook
 
 1. Log in to Facebook
-2. Go to <https://developers.facebook.com/apps/>
+2. Go to <https://developers.facebook.com/apps/>{: target="_blank" }
 3. Click the "Add a new App" button
    (you'll be prompted to provide a `Dispaly Name` and `Contact Email`)
 4. Under `Add a Product` there will be a box for `Facebook Login`.
@@ -247,7 +251,7 @@ registering your app we the 3 above mentioned providers:
 ### Registering with Google
 
 1. Log in to Google
-2. Go to <https://console.developers.google.com/>
+2. Go to <https://console.developers.google.com/>{: target="_blank" }
 3. Click `Select a project` in the bar at the top of the page
 4. Click `NEW PROJECT`
 5. Give your project a name and press `CREATE`
@@ -268,7 +272,7 @@ registering your app we the 3 above mentioned providers:
 ### Registering with GitHub
 
 1. Log in to GitHub
-2. Go to <https://github.com/settings/developers>
+2. Go to <https://github.com/settings/developers>{: target="_blank" }
 3. Click `New OAuth App`
 4. Fill out `Application name` with your app name
 5. Fill out `Homepage URL` with `http://localhost:5000`
@@ -282,7 +286,7 @@ registering your app we the 3 above mentioned providers:
 
 AUTHOMATIC PIC
 
-[Authomatic](https://authomatic.github.io/authomatic/) is our library that
+[Authomatic](https://authomatic.github.io/authomatic/){: target="_blank" } is our library that
 will perform oauth communication between our website and the oauth providers.
 Now that we have registered our app with oauth providers, we need to set up
 a configuration file that `authomatic` will use to interact with those
@@ -1943,7 +1947,7 @@ def login_and_redirect(user):
 And we're done! Try the completed app out by calling `python app.py` and
 make sure all the functionality works. Then adapt it to your own needs.
 Remember, the code can be found together all in one piece at
-[this github repository](https://github.com/VerdantFox/flask_authomatic_example).
+[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank" }.
 I know this was a long blog post, so if you stuck with it and read to the end
 congratulations! Or if you just skipped around to find what you needed
 that's great too. I hope you found something helpful.

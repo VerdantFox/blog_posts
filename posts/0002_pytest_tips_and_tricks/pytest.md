@@ -22,10 +22,10 @@ we're going to be covering today:
 9. Using pytest-cov
 
 All of the code discussed in this article can be found in the following
-[github repository](https://github.com/VerdantFox/pytest_examples) I created.
-To run the code, you'll need `pytest` and `pytest-cov`, which you can install
-with `pip install pytest` and `pip install pytest-cov`. I recommend doing
-so in a virtual environment.
+[github repository](https://github.com/VerdantFox/pytest_examples){: target="_blank" }
+I created. To run the code, you'll need `pytest` and `pytest-cov`, which you
+can install with `pip install pytest` and `pip install pytest-cov`.
+I recommend doing so in a virtual environment.
 
 ## Setup
 
@@ -546,8 +546,8 @@ Lets break down what's happening in this test. First `tmp_path` is a
 `fixture` object (like `monkeypatch` - more on fixtures later) that is
 a function argument for our test. The `tmp_path` fixture creates a
 temporary directory (that will be deleted after the test ends) and returns
-a [pathlib.Path](https://docs.python.org/3/library/pathlib.html) object for
-that temporary directory. With `test_file = tmp_path.joinpath("testfile.txt")`
+a [pathlib.Path](https://docs.python.org/3/library/pathlib.html){: target="_blank" }
+object for that temporary directory. With `test_file = tmp_path.joinpath("testfile.txt")`
 we point to a temporary file in the temporary directory. Next
 
 ```python
@@ -994,8 +994,8 @@ of lines covered vs un-covered.
 Those are my top 9 tips and tricks for using pytest to the fullest. If you
 have any others you think I missed, I'd love to hear about them in the
 comments. Looking for more information about testing with pytest? I recommend
-reading through [pytests thorough documentation](https://docs.pytest.org/en/stable/)
+reading through [pytests thorough documentation](https://docs.pytest.org/en/stable/){: target="_blank" }
 for yourself. For another awesome and much more thorough guide to these pytest
 features and many more, I highly recommend the book
-[Python Testing with pytest: Simple, Rapid, Effective, and Scalable](https://www.amazon.com/Python-Testing-pytest-Effective-Scalable/dp/1680502409)
+[Python Testing with pytest: Simple, Rapid, Effective, and Scalable](https://www.amazon.com/Python-Testing-pytest-Effective-Scalable/dp/1680502409){: target="_blank" }
 by Brian Okken. Happy testing!

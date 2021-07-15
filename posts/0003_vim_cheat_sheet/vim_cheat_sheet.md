@@ -16,7 +16,8 @@ as they quickly write or edit their files, all without ever touching a mouse....
 I am *not* one of those people. I picked up `vim` out of necessity while
 working on remote hosts without access to a GUI text editor (I'm partial
 to VS Code). But since I needed to use `vim`, I wanted to get better at it, so I
-took a [vim Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/),
+took a
+[vim Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/){: target="_blank" },
 and I've been using what I've learned to get a little more efficent in `vim`.
 If you're a `vim` beginner, this post will teach you the commands I found
 most useful while learning `vim`. And if you're a casual `vim` user
@@ -270,6 +271,6 @@ to get "good" with `vim` are:
 - Many others I can't think of right now
 
 If you are interested in a `vim` deep dive, I highly recommend the
-[Vim masterclass Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/)
+[Vim masterclass Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/){: target="_blank" }
 where you can learn these commands and many others and how to
 "think like a `vim` user" to really speed up your `vim` coding.
