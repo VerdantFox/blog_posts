@@ -16,10 +16,10 @@ authentication. Well for your site why don't you give users both options?
 In this article I'll talk about how you can log in and register users
 for your flask application with flexibility by allowing either
 oauth2 or username/password authentication. We'll be using
-[Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank" }
-for our web framework, [mongodb](https://www.mongodb.com/){: target="_blank" }
+[Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank", rel="noopener noreferrer" }
+for our web framework, [mongodb](https://www.mongodb.com/){: target="_blank", rel="noopener noreferrer" }
 for our database, and
-[authomatic](https://authomatic.github.io/authomatic/){: target="_blank" }
+[authomatic](https://authomatic.github.io/authomatic/){: target="_blank", rel="noopener noreferrer" }
 for our oauth authentication framework. But if those don't apply to you, don't
 fret! Many of the concepts discussed here can be applied your web stack too!
 
@@ -31,11 +31,11 @@ SITE GIF PIC
 
 If you just want to jump ahead to the code, you can view all files discussed
 here at
-[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank" }.
+[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank", rel="noopener noreferrer" }.
 
 ## What is Oauth2
 
-[Oauth2](https://oauth.net/2/){: target="_blank" } is the latest
+[Oauth2](https://oauth.net/2/){: target="_blank", rel="noopener noreferrer" } is the latest
 industry-standard protocol for
 authorization. Its uses can be broad including allowing websites to collect
 information from users or posting to a user's social media on their behalf.
@@ -70,7 +70,7 @@ easily work with a SQL database.
 If you don't already have a mongodb database
 but would like to get one managed for free to follow along with this
 article, go to
-[MongoDB Atlas](https://www.mongodb.com/cloud/atlas){: target="_blank" }, create
+[MongoDB Atlas](https://www.mongodb.com/cloud/atlas){: target="_blank", rel="noopener noreferrer" }, create
 an account, and click the free tier. In fact, this blog (as of the time
 of writing this article) is run on a free tier of MongoDB Atlas.
 
@@ -126,12 +126,12 @@ flak_authomatic_example/
 You are going to need to pip install a couple packages in your
 virtual environment before getting started:
 
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank" }  (our web framework)
-- [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/){: target="_blank" } (to create flask forms)
-- [flask-login](https://flask-login.readthedocs.io/en/latest/){: target="_blank" } (our login and session manager)
-- [flask-mongoengine](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/){: target="_blank" } (mongodb database adapter)
-- [authomatic](https://authomatic.github.io/authomatic/){: target="_blank" } (our oauth2 handling framework)
-- [python-dotenv](https://pypi.org/project/python-dotenv/){: target="_blank" } (for managing environment variables)
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank", rel="noopener noreferrer" }  (our web framework)
+- [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/){: target="_blank", rel="noopener noreferrer" } (to create flask forms)
+- [flask-login](https://flask-login.readthedocs.io/en/latest/){: target="_blank", rel="noopener noreferrer" } (our login and session manager)
+- [flask-mongoengine](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/){: target="_blank", rel="noopener noreferrer" } (mongodb database adapter)
+- [authomatic](https://authomatic.github.io/authomatic/){: target="_blank", rel="noopener noreferrer" } (our oauth2 handling framework)
+- [python-dotenv](https://pypi.org/project/python-dotenv/){: target="_blank", rel="noopener noreferrer" } (for managing environment variables)
 
 Your `requirements.txt` should look something like this:
 
@@ -235,7 +235,7 @@ registering your app we the 3 above mentioned providers:
 ### Registering with Facebook
 
 1. Log in to Facebook
-2. Go to <https://developers.facebook.com/apps/>{: target="_blank" }
+2. Go to <https://developers.facebook.com/apps/>{: target="_blank", rel="noopener noreferrer" }
 3. Click the "Add a new App" button
    (you'll be prompted to provide a `Dispaly Name` and `Contact Email`)
 4. Under `Add a Product` there will be a box for `Facebook Login`.
@@ -251,7 +251,7 @@ registering your app we the 3 above mentioned providers:
 ### Registering with Google
 
 1. Log in to Google
-2. Go to <https://console.developers.google.com/>{: target="_blank" }
+2. Go to <https://console.developers.google.com/>{: target="_blank", rel="noopener noreferrer" }
 3. Click `Select a project` in the bar at the top of the page
 4. Click `NEW PROJECT`
 5. Give your project a name and press `CREATE`
@@ -272,7 +272,7 @@ registering your app we the 3 above mentioned providers:
 ### Registering with GitHub
 
 1. Log in to GitHub
-2. Go to <https://github.com/settings/developers>{: target="_blank" }
+2. Go to <https://github.com/settings/developers>{: target="_blank", rel="noopener noreferrer" }
 3. Click `New OAuth App`
 4. Fill out `Application name` with your app name
 5. Fill out `Homepage URL` with `http://localhost:5000`
@@ -286,7 +286,7 @@ registering your app we the 3 above mentioned providers:
 
 AUTHOMATIC PIC
 
-[Authomatic](https://authomatic.github.io/authomatic/){: target="_blank" } is our library that
+[Authomatic](https://authomatic.github.io/authomatic/){: target="_blank", rel="noopener noreferrer" } is our library that
 will perform oauth communication between our website and the oauth providers.
 Now that we have registered our app with oauth providers, we need to set up
 a configuration file that `authomatic` will use to interact with those
@@ -1947,7 +1947,7 @@ def login_and_redirect(user):
 And we're done! Try the completed app out by calling `python app.py` and
 make sure all the functionality works. Then adapt it to your own needs.
 Remember, the code can be found together all in one piece at
-[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank" }.
+[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank", rel="noopener noreferrer" }.
 I know this was a long blog post, so if you stuck with it and read to the end
 congratulations! Or if you just skipped around to find what you needed
 that's great too. I hope you found something helpful.
