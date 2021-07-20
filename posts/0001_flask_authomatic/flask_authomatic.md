@@ -313,7 +313,7 @@ OAUTH_CONFIG = {
         "consumer_secret": os.getenv("FACEBOOK_SECRET"),
     },
     "Google": {
-        "id": 1,  # These id numbers are arbitrary
+        "id": 2,  # These id numbers are arbitrary
         "class_": oauth2.Google,
         "consumer_key": os.getenv("GOOGLE_ID"),
         "consumer_secret": os.getenv("GOOGLE_SECRET"),
