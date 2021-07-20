@@ -18,7 +18,7 @@ working on remote hosts without access to a GUI text editor (I'm partial
 to VS Code). But since I needed to use `vim`, I wanted to get better at it, so I
 took a
 [vim Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/){: target="_blank", rel="noopener noreferrer" },
-and I've been using what I've learned to get a little more efficent in `vim`.
+and I've been using what I've learned to get a little more efficient in `vim`.
 If you're a `vim` beginner, this post will teach you the commands I found
 most useful while learning `vim`. And if you're a casual `vim` user
 like me, this post can serve as a cheat sheet reminder for all the `vim`
@@ -33,8 +33,8 @@ make changes, and get out (with or without saving).
    Type: `vim some_file.txt` or `vi some_file.txt` to enter a file with `vim`.
 
 2. **Exit a file without saving:** First press `ESC` to enter `Normal Mode`.
-   Then type `:q!` + `ENTER`. `q` here means "quite" while `!` basically means
-   *force*, and `vim` won't exit without it if you've made any changes.
+   Then type `:q!` + `ENTER`. `q` here means "quit" while `!` basically means
+   "force", and `vim` won't exit without it if you've made any changes.
 
 3. **Save a file and exit:** First press `ESC` to enter `Normal Mode`.
    Then type `:wq` + `ENTER`. `w` means "write" here so you can also just
@@ -101,7 +101,7 @@ commands, I will assume you are already in `Normal mode` (`ESC`).
    character *before* the character your cursor is on. I already mentioned
    this one in section one.
 
-2. **Enter `Insert Mode` at line beginng:** Press capital `I` to enter
+2. **Enter `Insert Mode` at line beginning:** Press capital `I` to enter
    `Insert Mode` at the *beginning* of the line containing your cursor.
 
 3. **Enter `Insert Mode` with append:** Press `a` to enter `Insert Mode` one
@@ -149,7 +149,7 @@ should be performed from `Normal Mode` (`ESC`).
    default `register`.
 
 Also note that while in `Insert Mode` you can use `BACKSPACE` and `DEL` as usual
-to delete characters *before* or *after* your cursor respectivly. This form
+to delete characters *before* or *after* your cursor respectively. This form
 of deletion does not save to the default `register`.
 
 ## Copy/paste

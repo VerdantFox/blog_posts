@@ -18,7 +18,7 @@ we're going to be covering today:
 5. `fixture`s and the `conftest.py` file
 6. Testing python exceptions
 7. Checking stdout and log messages
-8. Parametrzing tests
+8. Parameterizing tests
 9. Using pytest-cov
 
 All of the code discussed in this article can be found in the following
@@ -35,14 +35,14 @@ few simple static methods: `add()`, `divide()`, `multiply()`, that simply
 perform that action on two numbers, along with `slow()` which just sleeps for
 an amount of time set by the global variable `GLOBAL_SLEEP_SECONDS`. Next,
 there's a function called `some_math_function` which takes two numbers as
-parameters and uses all the abovementioned class methods in sequence
+parameters and uses all the above-mentioned class methods in sequence
 and prints and logs some messages based on how long it took.
 
 Also in the module are three other unrelated example functions that will
 help with explaining various pytest tricks. These include
 `update_file_via_pathlib()` which will update a file given a pathlib path,
-`error_function()` which will raise an error if the paramter passed to it
-is `True`, and `enironment_var_function()` which will return a message
+`error_function()` which will raise an error if the parameter passed to it
+is `True`, and `environment_var_function()` which will return a message
 based on an environment variable.
 
 I'll show the entirety of this module here for your reference.
@@ -233,7 +233,7 @@ When a test fails, you'll see a "traceback message". These are the messages
 that show what the error was in your code, and where it's located.
 The normal pytest traceback message is great. It's color coded and super
 detailed, so you can find out exactly what went wrong with your test. If
-you're running a lot of tests and several "FAILURE"s occure though, those
+you're running a lot of tests and several "FAILURE"s occur though, those
 messages can become very noisy. Introducing `--tb=LENGTH`. This argument
 allows you to adjust the traceback message style to suite your needs. My
 favorite "LENGTH" arguments are `short`, `line`, and `no`. I'll show how
@@ -298,7 +298,7 @@ failed on the previous run until all tests pass.
 
 ## 2. `skip` and `xfail`
 
-Occassionally tests just don't work the way you want them to, or maybe
+Occasionally tests just don't work the way you want them to, or maybe
 they test a feature that isn't actually implemented yet. Even though
 these tests fail right now, you'd like to keep them around and
 fix them in the future. Introducing `skip` and `xfail`.
@@ -350,9 +350,9 @@ def test_xfail():
     assert example.environment_var_function() == "MY_VAR is not set to 'true'"
 ```
 
-Notice my first parameter is `condidition`. Just like `skipif` I make a
+Notice my first parameter is `condition`. Just like `skipif` I make a
 *boolean* condition where the test is known to fail. If that condition is *not*
-met, the test is run *normally*. If that conditin *is* met, the test is run
+met, the test is run *normally*. If that condition *is* met, the test is run
 as an `xfail` (meaning you expect the test to fail). If the test *does* fail
 (as expected), the result is marked with a lower case `x` (or `XFAIL (REASON)`
 in verbose mode). If the test *passes* (not expected), it the result is marked
@@ -396,7 +396,7 @@ replace a module's global variable with a new one, the `OBJECT` *is* the
 module containing the global variable (note we had imported the module `example`
 before using it in the test). The second argument is the attribute we want
 to replace as a string (ie, in quotation marks) -- in this case the module's
-global variable `GLOABL_SLEEP_SECONDS` is the attribute we want replaced.
+global variable `GLOBAL_SLEEP_SECONDS` is the attribute we want replaced.
 Finally, the third argument is the value we want to set the attribute (argument
 2) with. Here we are changing that value to `1`. Now the test will run with
 a 1 second sleep instead of its original 3 second sleep. After the test is
@@ -689,14 +689,14 @@ before every test, `yield` to the test run, get the time after each test,
 and then print the difference between those times (ie how long the test took
 to run). Likewise `time_all_tests` will get the time before the first test is
 run, `yield` to *all* the tests, get the time after the last test has run,
-and report the differnce (ie, the time it took for all the tests to run).
+and report the difference (ie, the time it took for all the tests to run).
 
 ## 6. Testing python exceptions
 
 Your code might generate exceptions, either intentionally with `raises ERROR`,
 or unintentionally with an error raised by a dependent library or the standard
 library. To test exceptions in your code, use a `with pytest.raises(ERROR)`
-contxt block. Lets see an example:
+context block. Lets see an example:
 
 In `example.py`:
 
@@ -774,7 +774,7 @@ def test_caplog_standard(caplog):
 
 To use the `caplog` built-in fixture, we use `caplog` as an argument to our
 test function (just like we do with any other fixture). `caplog` then captures
-loggin output to itself (rather than a log file or wherever it was being
+logging output to itself (rather than a log file or wherever it was being
 written to before). To see the the contents of the captured log output,
 we can use `caplog.text`. Note in the example, the log `info` message
 was not captured. This is because by default loggers capture `warning`
@@ -833,7 +833,7 @@ This resets the buffer and returns what was in the buffer up until that
 point. Here we set the contents of the buffer to an object, `captured`.
 To see what was in that `captured` output, use `captured.out`.
 
-## 8. Parametrizing tests
+## 8. Parameterizing tests
 
 It is often useful to test a function with many different sets of input
 parameters. You could do this all in one test by testing one set of
@@ -842,7 +842,7 @@ etc. But it is better practice to keep your tests as short as possible,
 with some developers suggesting limiting to **one** `assert` statement if
 possible. While I think the **one** `assert` statement requirement is
 a bit extreme, we can reduce our `assert` statement count considerably with
-these types of tests by **parametrizing**. What does that look like?
+these types of tests by **parameterizing**. What does that look like?
 Lets see an example.
 
 In `example_test.py`:
@@ -879,7 +879,7 @@ each time expanding the contained iterable to the parameters `first`,
 `second == 1`, `expected == 6`. The second time the test runs `first == 7`,
 `second == 3`, `expected == 20`.
 
-If run normally, we'll see 4 `.`, one for each passed varient of the test. If
+If run normally, we'll see 4 `.`, one for each passed variant of the test. If
 run in **verbose** mode, pytest will try to name the tests with something that
 makes sense, for the first test appending `[2-1-6]` to the test name. If we
 want the **verbose** mode name to be more descriptive, we can use
@@ -946,7 +946,7 @@ src/example_test.py::test_param_multiple_sets[False-with_negatives] PASSED
 
 It is important to know how much of your codebase is covered by tests, and
 specifically it is important to know which lines of your codebase are
-run by tests, and which lines are not run. Pytes has a great tool for this
+run by tests, and which lines are not run. Pytest has a great tool for this
 called `pytest-cov` (which uses `coverage.py` under the hood). To use
 `pytest-cov`, first `pip install pytest-cov`. Then run your tests like normal
 with a couple extra command line arguments. A standard run with `pytest-cov`

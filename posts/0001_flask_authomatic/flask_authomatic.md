@@ -150,7 +150,7 @@ flask-mongoengine==0.9.5
 # Oauth
 Authomatic==1.0.0
 
-# Environment variables managment
+# Environment variables management
 python-dotenv==0.13.0
 ```
 
@@ -228,7 +228,7 @@ So we'll have to register our website with them and give them a couple extra
 details such as what page on our website will contact them. For this guide
 (and for the blog you're reading) I've chosen `Facebook`, `Google` and
 `GitHub` as oauth authentication providers, but note there is a long list
-of providers supported by `authomatic`, with the possiblity of adding in
+of providers supported by `authomatic`, with the possibility of adding in
 providers that are not supported out of the box. Here are the steps for
 registering your app we the 3 above mentioned providers:
 
@@ -237,7 +237,7 @@ registering your app we the 3 above mentioned providers:
 1. Log in to Facebook
 2. Go to <https://developers.facebook.com/apps/>{: target="_blank", rel="noopener noreferrer" }
 3. Click the "Add a new App" button
-   (you'll be prompted to provide a `Dispaly Name` and `Contact Email`)
+   (you'll be prompted to provide a `Display Name` and `Contact Email`)
 4. Under `Add a Product` there will be a box for `Facebook Login`.
    Click `Set up` in that box.
 5. Click `Web`
@@ -340,7 +340,7 @@ authomatic = Authomatic(
 
 ## Test that our oauth provider registration and config file works
 
-To test that our oauth registeration and config files work we are going
+To test that our oauth registration and config files work we are going
 to create a file under `root/users/` called `test_oauth`. This file
 won't be used in our final code, but we'll copy over some of its
 functionality to our final product later. It will be a small, fully
@@ -534,7 +534,7 @@ def create_app():
 
 This `create_app` factory function does a few important things.
 
-1. It instantiates an instance of the `Flask` object to creat the app
+1. It instantiates an instance of the `Flask` object to create the app
 2. We alter the app's `json_encoder` to properly work with mongoengine objects
 3. We register 2 blueprints to the app. You'll probably register several more
    for your app.
@@ -553,7 +553,7 @@ the `root` directory.
 ```python
 """Global variables and objects to import into other modules.
 
-Kept separate from factory to avoid inifinite import loops when importing
+Kept separate from factory to avoid infinite import loops when importing
 these global objects into multiple modules.
 """
 from flask_login import LoginManager
@@ -568,7 +568,7 @@ login_manager = LoginManager()
 
 This simple module just instantiates instances of the `MongoEngine` and
 `LoginManager` classes that will be the backbone of our database and
-session management respectively. Recall these objects recieve the Flask `app`
+session management respectively. Recall these objects receive the Flask `app`
 object in `root/factory.py` and will be imported as necessary into other
 modules in our app.
 
@@ -662,7 +662,7 @@ logged in. Check it out:
   <div class="container">
     <!-- Brand: links to index page -->
     <a class="navbar-brand" href="{{ url_for('core.index') }}">Authomatic App</a>
-    <!-- Haburger dropdown button -->
+    <!-- Hamburger dropdown button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -830,7 +830,7 @@ hash value stored in the database.
 
 Last to note from this model is the `load_user` function. This function
 tells `flask_login` how to find a user from our mongodb database in order
-to log in the user and store their `user_id` from the user moddel in the
+to log in the user and store their `user_id` from the user model in the
 flask session.
 
 ### Users forms
@@ -1271,7 +1271,7 @@ to update fields relating to themselves:
 
 This template is the most complicated template in this website. At the top is
 a form for changing user defined fields. This form is the `SettingsForm`
-that we previously defiend in the users `forms.py` file.
+that we previously defined in the users `forms.py` file.
 
 Then we have a
 a section where users can add any of the three oauth connections to their
@@ -1477,7 +1477,7 @@ instance. We then flash them a `Flask.flash` message informing
 them that their account was successfully deleted and redirect
 them back to our index page. Note that we reached the
 `/delete_account` route through an anchor tag `href` route
-(meaning with a `GET` request), so dont' need to specify a
+(meaning with a `GET` request), so don't need to specify a
 route method (`GET` is assumed if no `route` param is provided).
 
 Now remember how I previously stated that we `register`, `login`
@@ -1600,12 +1600,12 @@ should be returned. Calling `update()` on the `result.user` attribute
 updates the user with the users data on the oauth providers server.
 All we want is the user's `name` and `id` which we'll store in temporary
 variables. Next we'll check if a user with that provider's `id` is already
-in our databse and store that information if so.
+in our database and store that information if so.
 
 If the current user is logged in it means we entered the `oauth_generalized()`
 function from the `settings` function and we're trying to add another
-oauth authentication method to the user's account. If this ouath provider's
-`id` wasn't found in our databse, we're free to add this oauth method
+oauth authentication method to the user's account. If this oauth provider's
+`id` wasn't found in our database, we're free to add this oauth method
 to the current user, `save()` the updated user, and redirect them back to the
 `settings` page. We only want an oauth provider associated with one account,
 so if the oauth provider's `id` was found it means this oauth method is taken,
@@ -1619,12 +1619,12 @@ first name of the user from their oauth data, and then store that unique
 in a new `User` model class instance and save the new user object to the
 database.
 
-Whether the user **wasn't** found and we registerd a new user
+Whether the user **wasn't** found and we registered a new user
 (above paragraph) or the user **was** found, they are now authenticated
 so we can log them in and redirect them to the index page.
 
 Finally we want to give our users the ability to disconnect a specific
-ouath provider's authentication method from the user's account if they'd
+oauth provider's authentication method from the user's account if they'd
 prefer to log in through a different provider or through username/password.
 Let's check out how we'd accomplish this:
 
@@ -1648,7 +1648,7 @@ def github_oauth_disconnect():
 
 
 def can_oauth_disconnect():
-    """Test to determin if oauth disconnect is allowed"""
+    """Test to determine if oauth disconnect is allowed"""
     has_gh = True if current_user.github_id else False
     has_gg = True if current_user.google_id else False
     has_fb = True if current_user.facebook_id else False
@@ -1678,19 +1678,19 @@ be able to disconnect an oauth provider method, if they have some other
 way to log in. We wouldn't want to strand an account without a means
 of logging into it. The `can_oauth_disconnect()` function addresses this
 concern by returning `True` only if the at least one oauth provider
-id is in the databse **OR** a username AND password is in the database.
+id is in the database **OR** a username AND password is in the database.
 
 Just like when connecting to an oauth provider, disconnection routes are
 set up specific for each oauth provider, and then their oauth client
-names are sent to a centeralized `oauth_disconnect` function. This function
+names are sent to a centralized `oauth_disconnect` function. This function
 simply sets the field for that specific oauth provider to `None` for the
 current user and then calls `save()` on the current user. This is followed
-by letting the user know the disconnect was a succss through a `Flask.flash`
+by letting the user know the disconnect was a success through a `Flask.flash`
 message and redirecting the user back to the user `settings` page where
 they came from.
 
 And that's it for the users `view.py` routes and helper methods. Here's that
-all in one place for conveneince sake and so you can see all imports:
+all in one place for convenience sake and so you can see all imports:
 
 ```python
 from authomatic.adapters import WerkzeugAdapter
@@ -1838,7 +1838,7 @@ def github_oauth_disconnect():
 # ----------------------------------------------------------------------------
 # HELPER METHODS
 def can_oauth_disconnect():
-    """Test to determin if oauth disconnect is allowed"""
+    """Test to determine if oauth disconnect is allowed"""
     has_gh = True if current_user.github_id else False
     has_gg = True if current_user.google_id else False
     has_fb = True if current_user.facebook_id else False
