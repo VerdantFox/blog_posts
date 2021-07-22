@@ -1,27 +1,27 @@
 # Easy and flexible flask login with authomatic and mongoengine
 
-tags: flask, flask-login, oauth2, authomatic, mongoengine, python
+Tags: flask, flask-login, OAuth, authomatic, mongoengine, python
 
 ## Introduction
 
 FLASK + OAUTH2 PIC
 
 Many users like the simplicity of clicking one button to register and/or
-log into a website using one of their existing logged in accounts on another
-website such as `Facebook` or `Google`. This is oauth user authentication. But
+log into a website using one of their existing logged-in accounts on another
+website such as `Facebook` or `Google`. This is OAuth user authentication. But
 sometimes users don't have those other accounts so it's good to provide them
-with a full-proof means of logging into a site. That's username/password
+with a full-proof means of logging in to a site. That's username/password
 authentication. Well for your site why don't you give users both options?
 
-In this article I'll talk about how you can log in and register users
+In this article, I'll talk about how you can log in and register users
 for your flask application with flexibility by allowing either
-oauth2 or username/password authentication. We'll be using
+OAuth2 or username/password authentication. We'll be using
 [Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank", rel="noopener noreferrer" }
-for our web framework, [mongodb](https://www.mongodb.com/){: target="_blank", rel="noopener noreferrer" }
+for our web framework, [MongoDB](https://www.mongodb.com/){: target="_blank", rel="noopener noreferrer" }
 for our database, and
 [authomatic](https://authomatic.github.io/authomatic/){: target="_blank", rel="noopener noreferrer" }
-for our oauth authentication framework. But if those don't apply to you, don't
-fret! Many of the concepts discussed here can be applied your web stack too!
+for our OAuth authentication framework. But if those don't apply to you, don't
+fret! Many of the concepts discussed here can be applied to your web stack too!
 
 The end product will look something like this:
 
@@ -31,57 +31,56 @@ SITE GIF PIC
 
 If you just want to jump ahead to the code, you can view all files discussed
 here at
-[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank", rel="noopener noreferrer" }.
+[this GitHub repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank", rel="noopener noreferrer" }.
 
-## What is Oauth2
+## What is OAuth2
 
-[Oauth2](https://oauth.net/2/){: target="_blank", rel="noopener noreferrer" } is the latest
+[OAuth2](https://oauth.net/2/){: target="_blank", rel="noopener noreferrer" } is the latest
 industry-standard protocol for
 authorization. Its uses can be broad including allowing websites to collect
 information from users or posting to a user's social media on their behalf.
 But one of its most common uses is what we'll be using it for -- simply as
 a means of proving a user is who they say they are to log them into our website.
 
-We won't get into the specifics of oauth2 protocol, but here's an image
+We won't get into the specifics of the OAuth2 protocol, but here's an image
 displaying the gist of how the 3-way handshake between the user,
-the authenticating website, and your website works
+the authenticating website, and your website works.
 
 OAUTH2 EXPLANATION PIC
 
-For this tutorial, we are going to use the python oauth framework `authomatic`
+For this tutorial, we are going to use the python OAuth framework `authomatic`
 to manage this handshake and log users in. I like the `authomatic` framework
-because it is comprehensive enough to authenticate with most common oauth
+because it is comprehensive enough to authenticate with most common OAuth
 authentication providers without much work on our end, while still being
 flexible about allowing us to decide how to use the information
-provided by the oauth handshake.
+provided by the OAuth handshake.
 
 ## MongoDB database
 
 MONGODB PIC
 
-MongoDB is the most popular noSQL database -- meaning data isn't stored in a
-table, but in JSON formatted documents. I like using a noSQL database
-because I find it very scalable and easy to manage. For instance you can
+MongoDB is the most popular NoSQL database -- meaning data isn't stored in a
+table but JSON formatted documents. I like using a NoSQL database
+because I find it very scalable and easy to manage. For instance, you can
 add/remove new database fields without migrations, and you can link data in
-complex patterns that require multiple linked tables in SQL. Note however,
+complex patterns that require multiple linked tables in SQL. Note, however,
 that all the database transactions performed in this article could just as
 easily work with a SQL database.
 
-If you don't already have a mongodb database
+If you don't already have a MongoDB database
 but would like to get one managed for free to follow along with this
 article, go to
 [MongoDB Atlas](https://www.mongodb.com/cloud/atlas){: target="_blank", rel="noopener noreferrer" }, create
-an account, and click the free tier. In fact, this blog (as of the time
-of writing this article) is run on a free tier of MongoDB Atlas.
+an account, and click the free tier.
 
 ## Outline our flask application
 
 To give you an overview of the end product of our modest flask application
 I will provide a file structure outline here, and then we'll talk about
-filling out these files as the blog post progresses. Obviously your file
+filling out these files as the blog post progresses. Your file
 structure might differ based on how you want to set up your flask application.
 I set this example app up this way with blueprints because I think it will
-more accurately reflects your real world application.
+more accurately reflect your real-world application.
 
 ```text
 flak_authomatic_example/
@@ -123,14 +122,14 @@ flak_authomatic_example/
 
 ## Python requirements
 
-You are going to need to pip install a couple packages in your
+You are going to need to pip install a couple of packages in your
 virtual environment before getting started:
 
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/){: target="_blank", rel="noopener noreferrer" }  (our web framework)
 - [Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/){: target="_blank", rel="noopener noreferrer" } (to create flask forms)
 - [flask-login](https://flask-login.readthedocs.io/en/latest/){: target="_blank", rel="noopener noreferrer" } (our login and session manager)
-- [flask-mongoengine](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/){: target="_blank", rel="noopener noreferrer" } (mongodb database adapter)
-- [authomatic](https://authomatic.github.io/authomatic/){: target="_blank", rel="noopener noreferrer" } (our oauth2 handling framework)
+- [flask-mongoengine](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/){: target="_blank", rel="noopener noreferrer" } (MongoDB database adapter)
+- [authomatic](https://authomatic.github.io/authomatic/){: target="_blank", rel="noopener noreferrer" } (our OAuth2 handling framework)
 - [python-dotenv](https://pypi.org/project/python-dotenv/){: target="_blank", rel="noopener noreferrer" } (for managing environment variables)
 
 Your `requirements.txt` should look something like this:
@@ -147,7 +146,7 @@ email-validator==1.1.0
 # Database
 flask-mongoengine==0.9.5
 
-# Oauth
+# OAuth
 Authomatic==1.0.0
 
 # Environment variables management
@@ -169,7 +168,7 @@ pip install Flask Flask-WTF flask-login flask-mongoengine authomatic python-dote
 ## Environment variable setup
 
 It's never a good idea to store your app secrets in your source code because
-it be a serious security vulnerability. So we are going to store our app
+it is a serious security vulnerability. So we are going to store our app
 secrets in environment variables. To make it easier on ourselves though, we
 are going to persist those environment variables in a file named `.env`. Then
 our `python-dotenv` package installed above will convert the file to
@@ -220,17 +219,17 @@ We want to load these environment variables into our environment on app startup.
 To do so we'll call `load_dotenv` (imported from `dotenv`) in our `app.py`
 file.
 
-## Registering your application with oauth providers
+## Registering your application with OAuth providers
 
-Oauth providers used to authenticate users need to know about your website
+OAuth providers used to authenticate users need to know about your website
 before they will authenticate users for you and give you any of their data.
-So we'll have to register our website with them and give them a couple extra
+So we'll have to register our website with them and give them a couple of extra
 details such as what page on our website will contact them. For this guide
-(and for the blog you're reading) I've chosen `Facebook`, `Google` and
-`GitHub` as oauth authentication providers, but note there is a long list
+(and for the blog you're reading) I've chosen `Facebook`, `Google`, and
+`GitHub` as OAuth authentication providers, but note there is a long list
 of providers supported by `authomatic`, with the possibility of adding in
 providers that are not supported out of the box. Here are the steps for
-registering your app we the 3 above mentioned providers:
+registering your app we the 3 above-mentioned providers:
 
 ### Registering with Facebook
 
@@ -241,12 +240,12 @@ registering your app we the 3 above mentioned providers:
 4. Under `Add a Product` there will be a box for `Facebook Login`.
    Click `Set up` in that box.
 5. Click `Web`
-6. For the Site URL use `http://localhost:5000/` and then save (localhost for testing)
-7. Ignore the remaining steps in quickstart. Click `Settings` -> `Basic` in
-   the left hand dashboard
+6. For the `Site URL` use `http://localhost:5000/` and then save (localhost for testing)
+7. Ignore the remaining steps in the quickstart. Click `Settings` -> `Basic` in
+   the left-hand dashboard
 8. Grab the `App ID` and `App Secret` from the first 2 fields and store them
    in your .env
-9. Your all set for Facebook Oauth! (at least for Development)
+9. You're all set for Facebook OAuth! (at least for Development)
 
 ### Registering with Google
 
@@ -255,47 +254,47 @@ registering your app we the 3 above mentioned providers:
 3. Click `Select a project` in the bar at the top of the page
 4. Click `NEW PROJECT`
 5. Give your project a name and press `CREATE`
-6. Click `Oauth consent screen` in the left hand panel
+6. Click the `OAuth consent screen` button in the left-hand panel
 7. Select `external` and press `CREATE`
-8. Fill out `Application name` with whatever you like and press `SAVE` (fill out no other fields)
-9. Click `Credentials` in the left hand screen
+8. Fill out the `Application name` field with whatever you like and press `SAVE` (fill out no other fields)
+9. Click `Credentials` on the left-hand screen
 10. Click `+CREATE CREDENTIALS` in the top bar and `OAuth client ID` from the dropdown
 11. Set `Application type` to `Web application`
-12. Fill out `Name*` with your app name
+12. Fill out the `Name*` field with your app name
 13. Click `+ ADD URI` under `Authorized redirect URIs`
-14. Fill in with `http://localhost:5000/users/google_oauth` (the page we will call this oauth from)
+14. Fill in with `http://localhost:5000/users/google_oauth` (the page we will call this OAuth from)
 15. Click `create`
 16. Copy the `Your Client ID` and `Your Client Secret` into the
     `.env` file and hit `ok`
-17. Your all set for Google Oauth! (at least for Development)
+17. You're all set for Google OAuth! (at least for Development)
 
 ### Registering with GitHub
 
 1. Log in to GitHub
 2. Go to <https://github.com/settings/developers>{: target="_blank", rel="noopener noreferrer" }
 3. Click `New OAuth App`
-4. Fill out `Application name` with your app name
-5. Fill out `Homepage URL` with `http://localhost:5000`
-6. Fill out `Authorization callback URL` with `http://localhost:5000/users/github_oauth`
-   (the page we will call this oauth from)
+4. Fill out the `Application name` field with your app name
+5. Fill out the `Homepage URL` field with `http://localhost:5000`
+6. Fill out the `Authorization callback URL` field with `http://localhost:5000/users/github_oauth`
+   (the page we will call this OAuth from)
 7. Click `Register application`
 8. Store the `Client ID` and `Client Secret` in the `.env` file
-9. Your all set for Google Oauth! (at least for Development)
+9. You're all set for Google OAuth! (at least for Development)
 
-## Creating the Oauth configuration file
+## Creating the OAuth configuration file
 
 AUTHOMATIC PIC
 
 [Authomatic](https://authomatic.github.io/authomatic/){: target="_blank", rel="noopener noreferrer" } is our library that
-will perform oauth communication between our website and the oauth providers.
-Now that we have registered our app with oauth providers, we need to set up
+will perform OAuth communication between our website and the OAuth providers.
+Now that we have registered our app with OAuth providers, we need to set up
 a configuration file that `authomatic` will use to interact with those
 providers. The configuration file should look something like this:
 
 `root/users/oauth_config.py`
 
 ```python
-"""Authomatic Oauth configuration file
+"""Authomatic OAuth configuration file
 
 Pull secret ids and keys from environment variables set in .env
 """
@@ -306,7 +305,7 @@ from authomatic import Authomatic
 from authomatic.providers import oauth2
 
 OAUTH_CONFIG = {
-    "Facebook": {  # This name is arbitrary but is easier if it matches oauth provider name
+    "Facebook": {  # This name is arbitrary but is easier if it matches the OAuth provider name
         "id": 1,  # These id numbers are arbitrary
         "class_": oauth2.Facebook,  # Use authomatic's Facebook handshake
         "consumer_key": os.getenv("FACEBOOK_ID"),
@@ -338,19 +337,19 @@ authomatic = Authomatic(
 )
 ```
 
-## Test that our oauth provider registration and config file works
+## Test that our OAuth provider registration and config file works
 
-To test that our oauth registration and config files work we are going
+To test that our OAuth registration and config files work we are going
 to create a file under `root/users/` called `test_oauth`. This file
 won't be used in our final code, but we'll copy over some of its
 functionality to our final product later. It will be a small, fully
 enclosed flask app, that when called at the right routes, will deliver
-the user's data from the oauth provider in JSON format. Lets take a look:
+the user's data from the OAuth provider in JSON format. Let's take a look:
 
 `root/users/test_oauth.py`
 
 ```python
-"""A file for testing oauth setup"""
+"""A file for testing OAuth setup"""
 from authomatic.adapters import WerkzeugAdapter
 from flask import Flask, make_response, request
 
@@ -361,7 +360,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    """Landing page for our oauth test with hyperlinks to each oauth test"""
+    """Landing page for our OAuth test with hyperlinks to each OAuth test"""
     return """
     <p><a href="/users/facebook_oauth">Go to Facebook</a></p>
     <p><a href="/users/google_oauth">Go to Google</a></p>
@@ -371,24 +370,24 @@ def index():
 
 @app.route("/users/facebook_oauth")
 def facebook_oauth():
-    """Ask for Facebook Oauth data"""
+    """Ask for Facebook OAuth data"""
     return oauth_generalized("Facebook")
 
 
 @app.route("/users/google_oauth")
 def google_oauth():
-    """Ask for Google Oauth data"""
+    """Ask for Google OAuth data"""
     return oauth_generalized("Google")
 
 
 @app.route("/users/github_oauth")
 def github_oauth():
-    """Ask for GitHub Oauth data"""
+    """Ask for GitHub OAuth data"""
     return oauth_generalized("GitHub")
 
 
 def oauth_generalized(oauth_client):
-    """Generalized oauth data retrieval"""
+    """Generalized OAuth data retrieval"""
     # Get response object for the WerkzeugAdapter.
     response = make_response()
     # Log the user in, pass it the adapter and the provider name.
@@ -398,7 +397,7 @@ def oauth_generalized(oauth_client):
         return response
     # If there is no result.user something went wrong
     if not result.user:
-        return "Failed to retrieve oauth user"
+        return "Failed to retrieve OAuth user"
 
     # Update user to retrieve data
     result.user.update()
@@ -414,11 +413,11 @@ if __name__ == "__main__":
 ```
 
 Running the flask app with `python root/users/test_oauth.py` will bring you
-to a landing page with hyperlinks to access the user's data through oauth
-at the three oauth providers we set up previously. If your oauth providers
+to a landing page with hyperlinks to access the user's data through OAuth
+at the three OAuth providers we set up previously. If your OAuth providers
 were set up correctly according to the above steps, you should get a JSON
 document returned with your data after you log in through a given provider.
-The JSON will look something like this (example for Facebook oauth return):
+The JSON will look something like this (example for Facebook OAuth return):
 
 ```json
 {
@@ -438,23 +437,23 @@ The JSON will look something like this (example for Facebook oauth return):
 
 The JSON documents for Google and GitHub will look similar but
 with a few different fields included. Importantly, each of them should have
-an `id` field. This is the field the oauth provider
+an `id` field. This is the field the OAuth provider
 associates as a user's ID for their site and it will be unchangeable for
 each user. Therefore it is going to be the piece of data we will store in
 our database to uniquely identify our site's user was verified as logged
-in through the oauth provider. If the oauth provider returns that ID
+in through the OAuth provider. If the OAuth provider returns that ID
 we know who they are and we can log them in. While we're at it, if we are
-registering a user to our site for the first time through oauth, we can
-snag a couple other bits of information if we so choose, such as the user's
+registering a user to our site for the first time through OAuth, we can
+snag a couple of other bits of information if we so choose, such as the user's
 name or email if that either is offered. More on this later when we create
 the `root/users/view.py` file.
 
 ## Setting up the flask app skeleton
 
-Now that we have our oauth setup working with our three oauth provider options,
+Now that we have our OAuth setup working with our three OAuth provider options,
 let's start building up the foundation of our flask application. For this
-Flask app, we are going to be using a factory method for starting app. The
-app will be called from the base of our repository with a simple start up file.
+Flask app, we are going to be using a factory method for starting the app. The
+app will be called from the base of our repository with a simple start-up file.
 
 `app.py`
 
@@ -470,7 +469,7 @@ if __name__ == "__main__":
     app.run()
 ```
 
-Remember, we need to call `load_dotenv` to load our environment variables
+Remember, we need to call `load_dotenv` to load the environment variables
 that we set in our `.env` file.
 Notice how we are running the logic to create the app from another
 module (`root.factory`). This is the `factory` and it looks like so.
@@ -538,13 +537,13 @@ This `create_app` factory function does a few important things.
 2. We alter the app's `json_encoder` to properly work with mongoengine objects
 3. We register 2 blueprints to the app. You'll probably register several more
    for your app.
-   - The blueprints are basically mini-flask apps that we can use to organize
+   - The blueprints act as mini-flask apps that we can use to organize
      our app into modules with different functionality.
 4. We add the app to our mongo_engine database so the 2 can work together
 5. We add the app to the login manager and set the login view to the login
-   view we'll create later under `login` of the `users` blueprint
+   view we'll create later under the `login` of the `users` blueprint
 
-Now we need to actually set up our database and login-manager. We'll establish
+Now we need to set up our database and login manager. We'll establish
 both of these important objects in a module we're calling `globals.py` under
 the `root` directory.
 
@@ -553,7 +552,7 @@ the `root` directory.
 ```python
 """Global variables and objects to import into other modules.
 
-Kept separate from factory to avoid infinite import loops when importing
+Kept separate from the factory to avoid infinite import loops when importing
 these global objects into multiple modules.
 """
 from flask_login import LoginManager
@@ -574,11 +573,11 @@ modules in our app.
 
 ## The `core` package
 
-Our `core` package is the simpler of our 2 package blueprints we'll be
-creating for this application. The package has file, `views.py` with one
+Our `core` package is the simpler of the 2 package blueprints we'll be
+creating for this application. The package has a file, `views.py` with one
 view route enclosed, our index (or landing page) route. Why even bother
 making this a blueprint then? It's true, we could have just created an
-index `/` route in `app.py`. However, in your real application you might house
+index/route in `app.py`. However, in your real application, you might house
 several other views in this package and I think it's cleaner having the
 `app.py` as bare as possible, with all routes designated to separate
 blueprint views. So here's our core `views.py` file:
@@ -598,7 +597,7 @@ def index():
     return render_template("core/index.html")
 ```
 
-Lets set up the templates for the `core` package. Our html templates for this
+Let's set up the templates for the `core` package. Our HTML templates for this
 flask application will be stored under the `root` directory and we are going
 to separate the templates under sub-directories named after our blueprints
 to make it easier to find templates associated with specific blueprints.
@@ -686,7 +685,7 @@ logged in. Check it out:
 </nav>
 ```
 
-Finally, regardless of what page we navigate to we want to be able to
+Finally, regardless of what page we navigate to, we want to be able to
 flash messages to the page. Later, we'll use Flask's message flashing system
 to let users know they've successfully logged in or out, registered, or
 produced an error. See how the message category will incorporate into the
@@ -715,7 +714,7 @@ bootstrap `alert` class type and change the flashed message color accordingly.
 ```
 
 Our index page for this example app will simply let a user know if they are
-logged in, and display their information we have stored in our mongoDB
+logged in, and display their information we have stored in our MongoDB
 database once they've logged in.
 
 `root/templates/core/index.html`
@@ -756,12 +755,12 @@ database once they've logged in.
 Now for the meat of this example app, the `users` package. This package will
 contain the `User` model that we will use to store users in mongoDB, as well
 as the views and forms for `registering`, `logging in`, and `logging` out users.
-Finally it will house the `oauth_config` module that we previously built
-for interacting with our chosen oauth providers.
+Finally, it will house the `oauth_config` module that we previously built
+for interacting with our chosen OAuth providers.
 
 ### The user model
 
-First, lets take a look at `models.py`:
+First, let's take a look at `models.py`:
 
 `root/users/models.py`
 
@@ -794,7 +793,7 @@ class User(db.Document, UserMixin):
     )
     password_hash = db.StringField(required=False, index=True)
 
-    # Oauth stuff
+    # OAuth stuff
     facebook_id = db.StringField(unique=True, required=False, sparse=True, index=True)
     google_id = db.StringField(unique=True, required=False, sparse=True, index=True)
     github_id = db.LongField(unique=True, required=False, sparse=True, index=True)
@@ -811,14 +810,14 @@ class User(db.Document, UserMixin):
 First to note is the `User` model. It inherits from both `db.Document` (a
 document class from `mongoengine`) and the `UserMixin` class from
 `flask_login`. The first will allow us to use this model to store users in
-our mongoDB database. The second will track our users in a flask `session`
-to determine if the user current user is currently logged in (authenticated)
+our MongoDB database. The second will track our users in a flask `session`
+to determine if the current user is currently logged in (authenticated)
 or not.
 
 Next note, the `User` model stores seven fields. The `username` or
 `email` alongside a `password_hash` will allow users to log in through
-traditional password-style login. The `facebook_id`, `google_id` and
-`github_id` will allow users to log in through `oauth` authentication. And the
+traditional password-style login. The `facebook_id`, `google_id`, and
+`github_id` will allow users to log in through OAuth authentication. And the
 `name` field just allows us to address our users more formally. Note there
 is a hidden 8th field. The `id` field is automatically supplied, and it will
 be our primary key for identifying our users, allowing any other field listed
@@ -829,7 +828,7 @@ used in our `login` view to check a user's provided password against the
 hash value stored in the database.
 
 Last to note from this model is the `load_user` function. This function
-tells `flask_login` how to find a user from our mongodb database in order
+tells `flask_login` how to find a user from our MongoDB database
 to log in the user and store their `user_id` from the user model in the
 flask session.
 
@@ -846,7 +845,7 @@ from root.users.custom_form_validators import safe_string, unique_or_current_use
 
 
 class RegistrationForm(FlaskForm):
-    """Register a new user with email, username and password"""
+    """Register a new user with email, username, and password"""
 
     email = StringField(
         "Email",
@@ -903,7 +902,7 @@ class LoginForm(FlaskForm):
 
 
 class SettingsForm(FlaskForm):
-    """Allow users to update their name, username, email and password"""
+    """Allow users to update their name, username, email, and password"""
 
     name = StringField(
         "Name", description="John Smith", validators=[Optional(), Length(max=80)],
@@ -940,7 +939,7 @@ class SettingsForm(FlaskForm):
     submit = SubmitField("Update")
 ```
 
-These are our 3 user forms. With them a user can `register`, `log in` and
+These are our 3 user forms. With them, a user can `register`, `log in` and
 update their `settings`. Note the use of validators to ensure data
 is appropriate before we use it against our database. Here are the custom
 form validators I created to help with registration and settings updates.
@@ -963,7 +962,7 @@ def safe_string():
     Used to make sure our user's username is safe and readable
 
     Requirements:
-    - contains only letters, numbers, dashes and underscores
+    - contains only letters, numbers, dashes, and underscores
     """
 
     def validation(form, field):
@@ -978,7 +977,7 @@ def safe_string():
 
 
 def unique_or_current_user_field(message=None):
-    """Validates that a field is either equal to user's current field
+    """Validates that a field is either equal to the user's current field
     or doesn't exist in the database
 
     Used for username and email fields
@@ -997,16 +996,16 @@ def unique_or_current_user_field(message=None):
     return validation
 ```
 
-### Users html templates
+### Users HTML templates
 
-Before we talk about the views, lets get a sense of what we are going to
+Before we talk about the views, let's get a sense of what we are going to
 give the users for an interface. The end product of this app looks like this:
 
 SITE_GIF
 
 We've already gone over the index page jinja template above. The other 3
-templates we'll need to build are the `register`, `login` and `settings`
-templates. First lets take a look at the `register` template:
+templates we'll need to build are the `register`, `login`, and `settings`
+templates. First, let's take a look at the `register` template:
 
 `root/templates/users/register.html`
 
@@ -1074,17 +1073,17 @@ templates. First lets take a look at the `register` template:
 
 As you can see, we are going to give our users options for registration.
 They can either click a button that will send them to a view for registering
-through oauth or they can fill out a form with their `username`,
-`email`, `name` and password. These are the form fields we defined above in the
+through OAuth or they can fill out a form with their `username`,
+`email`, `name`, and password. These are the form fields we defined above in the
 `RegistrationForm` in the users `forms.py` file.
 
 I like extra control over
 how my form looks so I list fields individually with bootstrap class
 attributes defined. Also, note how I make some `anchor` tags look like
 buttons by adding the bootstrap `btn` class. Finally, remember to add the
-`form.hidden_tag()` field for csrf protection on form post submission.
+`form.hidden_tag()` field for CSRF protection on form post submission.
 
-Next lets take a look at the `login` form:
+Next, let's take a look at the `login` form:
 
 `root/templates/users/login.html`
 
@@ -1125,15 +1124,15 @@ Next lets take a look at the `login` form:
 ```
 
 Once again note that users have the option to log in through either a social
-oauth authenticator or username (or email) and password. The form used for
+OAuth authenticator or username (or email) and password. The form used for
 username (or email) and password login is the `LoginForm` we defined above
-in the users `forms.py` file. Also note that the
-`href` for the oauth pages send the user to the same url as they do in
-the `register` page. Therefore registering vs logging in with the oauth
+in the users `forms.py` file. Also, note that the
+`href` for the OAuth pages send the user to the same URL as they do on
+the `register` page. Therefore registering vs logging in with the OAuth
 buttons is a bit of an illusion. Both are handled at the same source as
-we'll soon see in the oauth views.
+we'll soon see in the OAuth views.
 
-Finally lets look a the `settings` template which will allow our users
+Finally, let's look a the `settings` template which will allow our users
 to update fields relating to themselves:
 
 `root/templates/users/settings.html`
@@ -1206,7 +1205,7 @@ to update fields relating to themselves:
       </button>
       <p style="color: red">
         You must define an email and password or connect
-        to another social oauth before disconnecting from Facebook.
+        to another social OAuth before disconnecting from Facebook.
       </p>
     {% endif %}
   {% else %}
@@ -1228,7 +1227,7 @@ to update fields relating to themselves:
       </button>
       <p style="color: red">
         You must define an email and password or connect
-        to another social oauth before disconnecting from Google.
+        to another social OAuth before disconnecting from Google.
       </p>
     {% endif %}
   {% else %}
@@ -1250,7 +1249,7 @@ to update fields relating to themselves:
       </button>
       <p style="color: red">
         You must define an email and password or connect
-        to another social oauth before disconnecting from GitHub.
+        to another social OAuth before disconnecting from GitHub.
       </p>
     {% endif %}
   {% else %}
@@ -1269,33 +1268,34 @@ to update fields relating to themselves:
 {% endblock content %}
 ```
 
-This template is the most complicated template in this website. At the top is
-a form for changing user defined fields. This form is the `SettingsForm`
+This template is the most complicated in this website. At the top is
+a form for changing user-defined fields. This form is the `SettingsForm`
 that we previously defined in the users `forms.py` file.
 
 Then we have a
-a section where users can add any of the three oauth connections to their
+section where users can add any of the three OAuth connections to their
 account (so that they could use those to log in later if they like). Again
 notice the `href` sends the user to the same route as it does for registering
-and logging a user in through oauth. We'll have to separate all those
+and logging a user in through OAuth. We'll have to separate all those
 options through logic in the view.
 
 If the user
-is already registered with an oauth provider we are giving them the
-opportunity to remove that oauth provider from their account. But we don't
-want to allow them to remove all oauth providers if they have no means of
+is already registered with an OAuth provider we want to allow them to
+remove that OAuth provider from their account. But we don't
+want to allow them to remove all OAuth providers if they have no means of
 accessing their account after removing the last provider. So we define a
 variable `can_disconnect` in the `settings` view, and only let users remove
-an oauth provider if that variable is `False`. More on that later.
+an OAuth provider if that variable is `False`. More on that later.
 
-Finally we give the user the option to `Delete account`. If pressed the
+Finally, we give the user the option to delete their account with
+a button, `Delete account`. If pressed the
 user account will be deleted from our database.
 
 ### Users views
 
 The users `views.py` file is the longest and most complicated file in this
 project, so I will talk about the file in bite-sized chunks (mostly
-individual functions), and then afterwards I will repeat the file as a whole
+individual functions), and then afterward I will repeat the file as a whole
 so you can see it all together in context with imports.
 
 First we need to create the `users` blueprint:
@@ -1327,20 +1327,20 @@ def register():
 ```
 
 This function is specifically for registering a new user with
-email, username, name and password. We are going to be using the
+email, username, name, and password. We are going to be using the
 `RegistrationForm` that we created in `root/users/forms.py`. The
 form will load unfilled-out in a `GET` request. If a `POST`
 request is sent with valid fields, the `form` object will validate
 when `validate_on_submit()` is called on it. From there we will
-generate a password hash value from the user supplied password
+generate a password hash value from the user-supplied password
 using the `generate_password_hash(PASSWORD)` function imported
 from `werkzeug.security`, a module automatically installed with
 Flask. All form values will be saved as parameters when
 instantiating an instance of the `User` class model which we
-save to our mongodb database. Finally we flash a thank you message
+save to our MongoDB database. Finally, we flash a thank you message
 to the user, log them in, and redirect them wherever we like.
 
-Lets discuss how that redirect function works:
+Let's discuss how that redirect function works:
 
 ```python
 def login_and_redirect(user):
@@ -1384,20 +1384,20 @@ def login():
 
 This function uses the `LoginForm` we created in
 `root/users/forms.py`. We want to make login easy for users
-so we allow them to use their `username` OR `email` to login.
+so we allow them to use their `username` OR `email` to log in.
 Only `email`s can have an `@` symbol according to our username
 form validation, so if an `@` symbol is found in the field,
-we search mongodb for users with that `email` field. If no
+we search MongoDB for users with that `email` field. If no
 `@` symbol is provided in the form field, we search for users
-in mongodb with that `username` field. If a user is found in
+in MongoDB with that `username` field. If a user is found in
 the database, we check if their provided password is correct.
 by checking if their provided password, when hashed matches
-the hash value for the discovered user in mongodb. Recall the
+the hash value for the discovered user in MongoDB. Recall the
 `check_password()` method we added to our user model above
 for how this works.
 
 Now that our users can `register` and `login` (through the
-traditional username/password method), lets check out how to
+traditional username/password method), let's check out how to
 log them out:
 
 ```python
@@ -1414,7 +1414,7 @@ We just call the `logout_user()` function imported from
 `flask_login`, let them know it was a success with `Flask.flash`
 message and redirect them to the login screen. This `logout`
 method will work just the same for users logged in through
-oauth methods discussed soon.
+OAuth methods discussed soon.
 
 We want to give logged in users the ability to change
 their information in our database as they see fit. That's
@@ -1442,23 +1442,23 @@ def settings():
         form.email.data = current_user.email
 
     return render_template(
-        "users/settings.html", form=form, can_disconnect=can_oauth_disconnect()
+        "users/settings.html", form=form, can_disconnect=can_MongoDB_disconnect()
     )
 ```
 
-The `SettingsForm` here was created in our users `forms.py`
+The `SettingsForm` here was created in our `users`' `forms.py`
 file previously and has fields for all of the pieces of
-user data we've discussed so far: `username`, `name`, `email`
+user data we've discussed so far: `username`, `name`, `email`,
 and `password`. The `current_user` object is an instance
-of the `User` model class for the currently logged in user.
+of the `User` model class for the currently logged-in user.
 All we have to do is set the fields of our `User` model
 instance to the fields provided by the user in the `SettingsForm`
 and call `save()`. Notice also that we are pre-populating
 the form fields from the fields in our `User` model instance
-if the user arrives to that page via a `GET` request.
+if the user arrives at that page via a `GET` request.
 
 Users need to be able to `delete` their account if they so
-choose, so lets give them that option with the `delete_account`
+choose, so let's give them that option with the `delete_account`
 function:
 
 ```python
@@ -1472,38 +1472,38 @@ def delete_account():
 ```
 
 To delete the current user's account, all we have to do is call
-the `delete()` method on the current users `User` model class
+the `delete()` method on the current user's `User` model class
 instance. We then flash them a `Flask.flash` message informing
 them that their account was successfully deleted and redirect
 them back to our index page. Note that we reached the
 `/delete_account` route through an anchor tag `href` route
 (meaning with a `GET` request), so don't need to specify a
-route method (`GET` is assumed if no `route` param is provided).
+routing method (`GET` is assumed if no `route` param is provided).
 
-Now remember how I previously stated that we `register`, `login`
-and add oauth accounts to an existing account all by calling
+Now, remember how I previously stated that we `register`, `log in`
+and add OAuth accounts to an existing account all by calling
 the same route. Let's check out how we accomplish that.
 
 ```python
 @users.route("/facebook_oauth")
 def facebook_oauth():
-    """Perform facebook oauth operations"""
+    """Perform facebook OAuth operations"""
     return oauth_generalized("Facebook")
 
 
 @users.route("/google_oauth")
 def google_oauth():
-    """Perform google oauth operations"""
+    """Perform google OAuth operations"""
     return oauth_generalized("Google")
 
 
 @users.route("/github_oauth")
 def github_oauth():
-    """Perform github oauth operations"""
+    """Perform github OAuth operations"""
     return oauth_generalized("GitHub")
 
 def oauth_generalized(oauth_client):
-    """Perform oauth registration, login, or account association"""
+    """Perform OAuth registration, login, or account association"""
     # Get response object for the WerkzeugAdapter.
     response = make_response()
     # Log the user in, pass it the adapter and the provider name.
@@ -1524,14 +1524,14 @@ def oauth_generalized(oauth_client):
     client_name = result.user.name
     client_oauth_id = result.user.id
 
-    # Check if user in database with this oauth login already exists
+    # Check if user in database with this OAuth login already exists
     lookup = {db_oauth_key: client_oauth_id}
     user = User.objects(**lookup).first()
 
-    # Should only enter this block if adding another oauth to account
+    # Should only enter this block if adding another OAuth to the account
     # in user settings
     if current_user.is_authenticated:
-        # Oauth method is already linked to an account, do nothing
+        # OAuth method is already linked to an account, do nothing
         if user:
             flash(
                 f"That {oauth_client} account is already linked with an account. "
@@ -1539,16 +1539,16 @@ def oauth_generalized(oauth_client):
                 "it from that account to link it to this account.",
                 category="danger",
             )
-        # Add this oauth method to current user
+        # Add this OAuth method to current user
         else:
             current_user[db_oauth_key] = client_oauth_id
             current_user.save()
         # Should only get here from "settings" so return there
         return redirect(url_for("users.settings"))
 
-    # Register a new user with this oauth authentication method
+    # Register a new user with this OAuth authentication method
     if not user:
-        # Generate a unique username from client's name found in oauth lookup
+        # Generate a unique username from client's name found in OAuth lookup
         base_username = client_name.lower().split()[0]
         username = base_username
         attempts = 0
@@ -1570,52 +1570,52 @@ def oauth_generalized(oauth_client):
         flash("Thanks for registering!", category="success")
 
     # Else user was found and is now authenticated
-    # Log in the found or created user
+    # Log the found-or-created user in
     return login_and_redirect(user)
 ```
 
-The top of this code block should look familiar from our
+The top of this code block should look familiar from the
 `test_oauth.py` file that we created a while back.
-We get to the three oauth providers through routes
-specific to their oauth provider name.
-Then the oauth provider's name is passed
-to a `oauth_generalized()` function for processing.
+We get to the three OAuth providers through routes
+specific to their OAuth provider name.
+Then the OAuth provider's name is passed
+to an `oauth_generalized()` function for processing.
 
-At the top of this file we are going to import our `authomatic`
+At the top of this file, we are going to import the `authomatic`
 instance that we defined in `root/users/oauth_config`
 (`from root.users.oauth_config import authomatic`). To authenticate
 with the provider, we call the `authomatic.login()` method. The first
-parameter to `authomatic.login()` is an `adapter` which is needed
-to access functionality important to the oauth dance
-like getting `URL`s `request params` and `cookies` and writing the `body`,
-`headers` and `status` of the response. The `WerkzeugAdapter` is a good
+parameter to `authomatic.login()` is an `adapter` that is needed
+to access functionality important to the OAuth dance
+like getting a `URL`'s `request params` and `cookies` and writing the `body`,
+`headers`, and `status` of the response. The `WerkzeugAdapter` is a good
 choice for the `Flask` framework, so we'll be importing that from
 `authomatic.adapters`, and we'll instantiate it with the `Flask.request`
 object and a blank `response` object generated by `Flask.make_request()`, and
-we'll also pass in the name of the oauth provider we're using from the
+we'll also pass in the name of the OAuth provider we're using from the
 variable `oauth_client`.
 
-If the oauth handshake is successful a `result` with a `user` attribute
+If the OAuth handshake is successful a `result` with a `user` attribute
 should be returned. Calling `update()` on the `result.user` attribute
-updates the user with the users data on the oauth providers server.
+updates the user with the user's data on the OAuth providers server.
 All we want is the user's `name` and `id` which we'll store in temporary
-variables. Next we'll check if a user with that provider's `id` is already
+variables. Next, we'll check if a user with that provider's `id` is already
 in our database and store that information if so.
 
 If the current user is logged in it means we entered the `oauth_generalized()`
 function from the `settings` function and we're trying to add another
-oauth authentication method to the user's account. If this oauth provider's
-`id` wasn't found in our database, we're free to add this oauth method
+OAuth authentication method to the user's account. If this OAuth provider's
+`id` wasn't found in our database, we're free to add this OAuth method
 to the current user, `save()` the updated user, and redirect them back to the
-`settings` page. We only want an oauth provider associated with one account,
-so if the oauth provider's `id` was found it means this oauth method is taken,
+`settings` page. We only want an OAuth provider associated with one account,
+so if the OAuth provider's `id` was found it means this OAuth method is taken,
 so we inform the user as much and take no further action.
 
 If the `user` wasn't found in our database AND the current user isn't logged
 in, that means we need to register a new user in our database with this
-oauth authentication method. We will create a unique `username` from the
-first name of the user from their oauth data, and then store that unique
-`username` along with the user's full name and oauth provider specific `id`
+OAuth authentication method. We will create a unique `username` from the
+first name of the user from their OAuth data, and then store that unique
+`username` along with the user's full name and OAuth provider-specific `id`
 in a new `User` model class instance and save the new user object to the
 database.
 
@@ -1623,32 +1623,32 @@ Whether the user **wasn't** found and we registered a new user
 (above paragraph) or the user **was** found, they are now authenticated
 so we can log them in and redirect them to the index page.
 
-Finally we want to give our users the ability to disconnect a specific
-oauth provider's authentication method from the user's account if they'd
+Finally, we want to give our users the ability to disconnect a specific
+OAuth provider's authentication method from the user's account if they'd
 prefer to log in through a different provider or through username/password.
 Let's check out how we'd accomplish this:
 
 ```python
 @users.route("/facebook_oauth_disconnect")
 def facebook_oauth_disconnect():
-    """Disconnect facebook oauth"""
+    """Disconnect Facebook OAuth"""
     return oauth_disconnect("Facebook")
 
 
 @users.route("/google_oauth_disconnect")
 def google_oauth_disconnect():
-    """Disconnect google oauth"""
+    """Disconnect Google OAuth"""
     return oauth_disconnect("Google")
 
 
 @users.route("/github_oauth_disconnect")
 def github_oauth_disconnect():
-    """Disconnect github oauth"""
+    """Disconnect GitHub OAuth"""
     return oauth_disconnect("GitHub")
 
 
 def can_oauth_disconnect():
-    """Test to determine if oauth disconnect is allowed"""
+    """Test to determine if OAuth disconnect is allowed"""
     has_gh = True if current_user.github_id else False
     has_gg = True if current_user.google_id else False
     has_fb = True if current_user.facebook_id else False
@@ -1674,16 +1674,16 @@ def oauth_disconnect(oauth_client):
 ```
 
 Recall from our `settings` template, that we only want to allow users to
-be able to disconnect an oauth provider method, if they have some other
+be able to disconnect an OAuth provider method if they have some other
 way to log in. We wouldn't want to strand an account without a means
 of logging into it. The `can_oauth_disconnect()` function addresses this
-concern by returning `True` only if the at least one oauth provider
+concern by returning `True` only if at least one OAuth provider
 id is in the database **OR** a username AND password is in the database.
 
-Just like when connecting to an oauth provider, disconnection routes are
-set up specific for each oauth provider, and then their oauth client
+Just like when connecting to an OAuth provider, disconnection routes are
+set up specifically for each OAuth provider, and then their OAuth client
 names are sent to a centralized `oauth_disconnect` function. This function
-simply sets the field for that specific oauth provider to `None` for the
+simply sets the field for that specific OAuth provider to `None` for the
 current user and then calls `save()` on the current user. This is followed
 by letting the user know the disconnect was a success through a `Flask.flash`
 message and redirecting the user back to the user `settings` page where
@@ -1801,44 +1801,44 @@ def delete_account():
 
 @users.route("/facebook_oauth")
 def facebook_oauth():
-    """Perform facebook oauth operations"""
+    """Perform facebook OAuth operations"""
     return oauth_generalized("Facebook")
 
 
 @users.route("/google_oauth")
 def google_oauth():
-    """Perform google oauth operations"""
+    """Perform google OAuth operations"""
     return oauth_generalized("Google")
 
 
 @users.route("/github_oauth")
 def github_oauth():
-    """Perform github oauth operations"""
+    """Perform github OAuth operations"""
     return oauth_generalized("GitHub")
 
 
 @users.route("/facebook_oauth_disconnect")
 def facebook_oauth_disconnect():
-    """Disconnect facebook oauth"""
+    """Disconnect facebook OAuth"""
     return oauth_disconnect("Facebook")
 
 
 @users.route("/google_oauth_disconnect")
 def google_oauth_disconnect():
-    """Disconnect google oauth"""
+    """Disconnect google OAuth"""
     return oauth_disconnect("Google")
 
 
 @users.route("/github_oauth_disconnect")
 def github_oauth_disconnect():
-    """Disconnect github oauth"""
+    """Disconnect github OAuth"""
     return oauth_disconnect("GitHub")
 
 
 # ----------------------------------------------------------------------------
 # HELPER METHODS
 def can_oauth_disconnect():
-    """Test to determine if oauth disconnect is allowed"""
+    """Test to determine if OAuth disconnect is allowed"""
     has_gh = True if current_user.github_id else False
     has_gg = True if current_user.google_id else False
     has_fb = True if current_user.facebook_id else False
@@ -1850,7 +1850,7 @@ def can_oauth_disconnect():
 
 
 def oauth_disconnect(oauth_client):
-    """Generalized oauth disconnect"""
+    """Generalized OAuth disconnect"""
     if not current_user.is_authenticated:
         return redirect(url_for("users.login"))
 
@@ -1864,7 +1864,7 @@ def oauth_disconnect(oauth_client):
 
 
 def oauth_generalized(oauth_client):
-    """Perform oauth registration, login, or account association"""
+    """Perform OAuth registration, login, or account association"""
     # Get response object for the WerkzeugAdapter.
     response = make_response()
     # Log the user in, pass it the adapter and the provider name.
@@ -1885,14 +1885,14 @@ def oauth_generalized(oauth_client):
     client_name = result.user.name
     client_oauth_id = result.user.id
 
-    # Check if user in database with this oauth login already exists
+    # Check if user in database with this OAuth login already exists
     lookup = {db_oauth_key: client_oauth_id}
     user = User.objects(**lookup).first()
 
-    # Should only enter this block if adding another oauth to account
+    # Should only enter this block if adding another OAuth to the account
     # in user settings
     if current_user.is_authenticated:
-        # Oauth method is already linked to an account, do nothing
+        # OAuth method is already linked to an account, do nothing
         if user:
             flash(
                 f"That {oauth_client} account is already linked with an account. "
@@ -1900,16 +1900,16 @@ def oauth_generalized(oauth_client):
                 "it from that account to link it to this account.",
                 category="danger",
             )
-        # Add this oauth method to current user
+        # Add this OAuth method to current user
         else:
             current_user[db_oauth_key] = client_oauth_id
             current_user.save()
         # Should only get here from "settings" so return there
         return redirect(url_for("users.settings"))
 
-    # Register a new user with this oauth authentication method
+    # Register a new user with this OAuth authentication method
     if not user:
-        # Generate a unique username from client's name found in oauth lookup
+        # Generate a unique username from client's name found in OAuth lookup
         base_username = client_name.lower().split()[0]
         username = base_username
         attempts = 0
@@ -1931,7 +1931,7 @@ def oauth_generalized(oauth_client):
         flash("Thanks for registering!", category="success")
 
     # Else user was found and is now authenticated
-    # Log in the found or created user
+    # Log the found-or-created user in
     return login_and_redirect(user)
 
 
@@ -1947,7 +1947,7 @@ def login_and_redirect(user):
 And we're done! Try the completed app out by calling `python app.py` and
 make sure all the functionality works. Then adapt it to your own needs.
 Remember, the code can be found together all in one piece at
-[this github repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank", rel="noopener noreferrer" }.
+[this GitHub repository](https://github.com/VerdantFox/flask_authomatic_example){: target="_blank", rel="noopener noreferrer" }.
 I know this was a long blog post, so if you stuck with it and read to the end
 congratulations! Or if you just skipped around to find what you needed
 that's great too. I hope you found something helpful.

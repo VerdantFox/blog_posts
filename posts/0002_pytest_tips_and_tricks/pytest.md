@@ -8,10 +8,10 @@ PYTEST_IMAGE
 
 Are you a python developer looking to improve your testing abilities with
 pytest? Me too! So I've put together a list of 9 tips and tricks I've
-found most useful in getting my tests looking sharp. Here's the features
+found most useful in getting my tests looking sharp. Here are the features
 we're going to be covering today:
 
-1. Useful command line arguments
+1. Useful command-line arguments
 2. `skip` and `xfail`
 3. Mocking with `monkeypatch`
 4. `tmp_path` and `importlib`
@@ -22,20 +22,20 @@ we're going to be covering today:
 9. Using pytest-cov
 
 All of the code discussed in this article can be found in the following
-[github repository](https://github.com/VerdantFox/pytest_examples){: target="_blank", rel="noopener noreferrer" }
+[GitHub repository](https://github.com/VerdantFox/pytest_examples){: target="_blank", rel="noopener noreferrer" }
 I created. To run the code, you'll need `pytest` and `pytest-cov`, which you
 can install with `pip install pytest` and `pip install pytest-cov`.
 I recommend doing so in a virtual environment.
 
 ## Setup
 
-First we'll take a quick look at the example code that we are going to
+First, we'll take a quick look at the example code that we are going to
 create tests for. The code contains a fairly simple `Math` class, with a
-few simple static methods: `add()`, `divide()`, `multiply()`, that simply
+few simple static methods: `add()`, `divide()`, `multiply()`, which simply
 perform that action on two numbers, along with `slow()` which just sleeps for
 an amount of time set by the global variable `GLOBAL_SLEEP_SECONDS`. Next,
 there's a function called `some_math_function` which takes two numbers as
-parameters and uses all the above-mentioned class methods in sequence
+parameters and uses all the above-mentioned class methods in sequence,
 and prints and logs some messages based on how long it took.
 
 Also in the module are three other unrelated example functions that will
@@ -134,19 +134,19 @@ if __name__ == "__main__":  # pragma: no cover
     print(some_math_function(2, 1))
 ```
 
-Now lets get on to testing this code with my top ten pytest tips and tricks.
+Now let's get on to testing this code with my top ten pytest tips and tricks.
 
-## 1. Useful command line arguments
+## 1. Useful command-line arguments
 
-Here's my list of most useful command line arguments along with short
+Here's my list of most useful command-line arguments along with short
 descriptions. I'll explain in more detail below:
 
 ```text
--s (show std_out even if test passes)
--k STRING (run test with STRING in name)
+-s (show std_out even if the test passes)
+-k STRING (run test with STRING in the name)
 -m MARKER (run tests containing a marker)
 -v (verbose output -- show each test's name)
---tb=LENGTH (adjust length of traceback messages)
+--tb=LENGTH (adjust the length of traceback messages)
 --lf (re-run only the tests that failed)
 ```
 
@@ -154,15 +154,15 @@ descriptions. I'll explain in more detail below:
 
 Sometimes you want to see messages to standard out (usually `print()` messages).
 These messages are normally captured and hidden from the user. They are only
-showed for failed tests, after the error stack trace is shown. If you want
+shown for failed tests -- after the error stack trace is shown. If you want
 to see messages to standard out for ALL tests, while the tests are running,
 use the `pytest -s` switch.
 
 ### -k STRING
 
 The most basic command to run all your tests is simply calling `pytest`. Pytest
-will search through your packages, find modules labelled `test_something` or
-`something_test` and then run all the functions that start with `test_`. You
+will search through your packages, find modules labeled `test_something` or
+`something_test`, and then run all the functions that start with `test_`. You
 can run against a specific folder or file with `pytest folder_name` or
 `pytest file_name`. But say you want to run only a specific test or a subset
 of tests. You can do so with `pytest -k STRING`. This will select only
@@ -173,9 +173,9 @@ Notice this would also test a test named `test_basic_code` because
 
 ### -m MARKER
 
-Sometimes you might want to consistently run a subset of tests together,
+Sometimes you might want to consistently run a subset of tests together
 and exclude other tests. You can `mark` these tests with a name of your
-choice and run them later with `pytest -m MARK`. Lets look at an example:
+choice and run them later with `pytest -m MARK`. Let's look at an example:
 
 My test file:
 
@@ -192,7 +192,7 @@ def test_complicated():
 
 If I were to run `pytest -m slow`, only the tests containing the
 `@pytest.mark.slow` decorator (`test_complicated()`) would be run.
-Furthermore I could run `pytest -m "not slow"` to run all tests that
+Furthermore, I could run `pytest -m "not slow"` to run all tests that
 do not contain the `@pytest.mark.slow` decorator (`test_basic()`).
 
 When creating markers, you'll also want to list your markers in your
@@ -211,7 +211,7 @@ markers =
 A normal pytest run will list a module name followed by a series of `.`s,
 one for each passed test or `F`s, one for each failed test.
 ie (`example_test.py .FF..`). You might want to see the name of each test
-as they are run to quickly and clearly see which tests passed and which
+as they are run to quickly see which tests passed and which
 tests failed. To do so use the `-v` (for verbose) flag. The same run tests might look
 something like this:
 
@@ -231,11 +231,11 @@ testing).
 
 When a test fails, you'll see a "traceback message". These are the messages
 that show what the error was in your code, and where it's located.
-The normal pytest traceback message is great. It's color coded and super
+The normal pytest traceback message is great. It's color-coded and super
 detailed, so you can find out exactly what went wrong with your test. If
 you're running a lot of tests and several "FAILURE"s occur though, those
 messages can become very noisy. Introducing `--tb=LENGTH`. This argument
-allows you to adjust the traceback message style to suite your needs. My
+allows you to adjust the traceback message style to suit your needs. My
 favorite "LENGTH" arguments are `short`, `line`, and `no`. I'll show how
 their output looks below.
 
@@ -291,7 +291,7 @@ with a longer traceback to find out *why* it failed.
 
 ### --lf/--last-failed
 
-This command line switch is really convenient when you have a subset of your
+This command-line switch is convenient when you have a subset of your
 tests failing. You can run `pytest --lf`, make changes to try to fix the
 failing tests, and then repeat the command over to only run tests that
 failed on the previous run until all tests pass.
@@ -299,7 +299,7 @@ failed on the previous run until all tests pass.
 ## 2. `skip` and `xfail`
 
 Occasionally tests just don't work the way you want them to, or maybe
-they test a feature that isn't actually implemented yet. Even though
+they test a feature that isn't implemented yet. Even though
 these tests fail right now, you'd like to keep them around and
 fix them in the future. Introducing `skip` and `xfail`.
 
@@ -336,7 +336,7 @@ resolves to `True` or run test normally if the value resolves to `False`.
 ### `xfail`
 
 Another option if you know your test fails under certain conditions, is to
-mark it as `xfail`. This basically says, "Yes, I know this test fails,
+mark it as `xfail`. This says, "Yes, I know this test fails,
 but I want to leave it as is and not see a "FAILED" message or traceback.
 Marking a test for `xfail` looks like this:
 
@@ -350,12 +350,12 @@ def test_xfail():
     assert example.environment_var_function() == "MY_VAR is not set to 'true'"
 ```
 
-Notice my first parameter is `condition`. Just like `skipif` I make a
+Notice my first parameter is `condition`. Just like with `skipif`, I make a
 *boolean* condition where the test is known to fail. If that condition is *not*
 met, the test is run *normally*. If that condition *is* met, the test is run
 as an `xfail` (meaning you expect the test to fail). If the test *does* fail
 (as expected), the result is marked with a lower case `x` (or `XFAIL (REASON)`
-in verbose mode). If the test *passes* (not expected), it the result is marked
+in verbose mode). If the test *passes* (not expected), the result is marked
 with an upper case `X`, or `XPASS (REASON)` in verbose mode.
 
 ## 3. Mocking with `monkeypatch`
@@ -363,14 +363,14 @@ with an upper case `X`, or `XPASS (REASON)` in verbose mode.
 Sometimes things are a little too complicated, slow, or just out of your
 control for you to effectively test a section of code. In this case,
 you need to mock that functionality to get your test to run properly.
-`monkeypatch` is the built in way to mock objects in pytest. With `monkeypatch`
+`monkeypatch` is the built-in way to mock objects in pytest. With `monkeypatch`,
 you can mock global variables, functions and methods, class attributes,
-or even environment variables. Here's some examples of how to use `monkeypatch`
+or even environment variables. Here are some examples of how to use `monkeypatch`
 for your mocking needs.
 
 ### Mock a global variable
 
-Recall, one of the main function we are testing in `example.py` is
+Recall, one of the main functions we are testing in `example.py` is
 `some_math_function()`. This function calls the `Math.slow()` method,
 which sleeps for `GLOBAL_SLEEP_SECONDS` (where `GLOBAL_SLEEP_SECONDS`) is
 an environment variable that is sed to 3 seconds at the top of the module.
@@ -395,11 +395,11 @@ to set the object's `ATTRIBUTE` to `ATTRIBUTE_VALUE`. If we want to
 replace a module's global variable with a new one, the `OBJECT` *is* the
 module containing the global variable (note we had imported the module `example`
 before using it in the test). The second argument is the attribute we want
-to replace as a string (ie, in quotation marks) -- in this case the module's
-global variable `GLOBAL_SLEEP_SECONDS` is the attribute we want replaced.
+to replace as a string (ie, in quotation marks) -- in this case, the module's
+global variable `GLOBAL_SLEEP_SECONDS` is the attribute we want to be replaced.
 Finally, the third argument is the value we want to set the attribute (argument
 2) with. Here we are changing that value to `1`. Now the test will run with
-a 1 second sleep instead of its original 3 second sleep. After the test is
+a 1-second sleep instead of its original 3-second sleep. After the test is
 over, all objects changed by `monkeypatch` revert to their original values.
 
 ### Mock a function with a replacement function
@@ -431,23 +431,23 @@ Like in the above example, `monkeypatch` is a function argument of our test,
 allowing us to use the `monkeypatch` fixture as an object in our test. We want
 to replace the `slow` function with a fast function that does *nothing* when
 called. To use monkeypatch that function recall we use
-`monkeypatch.setattr(OBJECT, "ATTRIBUTE", ATTRIBUTE_VALUE)`. In this case the
+`monkeypatch.setattr(OBJECT, "ATTRIBUTE", ATTRIBUTE_VALUE)`. In this case, the
 `OBJECT` is the `example.py` module's `Math` class. The `ATTRIBUTE` to be
 replaced is the `slow` method (in quotation marks). For the third argument,
 we replace the `slow` method with a *lambda function* (an inline,
 nameless function). This lambda function will receive the same arguments
-as the real function would send. In our case it will receive one argument which
+as the real function would send. In our case, it will receive one argument which
 we don't care about so we replace it with `_` (although if you're interested,
 the argument passed during the test is the class's `self` object). The lambda
 function returns `None`. This means that `time.sleep(GLOBAL_SLEEP_SECS)`
 is no longer called by `Math.slow`, so the test should run almost instantly.
 
-The `multiply` method could also be replace with a *lambda function*, but
-here we'll show how to replace it with a named function. First we create
+The `multiply` method could also be replaced with a *lambda function*, but
+here we'll show how to replace it with a named function. First, we create
 the replacement function inside the test. The replacement function here is
-`fake_multiply` and it will receive three arguments. I labelled those arguments
+`fake_multiply` and it will receive three arguments. I labeled those arguments
 with leading underscores to indicate they won't be used by our mocked function
-(note however, if we wanted to, we *could* use those variables in the mocked
+(note, however, if we wanted to, we *could* use those variables in the mocked
 function). The function simply returns `2` no matter what input it receives.
 We `monkeypatch` replace the `multiply` method the same way we replaced the
 `slow` method, using `fake_multiply` as the replacement
@@ -458,7 +458,7 @@ methods are replaced with their mocked functions.
 
 If environment variables are important to your code, you may want to manipulate
 environment variables as part of your tests. Introducing `monkeypatch.delenv`
-and `monkeypatch.setenv`. Lets take a look at an example. This is the
+and `monkeypatch.setenv`. Let's take a look at an example. This is the
 function we are testing in `example.py`:
 
 ```python
@@ -486,7 +486,7 @@ def test_alter_environment_variable(monkeypatch):
     assert example.environment_var_function() == "MY_VAR is set to 'true'"
 ```
 
-As in previous examples, the `monkeypatch` fixture is an argument to our function.
+As in previous examples, the `monkeypatch` fixture is an argument for our function.
 The important environment variable for this function is `MY_VAR`. First,
 we remove the environment variable in case it is already set to something
 with `monkeypatch.delenv("MY_VAR", raising=False)`. Note, as the comment
@@ -515,9 +515,9 @@ def update_file_via_pathlib(path):
 ```
 
 This function reads a file, then re-writes the file with updated text
-before and after the file. To test the functionality lets say we have
+before and after the file. To test the functionality let's say we have
 a long, complicated test file named `infile.txt` under a separate directory in
-our project called `test_data`. (Note: for this example te actual file text
+our project called `test_data`. (Note: for this example, the actual file text
 just reads "Awesome test data!"). We want to make sure our test can update
 `infile.txt`, but we don't want that file to change every time the test
 runs. Here's a test that does just that:
@@ -542,7 +542,7 @@ def test_update_file_pathlib(tmp_path):
     assert test_file.read_text() == "Check this out: Awesome test data! BAM!"
 ```
 
-Lets break down what's happening in this test. First `tmp_path` is a
+Let's break down what's happening in this test. First `tmp_path` is a
 `fixture` object (like `monkeypatch` - more on fixtures later) that is
 a function argument for our test. The `tmp_path` fixture creates a
 temporary directory (that will be deleted after the test ends) and returns
@@ -576,7 +576,7 @@ pytest_examples/
 ```
 
 Each directory (including the base project directory) must be treated as a
-`package`, meaning it must contain an `__init__.py` file in order for
+`package`, meaning it must contain an `__init__.py` file for
 `importlib` to see the file your want it to see. The arguments are
 `importlib.resources.path("PACKAGE", "FILE")`. Then with the line
 `test_file.write_text(test_path_og.read_text())` we are writing the contents
@@ -589,18 +589,18 @@ after the test concludes.
 
 ## 5. `fixture`s and the `conftest.py` file
 
-Sometimes in your tests you will need to perform an action before (and possibly
+Sometimes in your tests, you will need an action performed before (and possibly
 after) a test is run. A common action is creating and then deleting a resource
 like a database. This is called **setup** and **teardown**. In `pytest`,
 this functionality is best achieved through `fixtures`. Fixtures are
 simply functions that are used as arguments to your test that do something,
 return an object to use during the test, and then possibly do something else
 after the test completes. We've already used `fixtures` in this article.
-`monkeypatch` and `tmp_path` are built in fixtures (ie fixtures in `pytest`'s
+`monkeypatch` and `tmp_path` are built-in fixtures (ie fixtures in `pytest`'s
 code). Creating your own *custom* fixtures is very easy. Just write a
 function that is visible to your test, mark the function as a `fixture`,
 and then insert that function as an argument to your test.
-Lets look at an example:
+Let's look at an example:
 
 ```python
 import random
@@ -621,16 +621,16 @@ def test_with_speedup(speedup):
     assert answer == 6
 ```
 
-The function `speedup` is a fixture, because it is decorated with
+The function `speedup` is a fixture because it is decorated with
 `@pytest.fixture`. Note that fixtures can call on other fixtures, so in
 this example, `speedup` calls on the built-in fixture `monkeypatch`.
 It then uses monkeypatch to change the value of `GLOBAL_SLEEP_SECONDS` to
-a short random between `.02` and `.2`. and returns `GLOBAL_SLEEP_SECONDS`
+a short random number between `.02` and `.2`. and returns `GLOBAL_SLEEP_SECONDS`
 new value. Our test `test_with_speedup` uses the local fixture `speedup`
 (local, meaning in the same module). The result is the test runs much
 faster after altering the `GLOBAL_SLEEP_SECONDS` global variable.
 
-Fixture can also be stored in a centralized location so lots of different
+The fixture can also be stored in a centralized location so lots of different
 test files can see the same fixture. To do this, store your fixtures in
 a file named `conftest.py`, either in the same folder as your tests, or
 in a parent folder of the tests. Then just treat that `fixture` as if it
@@ -668,7 +668,7 @@ def test_basic():
     assert answer == 6
 ```
 
-Here we introduce several new facts about `fixtures`. First the
+Here we introduce several new facts about `fixtures`. First, the
 `@pytest.fixture` decorator can take arguments. Here we pass `autouse=True`.
 This makes it so tests will automatically use the fixtures `time_test`
 and `time_all_tests` which use `autouse=True`. Next, fixtures can be scoped.
@@ -687,7 +687,7 @@ after the test is run (or all the tests are finished running if the
 Therefore in our example, `time_test` will get the time
 before every test, `yield` to the test run, get the time after each test,
 and then print the difference between those times (ie how long the test took
-to run). Likewise `time_all_tests` will get the time before the first test is
+to run). Likewise, `time_all_tests` will get the time before the first test is
 run, `yield` to *all* the tests, get the time after the last test has run,
 and report the difference (ie, the time it took for all the tests to run).
 
@@ -696,7 +696,7 @@ and report the difference (ie, the time it took for all the tests to run).
 Your code might generate exceptions, either intentionally with `raises ERROR`,
 or unintentionally with an error raised by a dependent library or the standard
 library. To test exceptions in your code, use a `with pytest.raises(ERROR)`
-context block. Lets see an example:
+context block. Let's see an example:
 
 In `example.py`:
 
@@ -728,10 +728,10 @@ def test_error_raising():
 ```
 
 We use `with pytest.raises(RuntimeError):` to tell pytest "we expect this
-block of code to raise a `RuntimeError`. If `RuntimeError` error is raised,
+block of code to raise a `RuntimeError`. If a `RuntimeError` error is raised,
 the test continues. If a `RuntimeError` is not raised, the test will fail
 with an exception message `Failed: DID NOT RAISE <class 'RuntimeError'>`.
-In this way you ensure an error is raised where expected. For even more
+In this way, you ensure an error is raised where expected. For even more
 control you can ensure that the error message matches what you expect.
 To do so use `with pytest.raises(ERROR, matches=MATCHES), where matches
 is a regex style string matching the expected error message.
@@ -741,7 +741,7 @@ is a regex style string matching the expected error message.
 Your code may write messages out to a `log`, or it might `print()` messages
 to `std_out` or `std_error`. You might want to test that those messages are
 *actually* `logging` or `print`ing as you expected. To test for those messages
-we need two new built-in `fixtures` -- `caplog` and `capsys`. For example
+we need two new built-in `fixtures` -- `caplog` and `capsys`. For example,
 tests using `caplog` and `capsys` recall that the file we are testing,
 `example.py` has a function `some_math_function` with these lines of
 code:
@@ -759,8 +759,8 @@ the function takes more than `2` seconds before reaching that point.
 
 ### Use `caplog` to test for log messages
 
-With the `caplog` built-in fixture we can test for log messages in our code.
-Lets look at an example:
+With the `caplog` built-in fixture, we can test for log messages in our code.
+Let's look at an example:
 
 ```python
 @pytest.mark.output_capturing
@@ -775,7 +775,7 @@ def test_caplog_standard(caplog):
 To use the `caplog` built-in fixture, we use `caplog` as an argument to our
 test function (just like we do with any other fixture). `caplog` then captures
 logging output to itself (rather than a log file or wherever it was being
-written to before). To see the the contents of the captured log output,
+written to before). To see the contents of the captured log output,
 we can use `caplog.text`. Note in the example, the log `info` message
 was not captured. This is because by default loggers capture `warning`
 level and above messages. To capture an `info` level message, we can
@@ -838,12 +838,12 @@ To see what was in that `captured` output, use `captured.out`.
 It is often useful to test a function with many different sets of input
 parameters. You could do this all in one test by testing one set of
 parameters, asserting the output, testing the next, asserting the next output,
-etc. But it is better practice to keep your tests as short as possible,
+etc. But it is a better practice to keep your tests as short as possible,
 with some developers suggesting limiting to **one** `assert` statement if
 possible. While I think the **one** `assert` statement requirement is
 a bit extreme, we can reduce our `assert` statement count considerably with
 these types of tests by **parameterizing**. What does that look like?
-Lets see an example.
+Let's see an example.
 
 In `example_test.py`:
 
@@ -867,25 +867,25 @@ def test_param_standard(speedup, first, second, expected):
 
 What we do here is decorate our test function with
 `@pytest.mark.parametrize("PARAM VARIABLES", ITERABLE_OF_ITERABLES)`. The `"PARAM VARIABLES"`
-is a string of comma separated variable names to use in your test.
+is a string of comma-separated variable names to use in your test.
 The values for these variables will be filled by an iterable (a `tuple`,
 `list`, `generator`, etc.) that will expand to the exact number of variables
 you specified in `"PARAM VARIABLES"`. In the example, our variables are
-`first`, `second` and `expected` (3 variables). So each iterable must have 3
+`first`, `second`, and `expected` (3 variables). So each iterable must have 3
 pieces. See the first iterable is a tuple `(2, 1, 6)`. Since our input
 `ITERABLE_OF_ITERABLES` contains 4 iterables, this test will run 4 times,
 each time expanding the contained iterable to the parameters `first`,
-`second` and `expected` for our test. The first time the test runs `first == 2`,
+`second`, and `expected` for our test. The first time the test runs `first == 2`,
 `second == 1`, `expected == 6`. The second time the test runs `first == 7`,
 `second == 3`, `expected == 20`.
 
-If run normally, we'll see 4 `.`, one for each passed variant of the test. If
-run in **verbose** mode, pytest will try to name the tests with something that
+If the test is run normally, we'll see 4 `.`, one for each passed variant of the test.
+If it is run in **verbose** mode, pytest will try to name the tests with something that
 makes sense, for the first test appending `[2-1-6]` to the test name. If we
 want the **verbose** mode name to be more descriptive, we can use
 `pytest.param(ARGUMENTS, id=ID)`. So for our third parametrized test run,
 the numbers `(25, 5, 150)` are sent to pytest as `first`, `second`, `expected`,
-but the test is named "large", in verbose mode. The end result output looks
+but the test is named "large", in verbose mode. The resulting output looks
 like this:
 
 ```text
@@ -898,7 +898,7 @@ src/example_test.py::test_param_standard[with_negatives] PASSED
 Another thing you can do with parametrized testing is test two or more
 sets of parameters alongside one another. If a test is decorated with
 `@pytest.mark.parametrize` multiple times, pytest will run every combination
-of those parameters. Lets see this with another example:
+of those parameters. Let's see this with another example:
 
 ```python
 import pytest
@@ -945,13 +945,13 @@ src/example_test.py::test_param_multiple_sets[False-with_negatives] PASSED
 ## 9. Using pytest-cov
 
 It is important to know how much of your codebase is covered by tests, and
-specifically it is important to know which lines of your codebase are
+specifically, it is important to know which lines of your codebase are
 run by tests, and which lines are not run. Pytest has a great tool for this
 called `pytest-cov` (which uses `coverage.py` under the hood). To use
 `pytest-cov`, first `pip install pytest-cov`. Then run your tests like normal
-with a couple extra command line arguments. A standard run with `pytest-cov`
+with a couple of extra command-line arguments. A standard run with `pytest-cov`
 looks like `pytest --cov=CODE_TO_CHECK_COVERAGE`. So if I wanted to see how
-much of my `src` directory was covered byt tests I'd run `pytest --cov=src`.
+much of my `src` directory was covered by tests I'd run `pytest --cov=src`.
 `pytest-cov` will track which lines of code were run and send that information
 to `std_out` like so:
 
@@ -970,13 +970,13 @@ TOTAL                   178      4    98%
 This output is useful, but we don't see specifically which lines in
 `src/example.py` were covered by our tests and which lines were missed.
 For a more detailed, interactive output use the argument `--cov-report=html`.
-When this command line argument is added, an `htmlcov` directory appears in
+When this command-line argument is added, an `htmlcov` directory appears in
 the directory the tests were run from. This `htmlcov` directory contains
-a bunch of `html`, `js`, `css`, etc. files that create an interactive
+a bunch of `HTML`, `JS`, `CSS`, etc. files that create an interactive
 website for viewing code coverage.
 
 If you have a tool like `VS code` extension
-`open in browser`, you can right click `htmlcov/index.html` and select
+`open in browser`, you can right-click `htmlcov/index.html` and select
 "open in Default browser" to view the website. The index page shows
 coverage like the above `std_out` report. If you then click on `src/example.py`
 though, you are brought to a page showing `src/example.py` source code,
@@ -984,10 +984,10 @@ highlighted **green** when lines are *covered* and **red** where lines
 are *un-covered*.
 
 If there is a line or block of code (like an `if` statement) that you want
-`pytest-cov` to ignore in its coverage calculations, comment that line
+`pytest-cov` to ignore in its coverage calculations, then comment that line
 or block of code with `#pragma: no cover`. Those lines will then be marked
 as `excluded` rather than `missing`, and they won't count toward the percentage
-of lines covered vs un-covered.
+of lines covered vs uncovered.
 
 ## Conclusions
 
