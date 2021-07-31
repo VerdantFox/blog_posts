@@ -24,38 +24,40 @@ VS Code extensions.
 
 ## 4. Code Spell Checker
 
-## 5. Paste and Indent
+## 5. Bracket Pair Colorizer
 
-## 6. Bracket Pair Colorizer
+## 6. Toggle Quotes
 
-## 7. Toggle Quotes
+## 7. Copy relative path posix
 
-## 8. Copy relative path posix
+## 8. Auto Close Tag
 
-## 9. Auto Close Tag
+## 9. Auto Rename Tag
 
-## 10. Auto Rename Tag
+## 10. Highlight Matching Tag
 
-## 11. Highlight Matching Tag
+## 11. Color Highlight
 
-## 12. Color Highlight
+## 12. Path Intellisense
 
-## 13. Path Intellisense
+## 13. vscode-faker
 
-## 14. vscode-faker
+## 14. Prettier - Code formatter
 
-## 15. Prettier - Code formatter
+## 15. CSS Peek
 
-## 16. CSS Peek
+## 16. Sourcery
 
-## 17. Sourcery
+## 17. flask-snippets
 
-## 18. flask-snippets
-
-## 19. Language support
+## 18. Language support
 
 "markdownlint" + "Markdown All in One", HTML CSS support, Jinja, Python, YAML, Bash IDE
 
-## Extras
+## 19. Themes!
 
-Pick a theme (One Dark Pro) and icon theme 
+one dark pro
+
+## 20. Icon themes!
+
+material icon theme
