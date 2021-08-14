@@ -20,11 +20,11 @@ IMAGE: 01_project_manager.png
 
 Do you work on several projects and find yourself switching back and forth
 all the time between them. Then this is the perfect extension for you.
-The *`Project Manager` extension easily tops this list as one of my all-time
+The `Project Manager` extension easily tops this list as one of my all-time
 favorite extensions.
 
 Once downloaded, a new folder tab icon will appear on the
-left-hand side of your vscode editor. Whenever you start a new
+left-hand side of your VS Code editor. Whenever you start a new
 project, open this tab and hit the "save project" icon at the top of the
 left-hand panel. `Project Manager`  will add your project to a list
 of your favorite projects.
@@ -200,7 +200,7 @@ IMAGE: 15_css_peek.png
 
 `CSS Peek` adds `Go To Definition` functionality to your `HTML` classes.
 While in an HTML file, hold `Ctrl` while hovering a custom `CSS` class
-to see a pop-up of the `CSS` class below your hovered cursor position.
+to see a pop-up of the `CSS` class above your hovered cursor position.
 You can then click said `CSS` class to go to its definition in the
 `CSS` file for easy editing.
 
@@ -263,7 +263,7 @@ def func_name(foo):
 There are 18 such basic flask snippets for quick code completion
 that you can see by going to the `flask-snippets` extension page. While those
 flask snippet code completions are helpful, the completions I find most helpful
-are for `Jinja` template code completions. With an `HTML` `Jinja` file open
+are for `jinja` template code completions. With an `HTML` `jinja` file open,
 start typing `ffor` to get the following code completion snippet:
 
 ```jinja
@@ -272,7 +272,7 @@ start typing `ffor` to get the following code completion snippet:
 {% endfor %}
 ```
 
-Or start typing `felif`  in an `HTML` jinja file to get the following code:
+Or start typing `felif`  in an `HTML` `jinja` file to get the following code:
 
 ```jinja
 {% if expression %}
@@ -284,7 +284,7 @@ Or start typing `felif`  in an `HTML` jinja file to get the following code:
 {% endif %}
 ```
 
-There are 17 such jinja template code completion snippets which I find to
+There are 17 such `jinja` template code completion snippets which I find to
 be great time savers. And while `jinja` templates are used extensively by
 `Flask`, other web frameworks (such as `FastAPI`) can also make use of
 `jinja` templates, making this extension very useful when working on those
@@ -302,7 +302,7 @@ extension for it with features like `code completion`, `go to definition`,
 `syntax error highlighting`, etc. This support makes it so much easier to
 write new code, understand old code, and spot syntax errors in your code quickly.
 For the language you are interested in working with, just type that language
-into the extension bar and the first hit will be language support for that
+into the extension search bar and the first hit will probably be language support for that
 language. Here is a list of the languages I use all the time alongside
 their supporting extensions:
 
