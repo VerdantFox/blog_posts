@@ -48,8 +48,8 @@ spot.
 
 Now that we know *what* a git `pre-commit` hook is, *how* can we write one?
 All git hooks are stored in the `.git/hooks/` directory under your project
-root. A `pre-commit` hook, is just an executable file with the magic name `pre-commit`
-stored in this folder.
+root. A `pre-commit` hook, is just an executable file stored in this folder
+with the magic name `pre-commit`.
 
 Note that some code editors make the `.git` folder hidden by default.
 If you don't see it in your project root directory of your editor's file tree,
@@ -57,9 +57,63 @@ try playing around with your code editor's settings to make the `.git` folder
 visible. For example in VS Code, type "Files: Exclude" into the "preferences"
 menu see `.git` is hidden.
 
-Once you can access your `.git` directory, open up the `.git/hooks/` directory.\
+Once you can access your `.git` directory, open up the `.git/hooks/` directory.
 You will see a bunch of files named `hook-type.sample`.
 You should see one named `pre-commit.sample`. If you open this file,
 you will see an example pre-commit hook,
 provided by git. You can use this as an actual pre-commit hook by simply
-removing ".sample" from `pre-commit.sample`.
+removing ".sample" from `pre-commit.sample`. The sample pre-commit hook
+is a bit confusing. Lets write our own, more straightforward hook.
+
+Example pre-commit hook for a python project:
+
+```bash
+#!/usr/bin/env bash
+# ^ Note the above "shebang" line. This says "This is an executable shell script"
+# Name this script "pre-commit" and place it in the ".git/hooks/" directory
+
+# If any command fails, exit immediately with that command's exit status
+set -eo pipefail
+
+# Run flake8 against all code
+flake8 source_code
+echo "flake8 passed!"
+
+# Run black against all code
+black source_code --check
+echo "black passed!"
+```
+
+The above `pre-commit` hook, when placed in the `.git/hooks/` directory,
+will first run when you perform a `git commit`. First,
+[flake8](https://flake8.pycqa.org/en/latest/){: target="_blank", rel="noopener noreferrer" }
+will scan your python code for its style requirements and then
+[black](https://black.readthedocs.io/en/stable/){: target="_blank", rel="noopener noreferrer" }
+will scan your python code for its style requirements.
+These are two awesome python code linters I highly recommend you add to
+any python project. If either of these python linters fail, your
+commit will abort with a message from the failed linter. Once you fix
+those errors and try to commit again, the script will succeed and exit with
+status code 0, and then your commit will succeed.
+
+As I stated earlier, `pre-commit` hooks are very flexible. The above script was
+written in `bash`, but the script could have
+been written in `python`, `ruby`, `node JS`, or any other scripting language.
+Furthermore, the script could call other scripts in your code. This is a great
+way to chain together lots of hooks into one file. Simply write a base
+`pre-commit` hook script, that calls all of your other `pre-commit` hook
+scripts you want to run. Those scripts could also run in any language, or
+even start docker containers that perform checks or make changes for you.
+Finally, these scripts can even modify your code for your on the spot. If you
+do modify your code in a `pre-commit` script, make sure to exit with a
+non-zero exit status. Changes made won't be staged, and thus won't be
+committed (plus you might want to view those changes before re-committing).
+
+You are now equipped to write your own custom `pre-commit` hooks. But there
+is an easier way! In the next section, we'll discuss the
+[`pre-commit`](https://pre-commit.com/){: target="_blank", rel="noopener noreferrer" }
+framework, which can make managing pre-commit scripts much easier.
+
+## The `pre-commit` framework. `pre-commit` scripts the easy way!
+
+PRE-COMMIT LOGO
