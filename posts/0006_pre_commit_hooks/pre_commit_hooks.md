@@ -96,15 +96,50 @@ commit will abort with a message from the failed linter. Once you fix
 those errors and try to commit again, the script will succeed and exit with
 status code 0, and then your commit will succeed.
 
-As I stated earlier, `pre-commit` hooks are very flexible. The above script was
-written in `bash`, but the script could have
+The above pre-commit hook is a nice start. But note, we can also call git
+commands in a hook script. Therefore, we can see specifically which files
+are to be committed in this commit and only run our linters against those
+files. How might that looks?
+
+Modified pre-commit script that only runs against modified files:
+
+```bash
+#!/usr/bin/env bash
+
+# If any command fails, exit immediately with that command's exit status
+set -eo pipefail
+
+# Find all changed files for this commit
+# Compute the diff once just to save a small amount of time.
+CHANGED_FILES=$(git diff --name-only --cached --diff-filter=ACMR)
+# Get only changed files that match our file suffix pattern
+get_pattern_files() {
+    pattern=$(echo "$*" | sed "s/ /\$\\\|/g")
+    echo "$CHANGED_FILES" | { grep "$pattern$" || true; }
+}
+# Get all changed python files
+PY_FILES=$(get_pattern_files .py)
+
+if [[ -n "$PY_FILES" ]]
+then
+    # Run black against changed python files for this commit
+    black --check $PY_FILES
+    echo "black passes all altered python sources."
+    # Run flake8 against changed python files for this commit
+    flake8 $PY_FILES
+    echo "flake8 passed!"
+fi
+```
+
+As I stated earlier, `pre-commit` hooks are very flexible. The above scripts
+were written in `bash`, but the scripts could have
 been written in `python`, `ruby`, `node JS`, or any other scripting language.
-Furthermore, the script could call other scripts in your code. This is a great
+Furthermore, a script could call other scripts in your code. This is a great
 way to chain together lots of hooks into one file. Simply write a base
 `pre-commit` hook script, that calls all of your other `pre-commit` hook
 scripts you want to run. Those scripts could also run in any language, or
-even start docker containers that perform checks or make changes for you.
-Finally, these scripts can even modify your code for your on the spot. If you
+even start docker containers that perform checks.
+Finally, these scripts can even modify (fix) your code as they run. If you
 do modify your code in a `pre-commit` script, make sure to exit with a
 non-zero exit status. Changes made won't be staged, and thus won't be
 committed (plus you might want to view those changes before re-committing).
@@ -114,6 +149,139 @@ is an easier way! In the next section, we'll discuss the
 [`pre-commit`](https://pre-commit.com/){: target="_blank", rel="noopener noreferrer" }
 framework, which can make managing pre-commit scripts much easier.
 
-## The `pre-commit` framework. `pre-commit` scripts the easy way!
+## The `pre-commit` framework (`pre-commit` scripts the easy way)
 
 PRE-COMMIT LOGO
+
+The [`pre-commit`](https://pre-commit.com/){: target="_blank", rel="noopener noreferrer" }
+framework bills itself as "A framework for managing and maintaining
+multi-language pre-commit hooks." Under the hood, it runs on python,
+but you can use the framework on any project, regardless of language.
+Once installed, you're going to add a `pre-commit` configuration file to
+your project root named `.pre-commit-config.yaml`. In that config file,
+you will specify which scripts `pre-commit` will run when your `pre-commit`
+hook is triggered by a `git commit` command. Additionally you can run
+the `pre-commit` scripts any time outside of a `git commit` call. The
+configuration file will look something like this (example taken from
+the pre-commit documentation):
+
+Example `.pre-commit-config.yaml` file:
+
+```yaml
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 19.3b0
+    hooks:
+    -   id: black
+```
+
+The above file specifies that 4 scripts will run:
+
+- `check-yaml` (lints yaml file syntax)
+- `end-of-file-fixer` (Makes sure files end in a newline and only a newline.)
+- `trailing-whitespace` (Trims trailing whitespace.)
+- `black` (checks and fixes python code style)
+
+The first 3 scripts were pulled from the repository
+<https://github.com/pre-commit/pre-commit-hooks> and the last script was pulled
+from the repository <https://github.com/psf/black>. For each repository they
+also specify a `rev` (revision) which makes sure the script behaves according
+to that revision instead of always updating to latest. `pre-commit` scripts
+from these remote repositories can be written in any language. All of their
+requirements are specified in the repository. The `pre-commit` framework will
+read those requirements and build an appropriate environment to run that script.
+This might mean `pre-commit` will install a specific python version for an
+isolated environment to run `black`, or it might mean `pre-commit` will install
+a specific `npm` package in an isolated environment to run a `node` script.
+This is great for you, the developer, since you don't have to prepare any of
+these special environments yourself, and it means you can use any script that
+is useful to you, regardless of the language it is written in.
+
+Once you have the `pre-commit` framework installed and your
+`.pre-commit-config.yaml` is ready, run `pre-commit install` to install/set-up
+the hooks specified in your configuration file. At this point `pre-commit`
+is ready to go and will automatically run when `git commit` is called.
+For most hooks, this means running specifically against files updated
+by your git commit. You can also run
+`pre-commit run --all-files` at any time to run your `pre-commit` hooks
+against all files in your repository. I highly suggest running this command
+immediately after any `pre-commit install` in order to fix all of your
+files according to your installed hooks.
+
+## Finding supported `pre-commit` hooks and rolling your own hooks
+
+Where can you find `pre-commit` repositories/hooks to use in your
+`.pre-commit-config.yaml` file?
+[Check out this list of supported hooks maintained by pre-commit](https://pre-commit.com/hooks.html){: target="_blank", rel="noopener noreferrer" }.
+There are a *lot* of repositories with hooks compatible
+with the `pre-commit` framework. Browse the list to see if your favorite
+tool has a supported hook. When you click on the repository, read through
+its documentation on its `pre-commit` hook. It will likely tell you exactly
+how to format its section of the `.pre-commit-config.yaml` file.
+
+What if you can't find a supported `pre-commit` hook for your lint tool-of-choice
+or what if you want to run a project-specific custom script during pre-commit?
+Fear not! `pre-commit` allows for this. This use case is documented in
+[Repository local hooks](https://pre-commit.com/#repository-local-hooks){: target="_blank", rel="noopener noreferrer" }.
+To summarize, local hook must define `id`, `name`, `language`, `entry`, and `files`/`types`.
+I found that it is simplest to define `id` and `name` as the same thing.
+I also found that the easiest way to get this to work is to set the language to
+`script` with an entry pointing at a script `./your/script/location` relative
+to your project root. In this case, no special environment will be created
+by `pre-commit install`, so you will need to have your local environment already
+appropriately set-up to run the script (for instance have the correct version
+and packages of `python`, `npm` installed on your local system).
+
+Here is an example configuration with a few `local` hooks, taken directly
+from `pre-commit`'s documentation on this subject:
+
+```yaml
+-   repo: local
+    hooks:
+    -   id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+    -   id: check-x
+        name: Check X
+        entry: ./bin/check-x.sh
+        language: script
+        files: \.x$
+    -   id: scss-lint
+        name: scss-lint
+        entry: scss-lint
+        language: ruby
+        language_version: 2.1.5
+        types: [scss]
+        additional_dependencies: ['scss_lint:0.52.0']
+```
+
+## Conclusions
+
+In this post, first we talked about [What is a git pre-commit hook?](#what-is-a-git-pre-commit-hook)
+We touched on what git hooks are in general and how the `pre-commit` hook
+fits in to other hooks. We discussed how the `pre-commit` hook is triggered,
+what happens when it is triggered, and why `pre-commit` hooks are awesome
+and you should definitely try using them. Then we discussed
+[how to write your own git pre-commit hook (the hard way)](#how-to-write-your-own-git-pre-commit-hook-the-hard-way).
+We talked about where `pre-commit` hooks live, and how to write them
+with examples. Next, we talked about the [the `pre-commit` framework (`pre-commit` scripts the easy way)](#the-pre-commit-framework-pre-commit-scripts-the-easy-way). We discussed
+why the `pre-commit` framework is awesome and easy to use, and we saw an example
+of how to set up some hooks using the framework. Finally, we discussed
+[where to find supported `pre-commit` hooks and rolling your own hooks](#finding-supported-pre-commit-hooks-and-rolling-your-own-hooks).
+We discussed how to get supported `pre-commit` hooks from remote repositories,
+and in cases where that's not possible, we discussed how to add your own
+scripts and custom hooks to your `.pre-commit-config.yaml` file.
+
+I hope you enjoyed this introduction to `pre-commit` hooks, and I hope it
+helps you get started using `pre-commit` hooks in your own code. If you
+were already familiar with `pre-commit` hooks but hadn't heard about the
+`pre-commit` framework, I hope your excited to give the framework a try.
+Happy coding!
