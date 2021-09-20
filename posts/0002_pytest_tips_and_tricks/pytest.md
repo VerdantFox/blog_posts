@@ -733,7 +733,7 @@ the test continues. If a `RuntimeError` is not raised, the test will fail
 with an exception message `Failed: DID NOT RAISE <class 'RuntimeError'>`.
 In this way, you ensure an error is raised where expected. For even more
 control you can ensure that the error message matches what you expect.
-To do so use `with pytest.raises(ERROR, matches=MATCHES), where matches
+To do so use `with pytest.raises(ERROR, matches=MATCHES)`, where matches
 is a regex style string matching the expected error message.
 
 ## 7. Checking stdout and log messages
