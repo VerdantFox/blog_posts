@@ -1,0 +1,12 @@
+# This `pre-receive` hook must be implemented by a gitlab administrator
+# in the ABC project gitlab server side repository.
+# See https://docs.gitlab.com/ee/administration/server_hooks.html for details.
+#
+# To summarize, the standard gitlab path to a gitlab repository is:
+# `/var/opt/gitlab/git-data/repositories/<Gitaly relative path>`
+#
+# The <Gitaly relative path> can be found by the admin in the GitLab website at
+# `Admin area > Projects > Gitaly relative path`. While in our repository's
+# directory, the admin must create a new `custom_hooks` directory and a file
+# named `pre-receive` (with no extension) with this script as its contents.
+# The file must be executable and owned by the `git` user.^^^
