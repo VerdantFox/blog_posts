@@ -296,6 +296,23 @@ tests failing. You can run `pytest --lf`, make changes to try to fix the
 failing tests, and then repeat the command over to only run tests that
 failed on the previous run until all tests pass.
 
+### --durations=n
+
+The "durations" command line argument is super useful for timing your tests.
+After all tests have run, it reports back the `n` slowest tests, with their
+execution times. It will even distinguish between a test function's "call",
+"setup" and "teardown" so you can see if it is the test itself ("call") that
+is slow or the is it just the "setup" functions (fixtures) that are slow. If
+`--durations=0`, all test execution times will be reported back. Here is an
+example of what we see with `--durations=3` for our example test suite.
+
+```text
+================== slowest 3 durations ==================
+3.00s call     src/example_test.py::test_capsys
+3.00s call     src/example_test.py::test_caplog_debug
+3.00s call     src/example_test.py::test_caplog_standard
+```
+
 ## 2. `skip` and `xfail`
 
 Occasionally tests just don't work the way you want them to, or maybe
@@ -671,13 +688,18 @@ def test_basic():
 Here we introduce several new facts about `fixtures`. First, the
 `@pytest.fixture` decorator can take arguments. Here we pass `autouse=True`.
 This makes it so tests will automatically use the fixtures `time_test`
-and `time_all_tests` which use `autouse=True`. Next, fixtures can be scoped.
+and `time_all_tests` which use `autouse=True`. If we didn't set `autouse=True`,
+we would have to call the fixtures for every test that wanted to use them
+by providing them as function parameters (like `speedup` above).
+
+Next, fixtures can be scoped.
 By default a fixture will use `scope="function"`, and the fixture will
-run for every function. `time_test` will run for every function because
+run for every function that calls it. `time_test` will run for every function,
+even without being explicitly called because
 it is set to `autouse=True` and to the default `scope="function"`.
 `time_all_tests` will run only once because it set `scope="session"`, meaning
 once per testing session. The final new idea introduced here is using, `yield`
-in our fixtures. If `yield` is used instead of `return`, your fixture will
+in our fixtures. If `yield` is used instead of `return`, your fixture will first
 perform its setup. It will then yield some value (in our case nothing -- or
 `None` -- is yielded, but any object *can* be yielded to the test). Finally,
 after the test is run (or all the tests are finished running if the
@@ -778,31 +800,16 @@ logging output to itself (rather than a log file or wherever it was being
 written to before). To see the contents of the captured log output,
 we can use `caplog.text`. Note in the example, the log `info` message
 was not captured. This is because by default loggers capture `warning`
-level and above messages. To capture an `info` level message, we can
-temporarily alter our logger to accept `info` level messages, with
-a custom `fixture` like so:
-
-In `conftest.py`:
-
-```python
-@pytest.fixture
-def logger_to_debug():
-    """ Set the logger to debug """
-    prev_level = example.LOGGER.getEffectiveLevel()
-    example.LOGGER.setLevel(logging.DEBUG)
-    yield prev_level
-    example.LOGGER.setLevel(prev_level)
-```
+level and above messages. To capture an `info` level message, we can make the
+caplog fixture temporarily alter our logger to report `info` level messages, like so:
 
 In `example_test.py`:
 
 ```python
 @pytest.mark.output_capturing
-def test_caplog_debug(caplog, logger_to_debug):
-    """Use caplog to test logging messages (at debug level)
-
-    Note: "logger_to_debug" is custom fixture in conftest.py
-    """
+def test_caplog_debug(caplog):
+    """Use caplog to test logging messages (at debug level)"""
+    caplog.set_level(logging.DEBUG)
     answer = example.some_math_function(2, 1)
     assert answer == 6
     assert "warning message!" in caplog.text
