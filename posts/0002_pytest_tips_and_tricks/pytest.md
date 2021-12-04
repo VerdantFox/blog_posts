@@ -148,6 +148,7 @@ descriptions. I'll explain in more detail below:
 -v (verbose output -- show each test's name)
 --tb=LENGTH (adjust the length of traceback messages)
 --lf (re-run only the tests that failed)
+--durations=n (see execution times for n slowest tests)
 ```
 
 ### -s
