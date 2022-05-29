@@ -6,7 +6,7 @@ tags: Games, AI, JavaScript
 
 CONNECT_4_WITH_ROBOT_PIC
 
-I wrote the board game Connect 4 for my website! 😀 [Here's a link to it](/games/connect-4){: target="_blank", rel="noopener noreferrer" } if you want to check it out. The game can be played against another human or against an AI opponent. It can even be played AI-vs-AI, which I find kind of fun to watch -- and which made testing the AI out much easier and more scientific (more on that later). This is the story of how I wrote the AI for the game intuitively, through some trial and error.
+I wrote the board game Connect 4 for my website! 😀 [Here's a link to it](/games/connect-4){: target="_blank", rel="noopener noreferrer" } if you want to check it out. The game can be played against another human or an AI opponent. It can even be played AI-vs-AI, which I find kind of fun to watch -- and which made testing the AI out much easier and more scientific (more on that later). This is the story of how I wrote the AI for the game intuitively, through some trial and error.
 
 ## Some background
 
@@ -14,7 +14,7 @@ A few years ago, I wrote a version of Connect 4 for my old website. I wrote that
 
 GAME_PIC
 
-My most comfortable language is Python, so the JavaScript implementation was more of a challenge, but ultimately it results in a better user experience if server-side interactions are not required. If you're interested in seeing the source code for the game, I'll link to the JavaScript "[here](/static/js/games/connect_4.js){: target="_blank", rel="noopener noreferrer" }", the CSS "[here](static/css/games/connect_4.css){: target="_blank", rel="noopener noreferrer" }", and the HTML you can get (on a computer) by right-clicking anywhere on the page and selecting "inspect".
+My most comfortable language is Python, so the JavaScript implementation was more of a challenge, but ultimately it resulted in a better user experience, since server-side interactions are not required. If you're interested in seeing the source code for the game, I'll link to the JavaScript "[here](/static/js/games/connect_4.js){: target="_blank", rel="noopener noreferrer" }", the CSS "[here](static/css/games/connect_4.css){: target="_blank", rel="noopener noreferrer" }", and the HTML you can get (on a computer) by right-clicking anywhere on the page and selecting "inspect".
 
 If you're not familiar with the classic board game Connect 4, the game is pretty simple. The game is played on a 7-column-wide by 6-row-tall vertical board. One player is 🔴 red and the other is 🔵 blue (or yellow in some versions). The 🔴 red player plays first. Players take turns placing chips into columns on the board. When a colored chip is placed into a column, it falls to the bottom available space in that column. The first player to "connect 4" chips in a row (horizontally, vertically, or diagonally) is the winner. The strategy involves playing your and your opponent's potential moves in your head to try to find scenarios in the future where you or your opponent might win. Block your opponent's potential future wins while lining up your own.
 
@@ -24,7 +24,7 @@ The basic implementation was fairly simple. First, we need to keep track of 4 ba
 
 1. `game_grid`: a representation of the game board grid in the form of a 2-dimensional array (7 columns, each holding 6 rows)
 2. `player1`: an object representing player 1, tracking at least the player's color
-3. `player2`: an object representing player 1, tracking at least the player's color
+3. `player2`: an object representing player 2, tracking at least the player's color
 4. `game`: a coordinating object that keeps track of the above 3 objects, whose turn it is, the connections between the JavaScript objects and the HTML/CSS visuals, etc.
 
 Next, we needed a handful of basic functions.
@@ -37,49 +37,50 @@ Next, we needed a handful of basic functions.
 
 Then we tie certain events (mouse clicks) to those functions and tie those functions to each other. Thus we make an event where a mouse click in a column of the game board will call the `place_chip` function. The `place_chip` function calls the `check_for_win`, `change_player`, and `paint_board` functions. A separate button click will call the `reset_game` function.
 
-That rounds out the basic game. To further expand things we can add in an AI. Now we'll keep track of which player is an AI. We'll update the `place_chip` function to check if the new player at turn end (after switching who's turn it is) is an AI. If they are an AI, it will call the new `select_best_move` function for that AI player. Through some AI magic, we'll get back a column to play for the AI player. Then we can directly call the `place_chip` function again using the returned AI-move-column, by-passing the "click" event in a column that a human would normally make. And then we call `change_player` to change the current player's turn back to the human player.
+That rounds out the basic game. To further expand things we can add in an AI. Now we'll keep track of which player is an AI. We'll update the `place_chip` function to check if the new player at the turn end (after switching who's turn it is) is an AI. If they are an AI, it will call the new `select_best_move` function for that AI player. Through some AI magic, we'll get back a column to play for the AI player. Then we can directly call the `place_chip` function again using the returned AI-move-column, by-passing the "click" event in a column that a human would normally make. And then we call `change_player` to change the current player's turn back to the human player.
 
 From this point, we could add more bells and whistles. We could allow switching AIs on and off, we could track wins, losses, and ties from previous games, we could add animations, and much more. I like a polished game, so I went that route and added such features to make the game a nicer user experience. But the meat of this blog article isn't about how I made a Connect 4 game itself. It's about the AI. So let's dive into that!
 
 ## First attempt at an AI: AI Version 1 (AI_V1)
 
 My idea for building an AI was vague. Have the AI predict future positions that were "good" and "bad". Play moves that result in "good" future positions and avoid "bad" future positions. Let's say the AI in the scenario is 🔴 red. Given a board state, I had the AI place a chip in every column for 🔴 red. After placing each chip, I checked if the AI (🔴 red) won for that board. If they won, select that column. Shown below is an example where the top-left is the starting board state. The AI places a chip into each column from there and finds that the 3rd column from the left results in a win, so the AI plays that column.
+
 AI1R_FINAL_PIC
 
-Then, given the same initial board state, I had the AI place a chip in every column for its opponent, 🔵 blue. After each chip placement, I checked if its opponent (🔵 blue) won. If so, select that column because it'll block 🔵 blue's win. Show below is an example of a different starting board state. The AI is is still the 🔴 red player for this scenario. Here, after placing all 🔴 red chips, no win was found for 🔴 red so we reset to the starting board state and placed a 🔵 blue chip in each column. We see that the 5th column from the left results in a 🔵 blue win. So our 🔴 red AI picks this column, as it will block a win from the 🔵 blue opponent.
+Then, if the AI didn't win by placing 🔴 red chips for itself, it resets the board state to the same initial board state. Now the AI places a chip in every column for its opponent, 🔵 blue. After each chip placement, it checks if its opponent (🔵 blue) won. If so, it selects that column because it'll block 🔵 blue's win. Shown below is an example of a different starting board state. The AI is still the 🔴 red player for this scenario. Here, after placing all the 🔴 red chips for itself, no win was found for 🔴 red so it reset to the starting board state and placed a 🔵 blue chip in each column. It sees that the 5th column from the left results in a 🔵 blue win. So our 🔴 red AI picks this column, as it will block a win from the 🔵 blue opponent.
 
 AI1B_FINAL_PIC
 
-If we had no winners after trying all 🔴 red chips and all 🔵 blue from the initial board state, select a column at random.
+If there were no winners after trying all 🔴 red chips and all 🔵 blue chips from the initial board state, the AI selects a column at random.
 
 That was the basic AI. Take any immediate wins, block any immediate losses, or otherwise, play randomly. It worked alright. It'd beat me every once in a while if I wasn't paying attention. But it didn't seem very smart. I needed the AI to look more than 1 move into the future.
 
 ## AI Version 2 (AI_V2)
 
-This AI began just like our first AI. We pass a board state to the AI and tell it "You're 🔴 red and it's your turn. Pick a good column for yourself". In preparation for multiple rounds, we create a dictionary (JavaScript Object) called `weights` where the keys are columns and the values are integer numbers. The higher that number the better the move is. It looks like this:
+This AI began just like our first AI. We pass a board state to the AI and tell it "You're 🔴 red and it's your turn. Pick a good column for yourself". In preparation for multiple rounds, we create a dictionary (JavaScript Object) called `weights` where the keys are columns and the values are integer numbers representing column weights. The higher a column's weight, the better the move is. It looks like this:
 
 ```javascript
 // column: weight
 weights = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 ```
 
-Note that the columns start with `0` instead of `1` since `0` is the first index of an array, and it counts up to 6 (7 total columns - 1 since we start at 0). So the AI play's all possible 🔴 red chips, giving us 7 new boards, one move into the future. Again, as we play the moves, we check if 🔴 red wins. Now, if 🔴 red wins, instead of immediately returning the winning column, we add `+1` to the column that won in our `weights` object described above. And this time we store those 1-move-in-the-future board states in an array (a list) called `boards`. But we only store the board states that didn't win (because if someone wins, the game ends and play stops). Also, we need to remember which column that first 🔴 red chip was put into, so we store that info next to the board in our array.
+Note that the columns start with `0` instead of `1` since `0` is the first index of an array, and it counts up to 6 (7 total columns - 1 since we start at 0). The AI for this explanation is the 🔴 red player. So the AI play's all possible 🔴 red chips, giving us 7 new boards, one move into the future. As it places each 🔴 red chip, it checks if 🔴 red wins. If 🔴 red wins, instead of immediately returning the winning column, it adds `+1` to the column that won in its `weights` object described above. And this time it stores those 1-move-in-the-future board states in an array (a list) called `boards`. But it only stores the board states that didn't win (because if someone wins, the game ends and play stops). Also, it needs to remember which column that first 🔴 red chip was put into, so it stores that info alongside each board in the `boards` array.
 
 Let's consider this example starting board state (repeated from our AI_V1 example).
 
 AI1R_BASE_PIC
 
-The `boards` array and `weights` object after finding a winning board 2 (3rd column 🔴 red chip placement), would look like this.
+The `boards` array and `weights` object, after finding a winning board 2 (3rd column 🔴 red chip placement), would look like this.
 
 ```javascript
 // Example where board 2 had a win
-// Skipped board 2 in `boards` array because that resulted in a win
+// Skipped board 2 in the `boards` array because that resulted in a win
 boards = [[0, board0], [1, board1], [3, board2], [4, board4], [5, board5], [6, board6]]
-// Added +1 to column 2, the column where a win was found
+// Added +1 to column 2 (the 3rd column from the left), the column where a win was found
 weights = {0: 0, 1: 0, 2: 1, 3: 0, 4: 0, 5: 0, 6: 0}
 ```
 
-Once round 1 (🔴 red's turn) is over, we begin round 2 with 🔵 blue's turn. Each of these boards in our `boards` array are starting board states for 🔵 blue's turn in round 2. So from **each** of these round 1 board states, 🔵 blue places a chip in **each** column. This might result in 7 x 7 = 49 total boards to check (if no winning boards were eliminated in round 1). Again we check for winners as we place the chips. If 🔵 blue wins after placing a chip we `-1` to the column chosen in round 1 in our `weights` object and we again ignore that board for future rounds. If no win occurs from placing a 🔵 blue-chip, we add the board to a new array `boards2`, which we carry into round 3.
+Once round 1 (🔴 red's turn) is over, we begin round 2 with 🔵 blue's turn. Each of the game boards in our `boards` array (filled with round 1 🔴 red chip placements) is a starting board state for 🔵 blue's turn in round 2. So from **each** of these round 1 board states, 🔵 blue places a chip in **each** column. This might result in 7 x 7 = 49 total boards to check (if no winning boards were eliminated in round 1). Again our AI checks for winners as it places the chips. If 🔵 blue wins after placing a chip the AI adds `-1` to the column chosen in round 1 in our `weights` object and it ignores that board for future rounds. If no win occurs from placing a 🔵 blue-chip, we add the board to a new array `boards2`, which we carry into round 3.
 
 Let's consider this example starting board state (also repeated from our AI_V1 example). Remember, our AI is the 🔴 red player.
 
@@ -89,19 +90,19 @@ After round 1 finishes, all the column `weights` would still be `0`, because no 
 
 ```javascript
 // Example where column 4 (the 5th column) had a win in round 2
-// Skipped boards 4, 11, 18, 25, 39, 46 because those boards resulted in a round 2 win for blue
+// Skipped boards 4, 11, 18, 25, 39, and 46 because those boards resulted in a round 2 win for blue
 boards2 = [[0, board0], [1, board1], [2, board1], [3, board2], [5, board5], ...]
 // Added -1 to all columns except column 4
 weights = {0: -1, 1: -1, 2: -1, 3: -1, 4: 0, 5: -1, 6: -1}
 ```
 
-This continues every round, switching back and forth between 🔴 red and 🔵 blue chips every other round. Rounds where 🔴 red chips are placed will result in `+1` in columns of the `weights` object every time 🔴 red gets a win (so potentially many `+1`s), and rounds where 🔵 blue chips are placed will result in `-1` in columns of the `weights` object every time 🔵 blue gets a win (so potentially many `-1`s). When the AI has reaches the desired number of rounds (defined by a "depth" setting), it'll calculate which column has the highest (most positive) weight, and it'll pick that column to play. If multiple columns are equally best, it will randomly select from those highest-weighted columns.
+This continues every round, switching back and forth between 🔴 red and 🔵 blue chips every other round. Rounds, where 🔴 red chips are placed, will result in `+1` in columns of the `weights` object every time 🔴 red gets a win (so potentially many `+1`s), and rounds, where 🔵 blue chips are placed will result in `-1` in columns of the `weights` object every time 🔵 blue gets a win (so potentially many `-1`s). When the AI has reached the desired number of rounds (defined by a "depth" setting), it'll calculate which column has the highest (most positive) weight, and it'll pick that column to play. If multiple columns are equally best, it will randomly select from those highest-weighted columns.
 
 This method of column weighting by round has advantages over the method from AI_V1. Now the AI looks for wins and losses farther into the future. Even after only 2 rounds into the future, AI_V2 will avoid losses better than AI_V1. Check out this example board state:
 
 AI_V2_PREVENT_LOSS_PIC
 
-AI_V1 would find no wins for 🔴 red after placing all 🔴 red chips and no wins for 🔵 blue after placing all 🔵 blue chips. So it would pick a random column to play. AI_V2 would also find no 🔴 red wins after placing all 🔴 red chips in round 1. But in round 2, AI_V2 would find a 🔵 blue win if there was a 🔴 red chip in column 3 (the 4th column) after 🔵 blue also played in column 3. Thus its `weights` would look like so:
+AI_V1 would find no wins for 🔴 red after placing all 🔴 red chips and no wins for 🔵 blue after placing all 🔵 blue chips. So it would pick a random column to play. AI_V2 would also find no 🔴 red wins after placing all 🔴 red chips in round 1. But in round 2, one board state would start with 🔴 red having placed a chip in column 3 (the 4th column). From this board state, 🔵 blue would find a round 2 win when it also placed a chip into column 3. When it found this round 2 win, it would add `-1` to column 3 of the `weights` table. Thus its `weights` would look like so:
 
 ```javascript
 // column: weight
@@ -143,9 +144,9 @@ The AI is the 🔴 red player and it's its turn. Here (at depth 3+) the AI would
 
 AI3_BAD2 PIC
 
-The AI is the 🔴 red player and it's its turn. Again the AI would prioritize placing a chip in column 1 (the 2nd column) in an attempt to get the diagonal win. However, this is arguable the **worst** column for the AI to play since the opponent will block the win on the following turn. This is doubly bad since if the opponent ever played in column 1 (the 2nd column) the **AI** would win on the subsequent round.
+The AI is the 🔴 red player and it's its turn. Again the AI would prioritize placing a chip in column 1 (the 2nd column) in an attempt to get the diagonal win. However, this is arguable the **worst** column for the AI to play since the opponent will block the win on the following turn. This is doubly bad since if the opponent ever played in column 1 (the 2nd column) the **AI** would win in the subsequent round.
 
-Because of this observation, I wrote in new logic specifically for round 3. AI_V4 was the same as AI_V3, except any time round 3 resulted in a win for the AI, we look back through the move history. If that win was gained by stacking 2 chips of the same color in the same column in rounds 1 and 3 (where the opponent played some *other* column in round 2), we consider that win a "missed win" because the win **will** be blocked by a competent opponent. Missed wins get treated exactly like losses. We subtract the round-weighted value from that column in our `weights` object and we discard that board-state from future round calculations. Of course, that means that we now need to keep track of the move history instead of just the first move the AI played. Thus the new `boards` array has sub-arrays of `[move history, board-state]`. The result looks like this:
+Because of this observation, I wrote in new logic specifically for round 3. AI_V4 was the same as AI_V3, except any time round 3 resulted in a win for the AI, we look back through the move history. If that win was gained by stacking 2 chips of the same color in the same column in rounds 1 and 3 (where the opponent played some *other* column in round 2), we consider that win a "missed win" because the "win" **will** be blocked by a competent opponent. Missed wins get treated exactly like losses. We subtract the round-weighted value from that column in our `weights` object and we discard that board-state from future round calculations. Of course, that means that we now need to keep track of the move history instead of just the first move the AI played. Thus the new `boards` array has sub-arrays of `[move history, board-state]`. The result looks like this:
 
 ```javascript
 // example `boards` array from round 3
@@ -183,7 +184,7 @@ Again our newest AI version *seemed* to behave smarter. But again we ran some AI
 
 ## Final testing
 
-Now I had a final AI version, AI_V5. This is the AI on my website that you can actually play against. I played against this AI *a lot* and observed how it seemed stronger the higher its depth setting was set. I could quite consistently beat the AI at depths 0-2. And I could still occasionally beat the AI even at depth 6. But at the higher depth settings, I had to think very hard about my best move, and the AI *still* beat me far more than I beat it. And now with this final AI version, I wanted to test out scientifically how that AI fares against itself at different depths to see if deeper depth evaluations *actually* result in a stronger AI. I played AI-vs-AI 1000-game matches. I also decided to throw depth-6 AI's into the mix for these calculations (which I had left out for previous calculations), even though moves at that depth take a few seconds each so the calculations took hours. Here's an image of what that looks like, with side-by-side browser windows running for hours. 
+Now I had a final AI version, AI_V5. This is the AI on my website that you can actually play against. I played against this AI *a lot* and observed how it seemed stronger the higher its depth setting was set. I could quite consistently beat the AI at depths 0-2. And I could still occasionally beat the AI even at depth 6. But at the higher depth settings, I had to think very hard about my best move, and the AI *still* beat me far more than I beat it. And now with this final AI version, I wanted to test out scientifically how that AI fares against itself at different depths to see if deeper depth evaluations *actually* result in a stronger AI. I played AI-vs-AI 1000-game matches. I also decided to throw depth-6 AI's into the mix for these calculations (which I had left out for previous calculations), even though moves at that depth take a few seconds each so the calculations took hours. Here's an image of what that looks like, with side-by-side browser windows running for hours.
 
 AI_GRID_PIC
 
@@ -236,7 +237,7 @@ Again we can see that at all depth settings, 🔵 blue performed significantly b
 
 ### At three depth level difference
 
-Here are the statistics for matchups where 🔵 blue had an AI 3 depth-settings higher than 🔴 red.
+Here are the statistics for matchups where 🔵 blue had an AI set 3 depth settings higher than 🔴 red.
 
 | Depth Settings | Red W-L-D  | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
 |----------------|------------|------------|------------------------|------------|----------------|
