@@ -10,7 +10,7 @@ I wrote the board game Connect 4 for my website! 😀 [Here's a link to it](/gam
 
 ## Some background
 
-A few years ago, I wrote a version of Connect 4 for my old website. I wrote that version in Python (a back-end language), and then connected it to the front end through [AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)){: target="_blank", rel="noopener noreferrer" } calls (asynchronous calls between the front-end and back-end). I wanted to put the new game on my new website, but running the game on my website's server and requiring calls back and forth between the server and the player's web browser for every move was... wonky. So this time around, I re-wrote the game from scratch in JavaScript (a front-end language) so that it could run entirely in the player's web browser, playable even while offline. For the most part, I ignored what I had done the first time, though I remembered the basic concepts. It took a few days of free time coding, but I finished it. Here's a pic of the new game board (after the re-write) on a PC (on a phone some things change places for easier viewing).
+A few years ago, I wrote a version of Connect 4 for my old website. I wrote that version in Python (a back-end language), and then connected it to the front end through [AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)){: target="_blank", rel="noopener noreferrer" } calls (asynchronous calls between the front-end and back-end). I wanted to put the new game on my new website, but running the game on my website's server and requiring calls back and forth between the server and the player's web browser for every move was... wonky. So this time around, I re-wrote the game from scratch in JavaScript (a front-end language) so that it could run entirely in the player's web browser, playable even while offline. For the most part, I ignored what I had done the first time, though I remembered the basic concepts. It took a few days of free time coding, but I finished it. Here's a pic of the new game board, after the re-write, on a PC. On a phone, some things change places for easier viewing.
 
 GAME_PIC
 
@@ -57,7 +57,7 @@ That was the basic AI. Take any immediate wins, block any immediate losses, or o
 
 ## AI Version 2 (AI_V2)
 
-This AI began just like our first AI. We pass a board state to the AI and tell it "You're 🔴 red and it's your turn. Pick a good column for yourself". In preparation for multiple rounds, we create a dictionary (JavaScript Object) called `weights` where the keys are columns and the values are integer numbers representing column weights. The higher a column's weight, the better the move is. It looks like this:
+This AI began just like our first AI. We pass a board state to the AI and tell it "You're 🔴 red and it's your turn. Pick a good column for yourself." In preparation for multiple rounds, we create a dictionary (JavaScript Object) called `weights` where the keys are columns and the values are integer numbers representing column weights. The higher a column's weight, the better the move is. It looks like this:
 
 ```javascript
 // column: weight
@@ -80,7 +80,7 @@ boards = [[0, board0], [1, board1], [3, board2], [4, board4], [5, board5], [6, b
 weights = {0: 0, 1: 0, 2: 1, 3: 0, 4: 0, 5: 0, 6: 0}
 ```
 
-Once round 1 (🔴 red's turn) is over, we begin round 2 with 🔵 blue's turn. Each of the game boards in our `boards` array (filled with round 1 🔴 red chip placements) is a starting board state for 🔵 blue's turn in round 2. So from **each** of these round 1 board states, 🔵 blue places a chip in **each** column. This might result in 7 x 7 = 49 total boards to check (if no winning boards were eliminated in round 1). Again our AI checks for winners as it places the chips. If 🔵 blue wins after placing a chip the AI adds `-1` to the column chosen in round 1 in our `weights` object and it ignores that board for future rounds. If no win occurs from placing a 🔵 blue-chip, we add the board to a new array `boards2`, which we carry into round 3.
+Once round 1 (🔴 red's turn) is over, we begin round 2 with 🔵 blue's turn. Each of the game boards in our `boards` array (filled with round 1 🔴 red chip placements) is a starting board state for 🔵 blue's turn in round 2. So from **each** of these round 1 board states, 🔵 blue places a chip in **each** column. This might result in 7 x 7 = 49 total boards to check (if no winning boards were eliminated in round 1). Again our AI checks for winners as it places the chips. If 🔵 blue wins after placing a chip, the AI adds `-1` to the column chosen in round 1 in our `weights` object, and it ignores that board for future rounds. If no win occurs from placing a 🔵 blue-chip, we add the board to a new array `boards2`, which we carry into round 3.
 
 Let's consider this example starting board state (also repeated from our AI_V1 example). Remember, our AI is the 🔴 red player.
 
