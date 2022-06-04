@@ -6,7 +6,7 @@ tags: Games, AI, JavaScript
 
 CONNECT_4_WITH_ROBOT_PIC
 
-I wrote the board game Connect 4 for my website! 😀 [Here's a link to it](/games/connect-4){: target="_blank", rel="noopener noreferrer" } if you want to check it out. The game can be played against another human or an AI opponent. It can even be played AI-vs-AI, which I find kind of fun to watch -- and which made testing the AI out much easier and more scientific (more on that later). This is the story of how I wrote the AI for the game intuitively, through some trial and error.
+I wrote the board game Connect 4 for my website! 😀 [Here's a link to it](/games/connect-4){: target="_blank", rel="noopener noreferrer" } if you want to check it out. The game can be played against another human or an AI opponent. It can even be played AI-vs-AI, which I find kind of fun to watch -- and which made testing the AI out much easier and more scientific (more on that later). This is the story of how I wrote the AI for the game intuitively, through some trial and error. This post was updated with a significantly enhanced AI version 6 a couple weeks after the initial release.
 
 ## Some background
 
@@ -182,9 +182,37 @@ Again our newest AI version *seemed* to behave smarter. But again we ran some AI
 | Red 4 - Blue 4 | 52-46-2   | 46-52-2    | 53.1% Red              | 0.307   | No             |
 | Red 5 - Blue 5 | 44-55-1   | 55-44-1    | 55.6% Blue             | 0.157   | No             |
 
+## AI VERSION 6 (AI_V6)
+
+AI_V5 was where the story ended in a previous version of this blog post. I tested it out, it seemed to beat me a lot. I ran AI_V5 vs AI_V5 matches and found that higher depth settings won significantly more than lower depth settings. The more I tested it out, though, I found another glaring flaw. If I played most of my moves in the center column, I usually won, even versus the highest depth AI setting. This led me to a fundamental realization about the game Connect 4 that I didn't understand before this point. The center column is  **critical** to *all non-vertical* wins. This example perfectly illustrates what I mean.
+
+CENTER_COLUMN_PIC
+
+Notice how **every single** non-vertical win (horizontal, and diagonals in both directions) **must** include the center column. This ultimately means that the more chips you have in the center column, the more chances you have to win. And to a lesser extent, the closer a column is to the center, the more important it is for *non-vertical* wins.
+
+NEAR_CENTER_COLUMN_PIC
+
+See how when just considering horizontal wins, only 1/4 wins touches the edge column (red), 2/4 wins touch the next column inward (yellow), 3/4 wins touch the next column inward -- one column from the center (green), and 4/4 wins touch the center column (blue). Thus, more chips nearer the center give greater chances for wins.
+
+What does this mean for my Connect 4 AI? AI_V5 was good at finding quick, tactical wins for itself and its opponent in near-future board states. If the AI's depth setting was 6 (the maximum), it could find wins up to 6 moves out (3 moves worth of wins for itself and 3 moves worth of wins for its opponent). The game of Connect 4 can last up to 7 X 6 = 42 moves. So looking for wins and losses 6 moves into the future at the expense of wins/losses later in the game could be problematic. Since the AI didn't prioritize the center in the early game, it had less chances for wins later on.
+
+I aimed to fix this short-sighted strategy with AI_V6. However, I had a lot of trouble figuring out *how* to prioritize middle columns. Treating columns closer to the middle like wins by positively weighting those columns produced some adverse affects. The AI would sometimes ignore the short term tactical wins/losses *too much* to get chips in the center and lose the game as a result. The system I finally came up with that worked out well was a fairly simple change from AI_V5. When AI_V5 determined multiple columns in the `weights` object were equally best, it chose one completely at random. When AI_V6 determines multiple columns in the `weights` object are equally best, it chooses the "equally best" column that is closest to the center column. If 2 "equally best" columns are equally distant from the center column, it chooses one of those 2 at random. The end result is that the AI heavily prefers the middle columns, while not sacrificing tactical wins/losses in near-future board states.
+
+Note that the AI prefers middle columns only if it *doesn't* find wins/losses that weight outside columns more highly. At low depth settings, all columns tend to be equally weighted until a ways into the game because the AI doesn't search far enough into the future to find wins/losses early. But the higher the depth setting, the earlier the AI finds wins/losses, and thus the earlier the AI tends to give up the center in favor of the short-term tactical plays. This conflict between finding quick, tactical wins and prioritizing the center for long term win chances seems to become problematic at about depth setting 5. At this depth-setting and greater, the AI starts playing outside columns before even the **critical** center column is filled. Thus I was seeing lower depth AIs beat AIs at depth 5 and 6 pretty frequently. To counteract this problem, I added logic that tells the AI, "If your depth setting is 5 or greater, play at depth setting 4 until the middle column is completely filled. Then revert to your actual depth setting." With testing, this change seemed to do a good job of setting the AI up for success in the late game due to stronger center control, while still keeping the short-term tactical win possibilities alive for most of the game. Thus after the change, AIs at depth 5/6 still tended to play stronger than lower depth-setting AIs.
+
+In addition to the large changes mentioned above, I made 2 smaller tweaks to AI_V6. First, I realized that my AI_V5 early-game strategy of spreading out the AI's first couple moves across the bottom row was straight-up bad since it gives up the critical center control. This is likely why AI_V5 was *not* significantly better than AI_V4. So I dropped the rule. But to avoid the quick loss scenario I mentioned when creating that rule in the first place, I made the "blue" AI (2nd player) with depth-setting below 4 (ie one that wouldn't see the loss coming) drop an early chip in the bottom row of an empty column as close to the center as possible.
+
+Finally, another small-but-significant change is that AI_V6 doesn't even check for vertical wins after round 2. These scenarios will *almost never* lead to a win (or loss) since a smart AI (or human) will always block the vertical win once the opponent has placed its 3rd vertically-aligned chip. Neither side is likely to be able to place back-to-back chips in the same column to achieve a vertical win. AI_V5 treated such a scenario as a "missed win" for itself or a "win" for its opponent. AI_V6 avoids even considering such possibilities.
+
+Once more, our newest AI version *seemed* to behave smarter. But again I ran some AI-vs-AI matches to test out those changes scientifically. I played 100-game matches with AI_V5 as 🔴 red and AI_V6 as 🔵 blue. The results were decisive. At all depths where AI_V5 and AI_V6 had the same depth setting, AI_V6 beat AI_V5 more than 3/4 of the games. Even in matchups where AI_V6 had a depth setting one lower than AI_V5, AI_V6 still won more than 65% of the time at all depth levels, statistically significant. I concluded that AI_V6 was a significant improvement over AI_V5. Here's the data from those matches.
+
+AI_V5 VS AI_V6 TABLES
+
 ## Final testing
 
-Now I had a final AI version, AI_V5. This is the AI on my website that you can actually play against. I played against this AI *a lot* and observed how it seemed stronger the higher its depth setting was set. I could quite consistently beat the AI at depths 0-2. And I could still occasionally beat the AI even at depth 6. But at the higher depth settings, I had to think very hard about my best move, and the AI *still* beat me far more than I beat it. And now with this final AI version, I wanted to test out scientifically how that AI fares against itself at different depths to see if deeper depth evaluations *actually* result in a stronger AI. I played AI-vs-AI 1000-game matches. I also decided to throw depth-6 AI's into the mix for these calculations (which I had left out for previous calculations), even though moves at that depth take a few seconds each so the calculations took hours. Here's an image of what that looks like, with side-by-side browser windows running for hours.
+Now I had a final AI version, AI_V6. This is the AI on my website that you can actually play against. I played against this AI a lot and observed how it seemed stronger the higher its depth setting was set. I could quite consistently beat the AI at depths 0-2. And honestly, with my new understanding of the importance of center-control, I won most games against AIs up to depth 6 (with red), and even many at depth 6. When I played as blue, I lost more, but could still beat the AI often at depth 6.
+
+But at the higher depth settings, I had to think very hard about my best move, and the AI did beat me pretty often. So I concluded the AI is nowhere near perfect, but it was pretty good at the game of Connect 4. And now with this final AI version, I wanted to test out scientifically how that AI fares against itself at different depths to see if deeper depth evaluations actually result in a stronger AI. I played AI-vs-AI 100-game matches. Here's an image of what those matches looks like, with side-by-side browser windows running for long periods of time.
 
 AI_GRID_PIC
 
@@ -194,60 +222,51 @@ Here is the data from all of those matches.
 
 I wanted to evaluate the AI against itself at even depth levels to see if 🔴 red or 🔵 blue had an advantage, all else being equal.
 
-| Depth Settings | Red W-L-D   | Blue W-L-D  | Win rate (of decisive) | P-score | >50% at P=0.05 |
-|----------------|-------------|-------------|------------------------|---------|----------------|
-| Red 0 - Blue 0 | 544-451-5   | 451-544-5   | 54.7% Red              | 0.002   | Yes            |
-| Red 1 - Blue 1 | 554-446-0   | 446-554-0   | 55.4% Red              | 0.0004  | Yes            |
-| Red 2 - Blue 2 | 471-416-113 | 416-471-113 | 53.1% Red              | 0.035   | Yes            |
-| Red 3 - Blue 3 | 488-494-18  | 494-488-18  | 50.3% Blue             | 0.437   | No             |
-| Red 4 - Blue 4 | 495-475-30  | 475-495-30  | 51.0% Red              | 0.271   | No             |
-| Red 5 - Blue 5 | 507-483-10  | 483-507-10  | 51.2% Red              | 0.232   | No             |
-| Red 6 - Blue 6 | 490-402-108 | 402-490-108 | 54.9% Red              | 0.002   | Yes            |
+| Depth Settings | Red W-L-D | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
+|----------------|-----------|------------|------------------------|------------|----------------|
+| Red 0 - Blue 0 | 42-56-2   | 56-42-2    | 57.1% Blue             | 0.094      | No             |
+| Red 1 - Blue 1 | 49-51-0   | 51-49-0    | 51.0% Blue             | 0.46       | No             |
+| Red 2 - Blue 2 | 67-29-4   | 29-67-4    | 69.8% Red              | 0.000066   | Yes            |
+| Red 3 - Blue 3 | 16-84-0   | 84-16-0    | 84.0% Red              | < 0.000001 | Yes            |
+| Red 4 - Blue 4 | 74-26-0   | 26-74-0    | 74.0% Red              | < 0.000001 | Yes            |
+| Red 5 - Blue 5 | 100-0-0   | 0-100-0    | 100% Red               | < 0.000001 | Yes            |
+| Red 6 - Blue 6 | 100-0-0   | 0-100-0    | 100% Red               | < 0.000001 | Yes            |
 
-At lower depths, 0-2 where 0 is completely random and 2 is evaluating 2 moves into the future, 🔴 red seemed to win slightly more often at statistically significant rates. At the middle depths, 🔴 red and 🔵 blue won roughly equally -- higher win percentages were not statistically significant. And interestingly at depth 6, 🔴 red again won at a statistically significantly higher rate. I'm not sure why. My conclusion was that at most depths 🔴 red and 🔵 blue are roughly equal, maybe 🔴 red has a slight advantage. So, for all future calculations I gave 🔵 blue the higher depth AI so that if it had better win percentages, those couldn't be chalked up to 🔴 red's slight advantage.
+At equal depths of 0 and 1, 🔴 red and 🔵 blue won roughly equally. At all higher, equal depths, 🔴 red won significantly more than blue. It seems that 🔴 red has a significant advantage over 🔵 blue. Since 🔴 red goes first, 🔴 red gets more win opportunities. So, for all future calculations I gave 🔵 blue the higher depth AI so that if it had better win percentages, those couldn't be chalked up to 🔴 red's clear advantage from going first. Notice the 100-0-0 win-loss-draw ratios at higher depths. AI_V6 plays far less randomly than previous AI versions. It only plays randomly when 2 columns are equally highly weighted *and* equally distant from the center column. At higher depths, this scenario might not happen *at all*, meaning the games play out the same every time, leading to the 100% win ratio for one side. At lower depths settings there are more random moves, which sometimes leads to lower depth-setting AIs having better win-loss-draw ratios against higher depth-setting AIs than higher depth-setting AIs do against each other.
 
 ### At one depth level difference
 
 Here are the statistics for matchups where 🔵 blue had an AI at 1 depth higher than 🔴 red.
 
-| Depth Settings | Red W-L-D  | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
-|----------------|------------|------------|------------------------|------------|----------------|
-| Red 0 - Blue 1 | 290-710-0  | 710-290-0  | 71.0% Blue             | < 0.000001 | Yes            |
-| Red 1 - Blue 2 | 122-876-2  | 876-122-2  | 87.8% Blue             | < 0.000001 | Yes            |
-| Red 2 - Blue 3 | 382-584-34 | 584-382-34 | 60.5% Blue             | < 0.000001 | Yes            |
-| Red 3 - Blue 4 | 310-681-9  | 681-310-9  | 68.7% Blue             | < 0.000001 | Yes            |
-| Red 4 - Blue 5 | 362-607-31 | 607-362-31 | 62.6% Blue             | < 0.000001 | Yes            |
-| Red 5 - Blue 6 | 398-587-15 | 587-398-15 | 59.6% Blue             | < 0.000001 | Yes            |
+| Depth Settings | Red W-L-D | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
+|----------------|-----------|------------|------------------------|------------|----------------|
+| Red 0 - Blue 1 | 36-64-0   | 64-36-0    | 64.0% Blue             | 0.0033     | Yes            |
+| Red 1 - Blue 2 | 28-71-1   | 71-28-1    | 71.7% Blue             | 0.000009   | Yes            |
+| Red 2 - Blue 3 | 48-52-0   | 52-48-0    | 52.0% Blue             | 0.38       | No             |
+| Red 3 - Blue 4 | 0-100-0   | 100-0-0    | 100% Blue              | < 0.000001 | Yes            |
+| Red 4 - Blue 5 | 0-100-0   | 100-0-0    | 100% Blue              | < 0.000001 | Yes            |
+| Red 5 - Blue 6 | 0-100-0   | 100-0-0    | 100% Blue              | < 0.000001 | Yes            |
 
-We can see that at all depth settings, 🔵 blue performed significantly better when looking one move farther into the future than 🔴 red, with all matchups statistically significantly better than 50%.
+At all depth levels except 🔴 red depth 2, 🔵 blue performed significantly better with a +1 depth-setting advantage. The depth-setting 2 is an interesting case that comes up even at higher depth-setting differences. I attribute its high win percentage to just playing more chips in the center early on than the higher depth settings.
 
-### At two depth level difference
+### At two plus depth level difference
 
-Here are the statistics for matchups where 🔵 blue had an AI 2 depth settings higher than 🔴 red.
+Here are the statistics for matchups where 🔵 blue had an AI 2+ depth settings higher than 🔴 red.
 
-| Depth Settings | Red W-L-D  | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
-|----------------|------------|------------|------------------------|------------|----------------|
-| Red 0 - Blue 2 | 47-947-6   | 947-47-6   | 95.3% Blue             | < 0.000001 | Yes            |
-| Red 1 - Blue 3 | 121-878-1  | 878-121-1  | 87.9% Blue             | < 0.000001 | Yes            |
-| Red 2 - Blue 4 | 199-765-36 | 765-199-36 | 79.4% Blue             | < 0.000001 | Yes            |
-| Red 3 - Blue 5 | 176-815-9  | 815-176-9  | 82.2% Blue             | < 0.000001 | Yes            |
-| Red 4 - Blue 6 | 262-692-46 | 692-262-46 | 72.5% Blue             | < 0.000001 | Yes            |
+| Depth Settings | Red W-L-D | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
+|----------------|-----------|------------|------------------------|------------|----------------|
+| Red 0 - Blue 2 | 10-89-1   | 89-10-1    | 89.9% B                | < 0.000001 | Yes            |
+| Red 1 - Blue 3 | 9-91-0    | 91-9-0     | 91.0% B                | < 0.000001 | Yes            |
+| Red 2 - Blue 4 | 42-30-28  | 30-42-28   | 58.3% R                | 0.097      | No             |
+| Red 3 - Blue 5 | 0-53-47   | 53-0-47    | 100% B                 | < 0.000001 | Yes            |
+| Red 4 - Blue 6 | 53-47-0   | 47-53-0    | 53.0% R                | 0.30       | No             |
+| Red 0 - Blue 3 | 7-93-0    | 93-7-0     | 97.0% B                | < 0.000001 | Yes            |
+| Red 1 - Blue 4 | 0-89-11   | 89-0-11    | 100% B                 | < 0.000001 | Yes            |
+| Red 2 - Blue 5 | 26-74-0   | 74-26-0    | 74.0% B                | < 0.000001 | Yes            |
+| Red 3 - Blue 6 | 44-49-7   | 49-44-7    | 52.7% B                | 0.34       | No             |
 
-Again we can see that at all depth settings, 🔵 blue performed significantly better when looking two moves farther into the future than 🔴 red, with all matchups statistically significantly better than 50%. Furthermore, blue's win rate is higher for a 2-depth-setting advantage than a 1-depth-setting advantage from the previous table at all depth settings.
-
-### At three depth level difference
-
-Here are the statistics for matchups where 🔵 blue had an AI set 3 depth settings higher than 🔴 red.
-
-| Depth Settings | Red W-L-D  | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
-|----------------|------------|------------|------------------------|------------|----------------|
-| Red 0 - Blue 3 | 33-967-0   | 967-33-0   | 96.7% B                | < 0.000001 | Yes            |
-| Red 1 - Blue 4 | 14-986-0   | 986-14-0   | 98.6% B                | < 0.000001 | Yes            |
-| Red 2 - Blue 5 | 90-893-17  | 893-90-17  | 90.8% B                | < 0.000001 | Yes            |
-| Red 3 - Blue 6 | 140-850-10 | 850-140-10 | 85.6% B                | < 0.000001 | Yes            |
-
-At 3 depth-settings difference (and higher, not shown) the higher-level 🔵 blue AI wins dramatically more often than the lower level 🔴 red AI, with win percentages over 90% for all except 🔴 red 3 vs 🔵 blue 6.
+We can see that with a 2+ depth level advantage, 🔵 blue wins a statistically significantly higher percentage of games than 🔴 red, except when the higher depth-setting AI is depth level 6, in which case the lower depth-setting AI seems to win roughly equally with the depth level 6 AI. Interestingly, sometimes AIs at depths 2 levels lower sometimes win more frequently against higher level AIs than AIs only 1 depth level lower. I attribute this to the higher "randomness" of lower AIs and to the fact that they are more likely to play in the center than higher-level AIs. Since games don't always play out the same way every time, the lower level AI's center control can sometimes win out.
 
 ## Conclusions
 
-To conclude, we discussed briefly (in somewhat vague terms) how I built the game Connect 4. We then went through my thought process as I built an initial AI to play Connect 4 and improved it over 5 iterations. Then I played a bunch of games against the final-product-AI and concluded it was pretty strong at harder depth settings. And finally, I ran some head-to-head matchups at various depth settings to see if the AI that I built was better the farther it looked into the future, and I concluded that, **yes**, the AI got better the more moves ahead it looked into the future. My final thoughts are that it was pretty fun designing this AI intuitively and iteratively through observation and testing. I think the final product turned out pretty well and makes for a fun game of Connect 4. 😀
+To conclude, we discussed briefly (in somewhat vague terms) how I built the game Connect 4. We then went through my thought process as I built an initial AI to play Connect 4 and improved it over 6 iterations. Then I played a bunch of games against the final-product-AI and concluded it was pretty strong at harder depth settings. And finally, I ran some head-to-head matchups at various depth settings to see if the AI that I built was better the farther it looked into the future, and I concluded that... it's a little complicated. **Yes**, under most circumstances, looking for wins and losses farther into the future leads to more wins, but also, controlling the center is extremely important to Connect 4, and sometimes just playing more in the center is better than looking for wins and losses in the near future. My final thoughts are that it was pretty fun designing this AI intuitively and iteratively through observation and testing. I think the final product turned out pretty well and makes for a fun game of Connect 4. 😀
