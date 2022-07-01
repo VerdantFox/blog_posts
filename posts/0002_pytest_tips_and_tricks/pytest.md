@@ -1,6 +1,6 @@
 # 9 pytest tips and tricks to take your tests to the next level
 
-tags: testing, pytest
+tags: testing, pytest, python
 
 ## Introduction
 

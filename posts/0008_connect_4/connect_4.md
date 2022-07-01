@@ -1,6 +1,6 @@
 # How I built a Connect 4 AI
 
-tags: Games, AI, JavaScript
+tags: Games, AI, JavaScript, web
 
 ## Introduction
 
