@@ -6,7 +6,7 @@ tags: Games, AI, JavaScript, web
 
 CONNECT_4_WITH_ROBOT_PIC
 
-I wrote the board game Connect 4 for my website! 😀 [Here's a link to it](/games/connect-4){: target="_blank", rel="noopener noreferrer" } if you want to check it out. The game can be played against another human or an AI opponent. It can even be played AI-vs-AI, which I find kind of fun to watch -- and which made testing the AI out much easier and more scientific (more on that later). This is the story of how I wrote the AI for the game intuitively, through some trial and error. This post was updated with a significantly enhanced AI version 6 a couple weeks after the initial release.
+I wrote the board game Connect 4 for my website! 😀 [Here's a link to it](/games/connect-4){: target="_blank", rel="noopener noreferrer" } if you want to check it out. The game can be played against another human or an AI opponent. It can even be played AI-vs-AI, which I find kind of fun to watch -- and which made testing the AI out much easier and more scientific (more on that later). This is the story of how I wrote the AI for the game intuitively, through some trial and error. This post was updated with a significantly enhanced AI version 6 a couple days after the initial release.
 
 ## Some background
 
@@ -204,9 +204,21 @@ In addition to the large changes mentioned above, I made 2 smaller tweaks to AI_
 
 Finally, another small-but-significant change is that AI_V6 doesn't even check for vertical wins after round 2. These scenarios will *almost never* lead to a win (or loss) since a smart AI (or human) will always block the vertical win once the opponent has placed its 3rd vertically-aligned chip. Neither side is likely to be able to place back-to-back chips in the same column to achieve a vertical win. AI_V5 treated such a scenario as a "missed win" for itself or a "win" for its opponent. AI_V6 avoids even considering such possibilities.
 
-Once more, our newest AI version *seemed* to behave smarter. But again I ran some AI-vs-AI matches to test out those changes scientifically. I played 100-game matches with AI_V5 as 🔴 red and AI_V6 as 🔵 blue. The results were decisive. At all depths where AI_V5 and AI_V6 had the same depth setting, AI_V6 beat AI_V5 more than 3/4 of the games. Even in matchups where AI_V6 had a depth setting one lower than AI_V5, AI_V6 still won more than 65% of the time at all depth levels, statistically significant. I concluded that AI_V6 was a significant improvement over AI_V5. Here's the data from those matches.
+Once more, our newest AI version *seemed* to behave smarter than previous iterations. But again I ran some AI-vs-AI matches to test out those changes scientifically. I played 100-game matches with AI_V5 as 🔴 red and AI_V6 as 🔵 blue. The results were decisive. At all depths where AI_V5 and AI_V6 had the same depth setting, AI_V6 beat AI_V5 more than 3/4 of the games. Even in matchups where AI_V6 had a depth setting one lower than AI_V5, AI_V6 still won more than 65% of the time at all depth levels, statistically significant. I concluded that AI_V6 was a significant improvement over AI_V5. Here's the data from those matches.
 
-AI_V5 VS AI_V6 TABLES
+| Depth Settings | Red W-L-D | Blue W-L-D | Win rate (of decisive) | P-score    | >50% at P=0.05 |
+|----------------|-----------|------------|------------------------|------------|----------------|
+| Red 0 - Blue 0 | 19-81-0   | 81-19-0    | 81.0% B                | < 0.000001 | Yes            |
+| Red 1 - Blue 1 | 21-79-0   | 79-21-0    | 79.0% B                | < 0.000001 | Yes            |
+| Red 2 - Blue 2 | 6-90-4    | 90-6-4     | 93.8% B                | < 0.000001 | Yes            |
+| Red 3 - Blue 3 | 12-86-2   | 86-12-2    | 87.8% B                | < 0.000001 | Yes            |
+| Red 4 - Blue 4 | 18-80-2   | 80-18-2    | 81.6% B                | < 0.000001 | Yes            |
+| Red 5 - Blue 5 | 23-76-1   | 76-23-1    | 76.8% B                | < 0.000001 | Yes            |
+| Red 6 - Blue 6 | 0-100-0   | 100-0-0    | 100%  B                | < 0.000001 | Yes            |
+| Red 3 - Blue 2 | 12-85-3   | 85-12-3    | 87.6% B                | < 0.000001 | Yes            |
+| Red 4 - Blue 3 | 34-64-2   | 64-34-2    | 65.3% B                | 0.0015     | Yes            |
+| Red 5 - Blue 4 | 33-66-1   | 66-33-1    | 66.7% B                | 0.00059    | Yes            |
+| Red 6 - Blue 5 | 17-83-0   | 83-17-0    | 83.0% B                | < 0.000001 | Yes            |
 
 ## Final testing
 
@@ -232,7 +244,7 @@ I wanted to evaluate the AI against itself at even depth levels to see if 🔴 r
 | Red 5 - Blue 5 | 100-0-0   | 0-100-0    | 100% Red               | < 0.000001 | Yes            |
 | Red 6 - Blue 6 | 100-0-0   | 0-100-0    | 100% Red               | < 0.000001 | Yes            |
 
-At equal depths of 0 and 1, 🔴 red and 🔵 blue won roughly equally. At all higher, equal depths, 🔴 red won significantly more than blue. It seems that 🔴 red has a significant advantage over 🔵 blue. Since 🔴 red goes first, 🔴 red gets more win opportunities. So, for all future calculations I gave 🔵 blue the higher depth AI so that if it had better win percentages, those couldn't be chalked up to 🔴 red's clear advantage from going first. Notice the 100-0-0 win-loss-draw ratios at higher depths. AI_V6 plays far less randomly than previous AI versions. It only plays randomly when 2 columns are equally highly weighted *and* equally distant from the center column. At higher depths, this scenario might not happen *at all*, meaning the games play out the same every time, leading to the 100% win ratio for one side. At lower depths settings there are more random moves, which sometimes leads to lower depth-setting AIs having better win-loss-draw ratios against higher depth-setting AIs than higher depth-setting AIs do against each other.
+At equal depths of 0 and 1, 🔴 red and 🔵 blue won roughly equally. At all higher, equal depths, 🔴 red won significantly more than blue. It seems that 🔴 red has a significant advantage over 🔵 blue. Since 🔴 red goes first, 🔴 red gets more win opportunities. So, for all future calculations I gave 🔵 blue the higher depth AI so that if it had better win percentages, those couldn't be chalked up to 🔴 red's clear advantage from going first. Notice the 100-0-0 win-loss-draw ratios at higher depths. AI_V6 plays far less randomly than previous AI versions. It only plays randomly when 2 columns are equally highly weighted *and* equally distant from the center column. At higher depths, this scenario might not happen *at all*, meaning the games play out the same every time, leading to the 100% win ratio for one side. At lower depths settings there are more random moves, which sometimes leads to lower depth-setting AIs having better win-loss-draw ratios against higher depth-setting AIs.
 
 ### At one depth level difference
 
@@ -265,7 +277,7 @@ Here are the statistics for matchups where 🔵 blue had an AI 2+ depth settings
 | Red 2 - Blue 5 | 26-74-0   | 74-26-0    | 74.0% B                | < 0.000001 | Yes            |
 | Red 3 - Blue 6 | 44-49-7   | 49-44-7    | 52.7% B                | 0.34       | No             |
 
-We can see that with a 2+ depth level advantage, 🔵 blue wins a statistically significantly higher percentage of games than 🔴 red, except when the higher depth-setting AI is depth level 6, in which case the lower depth-setting AI seems to win roughly equally with the depth level 6 AI. Interestingly, sometimes AIs at depths 2 levels lower sometimes win more frequently against higher level AIs than AIs only 1 depth level lower. I attribute this to the higher "randomness" of lower AIs and to the fact that they are more likely to play in the center than higher-level AIs. Since games don't always play out the same way every time, the lower level AI's center control can sometimes win out.
+We can see that with a 2+ depth level advantage, 🔵 blue wins a statistically significantly higher percentage of games than 🔴 red, except when the higher depth-setting AI is depth level 6, in which case the lower depth-setting AI seems to win roughly equally with the depth level 6 AI. Interestingly, sometimes AIs at depths 2 levels lower win more frequently against higher level AIs than AIs only 1 depth level lower. I attribute this to the higher "randomness" of lower AIs and to the fact that they are more likely to play in the center than higher-level AIs. Since games don't always play out the same way every time, the lower level AI's center control can sometimes win out.
 
 ## Conclusions
 
