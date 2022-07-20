@@ -8,7 +8,7 @@ PLAYWRIGHT_LOGO_PIC
 
 We all know testing our code is important, right? Automated tests can give peace of mind that our code is working as expected and that it continues to work as expected, even as it is refactored. Python has the [pytest](https://docs.pytest.org/){: target="_blank", rel="noopener noreferrer" } framework that offers great tools for testing our backend python code. You can check out my blog post, [9 pytest tips and tricks to take your tests to the next level](/blog/view/9-pytest-tips-and-tricks-to-take-your-tests-to-the-next-level){: target="_blank", rel="noopener noreferrer" }, to get yourself jump-started testing in python. And javascript has several libraries to test front-end code. But in website testing, how can we write automated tests to ensure that our back-end code (be it python or something else) is working with our front-end code (javascript, HTML, and CSS).
 
-Introducing [Playwright](https://playwright.dev/python/){: target="_blank", rel="noopener noreferrer" }, a fast, easy-to-use, and powerful end-to-end browser automation framework. Similar to the [Selenium](https://www.selenium.dev/){: target="_blank", rel="noopener noreferrer" } framework, the Playwright framework has tools that allow us to write tests and scripts that act similar to an actual, human website user. And Playwright has API endpoints in javascript, java, .NET, and **python**! Sound useful? Read on as we use Playwright with python and pytest to write scripts and end-to-end tests for our [Connect 4 game]([connect-4 url](https://verdantfox.com/games/connect-4){: target="_blank", rel="noopener noreferrer" } ).
+Introducing [Playwright](https://playwright.dev/python/){: target="_blank", rel="noopener noreferrer" }, a fast, easy-to-use, and powerful end-to-end browser automation framework. Similar to the [Selenium](https://www.selenium.dev/){: target="_blank", rel="noopener noreferrer" } framework, the Playwright framework has tools that allow us to write tests and scripts that act similar to an actual, human website user. And Playwright has API endpoints in javascript, java, .NET, and **python**! Sound useful? Read on as we use Playwright with python and pytest to write scripts and end-to-end tests for our [Connect 4 game]([connect-4 url](https://verdantfox.com/games/connect-4){: target="_blank", rel="noopener noreferrer" } ) web page.
 
 ## Getting started (installation)
 
@@ -159,11 +159,11 @@ We can use `page.goto(URL)` to open a new browser tab at the provided URL. In ou
 
 #### page element interactions
 
-Many interactions can be called from a `page` object. For instance, we can call `page.click(selector)` to mouse-click an object identified by a **selector** (more on **selectors** later). Other `page` object interactions include `page.check(selector)` to check a checkbox or radio button, `page.hover(selector)` to hover over an object, and many others.
+Many interactions can be called from a `page` object. For instance, we can call `page.click(selector)` to mouse-click an object identified by a `selector` (more on `selector`s later). Other `page` object interactions include `page.check(selector)` to check a checkbox or radio button, `page.hover(selector)` to hover over an object, and many others.
 
 #### page.locator(selector)
 
-The `page.locator(selector)` method returns an element locator, identified by a `selector` that can be used to perform actions on the page. More on locators and selectors next. I tend to prefer performing actions on these locators rather than on the `page` object directly.
+The `page.locator(selector)` method returns an element `locator`, identified by a `selector` that can be used to perform actions on the page. More on `locator`s and `selector`s next. I tend to prefer performing actions on these `locator`s rather than on the `page` object directly.
 
 ### Locators
 
@@ -238,7 +238,7 @@ As we'll soon see in our discussion of fixtures, with Playwright pytests we usua
 
 #### `--headed` and `--slowmo=MILLISECONDS`
 
-Because we don't usually work with the browser in tests, we do not call `browser.launch()`. If you recall from the earlier [section on the `browser` object](#browser), the `.launch()` method takes some useful methods: `headless=BOOL` which allows us to run in "headed" mode to watch our tests run, and `slow_mo=MS` to add a waiting period between each command. To provide this functionality with pytests, we can pass the `--headed` flag which runs all Playwright tests in "headed" mode (as opposed to "headless" mode), and we can pass `--slowmo=MILLISECONDS` to add a waiting period of `MILLISECONDS` milliseconds between each Playwright command.
+Because we don't usually work with the browser in tests, we do not call `browser.launch()`. If you recall from the earlier [section on the `browser` object](#browser), the `.launch()` method takes some useful arguments: `headless=BOOL` which allows us to run in "headed" mode to watch our tests run, and `slow_mo=MILLISECONDS` to add a waiting period between each command. To provide this functionality with pytests, we can pass the `--headed` flag which runs all Playwright tests in "headed" mode (as opposed to "headless" mode), and we can pass `--slowmo=MILLISECONDS` to add a waiting period of `MILLISECONDS` milliseconds between each Playwright command.
 
 #### `--screenshot=WHEN` and `--video=WHEN`
 
@@ -252,7 +252,7 @@ What's even better than a screenshot? A video (sometimes). With `--video=WHEN` `
 
 Here's an example of running the above test with `--video=on` (converted to a GIF for this blog post):
 
-TEST_GIF
+TEST_PIC_GIF
 
 ### Useful fixtures
 
@@ -272,7 +272,7 @@ def test_basic(page):
     ...
 ```
 
-Much leaner. But the `browser` and `context` can be accessed when needed with their own fixtures. These are the most important fixtures you might use while writing Playwright pytests. A full list of `pytest-playwright` fixtures can be found [here](https://playwright.dev/python/docs/test-runners#fixtures){: target="_blank", rel="noopener noreferrer" }.
+Much leaner. But the `browser` and `context` can be accessed when needed with their own fixtures. The following is a list of the most important fixtures you might use while writing Playwright pytests. A full list of `pytest-playwright` fixtures can be found [here](https://playwright.dev/python/docs/test-runners#fixtures){: target="_blank", rel="noopener noreferrer" }.
 
 #### `browser`
 
@@ -284,7 +284,7 @@ The `context` fixture is a function scoped fixture, meaning a new browser contex
 
 #### `page`
 
-The `page` fixture is a function scoped fixture and it is called off the function scoped `context` fixture generating a new `page` object in a new `browser` context for each test. The `page` fixture returns a `browser.context.page` instance. The `page` fixture is the most commonly used fixture when writing tests since it provides the most useful functionality while abstracting away the `browser` and `context` which are not usually necessary when writing tests.
+The `page` fixture is a function scoped fixture and it is called off the function scoped `context` fixture generating a new `page` object in a new browser `context` for each test. The `page` fixture returns a `browser.context.page` instance. The `page` fixture is the most commonly used fixture when writing tests since it provides the most useful functionality while abstracting away the `browser` and `context` which are not usually necessary when writing tests.
 
 #### `is_chromium`, `is_webkit`, and `is_firefox`
 
@@ -294,21 +294,21 @@ The session-scoped fixtures `is_chromium`, `is_webkit`, and `is_firefox` all sim
 
 The `assert_snapshot` fixture is only available if the [pytest-playwright-visual](https://github.com/symon-storozhenko/pytest-playwright-visual){: target="_blank", rel="noopener noreferrer" } pytest plugin is `pip` installed. The fixture returns a function that can assist with comparing Playwright screenshots. Recall, Playwright can take screenshots of the browser at any given time with `page.screenshot()` or `locator.screenshot()`. This fixture and returned function of the same name allows for easy comparison of screenshots between test runs. Here's how it works.
 
-The first time you run your test that has the code `assert_snapshot(page.screenshot())`, the test will fail with the message "Failed: --> New snapshot(s) created. Please review images". The code saves a screenshot to a folder in the test's directory with a name related to the test, browser, and OS. You can inspect this image to see if it looks right. If it is right, this image becomes the gold standard for what the browser window should look like when it hits that line of code. The next time you run the test when the test reaches the line `assert_snapshot(page.screenshot())`, the `assert_snapshot` function will compare your saved screenshot from last time with a new screenshot generated from this run. If the two images are the same, that line of code passes. If they are different, the test fails.
+The first time you run your test that has the code `assert_snapshot(page.screenshot())`, the test will fail with the message "Failed: --> New snapshot(s) created. Please review images". The code saves a screenshot to a folder in the test's directory with a name related to the test, browser, and OS. You can inspect this image to see if it looks right. If it is right, this image becomes the gold standard for what the browser window should look like when it hits that line of code. The next time you run the test, when the test reaches the line `assert_snapshot(page.screenshot())`, the `assert_snapshot` function will compare your saved screenshot from last time with a new screenshot generated from this run. If the two images are the same, that line of code passes. If they are different, the test fails.
 
 On failure, a new set of images are stored in a folder named `snapshot_tests_failures`. There is one image prefixed with `Actual_` that is an image from *this* test run. There is one image prefixed with `Expected_` that is a copy of your stored "gold standard" image. And there is one image prefixed with `Diff_` which nicely dulls/whitens most of the image to highlight just the pixels that were different. The `Diff_` image can be very useful in determining what changed between runs.
 
 Here are examples of "actual", "expected", and "diff" images I generated by altering the color of one circle of the "expected" image and then re-running the test, resulting in a failed image comparison.
 
-"expected" image (generated from the test first run, and then I altered the image with a "paint"-like program):
+"Expected" image (generated from the first test run, altered with a "paint"-like program):
 
 EXPECTED_PIC
 
-"actual" image (generated from the second run, that failed on image comparison):
+"Actual" image (generated from the second run that failed on image comparison):
 
 ACTUAL_PIC
 
-"diff" image comparing the changed pixels between the "expected" and "actual" images:
+"Diff" image comparing the changed pixels between the "expected" and "actual" images:
 
 DIFF_PIC
 
@@ -375,7 +375,7 @@ We create a `locator` object for the element with the id `circle-3-5` (correspon
 
 When we clicked the circle, we expect this to cause one 🔴 red chip to fall followed by one 🔵 blue chip in the same column as the circle that was clicked. We confirm this by creating an `expect` object from a `locator` object corresponding to the circle we expect to eventually have a 🔴 red chip. By inspecting this circle with chrome's "inspect" tool, we can determine that this 🔴 red chip is represented by a CSS class "color-red" which causes a CSS background color of "red" or "rgb(255, 0, 0)".
 
-So first, we call the `expect` object's `to_have_class()` method, passing in the "color-red" class in the form of a regular expression. Then, on the next line, we call the `to_have_css()` method on an identical `expect` object, passing in the CSS property "background-color" and the expected value of background-color, "rgb(255, 0, 0)". Then we repeat these `expect`ations for the 🔵 blue chip circle just above the 🔴 red chip circle. Here we expect the circle to have the CSS class "color-blue" and the background color "blue" or "rgb(0, 0, 255)", so we substitute those values where appropriate for the corresponding values from our 🔴 red chip circle `expect` calls.
+So first, we call the `expect` object's `to_have_class()` method, passing in the "color-red" class in the form of a regular expression. Then, on the next line, we call the `to_have_css()` method on an identical `expect` object, passing in the CSS property "background-color" and the expected value of the background-color, "rgb(255, 0, 0)". Then we repeat these `expect`ations for the 🔵 blue chip circle just above the 🔴 red chip circle. Here we expect the circle to have the CSS class "color-blue" and the background color "blue" or "rgb(0, 0, 255)", so we substitute those values where appropriate for the corresponding values from our 🔴 red chip circle `expect` calls.
 
 ```python
     assert_snapshot(page.locator("#board").screenshot())
