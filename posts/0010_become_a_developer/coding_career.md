@@ -10,6 +10,14 @@ At the start of June, 2017 I was a lab technician at the University of Colorado,
 
 ## Why become a software developer?
 
+As I said above, I wasn't always a software developer. I transitioned into the field from the sciences, another field I really liked. But for me, making the move to software development was the best decision I ever made, and I'll never look back. Here are some of the reasons *I* like software development as a career and why transitioning your career to software development *might* be a good move for you too.
+
+1. **The pay**: This one is obvious. We work to make money. And software developers make pretty good money. My very first junior developer role started out at $70,000 annual salary. While that pay isn't true for *all* junior developer roles, it's not that unusual either. And there is plenty of room for increasing that pay. As you learn more, you become more valuable. After four years in the field, my annual salary is already in the 6-figures.
+2. **Room for career growth**: This one goes alongside pay, but as you gain more experience as a software developer, you will have opportunities to advance in your career. This includes things like becoming a senior software engineer, a manager, or other higher administrative roles.
+3. **In demand job**: There are a lot of companies out there looking for quality software developers. I won't lie. Getting your foot in the door at that first job can be very difficult. But once you're in and have proven yourself valuable, getting future software development jobs is not difficult.
+4. **It's fun**: I think coding is fun. It's like solving little logic puzzles. And all the while you are building something really cool.
+5. **It's rewarding**: You get to build cool applications that are used by real people. You get a great sense of pride when you push out that finished product and see how people use it.
+
 ## Am I smart enough to code?
 
 The short answer, **yes you are**. Before I learned to code, I thought coding was magic. Super smart people wrote complex, arcane words, and my computer did awesome things. I thought you had to go to school for years and years of intensive drudgery to learn these secrets. And even then, only geniuses could really understand it. **Wrong!** You do not have to be a genius to learn to code. You do not even have to have above-average intelligence. You do not even need to be good at math.
@@ -101,7 +109,7 @@ Okay, just pick a language. But what even are my choices? I recommend picking on
 9. Rust (9%)
 10. Kotlin (9%)
 
-### Consider ease of use
+### Consider how easy it is to learn
 
 One thing you might consider when picking a language is how easy that language is to learn. All languages aren't that bad once you get to know them. But some just seem to be easier out the gate. Maybe their syntax is more straightforward, their coding style is simpler, or they do more for you so you have less to think about. What makes a coding language "easy" and which languages are easy to learn vs which languages are hard to learn is *very* subject. Here's a list from [codingdogo.com](https://www.codingdojo.com/blog/easiest-programming-language-to-learn){: target="_blank", rel="noopener noreferrer" } for their picks of the top 5 easiest and top 5 hardest languages to learn. While I have only used a couple of the languages on this list, I tend to think these choices are reasonable from my limited experience and from talking to other developers. For *why* the site thinks these are easier and more difficult languages, you'll have to [read their article](https://www.codingdojo.com/blog/easiest-programming-language-to-learn){: target="_blank", rel="noopener noreferrer" }.
 
@@ -125,40 +133,40 @@ Top 5 hardest to learn
 
 If you have an idea of what *type* of programming you want to do, you might pick a language that is well suited for that job. Certain languages tend to be well suited for certain programming needs. Here's a list of some common programming needs, and languages that are well suited for them. This is another subjective area. Some people might consider other languages better for these jobs than the ones I chose. If that's you, or if your favorite language for a job isn't on my list, don't hate. 😛 I'm sure that's an awesome choice too.
 
-Front-end web development (code running in your browser):
+**Front-end web development (code running in your browser):**
 
 - **JavaScript**: This is basically the only language in town for this job alongside its spinoffs like **typescript** and its helper languages **HTML** and **CSS**.
 
-Back-end web development (code running on a website server):
+**Back-end web development (code running on a website server):**
 
 - **Node.js**: This language is basically the same as **javascript** with some subtle differences that allow it to run on a server. This is nice because then you can learn just one language for both front-end and back-end web development (ie full-stack web development).
 - **Python**: There are tons of great web development frameworks that make Python an easy and excellent choice for web development. I'm a little biased because this is *my* language of choice.
 - **PHP**: A veteran of the backend web space with a lot of web frameworks and large community.
 - **C#**: The Microsoft programming language has a great community and great, opinionated backend frameworks.
 
-Data Science:
+**Data Science:**
 
 - **Python**: The most popular data-science choice these days. Has great frameworks for easily processing large datasets and for data visualization. Is fast for these purposes (because they are written in **C** under the hood). Is the only choice if using certain machine learning frameworks.
 - **R**: A language who's main purpose *is* data science. It is older in the data science community and quite popular in that community.
 
-Android development:
+**Android development:**
 
 - **Kotlin**: Google switched to Kotlin as the official language for Android app programming in 2017. It's simpler than Java with extensive libraries for Android development.
 - **Java**: The original official Android app programming language. Is an extremely established language with a huge community.
 
-iOS development:
+**iOS development:**
 
 - **Swift**: Apple launched Swift in 2014 specifically for iOS development and it has been growing in popularity ever since.
 - **Objective-C**: The original iOS language. Still widely used, especially in older, established applications.
 
-Video game development:
+**Video game development:**
 
 - **C++**: A very *fast* language, popular in creating game engines as well as games themselves.
 - **C#**: A higher level language that is extremely popular in video game scripting.
 - **JavaScript**: Very popular in creating games that are hosted in web browsers as well as on mobile platforms.
 - **Java**: A versatile language that is popular in a range of games including Minecraft.
 
-Embedded systems and IoT:
+**Embedded systems and IoT:**
 
 - **C++**: It is a fairly low-level language, with good libraries support that make it popular language for embedded systems, and it is *fast* when written well.
 - **C**: A low level language that is extremely *fast* and is the language beneath the hood for many other languages like **python**. Many embedded systems are written directly in **C**.
@@ -166,7 +174,7 @@ Embedded systems and IoT:
 
 ### Just pick one and stick with it for a while
 
-Here's the biggest secret when it comes to picking your first language. **It really doesn't matter all that much which language you first choose.** All the languages out there (at least the more popular ones) are pretty good. And in the end, they all do pretty similar things. For the most part, they all have the same components: **grammar**, **types**, **variables**, **loops**, **conditional statements**, **functions** (if you don't know any of those terms, don't worry about it, there's plenty of time to learn 😉). There are some differences in language components and structure (for example object oriented languages vs functional languages). But mostly the differences come down to grammar subtleties and external helper libraries available to the language. For the most part, **once you learn one language, it becomes very easy to learn a a second language**, and easier still to learn a third.
+Here's the biggest secret when it comes to picking your first language. **It really doesn't matter all that much which language you choose first.** All the languages out there (at least the more popular ones) are pretty good. And in the end, they all do pretty similar things. For the most part, they all have the same components: **grammar**, **types**, **variables**, **loops**, **conditional statements**, **functions** (if you don't know any of those terms, don't worry about it, there's plenty of time to learn 😉). There are some differences in language components and structure (for example object oriented languages vs functional languages). But mostly the differences come down to grammar subtleties and external helper libraries available to the language. For the most part, **once you learn one language, it becomes very easy to learn a a second language**, and easier still to learn a third.
 
 So don't stress too hard about that first language choice. The most important thing you are learning when first learning to code is how to use those underlying components (the **variables**, **loops**, etc.) that all languages have anyways. My one recommendation is to stick to that first language for a while -- at least until you feel comfortable writing in it. Finish a course in it, create a project in it. Switching away from that first language too early will just distract you from learning those core concepts common to all programming languages that are the important things to learn.
 
@@ -180,31 +188,78 @@ I picked Python. It is very popular and pretty-to-look at with a simple-to-learn
 
 Okay, you've decided you are going to start your coding **self-education** journey, and you've picked a programming language. Where do we go from there? The options are overwhelming, how do you even get started? My best advice here is, **just do *something***.
 
-It is *really* hard to know what learning path is right for you when you are first getting started. So I recommend just code *something* to start learning what is right for you. The more you code, the more you'll learn what works for you. You're never going to have a perfect lesson plan out the gate. Promise yourself right now, "I'm going to spend an hour coding on *X* platform." It doesn't really matter what resource you are using to code with. The hardest part is just breaking that deadlock in your mind and deciding you're going to code *something*. At the end of that hour, re-evaluate. Maybe that means keep doing what you were doing and check in after another hour -- the course your taking or the coding game you're playing is interesting and you want to keep exploring it. Maybe that means take a break today, but tomorrow you have something new to research based on what you learned coding for that hour. As they say "A journey of a thousand miles begins with a single step." Take that first step and every step thereafter will be easier.
+It is *really* hard to know what learning path is right for you when you are first getting started. So I recommend just code *something* to start learning what is right for you. The more you code, the more you'll learn what works for you. You're never going to have a perfect lesson plan out the gate. Promise yourself right now, "I'm going to spend an hour coding on *X* platform." It doesn't really matter what resource you are using to code with. The hardest part is just breaking that deadlock in your mind and deciding you're going to code *something*. Code for an hour. At the end of that hour, re-evaluate. Maybe you decide to keep doing what you were doing -- the course you are taking or the coding game you are playing is interesting and you want to keep exploring it. Then check in after another hour. Maybe you decide to take a break today, but tomorrow, for your next coding hour, you have something new to research based on what you learned coding during that hour. It's cheesy but true: "A journey of a thousand miles begins with a single step." Take that first step and every step thereafter will be easier.
 
-Start doing *something*? Teddy, that's pretty vague. Do you have any suggestions that are more specific? Sure. Here are a few resources that might be a nice first get-your-toes-wet introduction to coding.
+Start doing *something*? Teddy, that's pretty vague. Do you have any suggestions that are more specific? Sure. Here are a few resources that might be a nice get-your-toes-wet introduction to coding.
 
 - [Codecademy](https://www.codecademy.com/learn){: target="_blank", rel="noopener noreferrer" }: This is a cool website that offers coding classes in the browser. You can take interactive courses in languages like **Python**, **JavaScript**, **Java** and a variety of others. Create a free account, pick a language, and start taking that introductory class.
 - [FreeCodeCamp](https://www.freecodecamp.org/learn){: target="_blank", rel="noopener noreferrer" }: This is another, similar awesome website that offers a variety of free interactive courses you can take directly on their website.
 - [Code Combat](https://codecombat.com/){: target="_blank", rel="noopener noreferrer" }: Video games more your speed? This is an awesome website where you learn to code while playing a dungeon crawler video game. Type code commands in order to move your hero through perilous dungeons and slay your foes.
 - [General Assembly course](https://dash.generalassemb.ly/){: target="_blank", rel="noopener noreferrer" }: General Assembly is a company that offers courses, many of which are live, most of which cost money. However they have a really nice introduction to web development course that is on-demand and free.
 
-That's just a couple resources I've tried out that I think are perfect for getting your feet wet with programming. And you don't have to finish any of them to get value. Just starting an interactive course or game will get you started on that path to learning and will get you excited to learn more!
+Those are just a couple resources that I've tried out, and that I think are perfect for getting your feet wet with programming. And you don't have to finish any of them to get value. Just starting an interactive course or game will get you started on that path to learning and will get you excited to learn more! It'll give you more information about what steps you really need to take along your coding journey.
 
-## Make yourself a curriculum
+## Make yourself a learning game plan
+
+You did it, you coded *something*! 🎉 Congratulations! Even if it is an hour (even if its 15 minutes) taking an interactive class or playing a coding video game, getting started coding *something* is honestly one of the hardest and most important mental hurdles to get through and it's worth being proud of. So give yourself a pat on the back. Feel free to linger on that step. Finish that course or coding video game if you like. It's worth it. Once you're ready, lets get down to making a game plan (a learning curriculum) for the longer journey ahead. Our end goal? Become a proficient coder and get hired as a junior developer.
+
+That curriculum is going to look different for everyone. It's going to depend on what area you want to go into (web development, smartphone app development, data science, etc.). It's going to depend on what coding language you choose (Python, JavaScript, C#, etc.). It's going to depend on your learning style (do you prefer online courses, reading books, etc.) -- I recommend trying a combination of styles. And it's going to depend on what pace you feel comfortable with (some topics might be easy, others might require lingering on until you really get them).
+
+Below I'll list some considerations you should consider as you design a game plan.
+
+### Keep it fluid
+
+At first, try writing a very broad outline of the step you need to take to get from where you are now, to where you want to be (presumably hired as a junior developer). Write these high-level goals in a google doc or spreadsheet. It doesn't need to be very detailed at first. Then as you move forward fill in the details. The start of that game plan should be more detailed than the end. As you learn more, keep updating the plan. At first, your not going to know what all you need to learn to achieve your end goals. As you learn new concepts, check back on your game plan and update it to fit your new mental model.
+
+### Have achievable, measurable goals and timelines
+
+Try to be as specific as possible when writing your goals, especially the ones that you want to achieve in the near future. Each goal should be achievable and measurable. For example, "Complete *X* Udemy course", or "Finish reading *Y* book", or "Finish *Z* project and present it to my family". Then attach timelines to those goals. For example, "Complete *X* Udemy course by September 1st", "Finish reading *Y* book by October 1st", "Finish *Z* project and present it to my family by December 1st". By setting achievable, measurable goals, your setting setting yourself up for success in making progress on those goals. By setting achievable timelines for your goals, you're helping to motivate yourself to get those goals done in a timely manner.
+
+### Break down bigger goals into smaller goals in your schedule
+
+Either in the same "Game plan" document, or in a daily schedule, break down your goals into daily goals. From our goal "Complete *X* Udemy course" we might break down a daily goal of, "Complete sections 'A' and 'B' of *X* Udemy course". For goal "Finish reading *Y* book" we might break down to a daily goal of "read chapters 'A', 'B' and 'C' of book *Y*". For goal "Finish *Z* project and present it to my family", we might break down to a daily goal of "Write the game logic for making the enemies chase our hero" (that one got more specific than the other examples 😆). Try to check off these daily goals every day. Leave room rest days where you don't have to code anything, or make some days heavy coding days and others light coding days. Then at the end of each week take time to examine how you did this week. Were you good about accomplishing your daily goals? Are you on track for you big-picture goals? Adjust accordingly.
+
+## Learn these important topics
+
+What kinds of things should you include in your learning game plan? In the next few sections I'll talk about some of the things you should probably have in any game plan, regardless of language and area of interest you want to pursue. First, some topics that are important for any developer.
+
+### Hello World
+ 
+### Computer Science basics
+
+### Your language's core components
+
+### Object oriented design
+
+### Source control (git)
+
+### Testing
+
+### Learn some database basics
+
+### Debugging
+
+### Deploying to production
+
+### Collaboration methodologies
+
+## Immerse yourself in the jargon
+
+## learn a framework or stack
+
+## Build a capstone project
+
+### Start career networking
+
+### An example curriculum (what I did)
 
 
-## Have measurable goals
+## Career networking
 
-## Important topics to learn
+## Resume preparation
+## Interviewing skills
 
-## Self-teaching resources
-
-## Networking
-
-## Interviewing
-
-## An example curriculum (what I did)
+## Self-education resources
 
 ## Conclusions
 
