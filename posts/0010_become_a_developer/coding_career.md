@@ -12,11 +12,11 @@ At the start of June, 2017 I was a lab technician at the University of Colorado,
 
 As I said above, I wasn't always a software developer. I transitioned into the field from the sciences, another field I really liked. But for me, making the move to software development was the best decision I ever made, and I'll never look back. Here are some of the reasons *I* like software development as a career and why transitioning your career to software development *might* be a good move for you too.
 
-1. **The pay**: This one is obvious. We work to make money. And software developers make pretty good money. My very first junior developer role started out at $70,000 annual salary. While that pay isn't true for *all* junior developer roles, it's not that unusual either. And there is plenty of room for increasing that pay. As you learn more, you become more valuable. After four years in the field, my annual salary is already in the 6-figures.
+1. **The pay**: This one is obvious. We all work to make money and software developers make pretty good money. My very first junior developer role started out at $70,000 annual salary. While that starting pay isn't true for *all* junior developer roles, it's not that unusual either. And there is plenty of room for increasing your pay as you gain experience. As you learn more, you become more valuable. After 4+ years in the field, my annual salary is already in the 6-figures.
 2. **Room for career growth**: This one goes alongside pay, but as you gain more experience as a software developer, you will have opportunities to advance in your career. This includes things like becoming a senior software engineer, a manager, or other higher administrative roles.
 3. **In demand job**: There are a lot of companies out there looking for quality software developers. I won't lie. Getting your foot in the door at that first job can be very difficult. But once you're in and have proven yourself valuable, getting future software development jobs is not difficult.
 4. **It's fun**: I think coding is fun. It's like solving little logic puzzles. And all the while you are building something really cool.
-5. **It's rewarding**: You get to build cool applications that are used by real people. You get a great sense of pride when you push out that finished product and see how people use it.
+5. **It's rewarding**: You get to build cool applications that are used by real people. You get a great sense of pride when you push out that finished product and see people using it.
 
 ## Am I smart enough to code?
 
@@ -219,39 +219,163 @@ Try to be as specific as possible when writing your goals, especially the ones t
 
 Either in the same "Game plan" document, or in a daily schedule, break down your goals into daily goals. From our goal "Complete *X* Udemy course" we might break down a daily goal of, "Complete sections 'A' and 'B' of *X* Udemy course". For goal "Finish reading *Y* book" we might break down to a daily goal of "read chapters 'A', 'B' and 'C' of book *Y*". For goal "Finish *Z* project and present it to my family", we might break down to a daily goal of "Write the game logic for making the enemies chase our hero" (that one got more specific than the other examples 😆). Try to check off these daily goals every day. Leave room rest days where you don't have to code anything, or make some days heavy coding days and others light coding days. Then at the end of each week take time to examine how you did this week. Were you good about accomplishing your daily goals? Are you on track for you big-picture goals? Adjust accordingly.
 
+## Learn by doing
+
+This is very important. The best way to learn to code (and many other things in life) is through doing it yourself. **"Practice, practice, practice!"** Later on we'll talk about some specific resources to learn with. The resources include courses and books. When you are using these resources **type the code out yourself, line by line**. It is possible to read an entire coding book or take an entire course without writing *any* code yourself. **Don't do that!** You will learn the topics 10X better if you are writing the code yourself.
+
+When an instructor is coding, do not just watch the video! **Code along with them.** Type what they are typing into your own file and run the code yourself. Pause the video and make changes to that code. See how the tweaks you make change the output. If an instructor offers coding assignments, do those. Do not just watch the solutions afterwards. After completing a course, create a small project that uses what you learned in that course.
+
+When reading a programming book, **write out the code yourself**. There might be times you are reading where you don't have access to a computer. That's okay. Later on, when you do have access to a computer, write code that uses what you learned from the book. Copy and run examples from the book. Tweak examples and see how the output changes. Create a small script or project that uses concepts taught in the book.
+
+Writing your own code while taking a course or reading a book *will* slow down that course or book. *That is okay!* It's worth it. The upfront cost of taking the time to write out the code yourself will pay off immensely in terms of how well you retain what you learned in that book or course. And creating scripts and side projects outside of the context of a course will also pay off immensely in terms of your understanding of code.
+
 ## Learn these important topics
 
 What kinds of things should you include in your learning game plan? In the next few sections I'll talk about some of the things you should probably have in any game plan, regardless of language and area of interest you want to pursue. First, some topics that are important for any developer.
 
 ### Hello World
- 
-### Computer Science basics
+
+The first thing you'll need to learn when learning any programming language is "Hello World". Basically, you need to learn how to make the simplest code possible that outputs something. Typically, teachers will have you print to the screen the words "Hello World". This is your introduction to your new coding language. If you went through [getting started](#getting-started) above, you probably already wrote your "Hello world" code. Congratulations, check that one off the list! 😃
 
 ### Your language's core components
 
-### Object oriented design
+When learning your first language, you'll need to learn your languages core components. These are things that basically all programming languages have in common (give or take some minor variations). I'll list some of those core components below. Obviously, if you are new to programming, you won't know any of these yet. But they are not so difficult to learn. Luckily, if you are taking a course or reading a book meant to teach your language to beginners, that course or book should always go over what these components are and how to use them with your language of choice. Soon you will be an expert at wielding these core components to get a computer to do tasks for you. The core components include:
 
-### Source control (git)
+- **Variables**: These are words that store information so that it can be used later on.
+- **Data types**: These are *what* type of data is stored. They include things like numbers, word or phrases (called strings in coding), "true" or "false" key words (called booleans in coding), and more complex types in the form of data structures.
+- **Operators**: These are things like `+`, `-`, `x`, `>`, `<` that can be used to compare and manipulate data.
+- **Data structures**: These are *how* complex data is stored. These are things like ("lists" or "arrays"), "sets", ("dictionaries", "maps", or "hashes"), ("objects" or "structs"), and many others. Different data structures are optimal for solving different problems.
+- **Control flow**: These are things like "if/else/then" statements and "loops" that are used to direct the flow of logic for a program.
+- **Functions**: These are ways to store chunks of code so that the code can be re-used without having to be re-written.
+- **Classes**: Not all programming languages have classes. They are specific to **object oriented** programming languages. But even if your language-of-choice doesn't use them, they are worth learning about.
 
-### Testing
+### Object oriented, procedural, and functional designs
 
-### Learn some database basics
+There are three main designs (or styles) of coding. Certain languages require one of these coding styles. Others can use a combination of styles based on preference. I'll go over them briefly, but you should dive deeper into these topics in your studies. If these explanations don't make sense now, that's okay. They will make more sense when you learn them for real on your coding journey.
 
-### Debugging
+- **Object-oriented**: In this style of coding, all things are "objects". Objects are created by initializing a class. For example we could have an "Animal" class. We would use this "Animal" class to initialize an animal object. This might look like `tigger = Animal()`. Here, my cat "tigger" is an "object" that came from the `Animal` class. He might have "attributes" associated with him like `tigger.has_fur` which would be `true`. And he might have "methods" associated with him like `talk()` which might do something like print "meow" to the screen.
+- **Functional**: In this style of coding, there are usually no classes or objects. Instead, data is passed from function to function until a goal is achieved.
+- **Procedural**: In this style of programming, the code is written and run top-to-bottom without including functions or classes. This is a more primitive coding style, but it can still be useful, especially in very small scripts.
 
-### Deploying to production
+### Advanced topics
+
+Here are a few advanced topics that you will probably want to learn about on your coding journey, along with a very brief description of them. You might not need to understand *all* of these topics on a deep level, but you should at least understand all of them at surface-level, and some you might choose to deep-dive into.
+
+- **Recursion**: These are instances where functions call themselves
+- **Pointers**: These are things that "point" to the place in your computer's physical memory space where a variable or object from your code resides.
+- **Memory management**: How do you handle your the memory your code uses. Some languages do this for you, others make you do it yourself.
+- **Asynchronous code**: This is code that does more than one thing at the same time (sort of).
+- **Cybersecurity**: How to write safe and secure code.
+
+### Peripheral topics
+
+There are peripheral topics that are important to learn based on your area of coding you want to go into. Here are some topics you might want to have a firm understanding of early on in your coding journey.
+
+- **How binary works**: Learn how the binary system works and why it's so important to computer programming.
+- **IP Address assignment**: Learn what your computer's IP address is and how it gets assigned.
+- **how the internet works**: Learn what happens when you hit "send" on a web page form. Where does your data go, how does it get there, how does it a response back?
+
+### Source control (or version control)
+
+Let's say you're writing code for a website. When you write your your code, you save the files to your hard drive. Now let's say you make some changes to those files, adding in a new feature. You write your changes, and then save your files again *overwriting* those old files. But shoot, when we deploy the changes, the website is now broken. You want to go back to the previous version of the website where things were working, but you can't because you overwrote those old files. Now you have to spend a bunch of time trying to figure out how things were when your website worked, all the while your website continues to be offline. This is a problem.
+
+One solution is to save a different file for each change. Maybe we have `my_website_1` and the next change you make `my_website_2`. That way if `my_website_2` breaks the website, we can fall back to `my_website_1`. But now we are accumulating a bunch of files that we need to keep track of. And let's say someone else takes the code because they want to make changes as well. But their changes conflict with your changes. Now who's `my_website` file do we use? This system becomes a mess very quickly.
+
+Source control (also called version control) solves this problem. There are a few source control systems, but the main one used today is called "git". How does it work? Basically, code gets stored in a central "repository". When someone wants to make changes, they pull that code down to their own system. They make their changes locally, and then they push their local changes up to the central "repository". The updates that were pushed up to the central "repository" become the version that is used. That repository (and a repository on your local system) also keep track of the history of all the changes that have been made to it since it was created, making it easy to go back to a previous version. Also, if multiple people are working on the same code, git has mechanism for merging together two sets of code that have both made changes.
+
+Version control will be a super important tool in your tool belt as a developer. I recommend learning the basics of how to use git very early in your coding journey. Git can be complicated for edge use cases, but the basics are really simple to learn. Then store all of your code in the cloud in a git repository. The main, cloud git repository is called [GitHub](https://github.com/){: target="_blank", rel="noopener noreferrer" }. Make yourself a GitHub account and start pushing all the code you work on up to repositories associated with your GitHub account. You can choose to make those repositories public or private. The added benefit of having all your code in GitHub, is that later on, when you want to share your code with others (say a potential employer), you can just point them to your GitHub account to look at all your cool projects. For reference to what that looks like, [check out *my* GitHub account](https://github.com/VerdantFox){: target="_blank", rel="noopener noreferrer" } where you can see a bunch of code that I've written and stored in public GitHub repositories. [I even store these blog posts in a public repository.](https://github.com/VerdantFox/blog_posts){: target="_blank", rel="noopener noreferrer" }
+
+### (Automated) Testing
+
+As you write your code, you're going to want to test it. The first type of testing you will learn (out of necessity) is manual testing. It works like this: run your code and observe the output. Did the test do what you wanted it to do? If not, tweak it. Then repeat. Manual testing will always be an important step in your coding process. *Automated* testing is when you write a test file that runs your code and then checks the results *for you* to make sure the code is doing what you expect it to do.
+
+Why are automated tests important?
+
+1. Once they are in place, automated tests reduce your workload *a lot*. There are so many things to check when running your code. You are going to want to check how your code runs with a bunch of different inputs, and edge cases. If you are only testing manually, *first* you have to remember all those inputs and edge cases, *then* you have to input them by hand, and  *then* visually observe that the results are as you expect. Ultimately it is much faster to write those tests once, so you don't have to re-do that work over-and-over.
+2. Your code changes in one area might have unintended consequences for other parts of your code base. The tests that you wrote for one part of the code base will quickly uncover bugs from changes made elsewhere, even if you forget to manually test that other part of your code base.
+3. Testable code is clean code. Writing tests will force you to write your code in a way that you can easily test it. This usually means that you write code that is broken up into smaller pieces that is easier to read and maintain.
+
+Learning to write automated tests is an important skill in modern coding. It will make your code so much more reliable, and it will make changing your code later so much faster because you can rely on your automated tests to catch your bugs. And you know what? I personally know of a lot of projects that don't have any automated tests. That means that by knowing this valuable skill yourself, you will have an edge over your competitors that don't have this skill when seeking a job.
+
+### Database basics
+
+Most programming applications have to store data. They might store data about their users, their product, and a whole host of other things. The most efficient way to store and retrieve most types of data is in a database. There are two broad categories of databases you might want to know about: *relational databases* and *non-relational databases*.
+
+#### Relational Database
+
+Relational databases are the most popular type of database. They consist of **tables** that store data in a **tabular format**. This basically means that the data is stored in **rows** and **columns**, much like an Excel or Google Sheets' spreadsheet. Tables with related data can be linked to one another. For example a `products` table could be linked to a `reviews` table if the `reviews` table has a column `product_id` with an id that matched the `id` column of a specific product (row) in the `products` table. This relationship between tables is the **relational** part of **relational databases**.
+
+Coders can interact with these **relational databases** with a language called SQL, or Structured Query Language. SQL allows coders to **query** the database to retrieve rows from those tables or to add new rows, update existing rows, or delete rows. Because SQL is the main way to interact with **relational databases**, they are sometimes refereed to as **SQL databases**.  And because these databases are so popular, the ability to write SQL code is a very valuable skill to pick up. You should learn the basics of how **relational databases** work and how to read and write some basic SQL code. You don't need to be an expert in SQL or relational databases to use the databases or to get hired, but it is important to at least learn the basics.
+
+#### Non-relational databases
+
+Some data doesn't easily fit into rows and columns in neat tables. This type of data can still be stored in a database, but it might be stored in a **non-relational database**. Side-note, because SQL is so ubiquitous when talking about databases, **non-relational databases** are also often referred to as **NoSQL databases**. Instead of storing data in a **table** structure, data is stored in a **document** structure. One of the most popular **non-relational databases** out there is **MongoDB**. It stores data in **documents** that look like JavaScript objects. If that's gibberish to you right now, that's okay. The documents can be queried with a language specific to MongoDB. Another fun fact, this website stores its data in a MongoDB database, including the blog post you are reading now. 😉
+
+Because **non-relational** databases are so much less popular overall than **relational databases**, I rank learning them as a nice skill to have but unnecessary. Look into **non-relational databases** if it is a topic that interests you in your coding journey. Otherwise, just keep in mind that they exist and move on.
+
+### A framework or tech stack
+
+Every language has a set of tools that are bundled up nicely to make a given job easier and more efficient. These efficiency tool bundles are called frameworks (or sometimes libraries). A series of frameworks working together to make a problem easier to solve is called a tech stack. Let's take an example from web development. Both the front-end code (the code running in the users's browser) and the back-end code (the code running on the web server) probably uses a framework.
+
+The front end code is probably written in JavaScript. That JavaScript code might be using the [react](https://reactjs.org/) **framework** which has high level tools for creating and keeping track of front end components and the state of web page so you don't have to write those low-level complicated bits yourself. The back-end code might be written in Python and it might use the [django](https://www.djangoproject.com/) web **framework** that provides tools for accepting a web request, routing the requests to the relevant back-end code, and returning an appropriate response. And the website might store its data in a [Postgres](https://www.postgresql.org/) relational database. Together, the react front-end framework, the django back-end framework and the Postgres database could be considered the website's "tech stack".
+
+It is a good idea to pick a framework for your language to do what it is you want to do and learn it really well. Picking a framework is similar to picking a coding language. You'll want to keep in mind how popular frameworks are that you are considering and what they are good for. But also like picking a programming language, picking the "right" framework is not as important of a decision as you might think. Most popular frameworks have a great community, documentation and job opportunities associated with them. And once you understand one framework really well, it becomes easy to pick up another one.
+
+So pick a framework for your job and pick out all the other tools and frameworks you need to make up your "tech stack" and learn each framework and tool in the tech stack really well. Use that tech stack to make a large ["capstone project"](#build-a-capstone-project) (more on capstone projects later). This will be a key component in your quest to get hired.
+
+### Packaging and deploying to production
+
+When you are learning and writing code for a major skill focus area like web development or android/iOS development or game development, you will be writing that code in a development environment. You'll have your code files showing. You'll have your language and helper dependencies all installed on your machine. You'll probably type a command in your terminal to run your code *on your machine*. But now you need to give that code or product to someone else. You aren't going to tell your product users to "install python, then install these dependency packages, then open a terminal and type `run my_app.py`". You're going to want to give them or point them to the finished product. For a game that might mean giving them an executable file so that all they have to do is double-click that file and your game starts up. For a website that will mean, hosting your website on a server so that they can reach it by typing in your website's URL.
+
+You are going to need to learn *how* to package up your code and deploy that code to an environment for your users to consume. This is an important skill to learn and one that potential employers will surely ask you about.
 
 ### Collaboration methodologies
 
+Since you chose the **self-education** learning path you might be mostly going it alone. But once you get hired on at a job, you will working as a team. Give yourself a head start (and sound more knowledgeable to your employers) by learning about some of the collaboration methodologies. I'm going to list the most important ones below. Somewhere along your learning journey, google these methodologies and read through some wikipedia articles for how they work.
+
+- **waterfall**
+- **agile**
+- **kanban**
+- **scrum**
+
+## Learn how to debug and how to handle failure
+
+Inevitably, the code you write is going to fail to do what you want it to do. This will happen **a lot**. Like **A LOT, A LOT**. These code failures are called "bugs". The code might just give you an error or it might run successfully, but not output what you expected. In either case, you are going to want to get good at **debugging**. This is one skill that just gets easier the more experience you have. Early on in your coding journey, you are going to run into a code bug that you cannot figure out the answer to **for hours**. This is okay, do not let the bug defeat you! (that's what the bugs want 🐛😆) The answer might be as simple as a missing semi-colon. And there is no better feeling in the world than finally solving that pesky bug that has been plaguing you for hours. 🎉 There are things you can do to help you push through the debugging process including the following.
+
+- **google it**: Googling is possibly the most important skill to learn well as a programmer. Often times you can solve your problem by simply typing it into google and click the first link in the results. If you have a confusing error returned to you, try copy/pasting that error into google. You might find your answer quickly.
+- **rubber ducking**: Explain the code out loud to an inanimate object (such as a rubber duck). Oftentimes explaining the code out loud will lead you to find the source of the problem.
+- **ask for help**: If you have a friend or mentor or study buddy you can show the problem to, great! Oftentimes, someone else coming at the problem from another perspective can figure it out quickly. If you don't have someone you can show the code to, try posting your code with an explanation of the problem to [stack overflow](https://stackoverflow.com/). Perhaps a stranger can help.
+- **write print statements**: One helpful tool when debugging is to add print or log statements near where the error occurred. You might print out nearby variables to see if they contain the values you expect them to.
+- **use a debugger**: Learning to use a "debugger" to can be very helpful in solving tricky bugs. It is a tool that you can use to step through your code slowly, line-by-line and see information about all the surrounding variables on any given line.
+
+## Get good at googling
+
+I briefly touched on this when discussing debugging above, but Google (or your search engine of choice) is going to be your best friend as a developer. I search for things **constantly** every single day.
+
+- I have an error in my code? "Copy/paste" the error into google because someone else has probably also had that same problem.
+- I don't have an error, but my code isn't doing what I expect it to do? Type that problem into google. Again, someone else has probably had a similar problem and you can quickly find a solution.
+- I don't know how to use a library I need for my project? Google that library and read the documentation on how to use it.
+- I don't even know what library I might need to solve my problem? Google the problem I'm trying to solve and there's probably a good suggestion for which library to use.
+- I forgot how to structure the syntax of some code component? Google that problem. There will be a short tutorial answering your question.
+- I want to figure out what is the best web framework for my use case? Google that exact question and read blog posts comparing the top web frameworks.
+
+Learning how to google is an invaluable skill. With practice you'll get better at framing your questions to get the results you want. Any problem or question you have, first reach to google because the answer is probably in the first few links. Only once you have exhausted your google searching should you reach out for help by posting your question in a forum like "stack overflow" or in your social media group.
+
+## Find a mentor
+
+This one is not a "must" in your coding journey, but it is definitely helpful. Find someone to talk to who has already done all this and made it out the other side. It can be very nice to get the perspective of someone in the field, especially if they are in the area of software development that you want to get into (ie web development, phone app development, game development, etc.). Show them your "learning game plan" and see if they have any tips for additions or alterations. Set up regular meetings to check in with them to keep yourself on track. This has the added benefit of giving yourself some accountability. "I don't want to disappoint my mentor by not putting in the work." And finally, ask them for help if you are ever really stuck on a problem.
+
 ## Immerse yourself in the jargon
 
-## learn a framework or stack
+There is a lot of jargon in the software world. 
 
 ## Build a capstone project
 
-### Start career networking
+## Write a blog
 
-### An example curriculum (what I did)
+## Start career networking
+
+## An example curriculum (what I did)
 
 
 ## Career networking
