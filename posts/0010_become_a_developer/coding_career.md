@@ -231,6 +231,8 @@ Either in the same "Game plan" document, or in a daily schedule, break down your
 
 ### An example curriculum (what I did)
 
+
+
 ## Code at least 15 minutes every day
 
 **Try to code or learn about coding for at least 15 minutes *every day***. More is better but at least 15 minutes a day is *so* valuable. Obviously, it's not possible *every single day*, things happen. But it is possible *almost* every day. **Prioritize your commitment to code** like you would brushing your teeth or cooking dinner. You are building unstoppable learning momentum. If you are not consistent in learning every day (or at least most days), with no one to hold you accountable, it can get very easy fall off course and lose motivation. And then it can be hard to get that learning momentum back. Stay the course, stick to your learning game plan (although keep it flexible), and you'll be amazed how much you can learn in a short amount of time, even with a small amount of progress every day.
@@ -354,6 +356,25 @@ Since you chose the **self-education** learning path you might be mostly going i
 - **kanban**
 - **scrum**
 
+
+## Self-education resources
+
+Here are a few lists of the types of resources I think you should be using while learning to code along with some specific resources I personally used and enjoyed. Note that since I am a python developer in the web space, these resources tend to skew in that direction, but I'll try to talk about how to find resources that fit your goals as well if you aren't looking in that direction.
+
+### Courses
+
+### Books
+
+### Podcasts
+
+### YouTubers
+
+### Blogs
+
+### Documentation
+
+### Other people's code
+
 ## Learn how to debug and how to handle failure
 
 Inevitably, the code you write is going to fail to do what you want it to do. This will happen **a lot**. Like **A LOT, A LOT**. These code failures are called "bugs". The code might just give you an error or it might run successfully, but not output what you expected. In either case, you are going to want to get good at **debugging**. This is one skill that just gets easier the more experience you have. Early on in your coding journey, you are going to run into a code bug that you cannot figure out the answer to **for hours**. This is okay, do not let the bug defeat you! (that's what the bugs want 🐛😆) The answer might be as simple as a missing semi-colon. And there is no better feeling in the world than finally solving that pesky bug that has been plaguing you for hours. 🎉 There are things you can do to help you push through the debugging process including the following.
@@ -393,6 +414,14 @@ A capstone project as far as I'm concerned is just a large project that you buil
 
 One of my first capstone projects a video game called [Twisted Towers](https://verdantfox.com/games/twisted-towers). I also built a stock tracking website (that I sadly don't have a page for anymore) and a couple other smaller applications. I eventually I packaged all these projects up into my portfolio website to share with potential employers.
 
+## Write code for your current job
+
+Whatever your current job is, it uses technology. Look for opportunities to use your new coding skills in your current job. Is there a task you do on the computer that could be automated? Could you write code that analyzes some aspect of your job? If you can't think of any useful project you could create for your work, maybe your boss or co-workers have ideas. Ask around. Writing code for your current job is a great opportunity for three reasons.
+
+1. It is another opportunity to learn. Solving real world problems with code is an awesome way to learn new skills and to get better at skills you've already learned.
+2. It will improve your current job. Solving a problem at work with code could save you, your co-workers or your boss tons of time. It'll either make your life easier or it'll make someone else very thankful for you.
+3. It looks really good on your resume. First, it's another project you can add to your resume. The more projects, the better. Second, **it allows you to say that you coded for your job.** It might sound like nothing because you solved a small problem, but it means your job listed on your resume went from completely unrelated to your new career to highly relevant to your new career. Potential employers will take stock and they will appreciate your initiative.
+
 ## Create a profile website
 
 You learned the things and used your new knowledge to made a couple cool projects. Now you need to show them off. One thing you can do is link to those projects, hosted on GitHub, on your resume. Even better though would be to create a portfolio website. A portfolio website is a website that you will link to from your resume. In it you'll want to talk about yourself. What coding language or languages are you focusing on? What skills, frameworks and tech stacks have you learned? What projects have you built? What open-source projects have you contributed to?
@@ -420,11 +449,16 @@ Don't worry about how much traffic your blog gets. You're building it for *you*.
 
 ## Make a LinkedIn account
 
-
+Software development is a field where [LinkedIn](https://www.linkedin.com/){: target="_blank", rel="noopener noreferrer" } can play a large role in career networking and hiring. Potential employers might want to look at your LinkedIn profile. Recruiters might scout your profile and might work with you to get hired on at companies. Your LinkedIn profile can be an opportunity to go into more depth about yourself, your skills, and your projects than your resume. If you don't already have one, create a LinkedIn for yourself. Add your work history, projects you've worked on, and coding skills, technologies and frameworks you've learned to your LinkedIn profile. Update that profile as you learn more things. Share your LinkedIn page with other people as you career network and add theirs in turn. And don't forget to add a link to your LinkedIn profile in your resume.
 
 ## Prepare a resume
 
+Your resume is very important for getting hired. You need to write a resume that is an asset in your job hunt rather than a liability. Take your time to read articles on [how to write an effective resume for a career change](https://online.wharton.upenn.edu/blog/how-to-write-a-career-change-resume/){: target="_blank", rel="noopener noreferrer" }. It might even be a good idea to hire a resume writer to help you craft one that is gold. In any case, thoroughly proofread and have someone else read over your resume as well. Here are some tips for writing a resume to land a job as a first time junior developer.
 
+- **Summarize your skills**: List out the skills that you've learned during your studies. Add bullet points talking up *how* you've used those skills in projects.
+- **Highlight your education**: This one can go hand-in-hand with the skills. List some of the more notable courses you took and add any certificates you achieved along the way.
+- **Highlight your projects**: List out those capstone projects you worked so hard on. Add details about what technologies you used to create them.
+- **Highlight relevant work experience**: Because you're changing fields, much of your work experience will not be relevant to software development. Be brief when discussing positions that don't relate to software development. If you did any coding for any of your jobs, highlight that coding over anything else you did in the job, even if it was a fraction of your work time. Also, talk about soft-skills that you used that are relevant to all jobs like leadership, delegation and crises management.
 
 ## Start career networking
 
@@ -439,13 +473,34 @@ Here are some great opportunities for networking:
 - **Talk with members of your hobby**: Do you play a sport? Do you dance? Are you a part of a book club? Do you play video games with a regular group? Any group setting like these is a great opportunity to network. This is actually how I got the interview that landed me my first job? I swing dance. I was talking to a friend in the dance community who is a software engineer. We got to talking about his coding journey and my code-learning journey. He told me a department next to his was looking for a junior developer. He handed my resume to his colleague and that lead to an interview and my first dev job.
 - **Talk with your friends and family**: Family and friends are another great place to network. Tell them about your dreams and what you're doing to achieve them. They might be able to help you out along the way.
 
-## Interviewing skills
+## Practice interviewing
 
-## Self-education resources
+You are likely to have much fewer interview opportunities for that first developer role. Therefore, it is important to really make every interview opportunity you do get, count. Interviews for software development positions can be long, multi-step processes. A typical interview process might go something like this:
 
-## Sources for writing this blog article
+1. **An initial interview with a hiring manager or team lead**: They'll probably want to learn more about your background and they'll explain what their company is all about. They decide if you make it to the follow-up interviews.
+2. **A homework problem**: In my last round of interviewing maybe 1/3 of interviewers gave a homework problem. They'll give a prompt asking you to build a solution to a hypothetical problem. You'll have a couple days to work on it, and then to give them access to the GitHub repository where your solution resides. Generally the problem is relatively small. Spend a few hours over a couple days crafting a well-designed, clean solution. Make sure to clearly document how to use your project and include automated tests with the solution.
+3. **Technical interviews**: You will face anywhere from 1-3 technical interviews. Here are some potential technical interviews to look out for.
+      - If you did a homework problem, one interview will probably be talking about your problem solution.
+      - One interview might be a live-coding interview where, like the homework problem, you will be given a prompt and asked to create a solution in real time with the interviewer. Maybe 2/3 of companies I applied for had some form of live-coding interview.
+      - One interview might be where the interviewers ask you general questions about computer science, your language of choice, and your tech stack. Almost all companies I interviewed with had at least some questions about my general coding/computer science knowledge.
+4. **Final interview**: Some (not all) companies will do a final interview where you will get a chance to talk to senior management or event the CEO or CTO of the company (if the company is on the smaller side).
 
+Interview times generally last between 1/2 hour to an hour, but sometimes they can be scheduled back-to-back leading to multiple hours of consecutive interviews with different members of the team. At the end of all interviews (even the technical interviews, you'll get a chance to ask the interviewers questions. I suggest you do so. You want to make sure they are a good fit for you as much as you are a good fit for them. How can you prepare for these interviews?
 
+- **Ready your elevator pitch**: Know ahead of time how to describe yourself in a concise way that highlights all the good stuff you've been learning and working on. Write down that elevator pitch and practice it in front of a mirror and in front of your friends or family.
+- **Do practice problems**: There are several resources, such as [freeCodeCamp](https://www.freecodecamp.org/learn/coding-interview-prep/){: target="_blank", rel="noopener noreferrer" } that provide practice problems that simulate potential coding interview problems. Time yourself while solving some of these problem and then look at example answers. This will give you a sense of the types of problems you might be asked to solve. Practice like this will take away some of your nerves and help you prioritize what to work on to solve these types of questions quickly.
+- **Read up on coding interviews strategy and popular questions**: There are a lot of other articles that give advice about preparing for coding interviews and that give popular interview questions. Here are a couple that I liked while preparing this section:
+    - [Coding interview prep (relax, start here)](https://igotanoffer.com/blogs/tech/coding-interview-prep){: target="_blank", rel="noopener noreferrer" }
+    - [100+ Coding Interview Questions for Programmers and Software Engineers in 2022](https://codeburst.io/100-coding-interview-questions-for-programmers-b1cf74885fb7){: target="_blank", rel="noopener noreferrer" }
+    - [Top 40 Coding Interview Questions You Should Know](https://www.simplilearn.com/coding-interview-questions-article){: target="_blank", rel="noopener noreferrer" }
+- **Write down your own questions**: Remember, you're going to want to interview your interviewers. Write down a few questions ahead of time that are important to you. Here are some examples you could use:
+    - What technologies does your company use?
+    - What type of work would I be doing on the project I'd be assigned to?
+    - What role will I have on the team?
+    - What's your company's culture look like?
+    - How do you feel about the work-life balance at this company?
+    - (If it is a startup) What kind of funding does the company have? Will it be around in 3 years?
+    - What is the onboarding process like? What are my next steps in the interview process?
 
 ## Conclusions
 
