@@ -4,7 +4,7 @@ tags: python, career
 
 ## Introduction
 
-I got my degree in Cellular Biology in 2012. For five years thereafter, I worked in research labs studying diseases like Cancer, HIV and diabetes. My co-workers were awesome. I was doing cool, cutting edge science. The pay was... not great, and the career advancement opportunities were similarly underwhelming. I was looking for a change to something more lucrative, with better opportunities for advancement. I had family and friends who were software developers. They told me it was an interesting career and it paid well. So I looked into it. How can I become a coder? 👨‍🔬➡👨‍💻
+I got my degree in Cellular Biology in 2012. For five years thereafter, I worked in research labs studying diseases like cancer, HIV and diabetes. My co-workers were awesome. I was doing cool, cutting edge science. The pay was... not great, and the career advancement opportunities were similarly underwhelming. I was looking for a change to something more lucrative, with better opportunities for advancement. I had family and friends who were software developers. They told me it was an interesting career and it paid well. So I looked into it. How can I become a coder? 👨‍🔬➡👨‍💻
 
 At the start of June, 2017 I was a lab technician at the University of Colorado, and I had no coding experience. A year later, in June of 2018, I started my first job as a full time software developer. And I've loved my new career choice ever since. In this article, I'll talk about *how* I made that career pivot, and I'll give you some ideas about how you could make a similar career pivot if it is something that interests you.
 
@@ -255,6 +255,10 @@ This is an example curriculum (or learning game plan) that approximately mirrors
 > - free - [while networking] Practice interviewing
 > - free - [while networking] Apply for programming jobs in the python space, a couple jobs every day
 
+Added up, this example learning game plan might take approximately 9 months to execute, leaving another 3 months for job applications to land a job by the end of the year. While applying for jobs, you would want to continue your learning path on whatever tools and projects interest you while continuing to aggressively career network and practice your interviewing skills.
+
+Next we'll talk about how to learn and how to accomplish the goals on your learning game plan.
+
 ## Code at least 15 minutes every day
 
 **Try to code or learn about coding for at least 15 minutes *every day***. More is better but at least 15 minutes a day is *so* valuable. Obviously, it's not possible *every single day*, things happen. But it is possible *almost* every day. **Prioritize your commitment to code** like you would brushing your teeth or cooking dinner. You are building unstoppable learning momentum. If you are not consistent in learning every day (or at least most days), with no one to hold you accountable, it can get very easy fall off course and lose motivation. And then it can be hard to get that learning momentum back. Stay the course, stick to your learning game plan (although keep it flexible), and you'll be amazed how much you can learn in a short amount of time, even with a small amount of progress every day.
@@ -409,18 +413,38 @@ Coding challenges are great for honing your coding skills through practice with 
 
 ### Podcasts
 
-Podcasts are an awesome way to learn big-picture coding concepts and what is happening in the world of coding. I recommend listening to coding podcasts in your spare time, on your commute, when your doing chores or exercising or whenever you might listen to podcasts or audiobooks in now. Here are some coding podcasts that I listen to or have listend to in the past:
+Podcasts are an awesome way to learn big-picture coding concepts and what is happening in the world of coding. I recommend listening to coding podcasts in your spare time, on your commute, when your doing chores or exercising or whenever you might listen to podcasts or audiobooks in now. Here are some coding podcasts that I listen to or have listened to in the past. There is a definite slant towards python podcasts since that's my favorite language. To find a coding podcast specific to your language of choice, try typing that language into the search bar of your podcast player app:
 
-- **Code Newbie**: Interview-style podcast where guests explain big-picture coding concepts and how they use them every day for their job.
-- **Junior Developer Toolbox**: This one stopped airing in 2019. A few junioor HEEEEEEEEEEEEEERRRRRRRRREEEEEEEEEEe
+#### General tech/coding podcasts
 
-### YouTubers
+- **Code Newbie**: This is a ~45 min per episode interview-style podcast where guests explain big-picture coding concepts and how they use them every day for their job.
+- **Junior Developer Toolbox**: This ~45 min per episode podcast stopped airing in 2019, but its worth listening to older episodes. The premise is a few junior developers talk about their experience in their new roles and what it took to get there.
+- **Command Line Heros**: This ~30 min per episode podcast mostly gives a history of computers and technology. How Windows, Mac and Linux operating systems arose, the history of various programming languages, etc. It has a really high production value, and I especially enjoyed the OS wars episodes. You might not learn much about coding, but knowing the history can be helpful for context.
+- **Compiler**: This ~30 min per episode podcast, by RedHat, the same company that made the "Command Line Heros" podcast asks and tries to answer interesting questions about the tech industry.
+- **IRL**: This ~30 min per episode podcast by Mozilla (the company behind the Firefox browser) talks about how tech affects us in the real world
+
+#### Language specific coding podcasts
+
+- **Python Bytes**: This ~30 min per episode python podcast offers the top 5 or so news items related to python each week. It's fun and digestible, possibly my favorite coding podcast.
+- **Talk Python to Me**: This ~60 min per episode interview-style python podcast talks through some python framework, feature, package or major news item with a guest each week.
+- **Real Python**: This ~60 min per episode python podcast features a combination of interviews, news and just general information about the language.
+- **Syntax Web Development**: This 20-60 min podcast (length varies wildly) talks about web development, mostly focused on frontend stuff with JavaScript, HTML and CSS. It's pretty fun and informative.
+
+### YouTube Videos
+
+There are a lot of good YouTube videos out there to learn coding from. They range from concept explanations to multi-video tutorials and everything in between. If you need to learn a concept, YouTube is not a bad place to look. One YouTuber I really like in the python coding space has a channel called [sentdex](https://www.youtube.com/c/sentdex/videos).
 
 ### Blogs
 
+There are a ton of coding blogs out there. Like this one. 😜 Many of them offer great explanations, tutorials, awesome lists, you name it. I don't really follow any specific blog for code-learning. However, when I want to learn a new subject, I'll usually type it into google and a good blog article is probably the first or second hit.
+
 ### Documentation
 
+If you want to learn a language or framework, it's often very useful to know how to read the documentation for that subject matter. Learning how to effectively read documentation is a skill you'll want to develop. I don't necessarily recommend going to the documentation as your *introduction* to a new subject most of the time -- although some packages and frameworks have documentation that include detailed tutorials which can be a great introduction to the subject. But you're going to need to be able to look at documentation to look up things like "what methods are available to a class I want to use?" and "what do the input arguments and output returns to this function look like?".
+
 ### Other people's code
+
+Finally, a great way to learn how to *write* good code is to *read* good code. This might start out as reading good code in a tutorial. But it might be helpful at times to look up projects on GitHub that use the package or framework you're interested in and see how other people write code with that package or framework. This way you can learn best practices that you can emulate in your *own* code.
 
 ## Learn how to debug and how to handle failure
 
@@ -551,3 +575,12 @@ Interview times generally last between 1/2 hour to an hour, but sometimes they c
 
 ## Conclusions
 
+Did you actually read all that? 😯 If so, give yourself a pat on the back. 🎉 Taking the time to read through this article shows your dedication to taking charge of your career.
+
+In the article we talked about [why you might want to become a software developer](#why-become-a-software-developer). Then we talked about the [three main paths](#the-three-main-paths-to-becoming-a-software-developer) you can take to become a software developer. All are great options, but the rest of the article talked about how to succeed in the [self-education path](#self-education).
+
+We talked about [choosing your first programming language](#choosing-a-language), [getting started with coding](#getting-started) and [making a learning game plan](#make-yourself-a-learning-game-plan). We talked about [specific subjects you should make sure to learn](#learn-these-important-topics) and [the resources that can help you learn them](#self-education-resources). We talked about the [importance of learning every day](#code-at-least-15-minutes-every-day) and [learning by actually *writing* code yourself](#learn-by-doing). We talked about some things you should really consider adding to your learning journey like [finding a mentor](#find-a-mentor), [immersing yourself in the jargon](#immerse-yourself-in-the-jargon), [building a capstone project](#build-a-capstone-project-or-a-couple-of-them) (or 2 or 3), [writing code for your current job](#write-code-for-your-current-job), and [creating a profile website](#create-a-profile-website).
+
+Finally we talked about the end game: preparing your [resume](#prepare-a-resume) and [LinkedIn profile](#make-a-linkedin-account), [career networking](#start-career-networking) and [interview practice](#practice-interviewing). Ultimately, with a lot of hard work and a little luck, all of these topics should be enough to take you from no coding experience to landing that first junior developer job.
+
+With this detailed guide, you now have the tools at your disposal to learn to code on your own and land your first junior developer role, all without a formal education or bootcamp. Good luck on your journey. I'd love to hear how it goes and your progress along the way.
