@@ -219,7 +219,7 @@ Below I'll list some considerations you should consider as you design a game pla
 
 ### Keep it fluid
 
-At first, try writing a very broad outline of the step you need to take to get from where you are now, to where you want to be (presumably hired as a junior developer). Write these high-level goals in a google doc or spreadsheet. It doesn't need to be very detailed at first. Then as you move forward fill in the details. The start of that game plan should be more detailed than the end. As you learn more, keep updating the plan. At first, your not going to know what all you need to learn to achieve your end goals. As you learn new concepts, check back on your game plan and update it to fit your new mental model.
+At first, try writing a very broad outline of the step you need to take to get from where you are now, to where you want to be (presumably hired as a junior developer). Write these high-level goals in a google doc or spreadsheet. When writing your learning gamelan, you aren't going to know what you don't know, especially at first. Make the plan **specific** for goals you want to accomplish in the near future and **vague** for goals you want to accomplish in the distant future. Then as you move forward fill in the details. As you learn more, keep updating the plan. As you learn new concepts, check back on your game plan and update it to fit your new mental model.
 
 ### Have achievable, measurable goals and timelines
 
@@ -231,7 +231,29 @@ Either in the same "Game plan" document, or in a daily schedule, break down your
 
 ### An example curriculum (what I did)
 
+This is an example curriculum (or learning game plan) that approximately mirrors what I did while learning to code. I made some changes to make the plan fit more closely with what I would have done in retrospect, knowing what I know now. I also largely made up the timeline. All of the specific resources used in this plan are talked about in detail in the section "self-education resources". Some of these timelines might overlap.
 
+> - free - Take course [CS50X from Edx](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x){: target="_blank", rel="noopener noreferrer" } to get CS50 fundamentals down. - 12 weeks
+> - free - [while taking CS50X] Start listening to programming podcasts in spare time (during commute, while doing chores or exercising, etc.) - forever
+> - ~$25 - Take Udemy course [Learn Python Programming Masterclass](https://www.udemy.com/course/python-the-complete-python-developer-course/){: target="_blank", rel="noopener noreferrer" } to learn Python in detail - 4 weeks
+> - ~$10 - [while learning python] Read the book [*The Complete Software Developer's Career Guide*](https://simpleprogrammer.com/products/careerguide/){: target="_blank", rel="noopener noreferrer" } by John Sonmez to learn more about becoming a developer. - 4 weeks
+> - free - [while learning python] [Start attending monthly python coding meetup group meetings](https://www.meetup.com/){: target="_blank", rel="noopener noreferrer" }. - 1x every month
+> - free - Learn [pygame by YouTube with Sentdex tutorial](https://www.youtube.com/playlist?list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO){: target="_blank", rel="noopener noreferrer" } to learn how to make a python video game. - 1 week
+> - free - Write first capstone project, a video game in PyGame with Python. This project helps improve those Python fundamentals. - 4 weeks
+> - ~$24 - [while writing first capstone project] Read [*Effective python*](https://effectivepython.com/){: target="_blank", rel="noopener noreferrer" } by Brett Slatkin to hammer down python skills and pythonic thinking - 4 weeks
+> - free - Start writing a coding blog, first article = "how I wrote a game in Pygame with Python" - 2 week (\*I did not start a blog until later in my career but wish I had started one about here)
+> - free - start doing coding challenges at [HackerRank](https://www.hackerrank.com/){: target="_blank", rel="noopener noreferrer" } in spare time  - forever
+> - ~$18 - Take Udemy course [Python for Data Science and Machine Learning Bootcamp](https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp){: target="_blank", rel="noopener noreferrer" } to learn data science techniques with python - 2 weeks
+> - free - Find a project at work to use python and data science (I found an opportunity to use my coding to write an application that compared DNA sequences in Excel sheets for the lab I was working in) - 2 weeks
+> - ~$18 - Take Udemy course [Python and Django Full Stack Web Developer Bootcamp](https://www.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/){: target="_blank", rel="noopener noreferrer" } to learn Python web development with the Django web framework. - 2 weeks
+> - free - Write a capstone project, a stock trading and personal finance application. This project improves web development skills - 4 weeks
+> - ~$29 - [while taking Django Udemy course and writing 2nd capstone project] Read the book [*Python Testing with pytest: Simple, Rapid, Effective, and Scalable*](https://pragprog.com/titles/bopytest2/python-testing-with-pytest-second-edition/){: target="_blank", rel="noopener noreferrer" } by Brian Okken to learn how to do automated testing with Python and pytest - 4 weeks
+> - free - write another blog article "How to write a Django web app" - 2 weeks
+> - free - Write portfolio web app in Django - Use the skills we learned with Django to write an awesome portfolio web app to show potential employers. Include in it our 2 capstone projects and maybe a couple smaller projects we made while learning various programming skills. - 4 weeks
+> - free - [while writing portfolio web app] Start writing resume and LinkedIn portfolio
+> - free - Bump up career networking. Tell everyone about the awesome stuff I've been learning and my projects and how I'm looking for a job - forever
+> - free - [while networking] Practice interviewing
+> - free - [while networking] Apply for programming jobs in the python space, a couple jobs every day
 
 ## Code at least 15 minutes every day
 
@@ -356,16 +378,41 @@ Since you chose the **self-education** learning path you might be mostly going i
 - **kanban**
 - **scrum**
 
-
 ## Self-education resources
 
 Here are a few lists of the types of resources I think you should be using while learning to code along with some specific resources I personally used and enjoyed. Note that since I am a python developer in the web space, these resources tend to skew in that direction, but I'll try to talk about how to find resources that fit your goals as well if you aren't looking in that direction.
 
 ### Courses
 
+Online courses will probably be one of the most important resources for you while learning to code. Check out [this blog post that suggests some of the best websites for learning to code](https://mikkegoes.com/best-websites-to-learn-coding/) with reasons why the author likes each of them. I tend to agree with these choices. While learning, I took courses from a variety of websites including [Udemy](https://www.udemy.com/), [Edx](https://www.edx.org/), [freeCodeCamp](https://www.freecodecamp.org/), and [Codecademy](https://www.codecademy.com/learn), but there are a bunch of great websites out there with awesome courses to offer. You can find a course for any skill you want to learn. Courses vary wildly in time commitments and in quality. When selecting a course, the most important things I look at are "is the course highly rated" and "is it popular"? If the answer to both of those questions is "Yes!" then it's probably a good course.
+
+Here are a couple courses I took and why I liked them. Except for the first one, they tend to focus on my education path of python and web development. You'll notice I have a preference for the Udemy learning platform. Mostly that's because it's what I found and got comfortable with since it worked well for me. Feel free to try a few different platforms to find what works for you.
+
+- [**CS50X from Edx**](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x){: target="_blank", rel="noopener noreferrer" }: this course is Harvard University's "Introduction to Computer Science" course available for free on the platform Edx. It has been taught by professor David J. Malan for something like 15 years now. He does an amazing job teaching fundamental computer science topics in a way that is exciting and easy to understand. There are weekly homework assignments that are *very hard* for introductory programmers, but they are all graded by automatic tests and real reviewers. The homework assignments make the learning stick. And there is a great, robust [online community for the class on Facebook](https://www.facebook.com/groups/cs50).
+- [**Learn Python Programming Masterclass**](https://www.udemy.com/course/python-the-complete-python-developer-course/){: target="_blank", rel="noopener noreferrer" }: This was an example of a great course, offered by Udemy. The instructor taught Python programming for absolute beginners in a super detailed, methodical, yet fun manner with lots of examples and assignments to work on. I've taken a couple other intro classes for "X" programming language on Udemy. I've really enjoyed all of them. Just make sure to actually write the code out yourself and do the suggested assignments because there's no graded assignments in a Udemy class.
+- [**Python for Data Science and Machine Learning Bootcamp**](https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp){: target="_blank", rel="noopener noreferrer" }: This was an awesome Udemy course for learning data science.
+- [**Python and Django Full Stack Web Developer Bootcamp**](https://www.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/){: target="_blank", rel="noopener noreferrer" }: This was a great course for learning python web development in the framework I was interested in. It was taught by the same instructor as the Data Science class above. Sometimes if you find a professor you like, you can take multiple courses from them. Popular instructors tend to teach a lot of different courses. He also taught a [Flask web framework course](https://www.udemy.com/course/python-and-flask-bootcamp-create-websites-using-flask){: target="_blank", rel="noopener noreferrer" } that I enjoyed.
+- **These [JavaScript](https://www.udemy.com/course/the-complete-javascript-course), [HTML, and CSS](https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3) courses on Udemy**: They were by the same author who was great at explaining concepts for complete beginners and offered great examples and coding challenges.
+
 ### Books
 
+If reading is an effective way to learn for you, you should always be reading a code-teaching book. I tend to find good code teaching books two ways: through recommendations and through reading reviews on blogs and from Amazon. Here are a few books I read while learning to code (and since being hired) that might be good for you. Again, these books have a slant toward my language of choice -- python. You'll have to go searching for the books that work for you.
+
+- **[*The Complete Software Developer's Career Guide*](https://simpleprogrammer.com/products/careerguide/){: target="_blank", rel="noopener noreferrer" } by John Sonmez**: This was a book I picked up early while learning to program and found quite valuable. This blog article is inspired in large part by this book. John does a great job describing what it takes to become a software developer and to self-educate to achieve that goal, and he has a lot more advice about growing your career *after* getting hired as well.
+- **[*Effective python*](https://effectivepython.com/){: target="_blank", rel="noopener noreferrer" }** by Brett Slatkin: This book taught python programming concepts for writing best-practice python code. He goes into detail about some concepts and ways of thinking that I didn't get from my introductory python masterclass.
+- **[*Python Testing with pytest: Simple, Rapid, Effective, and Scalable*](https://pragprog.com/titles/bopytest2/python-testing-with-pytest-second-edition/){: target="_blank", rel="noopener noreferrer" } by Brian Okken**: I wanted to learn how to get good at testing my python code. Brian does an awesome job teaching the most popular python testing framework, pytest.
+- **[*Automate the Boring Stuff with Python*](https://automatetheboringstuff.com/) by Al Sweigart**: This book does a great job teaching python to beginners with a series of practical example projects.
+
+### Code challenges
+
+Coding challenges are great for honing your coding skills through practice with small problems. Generally problems are ranked from easy to hard. A given problem will probably take a few minutes to solve. Solutions must pass a series of automated tests to succeed. I highly recommend sprinkling coding challenges into your learning. Spend maybe 10 minutes a day (or once every few days) on coding challenges and you'll see your coding and problem solving skill improve quickly. Sites that I've tried out and liked include [HackerRank](https://www.hackerrank.com/) and [Coderbyte](https://www.coderbyte.com/).
+
 ### Podcasts
+
+Podcasts are an awesome way to learn big-picture coding concepts and what is happening in the world of coding. I recommend listening to coding podcasts in your spare time, on your commute, when your doing chores or exercising or whenever you might listen to podcasts or audiobooks in now. Here are some coding podcasts that I listen to or have listend to in the past:
+
+- **Code Newbie**: Interview-style podcast where guests explain big-picture coding concepts and how they use them every day for their job.
+- **Junior Developer Toolbox**: This one stopped airing in 2019. A few junioor HEEEEEEEEEEEEEERRRRRRRRREEEEEEEEEEe
 
 ### YouTubers
 
