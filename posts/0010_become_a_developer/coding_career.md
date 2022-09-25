@@ -4,6 +4,8 @@ tags: Python, career
 
 ## Introduction
 
+INTRO_PIC
+
 I got my degree in Cellular Biology and worked in research labs for the next five years studying diseases like cancer, HIV, and diabetes. My co-workers were awesome. I was doing cool, cutting-edge science. The pay was not great, and the career advancement opportunities were similarly underwhelming. I was looking for a change to something more lucrative, with better opportunities for advancement. I heard coding might be a lucrative career change. So I looked into it. How can I become a coder? 👨‍🔬➡👨‍💻
 
 At the start of June 2017, I was a lab technician at the University of Colorado and had no coding experience. A year later, in June of 2018, I started my first job as a full-time software developer. And I've loved my new career choice ever since. In this article, I'll talk about *how* I made that career pivot, and I'll give you some ideas about how you could make a similar career pivot if it interests you.
@@ -35,6 +37,9 @@ Yes, at first, you *will* feel out of your depth. I certainly did when I started
 When I started writing this blog article, it was just going to be a list of resources I used in my self-education journey to land my first job as a software developer. But it ended up blowing up into a full-on guide for *anyone* to go from knowing nothing about coding to landing their first job as a junior software developer, and it became a lot more detailed in the process. So it is quite *long*, and many of the details won't make sense until you *start* your software development journey. But they still might be helpful to hear as a primer.
 
 So yes, reading the blog article top-to-bottom is okay, and you will get a lot of good stuff out of it. But some of it won't be very meaningful early on, so maybe bookmark it and come back later at different stages of your learning-to-code journey, as some terms and concepts make more sense in your learning context. 🤷‍♂️ Sound good? Let's dive in!
+
+LEARNING_PIC
+**[Image by pikisuperstar](https://www.freepik.com/free-vector/online-tutorials-concept_7915212.htm#query=learning&position=4&from_view=search) on Freepik**
 
 ## The three main paths to becoming a software developer
 
