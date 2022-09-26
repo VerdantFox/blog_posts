@@ -695,6 +695,10 @@ We talked about [choosing your first programming language](#choosing-a-language)
 
 Finally we talked about the end game: preparing your [resume](#prepare-a-resume) and [LinkedIn profile](#make-a-linkedin-account), [career networking](#start-career-networking) and [interview practice](#practice-interviewing). Ultimately, with a lot of hard work and a little luck, these topics should be enough to take you from no coding experience to landing that first junior developer job.
 
+CONCLUSIONS_PIC
+**Good luck in your journey!**
+**[Image by pch.vector](https://www.freepik.com/free-vector/business-leader-standing-arrow-holding-flag-flat-vector-illustration-cartoon-people-training-doing-business-plan-leadership-victory-challenge-concept_10606192.htm) on Freepik.**
+
 With this detailed guide, you now have the tools at your disposal to learn to code on your own and land your first junior developer role, all without a formal education or bootcamp. Good luck on your journey. I'd love to hear how it goes and your progress along the way.
 
 ## Attributions
