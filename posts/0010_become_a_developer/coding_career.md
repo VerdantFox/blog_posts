@@ -6,7 +6,7 @@ tags: Python, career
 
 01_INTRO_PIC
 
-I got my degree in Cellular Biology and worked in research labs for the next five years studying diseases like cancer, HIV, and diabetes. My co-workers were awesome. I was doing cool, cutting-edge science. The pay was not great, and the career advancement opportunities were similarly underwhelming. I was looking for a change to something more lucrative, with better opportunities for advancement. I heard coding might be a lucrative career change. So I looked into it. How can I become a coder? 👨‍🔬➡👨‍💻
+I got my degree in Cellular Biology and worked in research labs for the next five years studying diseases like cancer, HIV, and diabetes. My co-workers were awesome. I was doing cool, cutting-edge science. The pay was not great, and the career advancement opportunities were similarly underwhelming. I was looking for a change to something more lucrative, with better opportunities for advancement. I heard coding might be a fruitful career change. So I looked into it. How can I become a coder? 👨‍🔬➡👨‍💻
 
 At the start of June 2017, I was a lab technician at the University of Colorado and had no coding experience. A year later, in June of 2018, I started my first job as a full-time software developer. And I've loved my new career choice ever since. In this article, I'll talk about *how* I made that career pivot, and I'll give you some ideas about how you could make a similar career pivot if it interests you.
 
@@ -14,7 +14,7 @@ At the start of June 2017, I was a lab technician at the University of Colorado 
 
 As I said above, I wasn't always a software developer. I transitioned into the field from the sciences, another area I enjoyed. But moving to software development was the best decision I ever made, and I'll never look back. Here are some reasons *I* like software development as a career and why transitioning your career to software development *might* be a good move for you too.
 
-1. **The pay**: This one is obvious. We all work to make money, and software developers make pretty good money. Right now [glassdoor.com](https://www.glassdoor.com/member/home/index.htm) reports an average base salary for a "Junior Software Developer" in the United States at over $70,000. This initial salary expectation is consistent with my experience. And there is plenty of room for increasing your income as you gain experience. As you learn more, you become more valuable. After 4+ years in the field, my annual salary is 6-figures.
+1. **The pay**: This one is obvious. We all work to make money, and software developers make pretty good money. Right now [glassdoor.com](https://www.glassdoor.com/member/home/index.htm) reports an average base salary for an introductory "Junior Software Developer" in the United States at over $70,000. This initial salary expectation is consistent with my experience. And there is plenty of room for increasing your income as you gain experience. As you learn more, you become more valuable. After 4+ years in the field, my annual salary is six-figures.
 2. **Room for career growth**: This one goes alongside pay, but as you gain more experience as a software developer, you will have opportunities to advance in your career. These opportunities include becoming a senior software engineer, a manager, or other higher administrative roles.
 3. **In-demand job**: There are tons of companies looking for quality software developers. I won't lie: getting your foot in the door at that first job can be very difficult. But getting future software development jobs is not difficult once you're in and have proven yourself valuable.
 4. **It's fun**: I think coding is fun. It's like solving little logic puzzles. And all the while, you are building something awesome.
@@ -30,11 +30,11 @@ Yes, at first, you *will* feel out of your depth. I certainly did when I started
 
 02_CAN_I_CODE_PIC
 ***Anyone* with a passion for learning can learn to code.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/tiny-people-beautiful-flower-garden-inside-female-head-isolated-flat-illustration_11235915.htm) on Freepik**
+**[Image by pch.vector](https://www.freepik.com/free-vector/tiny-people-beautiful-flower-garden-inside-female-head-isolated-flat-illustration_11235915.htm) on Freepik.**
 
 ## Disclaimers
 
-**I am not selling anything with this blog post.** You'll find no advertisements on this website. Throughout the article, I list some resources (platforms, courses, books, podcasts). I am not sponsored by or associated with any of these products. I just think that they are quality resources that I have used. I am writing this blog post simply because it is the article that would have helped me out when I started my coding journey. The ideas here are not very original -- just repackaged and concentrated in one place from many sources (some of which I list at the end), including my personal experience and conversations with other developers.
+**I am not selling anything with this blog post.** You'll find no advertisements on this website. Throughout the article, I list some resources (platforms, courses, books, podcasts). I am not sponsored by or associated with any of these products. I just think that they are quality resources that I have used. I wrote this blog post simply because it is the article that would have helped me out when I started my coding journey. The ideas here are not very original—just repackaged and concentrated in one place from many sources, including my personal experience and conversations with other developers.
 
 **I understand I am incredibly privileged.** I'm a cis-hetero white man, have never faced poverty, and have a sound support system. I have all the advantages of that privilege, and that perspective likely skews this blog article. However, I genuinely believe that even if you don't enjoy all of those privileges, this blog article can still help you transition *your* career into software development. Consider these resources if you are looking for more support as a minority interested in coding.
 
@@ -53,6 +53,7 @@ So yes, reading the blog article top-to-bottom is okay, and you will get a lot o
 Before we talk about how I learned to code, let's talk about the options *anyone* has to learn to code. If you are looking to transition into software development, there are three main paths to achieve this goal. You could (1) **get a college computer science (CS) degree**, (2) **train with a coding bootcamp**, or (3) **self-educate**. All three routes have strong advantages and disadvantages. The best path for one person might not be the best path for someone else. We'll briefly go over some of those advantages and disadvantages. My sources for these paths include the [*Command Line Heros*](https://www.redhat.com/en/command-line-heroes) podcast episode, ["Becoming a Coder"](https://www.redhat.com/en/command-line-heroes/season-5/becoming-a-coder), the book [*The Complete Software Developer's Career Guide*](https://simpleprogrammer.com/products/careerguide/) by John Sonmez, the [stack overflow developer's survey](https://survey.stackoverflow.co/2022/#learning-to-code-learn-code), [bestcolleges.com](https://www.bestcolleges.com/bootcamps/payment/bootcamp-cost/#comparison), [thinkimpact.com](https://www.thinkimpact.com/average-college-tuition/), and my own experience and conversations I've had with other software developers. After this section, for the remainder of the article, we'll hone in on the route I took, **self-education**. If that's all you're interested in, feel free to skip to the next section, where I talk about *how* I went about self-educating.
 
 03_LEARNING_PIC
+**There are three main paths to becoming a software developer.**
 **[Image by pikisuperstar](https://www.freepik.com/free-vector/online-tutorials-concept_7915212.htm) on Freepik.**
 
 ### College computer science (CS) degree
@@ -105,7 +106,9 @@ Disadvantages:
 
 The [stack overflow developer's survey](https://survey.stackoverflow.co/2022/#learning-to-code-learn-code) was a little confusing when determining who is self-educated without the help of a CS degree or a bootcamp. Still, if we assume that the three categories don't significantly overlap, approximately 27% of developers learned via self-education. So what does it mean to be self-educated? The term is a little misleading. You're learning from *someone*. But generally, that learning comes from pre-recorded material outside a program's broader context. It means learning from sources like one-off online courses, books, blogs, podcasts, videos, games, challenges, documentation, other people's code, etc. There is no curriculum set for you, no teacher or TA to ask for help from, and no set of assignments. Because no one provides these things for you, if you choose this route, you'll need to get those things yourself. You'll need to design *your own* curriculum, set *your own* schedule and learning pace, *find* a network of people you can ask for help from (or muddy through yourself), and assign *yourself* topics to learn and projects to build.
 
-Who is this path good for? For one, it might be a good starting path for *anyone*. Because this path is free (or very cheap by comparison), it is very low risk. Anyone thinking about coding might at least *start* on the **self-education** path and see what it is all about. You can always *transition* to a college CS degree or bootcamp and be no worse off than when you started. It might also be a good fit for you if you need to keep a full-time job and want to learn coding on the side at times that fit *your* schedule and that match *your* learning pace. While learning on your own schedule at your own pace can be one of the most significant *advantages* of self-education for some, it can be a huge *disadvantage* for others. It means (1) you have to figure out a curriculum and schedule to get from where you are to where you want to be (not easy when you don't yet know what it is you need to learn), and (2) you have to keep *yourself* accountable to stick that curriculum and schedule. With no one holding you accountable, you might struggle to find the motivation to stay on course. That is to say, **self-education** might not be the best fit for you if you need extra help finding your learning path and staying accountable. It also might not be the best fit for you if you find yourself needing lots of extra help from an authority figure or if you don't like going it alone.
+Who is this path good for? For one, it might be a good starting path for *anyone*. Because this path is free (or very cheap by comparison), it is very low risk. Anyone thinking about coding might at least *start* on the **self-education** path and see what it is all about. You can always *transition* to a college CS degree or coding bootcamp and be no worse off than when you started. It might also be a good fit for you if you need to keep a full-time job and want to learn coding on the side at times that fit *your* schedule and that match *your* learning pace.
+
+While learning on your own schedule at your own pace can be one of the most significant *advantages* of self-education for some, it can be a huge *disadvantage* for others. It means (1) you have to figure out a curriculum and schedule to get from where you are to where you want to be (not easy when you don't yet know what it is you need to learn), and (2) you have to keep *yourself* accountable to stick that curriculum and schedule. With no one holding you accountable, you might struggle to find the motivation to stay on course. That is to say, **self-education** might not be the best fit for you if you need extra help finding your learning path and staying accountable. It also might not be the best fit for you if you find yourself needing lots of extra help from an authority figure or if you don't like going it alone.
 
 06_SELF_EDUCATION_PIC
 **The self-education path.**
@@ -121,7 +124,7 @@ Disadvantages:
 - **lack of networking**: There's no institution networking with companies on your behalf. You'll have to put in extra work to do the networking yourself.
 - **lack of guidance**: There's no one to tell you what to do and ensure you're doing it right. You'll need to set your own curriculum, check your own work, and seek out your own network of people to help you.
 - **lack of accountability**: There's no one making you do your work. If you aren't feeling motivated, you won't do the work you need to do to get to where you want to go.
-- **more to prove**: *Some* employers will be skeptical of the quality of self-educated individuals, especially for that first-time job. Some won't even consider an individual who doesn't have a CS degree or bootcamp certificate. However, increasingly, more and more employers are becoming open to hiring individuals with no formal training as long as they can prove they know their stuff. Some even think it shows tenacity not to need any hand-holding to get to this level. Either way, you'll have to work harder to prove to that first employer that you're a good fit.
+- **more to prove**: *Some* employers will be skeptical of the quality of self-educated individuals, especially for that first-time job. Some won't even consider an individual who doesn't have a CS degree or coding bootcamp certificate. However, increasingly, more and more employers are becoming open to hiring individuals with no formal training as long as they can prove they know their stuff. Some even think it shows tenacity not to need any hand-holding to get to this level. Either way, you'll have to work harder to prove to that first employer that you're a good fit.
 
 ### Education path conclusions
 
@@ -132,8 +135,8 @@ Those are the three main paths you can take to take yourself from no coding expe
 When it comes to coding, everyone has their favorite language. That makes sense. The language is the thing you use to *express* what it is you want the computer to do. And it's the thing you're working with for hours on end. You want to like it. And there are a *lot* of languages to choose from. So without knowing anything about them, how are you supposed to choose one that is right for *you*?
 
 07_LANGUAGE_CHOICE_PIC
-**Choosing a language.**
-**[Image by svstudioart](https://www.freepik.com/free-vector/programmer-working-web-development-code-engineer-programming-python-php-java-script-computer_14723889.htm) on Freepik**
+**Choose a language.**
+**[Image by svstudioart](https://www.freepik.com/free-vector/programmer-working-web-development-code-engineer-programming-python-php-java-script-computer_14723889.htm) on Freepik.**
 
 ### Think about language popularity
 
@@ -176,7 +179,7 @@ If you have an idea of what *type* of programming you want to do, you might pick
 
 **Front-end web development (code running in your browser):**
 
-- **JavaScript**: This is the only language in town for this job alongside its spinoffs like **typescript** and its helper languages **HTML** and **CSS**.
+- **JavaScript**: This is the only language in town for this job alongside its spinoffs like **typescript** and the structure and style languages **HTML** and **CSS**.
 
 **Back-end web development (code running on a website server):**
 
@@ -187,7 +190,7 @@ If you have an idea of what *type* of programming you want to do, you might pick
 
 **Data Science:**
 
-- **Python**: Python is the most popular data-science choice nowadays. It has excellent frameworks for efficiently processing large datasets and for data visualization. It is efficient for these purposes because the core of the calculation processes is written in **C** under the hood. It is the only choice when using certain machine learning frameworks.
+- **Python**: Python is the most popular data-science choice nowadays. It has excellent frameworks for efficiently processing large datasets and for data visualization. It is also the only choice when using certain machine learning frameworks.
 - **R**: A language whose primary purpose *is* data science. It is older in the data science community and quite popular.
 
 **Android development:**
@@ -197,7 +200,7 @@ If you have an idea of what *type* of programming you want to do, you might pick
 
 **iOS development:**
 
-- **Swift**: Apple launched Swift in 2014 specifically for iOS development, which has been growing in popularity.
+- **Swift**: Apple launched Swift in 2014 specifically for iOS development. It has been steadily growing in popularity.
 - **Objective-C**: The original iOS language. It is still widely used, especially in older, established applications.
 
 **Video game development:**
@@ -205,7 +208,7 @@ If you have an idea of what *type* of programming you want to do, you might pick
 - **C++**: A very *fast* language, famous for creating game engines and games themselves.
 - **C#**: A higher-level language popular in video game scripting.
 - **JavaScript**: Very popular in creating games hosted on web browsers and mobile platforms.
-- **Java**: A universal language popular in various games, including Minecraft.
+- **Java**: A universal language popular for creating games such as Minecraft.
 
 **Embedded systems and IoT:**
 
@@ -229,10 +232,12 @@ I picked Python. It is very popular and pretty to look at with a simple-to-learn
 
 Okay, you've decided you will start your coding **self-education** journey, and you've picked a programming language. Where do we go from there? The options are overwhelming. How do you even get started? My best advice here is **just do *something***.
 
-It is *really* hard to know what learning path is right for you when you are first starting. So I recommend just code *something* to begin learning what is suitable for you. The more you code, the more you'll know what works for you. You're never going to have a perfect lesson plan out the gate. Promise yourself right now, "I'm going to spend an hour coding on 'X' platform." It doesn't really matter what resource you are using to code. The hardest part is breaking that deadlock in your mind and deciding you're going to code *something*. Code for an hour. At the end of that hour, re-evaluate. Maybe you choose to keep doing what you were doing -- the course you are taking or the coding game you are playing is exciting, and you want to keep exploring it. Then check in after another hour. Maybe you decide to take a break today, but tomorrow, for your next coding hour, you have something new to research based on what you learned coding during that hour. It's cheesy but true: "A journey of a thousand miles begins with a single step." Take that first step, and every step after that will be easier.
+It is *really* hard to know what learning path is right for you when you are first starting. So I recommend just code *something* to begin learning what is suitable for you. The more you code, the more you'll know what works for you. You're never going to have a perfect lesson plan out the gate. Promise yourself right now, "I'm going to spend an hour coding on 'X' platform." It doesn't really matter what resource you are using to code. The hardest part is breaking that deadlock in your mind and deciding you're going to code *something*.
+
+Code for an hour. At the end of that hour, re-evaluate. Maybe you choose to keep doing what you were doing—the course you are taking or the coding game you are playing is exciting, and you want to keep exploring it. Then check in after another hour. Maybe you decide to take a break today, but tomorrow, for your next coding hour, you have something new to research based on what you learned coding during that hour. It's cheesy but true: "A journey of a thousand miles begins with a single step." Take that first step, and every step after that will be easier.
 
 08_GETTING_STARTED_PIC
-**Get started.**
+**Get started. Code *something*!**
 **[Image by pch.vector](https://www.freepik.com/free-vector/team-starting-project_7416581.htm) on Freepik.**
 
 Start doing *something*? Teddy, that's pretty vague. Do you have any more specific suggestions? Sure. Here are a few resources that would be an excellent get-your-toes-wet introduction to coding.
@@ -251,7 +256,7 @@ Those are just a few resources I've tried and think are perfect for getting your
 
 You did it! You coded *something*! 🎉 Congratulations! Even if it was an hour (even 15 minutes) taking an interactive class or playing a coding video game, getting started coding *something* is one of the most challenging and critical mental hurdles to get through, and you should be proud of it. So pat yourself on the back. Feel free to linger on that step. Finish that course or coding video game if you like. It's worth it. Once ready, let's start making a learning game plan (or a learning curriculum) for the long journey ahead. Our end goal? Become a proficient coder and get hired as a junior developer.
 
-That curriculum is going to look different for everyone. It will depend on what area you want to go into (web development, smartphone app development, data science, etc.). It will depend on your chosen coding language (Python, JavaScript, C#, etc.). It will depend on your learning style (do you prefer online courses, reading books, etc.) -- I recommend trying a combination of styles. And it will depend on what pace you feel comfortable with (some topics might be easy, others might require lingering on until you understand them).
+That curriculum is going to look different for everyone. It will depend on what area you want to go into (web development, smartphone app development, data science, etc.). It will depend on your chosen coding language (Python, JavaScript, C#, etc.). It will depend on your learning style (do you prefer online courses, reading books, etc.)—I recommend trying a combination of styles. And it will depend on what pace you feel comfortable with (some topics might be easy, others might require lingering on until you understand them).
 
 Below I'll list some considerations you should make as you design a game plan.
 
@@ -261,7 +266,7 @@ At first, try writing a broad outline of the steps you need to take to get from 
 
 ### Write achievable, measurable goals and timelines
 
-Try to be as specific as possible when writing your goals, especially those you want to achieve soon. Each goal should be achievable and measurable. For example, "Complete 'X' Udemy course", "Finish reading 'Y' book", or "Finish 'Z' project and present it to my family". Then attach timelines to those goals. For example, "Complete 'X' Udemy course -- 1 week", "Finish reading 'Y' book -- 2 weeks, "Finish 'Z' project and present it to my family -- 4 weeks". If it works better for you, you can assign dates instead of time periods -- for example, "Complete 'X' Udemy course by October 1st. By setting achievable, measurable goals, you're setting yourself up for success in making progress on those goals. Likewise, by setting feasible timelines for your goals, you're helping to motivate yourself to get those goals done promptly.
+Try to be as specific as possible when writing your goals, especially those you want to achieve soon. Each goal should be achievable and measurable. For example, "Complete 'X' Udemy course", "Finish reading 'Y' book", or "Finish 'Z' project and present it to my family". Then attach timelines to those goals. For example, "Complete 'X' Udemy course -- 1 week", "Finish reading 'Y' book -- 2 weeks, "Finish 'Z' project and present it to my family -- 4 weeks". If it works better for you, you can assign dates instead of time periods—for example, "Complete 'X' Udemy course by October 1st. By setting achievable, measurable goals, you're setting yourself up for success in making progress on those goals. Likewise, by setting feasible timelines for your goals, you're helping to motivate yourself to get those goals done promptly.
 
 10_LEARNING_GAMEPLAN_PIC
 **Create a learning game plan.**
@@ -269,15 +274,16 @@ Try to be as specific as possible when writing your goals, especially those you 
 
 ### Break down bigger goals into smaller goals in your schedule
 
-Either in the same "Game plan" document or a daily schedule, break down your goals into weekly and daily goals. For example, from our goal "Complete 'X' Udemy course - 1 week", our weekly goal would probably still be "Complete 'X' Udemy course", and we might break down a daily goal for Monday of "Complete sections 'A' and 'B' of 'X' Udemy course". For the goal "Finish reading 'Y' book -- 2 weeks", we might break down to a weekly goal of "Finish chapters 1-12 of book Y" and further break down Tuesday's daily goal to "read chapters 1-3 of book 'Y'". For the goal "Finish 'Z' project and present it to my family -- 4 weeks", we might break that down to a weekly goal of "write the logic for moving and battling". We might further break down our daily goal for Thursday: "Write the game logic for making the enemies chase our hero" (that one got more specific than the other examples 😆). Try to check off these daily goals every day. Then at the end of each week, examine how you did this week. Were you good about accomplishing your weekly and daily goals? Are you on track for your big-picture goals? It's okay if you're not but adjust accordingly.
+Either in the same "Game plan" document or a daily schedule, break down your goals into weekly and daily goals. For example, from our goal "Complete 'X' Udemy course - 1 week", our weekly goal would probably still be "Complete 'X' Udemy course", and we might break down a daily goal for Monday of "Complete sections 'A' and 'B' of 'X' Udemy course". For the goal "Finish reading 'Y' book -- 2 weeks", we might break down to a weekly goal of "Finish chapters 1-12 of book 'Y'" and further break down Tuesday's daily goal to "read chapters 1-3 of book 'Y'". For the goal "Finish 'Z' project and present it to my family -- 4 weeks", we might break that down to a weekly goal of "write the logic for moving and battling". We might further break down our daily goal for Thursday: "Write the game logic for making the enemies chase our hero" (that one got more specific than the other examples 😆). Try to check off these daily goals every day. Then at the end of each week, examine how you did this week. Were you good about accomplishing your weekly and daily goals? Are you on track for your big-picture goals? It's okay if you're not but adjust accordingly.
 
 ### An example curriculum (what I did)
 
-This example curriculum (or learning game plan) mirrors what I did while learning to code. I made some changes to make the plan fit more closely with what I would have done in retrospect, knowing what I know now. I also made up the timeline -- I don't remember the exact dates. In the [self-education resources](#self-education-resources) section, I discuss the specific resources used in this plan.
+This example curriculum (or learning game plan) mirrors what I did while learning to code. I made some changes to make the plan fit more closely with what I would have done in retrospect, knowing what I know now. I also made up the timeline—I don't remember the exact dates. In the [self-education resources](#self-education-resources) section, I discuss the specific resources used in this plan.
 
-> - free - Take course [CS50X from Edx](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x) to get CS50 fundamentals down. - 12 weeks
+> - free - Take course [CS50X from Edx](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x) to get computer science fundamentals down. - 12 weeks
+> - free - [Familiarize yourself with git commands](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) - 1 day
 > - free - [while taking CS50X] Start listening to programming podcasts in spare time (during commutes, while doing chores or exercising, etc.) - forever
-> - ~$25 - Take Udemy course [Learn Python Programming Masterclass](https://www.udemy.com/course/python-the-complete-python-developer-course/) to learn Python in detail - 4 weeks
+> - ~$25 - Take Udemy course [Learn Python Programming Masterclass](https://www.udemy.com/course/python-the-complete-python-developer-course/) to learn Python in detail. Also, learn topics like object-oriented programming and interacting with databases via Python. - 4 weeks
 > - ~$10 - [while learning python] Read the book [*The Complete Software Developer's Career Guide*](https://simpleprogrammer.com/products/careerguide/) by John Sonmez to learn more about becoming a developer. - 4 weeks
 > - free - [while learning python] [Start attending monthly python coding meetup group meetings](https://www.meetup.com/). - 1x every month
 > - free - Learn [pygame by YouTube with Sentdex tutorial](https://www.youtube.com/playlist?list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO) to learn how to make a python video game. - 1 week
@@ -288,7 +294,7 @@ This example curriculum (or learning game plan) mirrors what I did while learnin
 > - ~$18 - Take Udemy course [Python for Data Science and Machine Learning Bootcamp](https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp) to learn data science techniques with python - 2 weeks
 > - free - Find a project at work to use Python and data science (I found an opportunity to use my coding to write an application that compared DNA sequences in Excel sheets for the lab I was working in) - 2 weeks
 > - ~$18 - Take the Udemy course [Python and Django Full Stack Web Developer Bootcamp](https://www.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/) to learn Python web development with the Django web framework. - 2 weeks
-> - free - Write a capstone project -- a stock trading and personal finance application. This project improves web development skills - 4 weeks
+> - free - Write a capstone project—a stock trading and personal finance application. This project improves web development skills - 4 weeks
 > - ~$29 - [while taking Django Udemy course and writing 2nd capstone project] Read the book [*Python Testing with pytest: Simple, Rapid, Effective, and Scalable*](https://pragprog.com/titles/bopytest2/python-testing-with-pytest-second-edition/) by Brian Okken to learn how to do automated testing with Python and pytest - 4 weeks
 > - free - write another blog article, "How to write a Django web app" - 2 weeks
 > - free - Write portfolio web app in Django - Use the skills we learned with Django to write an awesome portfolio web app to show potential employers. Include in it our two capstone projects and maybe a couple of smaller projects we made while learning various programming skills. - 4 weeks
@@ -315,7 +321,7 @@ When reading a programming book, **write out the code yourself**. There might be
 
 11_LEARN_BY_DOING_PIC
 **Code at least 15 minutes per day. Learn by doing!**
-**[Image by storyset](https://www.freepik.com/free-vector/code-typing-concept-illustration_10259340.htm) on Freepik**
+**[Image by storyset](https://www.freepik.com/free-vector/code-typing-concept-illustration_10259340.htm) on Freepik.**
 
 Writing your own code while taking a course or reading a book *will* slow down that course or book. *That is okay!* It's worth it. The upfront cost of taking the time to write out the code yourself will pay dividends in learning retention. Furthermore, creating scripts and side projects outside of the context of a course will pay off immensely in terms of your understanding of code.
 
@@ -333,8 +339,8 @@ When learning your first language, you'll need to learn your language's core com
 
 - **Variables**: These are words that store data to be used later on.
 - **Data types**: These are *what* type of data is stored. They include numbers, words, or phrases (called strings in coding), `true` or `false` keywords (called booleans in coding), and more complex types in the form of data structures.
-- **Operators**: These are things like `+`, `-`, `*`, `/`, `>`, `<` that can be used to compare and manipulate data.
 - **Data structures**: These are *how* complex data is stored. These are things like ("lists" or "arrays"), "sets", ("dictionaries", "maps", or "hashes"), ("objects" or "structs"), and many others. Different data structures are optimal for solving different problems.
+- **Operators**: These are things like `+`, `-`, `*`, `/`, `>`, `<` that can be used to compare and manipulate data.
 - **Control flow**: These are things like "if/else/then" statements and "loops" that direct the flow of logic for a program.
 - **Functions**: These are ways to store chunks of code so the code can be reused without being re-written.
 - **Classes**: Not all programming languages have classes. They are specific to **object-oriented** programming languages. But even if your language of choice doesn't use them, they are worth learning about.
@@ -343,13 +349,13 @@ When learning your first language, you'll need to learn your language's core com
 
 There are three main designs (or styles) of coding. Specific languages *require* one of these coding styles. Other languages can use a combination of styles based on preference. I'll review the coding styles briefly, but you should dive deeper into these topics in your studies. If these explanations don't make sense now, that's okay. They will make more sense when you learn them for real on your coding journey.
 
-- **Object-oriented**: In this coding style, all things are "objects". Objects are created by initializing a "class". For example, we could have an `Animal` class. We would use this `Animal` class to initialize an `animal` (non-capitalized) object. This might look like `tigger = Animal()`. Here, my cat `tigger` is an "object" derived from the `Animal` class. He might have "attributes" associated with him like `tigger.has_fur` which would be `true`. And he might have "methods" associated with him like `talk()` which might do something when called, like print "meow" to the screen.
+- **Object-oriented**: In this coding style, all things are "objects". Objects are created by initializing a "class". For example, we could have an `Animal` class (notice capitalization). We would use this `Animal` class to initialize an `animal` (non-capitalized) object. This might look like `tigger = Animal()`. Here, my cat `tigger` is an "object" derived from the `Animal` class. He might have "attributes" associated with him like `tigger.has_fur` which would be `true`. And he might have "methods" associated with him like `talk()` which might do something when called, like print "meow" to the screen.
 - **Functional**: This coding style usually has no classes or objects. Instead, data is passed from function to function to achieve a goal.
 - **Procedural**: In this coding style, the code is written and run top-to-bottom without including functions or classes. This is a more primitive coding style, but it can still be useful, especially in small scripts.
 
 12_LEARN_THIS_PIC
 **Learn these topics.**
-**[mage by pch.vector](https://www.freepik.com/free-vector/group-students-watching-online-webinar_8271020.htm) on Freepik.**
+**[Image by pch.vector](https://www.freepik.com/free-vector/group-students-watching-online-webinar_8271020.htm) on Freepik.**
 
 ### Advanced topics
 
@@ -377,7 +383,7 @@ One solution is to save a new file version for each change. For example, maybe w
 
 Source control (also called version control) solves these problems. There are a few source control systems, but the main one used today is called **git**. How does git work? Code gets stored in a central **repository**. When someone wants to make changes, they pull that code down to their system. First, they make their changes locally, and then they push their local changes up to the central repository. The updates they pushed to the central repository become the official version. Git also keeps track of the history of all the changes made since the repository was created, making it easy to go back to a previous version. Also, if multiple people are working on the same code, git has mechanisms for merging two sets of code that have both made changes.
 
-As a developer, version control will be a super important tool in your tool belt. I recommend learning the basics of using git very early in your coding journey. Git can be complicated for edge use cases, but the basics are straightforward. Once primed on the git basics, store all your code in the cloud in a git repository. The primary cloud git repository is called [GitHub](https://github.com/). Make yourself a GitHub account and start pushing all the code you work on up to repositories associated with your GitHub account. You can choose to make those repositories public or private. The added benefit of having all your code on GitHub is that later on, when you want to share your code with others (say, a potential employer), you can point them to your GitHub account to look at all your fabulous projects. For reference to what that looks like, [check out *my* GitHub account](https://github.com/VerdantFox), where you can see a bunch of code I've written and stored in public GitHub repositories. [I even store these blog posts in a public repository.](https://github.com/VerdantFox/blog_posts)
+As a developer, source control will be a super important tool in your tool belt. I recommend learning the basics of using git very early in your coding journey. Git can be complicated for edge use cases, but the basics are straightforward. Once primed on the git basics, store all your code in the cloud in a git repository. The primary cloud git repository is called [GitHub](https://github.com/). Make yourself a GitHub account and start pushing all the code you work on up to repositories associated with your GitHub account. You can choose to make those repositories public or private. The added benefit of having all your code on GitHub is that later on, when you want to share your code with others (say, a potential employer), you can point them to your GitHub account to look at all your fabulous projects. For reference to what that looks like, [check out *my* GitHub account](https://github.com/VerdantFox), where you can see a bunch of code I've written and stored in public GitHub repositories. [I even store these blog posts in a public repository.](https://github.com/VerdantFox/blog_posts)
 
 ### (Automated) Testing
 
@@ -391,7 +397,7 @@ Why are automated tests necessary?
 
 13_AUTOMATED_TESTING_PIC
 **Learn automated testing.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/digital-technology-search-engine-optimization-website-constructor_11669313.htm) on Freepik**
+**[Image by vectorjuice](https://www.freepik.com/free-vector/digital-technology-search-engine-optimization-website-constructor_11669313.htm) on Freepik.**
 
 Writing automated tests is an essential skill in modern coding. It will make your code much more reliable and make changing your code later much faster because you can rely on your automated tests to catch your bugs. And you know what? I know of many projects that *don't* have automated tests. That means that by knowing this valuable skill yourself, you will have the edge over your competitors that don't have this skill when seeking a job.
 
@@ -401,13 +407,13 @@ Most programming applications have to store data. For example, they might store 
 
 #### Relational Database
 
-Relational databases are the most popular type of database. They consist of **tables** that store data in a **tabular format**. The data is stored in **rows** and **columns**, much like an Excel or Google Sheets spreadsheet. Developers can link tables with related data to one another. For example, a `products` table could be linked to a `reviews` table if the `reviews` table has a column `product_id` with an id that matches the `id` column of a specific product (row) in the `products` table. This relationship between tables is the **relational** part of **relational databases**.
+Relational databases are the most popular type of database. They consist of **tables** that store data in a **tabular format**. The data is stored in **rows** and **columns**, much like an Excel or Google Sheets spreadsheet. Developers can link tables with related data to one another. For example, a `products` table could be linked to a `reviews` table such that a set of reviews in the `reviews` table is linked to one product in the `products` table. This relationship between tables is the **relational** part of **relational databases**.
 
-Coders can interact with these **relational databases** with a language called SQL or Structured Query Language. SQL allows coders to **query** the database to retrieve rows from those tables, add new rows, update existing rows, or delete rows. Because SQL is the primary way to interact with relational databases, we sometimes refer to those databases as **SQL databases**. And because these databases are so popular, the ability to write SQL code is a valuable skill to pick up. Therefore, you should learn the basics of relational databases and how to read and write some basic SQL code. You don't need to be an expert in SQL or relational databases to use the databases or to get hired, but it is essential to at least learn the basics.
+Coders can interact with these **relational databases** with a language called SQL or Structured Query Language. SQL allows coders to **query** the database to retrieve rows from those tables—or to add new rows, update existing rows, or delete rows. Because SQL is the primary way to interact with relational databases, we sometimes refer to those databases as **SQL databases**. And because these databases are so popular, the ability to write SQL code is a valuable skill to pick up. Therefore, you should learn the basics of relational databases and how to read and write some basic SQL code. You don't need to be an expert in SQL or relational databases to use the databases or to get hired, but it is essential to at least learn the basics.
 
 14_DATABASES_PIC
 **Learn database basics.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/big-data-job-concept-illustration_20892140.htm) on Freepik**
+**[Image by vectorjuice](https://www.freepik.com/free-vector/big-data-job-concept-illustration_20892140.htm) on Freepik.**
 
 #### Non-relational databases
 
@@ -419,7 +425,7 @@ Because **non-relational databases** are much less popular than **relational dat
 
 Every language has a set of tools bundled up nicely to make a specific job easier and more efficient. These efficiency tool bundles are called frameworks (or sometimes libraries). A tech stack is a series of frameworks working together to make a problem easier to solve. Let's take an example from web development. Both the front-end code (the code running in the user's browser) and the back-end code (the code running on the web server) probably use frameworks.
 
-The front-end code is probably written in JavaScript. That JavaScript code might use the [react](https://reactjs.org/) **framework**, which has high-level tools for creating and keeping track of front-end components and the state of a web page, so you don't have to write those complicated low-level bits yourself. The back-end code might be written in Python. It might use the [django](https://www.djangoproject.com/) web **framework** that provides tools for accepting web requests, routing them to the relevant back-end code, and returning appropriate responses. And the website might store its data in a [Postgres](https://www.postgresql.org/) relational database. The react front-end framework, the Django back-end framework, and the Postgres database could be collectively considered the website's **tech stack**.
+The front-end code is probably written in JavaScript. That JavaScript code might use the [react](https://reactjs.org/) **framework**, which has high-level tools for creating and keeping track of front-end components and the state of a web page, so you don't have to write those complicated low-level bits yourself. The back-end code might be written in Python. It might use the [Django](https://www.djangoproject.com/) web **framework** that provides tools for accepting web requests, routing them to the relevant back-end code, and returning appropriate responses. And the website might store its data in a [Postgres](https://www.postgresql.org/) relational database. The react front-end framework, the Django back-end framework, and the Postgres database could be collectively considered the website's **tech stack**.
 
 It is a good idea to pick up a framework for your language of choice and learn it well. Picking a framework is similar to choosing a coding language: you'll want to keep in mind the framework's popularity and what it is suitable for. But also, like picking a programming language, selecting the "right" framework is not as important as you think. Most popular frameworks have a great community, documentation, and job opportunities. And once you understand one framework well, it becomes easy to pick up another one.
 
@@ -466,7 +472,7 @@ Here are a couple of courses I took and why I liked them. Except for the first o
 
 ### Books
 
-If reading is an effective way to learn for you, you should always be reading a code-teaching book. I find good code teaching books in two ways: through recommendations and reading reviews on blogs and Amazon. Here are a few books I read while learning to code (and since being hired) that might be good for you. Again, these books have a slant toward my language of choice -- python. You'll have to go searching for the books that work for you.
+If reading is an effective way to learn for you, you should always be reading a code-teaching book. I find good code teaching books in two ways: through recommendations and reading reviews on blogs and Amazon. Here are a few books I read while learning to code (and since being hired) that might be good for you. Again, these books have a slant toward my language of choice—python. You'll have to go searching for the books that work for you.
 
 - **[*The Complete Software Developer's Career Guide*](https://simpleprogrammer.com/products/careerguide/) by John Sonmez**: This was a book I picked up early while learning to program and found immensely valuable. This blog article is inspired in large part by this book. John does a great job describing what it takes to become a software developer and to self-educate to achieve that goal, and he has a lot more advice about growing your career *after* getting hired as well.
 - **[*Effective python*](https://effectivepython.com/) by Brett Slatkin**: This book teaches python programming concepts for writing best-practice python code. He details ideas and ways of thinking that I didn't get from my introductory python masterclass.
@@ -491,7 +497,7 @@ Podcasts are a fantastic way to learn big-picture coding concepts and what is ha
 - **Junior Developer Toolbox**: This ~45 min per episode podcast stopped airing in 2019, but it's worth listening to older episodes. The premise is a few junior developers talk about their experience in their new roles and what it took to get there.
 - **Command Line Heros**: This ~30 min per episode podcast mostly gives a history of computers and technology. How Windows, Mac, and Linux operating systems arose, the history of various programming languages, etc. It has a high production value, and I especially enjoyed the OS wars episodes. You might not learn much about coding, but knowing the history can be helpful for context.
 - **Compiler**: This ~30 min per episode podcast by RedHat, the same company that made the "Command Line Heros" podcast, asks and tries to answer questions about the tech industry.
-- **IRL**: This ~30 min per episode podcast by Mozilla (the company behind the Firefox browser) talks about how tech affects us in the real world
+- **IRL**: This ~30 min per episode podcast by Mozilla (the company behind the Firefox browser) talks about how tech affects us in the real world.
 
 #### Language specific coding podcasts
 
@@ -563,7 +569,7 @@ This one is not a "must" in your coding journey, but it is helpful. Find someone
 
 There is *a lot* of jargon (and acronyms) in the software world: "APIs", "SaaS", "Object-oriented design", "DevOps", "CI/CD", "frameworks", "version control", "cloud architecture", "product management", the list goes on and on. 😦 You've heard a lot of jargon from me in this article, and I'm trying to keep the jargon to a minimum to make the article more understandable. Over time, you need to familiarize yourself with that jargon because you'll need to understand it (and speak it) in everyday life as a professional software developer. Understanding the jargon is not going to happen overnight. How can you speed up that process? Immerse yourself in the jargon.
 
-One of the best ways I can think of to immerse yourself in the jargon is through programming podcasts. There are so many good ones out there. I recommend typing "{insert your coding language} podcast" into google and see what comes up. Then, pick one or two podcasts about your language of choice and maybe a few general coding podcasts and listen to them regularly. In no time, you'll be hearing that jargon all the time, and it'll start making sense. Furthermore, you'll probably learn a lot about what there is to learn in the world of coding, and you might get some good ideas for updates to your coding game plan. I'll list some of *my* favorite coding podcasts in the section "[self-education resources](#self-education-resources)".
+One of the best ways I can think of to immerse yourself in the jargon is through programming podcasts. There are so many good ones out there. I recommend typing "{insert your coding language} podcast" into google and see what comes up. Then, pick one or two podcasts about your language of choice and maybe a few general coding podcasts and listen to them regularly. In no time, you'll be hearing that jargon all the time, and it'll start making sense. Furthermore, you'll probably learn a lot about what there is to learn in the world of coding, and you might get some good ideas for updates to your coding game plan. I listed some of *my* favorite coding podcasts in the section "[self-education resources](#self-education-resources)".
 
 ## Build a capstone project (or a couple of them)
 
@@ -581,7 +587,7 @@ Whatever your current job is, it uses technology. Look for opportunities to use 
 
 1. It is another opportunity to learn. Solving real-world problems with code is a fantastic way to learn new skills and get better at skills you've already learned.
 2. It will improve your current job. Solving a problem at work with code could save you, your co-workers, or your boss tons of time. It'll make your life easier or make someone very thankful for you.
-3. It looks terrific on your resume. First, it's another project you can add to your resume. The more projects, the better. Second, **it allows you to say that you coded for your job.** It might sound like nothing because you solved a small problem, but it means the job listed on your resume goes from unrelated to your new career to highly relevant to your new career -- a massive shift. Potential employers will take stock, and they will appreciate your initiative.
+3. It looks terrific on your resume. First, it's another project you can add to your resume. The more projects, the better. Second, **it allows you to say that you coded for your job.** It might sound like nothing because you solved a small problem, but it means the job listed on your resume goes from unrelated to your new career to highly relevant to your new career—a massive shift. Potential employers will take stock, and they will appreciate your initiative.
 
 ## Create a profile website
 
@@ -597,11 +603,11 @@ Even if your coding focus is *not* web-based, still make a portfolio website. In
 
 Portfolio websites are not something that all coders create, but they have become increasingly popular. They help you stand out against applicants who don't have a portfolio website. They are a nice-looking place to talk about yourself more in-depth, and most importantly, they are an excellent place to show off your projects which can be hard to show off appropriately in a resume or through GitHub links.
 
-Before designing your portfolio website, get inspiration from others. [Feel free to use my portfolio website as an example](https://verdantfox.com/). And take a look at a host of others. Try typing "example coding portfolio websites" into google. You'll get a lot of hits. Here's a blog post from that search that came up called "[15 Web Developer Portfolios to Inspire You](https://www.freecodecamp.org/news/15-web-developer-portfolios-to-inspire-you-137fb1743cae/)".
+Before designing your portfolio website, get inspiration from others. [Feel free to use my portfolio website as an example](https://verdantfox.com/). Then try typing "example coding portfolio websites" into google. You'll get a lot of hits. Here's a blog post from that search that came up called "[15 Web Developer Portfolios to Inspire You](https://www.freecodecamp.org/news/15-web-developer-portfolios-to-inspire-you-137fb1743cae/)".
 
 ## Write a coding blog
 
-I highly recommend starting a coding blog -- that is -- a blog where you write about concepts you've learned while coding. I didn't begin blogging until last year, but it is something I wish I had started when I was first learning to code. Just write about anything and everything that you're learning. Don't worry if someone else has already written about that topic. Writing a coding blog serves four purposes.
+I highly recommend starting a coding blog—that is—a blog where you write about concepts you've learned while coding. I didn't begin blogging until last year, but it is something I wish I had started when I was first learning to code. Just write about anything and everything that you're learning. Don't worry if someone else has already written about that topic. Writing a coding blog serves four purposes.
 
 1. To explain a topic to someone else, you have to understand that topic deeply. Therefore, your understanding of the code will improve dramatically for every topic you write about.
 2. It's valuable to other novice coders. You can talk about topics in a way other new coders will understand. If you are learning this topic for the first time, someone else is too (or will be soon), and they might appreciate your explanations.
@@ -612,7 +618,7 @@ I highly recommend starting a coding blog -- that is -- a blog where you write a
 **Write a tech blog.**
 **[Image by pch.vector](https://www.freepik.com/free-vector/female-writer-using-retro-typing-machine_7732622.htm) on Freepik.**
 
-Don't worry about hosting your blog on the same website as your portfolio. If you want the added challenge, go for it, but it's not necessary and might waste your time. You can publish your blog posts for free on a site like [medium](https://medium.com/creators). Or you can host the blog on a website built with [WordPress](https://wordpress.com/create-blog/), [SquareSpace](https://www.squarespace.com/websites/create-a-blog), [Wix](https://www.wix.com/html5us/hiker-blog) that'll make the setup and hosting super easy.
+Don't worry about hosting your blog on the same website as your portfolio. If you want the added challenge, go for it, but it's not necessary and might waste your time. You can publish your blog posts for free on a site like [medium](https://medium.com/creators). Or you can host the blog on a website built with [WordPress](https://wordpress.com/create-blog/), [SquareSpace](https://www.squarespace.com/websites/create-a-blog), or [Wix](https://www.wix.com/html5us/hiker-blog) that'll make the setup and hosting super easy.
 
 Don't worry about how much traffic your blog gets. You're building it for *you*. Successful blogs are created from passion. If gaining a following is something you desire, [there are plenty of articles on how to achieve it](https://memberpress.com/blog/how-to-gain-a-blog-following/), but generally, it's going to take a lot of time and consistent posting, so don't stress about it. You'll still get much value from your blog, even if your reader count is meager initially.
 
@@ -647,9 +653,9 @@ I know this can feel awkward. But it is an excellent way to get your foot in the
 
 Here are some great networking opportunities:
 
-- **Go to coding meetup groups**: look on [meetup.com](https://www.meetup.com/) for coding meetup groups in your area. Try searching for "code" or "coding", your chosen coding language (i.e., "python" or "javascript), frameworks in your coding stack (i.e., "react" or "angular"), and your area of focus (i.e., "web development" or "data engineering"). If you are near any major city, several such meetup groups are probably available. Try attending a couple of events from these groups. Go regularly to build those strong connections.
+- **Go to coding meetup groups**: look on [meetup.com](https://www.meetup.com/) for coding meetup groups in your area. Try searching for "code" or "coding", your chosen coding language (i.e., "python" or "javascript"), frameworks in your coding stack (i.e., "react" or "angular"), and your area of focus (i.e., "web development" or "data engineering"). If you are near any major city, several such meetup groups are probably available. Try attending a couple of events from these groups. Go regularly to build those strong connections.
 - **Attend a coding convention**: This one might not be viable for everyone since attending a convention can get pretty pricey between the ticket price, potential plane ticket, and a hotel. But if you can attend a coding convention, it can be another excellent networking opportunity. Coding conventions are places with lots of people, most of whom have jobs doing what you want to do. There will probably be many opportunities to talk in the hallways and during meals between presentations. Also, companies often go to conventions *looking for* candidates to hire. There might even be a job fair. Even if you don't get any promising leads, attending a convention is something you can talk about with potential employers that shows your dedication to your career change. I attended the PyCon convention just before landing my first junior developer job, and it was an incredible experience.
-- **Talk with members of your hobby**: Do you play a sport? Dance? Are you a part of a book club? Do you play video games with a regular group? Any group setting like this is an excellent opportunity to network. This is how I got the interview that landed me my first job. I swing dance. I was talking to a friend in the dance community who is a software engineer. We got to talking about his coding journey and my code-learning journey. He told me a department next to his was looking for a junior developer. He handed my resume to his colleague, which led to an interview and my first dev job.
+- **Talk with members of your hobby**: Do you play a sport? Dance? Are you a member of a book club? Do you play video games with a regular group? Any group setting like this is an excellent opportunity to network. This is how I got the interview that landed me my first job. I swing dance. I was talking to a friend in the dance community who is a software engineer. We got to talking about his coding journey and my code-learning journey. He told me a department next to his was looking for a junior developer. He handed my resume to his colleague, which led to an interview and my first dev job.
 - **Talk with your friends and family**: Friends and family provide valuable networking opportunities. Tell them about your dreams and what you're doing to achieve them. They might be able to help you out along the way.
 
 ## Practice interviewing
@@ -699,7 +705,7 @@ Finally we talked about the end game: preparing your [resume](#prepare-a-resume)
 **Good luck in your journey!**
 **[Image by pch.vector](https://www.freepik.com/free-vector/business-leader-standing-arrow-holding-flag-flat-vector-illustration-cartoon-people-training-doing-business-plan-leadership-victory-challenge-concept_10606192.htm) on Freepik.**
 
-With this detailed guide, you now have the tools at your disposal to learn to code on your own and land your first junior developer role, all without a formal education or bootcamp. Good luck on your journey. I'd love to hear how it goes and your progress along the way.
+With this detailed guide, you now have the tools at your disposal to learn to code on your own and land your first junior developer role, all without a formal education or coding bootcamp. Good luck on your journey. I'd love to hear how it goes and your progress along the way.
 
 ## Attributions
 
