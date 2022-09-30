@@ -46,7 +46,9 @@ Yes, at first, you *will* feel out of your depth. I certainly did when I started
 
 When I started writing this blog article, it was just going to be a list of resources I used in my self-education journey to land my first job as a software developer. But it ended up blowing up into a full-on guide for *anyone* to go from knowing nothing about coding to landing their first job as a junior software developer, and it became a lot more detailed in the process. So it is quite *long*, and many of the details won't make sense until you *start* your software development journey. But they still might be helpful to hear as a primer.
 
-So yes, reading the blog article top-to-bottom is okay, and you will get a lot of good stuff out of it. But some of it won't be very meaningful early on, so maybe bookmark it and come back later at different stages of your learning-to-code journey, as some terms and concepts make more sense in your learning context. 🤷‍♂️ Sound good? Let's dive in!
+So yes, reading the blog article top-to-bottom is okay, and you will get a lot of good stuff out of it. However, some of it won't be very meaningful early on, so maybe bookmark the article and come back later at different stages of your learning-to-code journey, as some terms and concepts make more sense in your learning context. 🤷‍♂️ Sound good? Let's dive in!
+
+**Side note**: *How can you save your progress in the article?* Click on a link in the article's "Table of Contents" for the location you want to save in the article. On a computer, there is a menu on the left-hand side; for mobile, you can find it in the dropdown menu from the top navigation bar. Clicking a link in the "Table of Contents" will take you to that section of the article and update your URL bar to the indicated header location on the page. Now you can save the page at that location to your browser's bookmarks.
 
 ## The three main paths to becoming a software developer
 
