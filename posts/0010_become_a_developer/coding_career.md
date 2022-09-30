@@ -441,6 +441,16 @@ You will need to learn *how* to package up your code and deploy that code to an 
 **Learn to package and deploy your code.**<br>
 *[Image by vectorjuice](https://www.freepik.com/free-vector/developers-building-testing-deploying-chatbots-platforms-chatbot-platform-virtual-assistant-development-cross-platform-chatbot-concept_11667671.htm) on Freepik.*{: class="fs-0-8" }
 
+### CI/CD pipelines
+
+CI/CD pipelines (or Continuous Integration / Continuous Deployment pipelines) are jobs set up for a project that run when code is committed to the project's central repository. CI/CD pipelines can perform a few jobs, including the following:
+
+1. Statically check the code files (meaning read the files without running the code) for syntax errors, consistent formatting, and known security vulnerabilities
+2. Run automated tests
+3. Deploy the new code to production (if the checks and tests pass)
+
+CI/CD pipelines can be set up so that if any of the static checks or tests fail, the code will not deploy. Instead, developers will have to fix the problems discovered by the pipeline before they are allowed to deploy new code to production. CI/CD pipelines are very useful for **teams** to ensure that all new code committed to the central repository is consistent and does not break the product. They are also helpful for automating deployments so that developers don't have to deploy code changes manually. These pipelines are probably not something you will set up for yourself while working on solo projects. Instead, it is helpful to understand what they are so that you are ready for them when you join a team at your first coding job.
+
 ### Collaboration methodologies
 
 Since you chose the **self-education** learning path, you might be mostly going it alone. But once you get hired on at a job, you will work as a team. By learning about some collaboration methodologies, you'll give yourself a head start and sound more knowledgeable to your employers. I'm going to list the most important ones below. Somewhere along your learning journey, google these methodologies and read some Wikipedia articles about how they work.
