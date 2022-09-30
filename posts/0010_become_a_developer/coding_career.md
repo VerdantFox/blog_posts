@@ -29,8 +29,8 @@ Ultimately, coding can be super simple. If you have a complicated problem, you b
 Yes, at first, you *will* feel out of your depth. I certainly did when I started. Everyone does at first. There is a lot to learn. But learning to code is like learning to dance, play an instrument, or any other skill. You get started by learning the basics. And believe me, you can learn those basics. And once you are comfortable with those, you start learning a little more complicated stuff. But it's not so bad now because you already know those basics. And those skills keep building until you eventually solve those significant, complex problems. But they don't seem so hard anymore. And stuff that used to seem impossibly complicated is now simple. You'll learn it in small, easy-to-understand, digestible chunks. And as concepts layer on top of each other, and as you practice what you learn, things get easier. I promise you: if you have an interest in coding and a drive and passion for learning, **you can learn to code**.
 
 02_CAN_I_CODE_PIC
-***Anyone* with a passion for learning can learn to code.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/tiny-people-beautiful-flower-garden-inside-female-head-isolated-flat-illustration_11235915.htm) on Freepik.**
+***Anyone* with a passion for learning can learn to code.**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/tiny-people-beautiful-flower-garden-inside-female-head-isolated-flat-illustration_11235915.htm) on Freepik.*{: class="fs-0-8" }
 
 ## Disclaimers
 
@@ -53,8 +53,8 @@ So yes, reading the blog article top-to-bottom is okay, and you will get a lot o
 Before we talk about how I learned to code, let's talk about the options *anyone* has to learn to code. If you are looking to transition into software development, there are three main paths to achieve this goal. You could (1) **get a college computer science (CS) degree**, (2) **train with a coding bootcamp**, or (3) **self-educate**. All three routes have strong advantages and disadvantages. The best path for one person might not be the best path for someone else. We'll briefly go over some of those advantages and disadvantages. My sources for these paths include the [*Command Line Heros*](https://www.redhat.com/en/command-line-heroes) podcast episode, ["Becoming a Coder"](https://www.redhat.com/en/command-line-heroes/season-5/becoming-a-coder), the book [*The Complete Software Developer's Career Guide*](https://simpleprogrammer.com/products/careerguide/) by John Sonmez, the [stack overflow developer's survey](https://survey.stackoverflow.co/2022/#learning-to-code-learn-code), [bestcolleges.com](https://www.bestcolleges.com/bootcamps/payment/bootcamp-cost/#comparison), [thinkimpact.com](https://www.thinkimpact.com/average-college-tuition/), and my own experience and conversations I've had with other software developers. After this section, for the remainder of the article, we'll hone in on the route I took, **self-education**. If that's all you're interested in, feel free to skip to the next section, where I talk about *how* I went about self-educating.
 
 03_LEARNING_PIC
-**There are three main paths to becoming a software developer.**
-**[Image by pikisuperstar](https://www.freepik.com/free-vector/online-tutorials-concept_7915212.htm) on Freepik.**
+**There are three main paths to becoming a software developer.**<br>
+*[Image by pikisuperstar](https://www.freepik.com/free-vector/online-tutorials-concept_7915212.htm) on Freepik.*{: class="fs-0-8" }
 
 ### College computer science (CS) degree
 
@@ -63,8 +63,8 @@ This is the big one. The most recent [stack overflow developer's survey](https:/
 Who is the college CS degree path a good fit for? This path *can* be a good fit for anyone who feels confident about going into software development and has the time and resources to go to school (or back to school). I think it is a perfect fit for individuals with no previous college degree since having any college degree can give individuals an advantage over those without one when seeking that first job. It's also a good fit if you want to deeply understand computer theory and fundamentals. However, it might not be a good fit if you don't have the time and money to invest four years of your life with limited to no income.
 
 04_COLLEGE_PIC
-**The college CS degree path.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/young-people-walking-front-college-university-flat-illustration_12291397.htm) on Freepik.**
+**The college CS degree path.**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/young-people-walking-front-college-university-flat-illustration_12291397.htm) on Freepik.*{: class="fs-0-8" }
 
 Advantages:
 
@@ -85,8 +85,8 @@ That same [stack overflow developer's survey](https://survey.stackoverflow.co/20
 Who is the coding bootcamp path a good fit for? Overall, I think training at a coding bootcamp is an excellent option for *any* person wanting to transition their career into coding. It might be a good fit for you if you want to make that transition *quickly*, if you need extra help and accountability, and if you want additional help with networking to get that first job.
 
 05_CODING_BOOTCAMP_PIC
-**The coding bootcamp path.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/computer-programming-camp-abstract-concept-illustration_12291318.htm) on Freepik.**
+**The coding bootcamp path.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/computer-programming-camp-abstract-concept-illustration_12291318.htm) on Freepik.*{: class="fs-0-8" }
 
 Advantages:
 
@@ -111,8 +111,8 @@ Who is this path good for? For one, it might be a good starting path for *anyone
 While learning on your own schedule at your own pace can be one of the most significant *advantages* of self-education for some, it can be a huge *disadvantage* for others. It means (1) you have to figure out a curriculum and schedule to get from where you are to where you want to be (not easy when you don't yet know what it is you need to learn), and (2) you have to keep *yourself* accountable to stick that curriculum and schedule. With no one holding you accountable, you might struggle to find the motivation to stay on course. That is to say, **self-education** might not be the best fit for you if you need extra help finding your learning path and staying accountable. It also might not be the best fit for you if you find yourself needing lots of extra help from an authority figure or if you don't like going it alone.
 
 06_SELF_EDUCATION_PIC
-**The self-education path.**
-**[Image by svstudioart](https://www.freepik.com/free-vector/software-developers-working-script-coding-engineer-character-programming-php-python-javascript-other-languages_14723866.htm) on Freepik.**
+**The self-education path.**<br>
+*[Image by svstudioart](https://www.freepik.com/free-vector/software-developers-working-script-coding-engineer-character-programming-php-python-javascript-other-languages_14723866.htm) on Freepik.*{: class="fs-0-8" }
 
 Advantages:
 
@@ -135,8 +135,8 @@ Those are the three main paths you can take to take yourself from no coding expe
 When it comes to coding, everyone has their favorite language. That makes sense. The language is the thing you use to *express* what it is you want the computer to do. And it's the thing you're working with for hours on end. You want to like it. And there are a *lot* of languages to choose from. So without knowing anything about them, how are you supposed to choose one that is right for *you*?
 
 07_LANGUAGE_CHOICE_PIC
-**Choose a language.**
-**[Image by svstudioart](https://www.freepik.com/free-vector/programmer-working-web-development-code-engineer-programming-python-php-java-script-computer_14723889.htm) on Freepik.**
+**Choose a language.**<br>
+*[Image by svstudioart](https://www.freepik.com/free-vector/programmer-working-web-development-code-engineer-programming-python-php-java-script-computer_14723889.htm) on Freepik.*{: class="fs-0-8" }
 
 ### Think about language popularity
 
@@ -237,8 +237,8 @@ It is *really* hard to know what learning path is right for you when you are fir
 Code for an hour. At the end of that hour, re-evaluate. Maybe you choose to keep doing what you were doing—the course you are taking or the coding game you are playing is exciting, and you want to keep exploring it. Then check in after another hour. Maybe you decide to take a break today, but tomorrow, for your next coding hour, you have something new to research based on what you learned coding during that hour. It's cheesy but true: "A journey of a thousand miles begins with a single step." Take that first step, and every step after that will be easier.
 
 08_GETTING_STARTED_PIC
-**Get started. Code *something*!**
-**[Image by pch.vector](https://www.freepik.com/free-vector/team-starting-project_7416581.htm) on Freepik.**
+**Get started. Code *something*!**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/team-starting-project_7416581.htm) on Freepik.*{: class="fs-0-8" }
 
 Start doing *something*? Teddy, that's pretty vague. Do you have any more specific suggestions? Sure. Here are a few resources that would be an excellent get-your-toes-wet introduction to coding.
 
@@ -269,8 +269,8 @@ At first, try writing a broad outline of the steps you need to take to get from 
 Try to be as specific as possible when writing your goals, especially those you want to achieve soon. Each goal should be achievable and measurable. For example, "Complete 'X' Udemy course", "Finish reading 'Y' book", or "Finish 'Z' project and present it to my family". Then attach timelines to those goals. For example, "Complete 'X' Udemy course -- 1 week", "Finish reading 'Y' book -- 2 weeks, "Finish 'Z' project and present it to my family -- 4 weeks". If it works better for you, you can assign dates instead of time periods—for example, "Complete 'X' Udemy course by October 1st. By setting achievable, measurable goals, you're setting yourself up for success in making progress on those goals. Likewise, by setting feasible timelines for your goals, you're helping to motivate yourself to get those goals done promptly.
 
 10_LEARNING_GAMEPLAN_PIC
-**Create a learning game plan.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/project-management-business-process-planning-workflow-organization-colleagues-working-together-teamwork_11669308.htm) on Freepik.**
+**Create a learning game plan.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/project-management-business-process-planning-workflow-organization-colleagues-working-together-teamwork_11669308.htm) on Freepik.*{: class="fs-0-8" }
 
 ### Break down bigger goals into smaller goals in your schedule
 
@@ -320,8 +320,8 @@ When an instructor is coding, do not just watch the video! **Code along with the
 When reading a programming book, **write out the code yourself**. There might be times you are reading where you don't have access to a computer. That's okay. Later on, when you do have access to a computer, write code that uses what you learned from the book. Copy and run examples from the book. Tweak examples and see how the output changes. Create a small script or project that uses concepts taught in the book.
 
 11_LEARN_BY_DOING_PIC
-**Code at least 15 minutes per day. Learn by doing!**
-**[Image by storyset](https://www.freepik.com/free-vector/code-typing-concept-illustration_10259340.htm) on Freepik.**
+**Code at least 15 minutes per day. Learn by doing!**<br>
+*[Image by storyset](https://www.freepik.com/free-vector/code-typing-concept-illustration_10259340.htm) on Freepik.*{: class="fs-0-8" }
 
 Writing your own code while taking a course or reading a book *will* slow down that course or book. *That is okay!* It's worth it. The upfront cost of taking the time to write out the code yourself will pay dividends in learning retention. Furthermore, creating scripts and side projects outside of the context of a course will pay off immensely in terms of your understanding of code.
 
@@ -354,8 +354,8 @@ There are three main designs (or styles) of coding. Specific languages *require*
 - **Procedural**: In this coding style, the code is written and run top-to-bottom without including functions or classes. This is a more primitive coding style, but it can still be useful, especially in small scripts.
 
 12_LEARN_THIS_PIC
-**Learn these topics.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/group-students-watching-online-webinar_8271020.htm) on Freepik.**
+**Learn these topics.**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/group-students-watching-online-webinar_8271020.htm) on Freepik.*{: class="fs-0-8" }
 
 ### Advanced topics
 
@@ -396,8 +396,8 @@ Why are automated tests necessary?
 3. Testable code is clean code. Automated testing will force you to write your code in a testable way. You will need to write concise, digestible code that is easier to read and maintain.
 
 13_AUTOMATED_TESTING_PIC
-**Learn automated testing.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/digital-technology-search-engine-optimization-website-constructor_11669313.htm) on Freepik.**
+**Learn automated testing.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/digital-technology-search-engine-optimization-website-constructor_11669313.htm) on Freepik.*{: class="fs-0-8" }
 
 Writing automated tests is an essential skill in modern coding. It will make your code much more reliable and make changing your code later much faster because you can rely on your automated tests to catch your bugs. And you know what? I know of many projects that *don't* have automated tests. That means that by knowing this valuable skill yourself, you will have the edge over your competitors that don't have this skill when seeking a job.
 
@@ -412,8 +412,8 @@ Relational databases are the most popular type of database. They consist of **ta
 Coders can interact with these **relational databases** with a language called SQL or Structured Query Language. SQL allows coders to **query** the database to retrieve rows from those tables—or to add new rows, update existing rows, or delete rows. Because SQL is the primary way to interact with relational databases, we sometimes refer to those databases as **SQL databases**. And because these databases are so popular, the ability to write SQL code is a valuable skill to pick up. Therefore, you should learn the basics of relational databases and how to read and write some basic SQL code. You don't need to be an expert in SQL or relational databases to use the databases or to get hired, but it is essential to at least learn the basics.
 
 14_DATABASES_PIC
-**Learn database basics.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/big-data-job-concept-illustration_20892140.htm) on Freepik.**
+**Learn database basics.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/big-data-job-concept-illustration_20892140.htm) on Freepik.*{: class="fs-0-8" }
 
 #### Non-relational databases
 
@@ -438,8 +438,8 @@ When you are learning and writing code for a significant skill focus area like w
 You will need to learn *how* to package up your code and deploy that code to an environment for your users to consume. This is an important skill to learn and one that potential employers will surely ask you about.
 
 15_DEPLOYMENT_PIC
-**Learn to package and deploy your code.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/developers-building-testing-deploying-chatbots-platforms-chatbot-platform-virtual-assistant-development-cross-platform-chatbot-concept_11667671.htm) on Freepik.**
+**Learn to package and deploy your code.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/developers-building-testing-deploying-chatbots-platforms-chatbot-platform-virtual-assistant-development-cross-platform-chatbot-concept_11667671.htm) on Freepik.*{: class="fs-0-8" }
 
 ### Collaboration methodologies
 
@@ -461,8 +461,8 @@ Online courses will probably be essential resources for you while learning to co
 Here are a couple of courses I took and why I liked them. Except for the first one, they tend to focus on my education path of python and web development. You'll notice I have a preference for the Udemy learning platform. Mostly that's because it's what I found early and got comfortable with. Try a few different platforms to find what works for you.
 
 16_COURSES_PIC
-**Learn from online courses.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/internet-lessons-searching-remote-university-educational-programs-online-classes-website-high-school-student-with-magnifying-glass-cartoon-character_12085840.htm) on Freepik.**
+**Learn from online courses.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/internet-lessons-searching-remote-university-educational-programs-online-classes-website-high-school-student-with-magnifying-glass-cartoon-character_12085840.htm) on Freepik.*{: class="fs-0-8" }
 
 - [**CS50X from Edx**](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x): this course is Harvard University's "Introduction to Computer Science" course available for free on the platform Edx. It has been taught by professor David J. Malan for something like 15 years now. He does a fantastic job teaching fundamental computer science topics in a way that is exciting and easy to understand. There are weekly homework assignments that are *challenging* for introductory programmers, but they are all graded by automatic tests and real reviewers. The homework assignments make the learning stick. And there is a great, robust [online community for the class on Facebook](https://www.facebook.com/groups/cs50).
 - [**Learn Python Programming Masterclass**](https://www.udemy.com/course/python-the-complete-python-developer-course/): This is a great course offered by Udemy. The instructor teaches Python programming to absolute beginners in a super detailed, organized, yet fun manner with lots of examples and assignments. I've taken other intro classes for various programming languages on Udemy and enjoyed them all. However, make sure to write the code yourself and do the suggested assignments because there are no graded assignments in a Udemy class.
@@ -488,8 +488,8 @@ Coding challenges are great for honing your coding skills through practice with 
 Podcasts are a fantastic way to learn big-picture coding concepts and what is happening in the world of coding. I recommend listening to coding podcasts in your spare time, on your commute, when you do chores or exercise or whenever you might listen to podcasts or audiobooks. Here are some coding podcasts that I like. There is a definite slant towards python podcasts since that's my favorite language. To find a coding podcast specific to your language of choice, try typing that language into the search bar of your podcast player app:
 
 17_PODCASTS_PIC
-**Immerse yourself in the jargon with tech podcasts.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/listen-podcasts-abstract-concept-vector-illustration-spare-time-covid2019-quarantine-audio-programmes-educational-podcasts-radio-show-bingelistening-interview-abstract-metaphor_24070868.htm) on Freepik.**
+**Immerse yourself in the jargon with tech podcasts.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/listen-podcasts-abstract-concept-vector-illustration-spare-time-covid2019-quarantine-audio-programmes-educational-podcasts-radio-show-bingelistening-interview-abstract-metaphor_24070868.htm) on Freepik.*{: class="fs-0-8" }
 
 #### General tech/coding podcasts
 
@@ -515,8 +515,8 @@ There are a lot of good YouTube videos out there teaching coding. Videos range f
 There are a ton of coding blogs out there (like this one 😜). Many of them offer great explanations, tutorials, and "awesome lists" (lists of things that are awesome); you name it. I don't follow any specific blog for code-learning. However, when I want to learn a new subject, I'll usually type it into google, and a good blog article is probably the first or second hit.
 
 18_BLOG_PIC
-**Blogs are great learning resources.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/man-creating-content-blog-woman-reading-book-online_11235681.htm) on Freepik.**
+**Blogs are great learning resources.**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/man-creating-content-blog-woman-reading-book-online_11235681.htm) on Freepik.*{: class="fs-0-8" }
 
 ### Documentation
 
@@ -531,8 +531,8 @@ Finally, a great way to learn how to *write* good code is to *read* good code. O
 Inevitably, the code you write will fail to work as expected. This will happen **a lot**. Like **A LOT, A LOT**. These code failures are called **bugs**. The code might give you an **error** or run successfully but not output what you expected. In either case, you are going to want to get good at **debugging**. Debugging is one skill that gets more effortless with more experience. Early in your coding journey, you will run into a code bug that you cannot solve **for hours**. That is okay; do not let the bug defeat you! (that's what the bug wants 🐛😆) The answer might be as simple as a missing semi-colon. And there is no better feeling in the world than finally solving that pesky bug plaguing you for hours. 🎉 There are things you can do to help you push through the debugging process, including the following.
 
 19_DEBUG_PIC
-**Everyone gets code bugs. Learn debugging techniques.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/bug-fixing-software-testing-computer-virus-searching-tool-devops-web-optimization-antivirus-app-magnifier-cogwheel-monitor-design-element_10780274.htm) on Freepik.**
+**Everyone gets code bugs. Learn debugging techniques.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/bug-fixing-software-testing-computer-virus-searching-tool-devops-web-optimization-antivirus-app-magnifier-cogwheel-monitor-design-element_10780274.htm) on Freepik.*{: class="fs-0-8" }
 
 - **google it**: Googling is possibly the most critical skill to learn well as a programmer. Often you can solve your problem by simply typing it into google and clicking the first link in the results. If you see a confusing error, try copying/pasting that error into google. You will probably find your answer quickly.
 - **rubber ducking**: Explain the code out loud to an inanimate object (such as a rubber duck). Explaining the code aloud will often lead you to find the source of the problem.
@@ -552,8 +552,8 @@ I briefly touched on this when discussing debugging above, but Google (or your s
 - I want to determine the best web framework for my use case. Then, google that question and read blog posts comparing the top web frameworks.
 
 20_GOOGLE_PIC
-**Google is an invaluable tool.**
-**[Image by upklyak](https://www.freepik.com/free-vector/keyword-research-landing-page-keywordist-copywriter-girl-with-laptop-using-tools-services-seo-optimization-content-plan-analysis-social-media-vector-cartoon-line-art-web-banner_24375492.htm) on Freepik.**
+**Google is an invaluable tool.**<br>
+*[Image by upklyak](https://www.freepik.com/free-vector/keyword-research-landing-page-keywordist-copywriter-girl-with-laptop-using-tools-services-seo-optimization-content-plan-analysis-social-media-vector-cartoon-line-art-web-banner_24375492.htm) on Freepik.*{: class="fs-0-8" }
 
 Learning how to google is an invaluable skill. With practice, you'll get better at framing your questions to get the desired results. For any problem or question, first, reach out to google because the answer is probably in the first few links. Only once you have exhausted your google searching should you reach out for help by posting your question in a forum like "stack overflow" or in your social media group.
 
@@ -562,8 +562,8 @@ Learning how to google is an invaluable skill. With practice, you'll get better 
 This one is not a "must" in your coding journey, but it is helpful. Find someone to talk to who has already done all this and made it out to the other side. It can be very nice to get the perspective of someone in the field, especially if they are in the area of software development that you want to get into (i.e., web development, phone app development, game development, etc.). Show them your "learning game plan" and see if they have any tips for additions or alterations. Set up regular meetings to check in with them to keep yourself on track. These check-ins have the added benefit of giving you some accountability. "I don't want to disappoint my mentor by not putting in the work." And finally, reach out to your mentor for help if you are ever really stuck on a problem.
 
 21_MENTOR_PIC
-**Find yourself a mentor.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/employees-giving-hands-helping-colleagues-walk-upstairs_7732609.htm) on Freepik.**
+**Find yourself a mentor.**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/employees-giving-hands-helping-colleagues-walk-upstairs_7732609.htm) on Freepik.*{: class="fs-0-8" }
 
 ## Immerse yourself in the jargon
 
@@ -576,8 +576,8 @@ One of the best ways I can think of to immerse yourself in the jargon is through
 A capstone project is just a large project that you build to show off the coding skills you've learned. It might be a website, a mobile app, a video game, a dashboard, a desktop app, or anything else you can think to build. Building one or more capstone projects is crucial as they show that you can imagine, design, build, and deploy a working product yourself. In addition, these projects are the most significant signal to potential employers that you know the skills you say you do, and they are instrumental in getting hired as a first-time junior developer.
 
 22_CAPSTONE_PROJECT_PIC
-**Build a capstone project.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/tiny-graphic-designer-drawing-with-big-pen-computer-screen-creators-work-creative-woman-working-laptop-flat-vector-illustration-digital-design-concept-banner-landing-web-page_28480869.htm) on Freepik.**
+**Build a capstone project.**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/tiny-graphic-designer-drawing-with-big-pen-computer-screen-creators-work-creative-woman-working-laptop-flat-vector-illustration-digital-design-concept-banner-landing-web-page_28480869.htm) on Freepik.*{: class="fs-0-8" }
 
 One of my first capstone projects was a video game called [Twisted Towers](https://verdantfox.com/games/twisted-towers). I also built a stock tracking website (that I sadly don't have a page for anymore) and a couple of other smaller applications. I eventually packaged all these projects into my portfolio website to share with potential employers.
 
@@ -598,8 +598,8 @@ If your coding focus is web-based (front-end, back-end, or full-stack), this is 
 Even if your coding focus is *not* web-based, still make a portfolio website. In this case, use a website building platform like [WordPress](https://wordpress.com/), [SquareSpace](https://www.squarespace.com/), or [Wix](https://www.wix.com/) to do the heavy-lifting of building the website components for you. These platforms offer the ability to create a website without needing to code on the front-end or back-end.
 
 23_PORTFOLIO_PIC
-**Create a portfolio website.**
-**[Image by vector4stock](https://www.freepik.com/free-vector/roof-construction-worker-online-service-platform-building-fixing-house-renovation-rooftop-tile-applying-online-portfolio-flat-vector-illustration_26432967.htm) on Freepik.**
+**Create a portfolio website.**<br>
+*[Image by vector4stock](https://www.freepik.com/free-vector/roof-construction-worker-online-service-platform-building-fixing-house-renovation-rooftop-tile-applying-online-portfolio-flat-vector-illustration_26432967.htm) on Freepik.*{: class="fs-0-8" }
 
 Portfolio websites are not something that all coders create, but they have become increasingly popular. They help you stand out against applicants who don't have a portfolio website. They are a nice-looking place to talk about yourself more in-depth, and most importantly, they are an excellent place to show off your projects which can be hard to show off appropriately in a resume or through GitHub links.
 
@@ -615,8 +615,8 @@ I highly recommend starting a coding blog—that is—a blog where you write abo
 4. It looks good to employers. Having a blog shows dedication to your studies. It also indicates that you have an authoritative grasp of topics.
 
 24_WRITE_BLOG_PIC
-**Write a tech blog.**
-**[Image by pch.vector](https://www.freepik.com/free-vector/female-writer-using-retro-typing-machine_7732622.htm) on Freepik.**
+**Write a tech blog.**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/female-writer-using-retro-typing-machine_7732622.htm) on Freepik.*{: class="fs-0-8" }
 
 Don't worry about hosting your blog on the same website as your portfolio. If you want the added challenge, go for it, but it's not necessary and might waste your time. You can publish your blog posts for free on a site like [medium](https://medium.com/creators). Or you can host the blog on a website built with [WordPress](https://wordpress.com/create-blog/), [SquareSpace](https://www.squarespace.com/websites/create-a-blog), or [Wix](https://www.wix.com/html5us/hiker-blog) that'll make the setup and hosting super easy.
 
@@ -627,8 +627,8 @@ Don't worry about how much traffic your blog gets. You're building it for *you*.
 Software development is a field where [LinkedIn](https://www.linkedin.com/) can play a prominent role in career networking and hiring. Potential employers might want to look at your LinkedIn profile. Recruiters might scout your profile and work with you to get hired at companies. Your LinkedIn profile can be an opportunity to go into more depth about yourself, your skills, and your projects than your resume. If you don't already have one, create a LinkedIn account for yourself. Add your work history, projects you've worked on, and coding skills, technologies, and frameworks you've learned to your LinkedIn profile. Update that profile as you learn more things. Share your LinkedIn page with others as you career network and add them as contacts. And don't forget to add a link to your LinkedIn profile in your resume.
 
 25_RESUME_PIC
-**Create a LinkedIn account and stellar resume.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/resume-writing-service-abstract-concept_12085270.htm) on Freepik.**
+**Create a LinkedIn account and stellar resume.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/resume-writing-service-abstract-concept_12085270.htm) on Freepik.*{: class="fs-0-8" }
 
 ## Prepare a resume
 
@@ -648,8 +648,8 @@ Then start talking to people: anyone and everyone. Talk about your code-learning
 I know this can feel awkward. But it is an excellent way to get your foot in the door at a company. Talking to people builds connections. People who know you or get to know you through interactions like these are much more likely to help you succeed in your employment goals than people who have never met you and are seeing your resume as one faceless resume in a large stack of other resumes. Someone you connect with is more likely to put in a good word for you with someone who can hire you so your resume can be *seen* and seriously considered.
 
 26_NETWORKING_PIC
-**Start career networking.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/successful-partnership-negotiation-partners-handshaking_11669283.htm) on Freepik.**
+**Start career networking.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/successful-partnership-negotiation-partners-handshaking_11669283.htm) on Freepik.*{: class="fs-0-8" }
 
 Here are some great networking opportunities:
 
@@ -671,8 +671,8 @@ You will likely have fewer interview opportunities for that first developer role
 4. **Final interview**: Some (not all) companies will do a final interview where you will get a chance to talk to senior management or even the CEO or CTO of the company (if the company is on the smaller side).
 
 27_INTERVIEW_PIC
-**Practice interviewing.**
-**[Image by vectorjuice](https://www.freepik.com/free-vector/job-interview-process-hiring-new-employees-hr-specialist-cartoon-character-talking-new-candidatee-recruitment-employment-headhunting_10780346.htm) on Freepik.**
+**Practice interviewing.**<br>
+*[Image by vectorjuice](https://www.freepik.com/free-vector/job-interview-process-hiring-new-employees-hr-specialist-cartoon-character-talking-new-candidatee-recruitment-employment-headhunting_10780346.htm) on Freepik.*{: class="fs-0-8" }
 
 Interview times generally last between 1/2 hour to an hour. Annoyingly, sometimes they can be scheduled back-to-back, leading to multiple hours of consecutive interviews with different team members. At the end of all interviews (even the technical interviews), you'll get a chance to ask the interviewers questions. I suggest you do so. You want to make sure they are a good fit for you as much as you are a good fit for them. How can you prepare for these interviews?
 
@@ -702,8 +702,8 @@ We talked about [choosing your first programming language](#choosing-a-language)
 Finally we talked about the end game: preparing your [resume](#prepare-a-resume) and [LinkedIn profile](#make-a-linkedin-account), [career networking](#start-career-networking) and [interview practice](#practice-interviewing). Ultimately, with a lot of hard work and a little luck, these topics should be enough to take you from no coding experience to landing that first junior developer job.
 
 28_CONCLUSIONS_PIC
-**Good luck in your journey!**
-**[Image by pch.vector](https://www.freepik.com/free-vector/business-leader-standing-arrow-holding-flag-flat-vector-illustration-cartoon-people-training-doing-business-plan-leadership-victory-challenge-concept_10606192.htm) on Freepik.**
+**Good luck in your journey!**<br>
+*[Image by pch.vector](https://www.freepik.com/free-vector/business-leader-standing-arrow-holding-flag-flat-vector-illustration-cartoon-people-training-doing-business-plan-leadership-victory-challenge-concept_10606192.htm) on Freepik.*{: class="fs-0-8" }
 
 With this detailed guide, you now have the tools at your disposal to learn to code on your own and land your first junior developer role, all without a formal education or coding bootcamp. Good luck on your journey. I'd love to hear how it goes and your progress along the way.
 
