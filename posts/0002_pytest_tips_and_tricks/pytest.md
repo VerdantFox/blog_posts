@@ -197,7 +197,7 @@ Furthermore, I could run `pytest -m "not slow"` to run all tests that
 do not contain the `@pytest.mark.slow` decorator (`test_basic()`).
 
 When creating markers, you'll also want to list your markers in your
-`pytest.ini` file at the route of your project, otherwise pytest will
+`pytest.ini` file at the root of your project, otherwise pytest will
 warn that you might have a typo in your marker name. The `pytest.ini` file
 for the above example might look something like this:
 

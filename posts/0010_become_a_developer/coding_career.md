@@ -22,7 +22,7 @@ I transitioned into software development from the sciences, a field I loved. But
 
 ## Am I smart enough to code?
 
-The short answer is, **yes, you are**. Before I learned to code, I thought coding was magic. Super smart people wrote complex, arcane words, and my computer does fantastic things. I thought you had to go to school for years and years of intensive struggle to learn these secrets. And even then, only geniuses could understand it. **Wrong!** You do not have to be a genius to learn to code. You do not even have to have above-average intelligence. And you do not need to be a math wiz.
+The short answer is, **yes, you are**. Before I learned to code, I thought coding was magic. Super smart people wrote complex, arcane words, and my computer did fantastic things. I thought you had to go to school for years of intensive struggle to learn these secrets. And even then, only geniuses could understand it. **Wrong!** You do not have to be a genius to learn to code. You do not even have to have above-average intelligence. And you do not need to be a math wiz.
 
 Ultimately, coding can be super simple. If you have a complicated problem, you break it down into smaller problems. For example, to do large task `A`, you solve smaller tasks `B`, `C`, and `D`. And all these smaller problems come down to simple logical statements directing a computer to do things. "computer: print 'hello world", "computer: make this word green", "computer: add these two numbers together".
 
