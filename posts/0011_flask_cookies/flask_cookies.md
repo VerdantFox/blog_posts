@@ -134,7 +134,7 @@ flask --app app run --reload
 
 The above entry generates a development Flask server that listens for requests on `localhost:5000`. If you go to `localhost:5000` in your web browser, the `read_cookies` route will call and render our `template.html` template. The first call will probably look like this since we haven't set any cookies yet. Note Flask might set some other cookies.
 
-02_HTML_NO_COOKIES
+02_HTML_NO_COOKIES_PIC
 Browser page with no cookies set.
 
 ## Reading cookies
@@ -167,7 +167,7 @@ In the above Flask route function, we create the response object early with the 
 
 With the Flask app running, go to the URL `localhost:5000/set-cookie` in your web browser to run the above route function. You'll notice that no cookies will be listed the first time you go to this web page. What gives? Recall cookies are stored on the client's browser and sent with each request. The first time we invoke the `set_cookie()` route function, the request doesn't have any cookies set yet. The cookies are sent to the client in the response. If you call `localhost:5000/set-cookie` a second time (or `localhost:5000`), you will see the cookie key-value pair set by the first call to the `set_cookie()` route function. After the second call, the browser should look like this:
 
-03_HTML_FIRST_COOKIE_SET
+03_HTML_FIRST_COOKIE_SET_PIC
 Browser page with the cookie set by /set-cookie route.
 
 Note: if you want to *update* a cookie—change a cookie's value—call `response.set_cookie()` again, passing in the new key-value pair. If the key is the same as an existing key, the cookie will overwrite with the new value.
