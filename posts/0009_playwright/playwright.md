@@ -1,6 +1,6 @@
 # End-to-end website testing with Playwright
 
-tags: testing, pytest, python, web
+tags: testing, pytest, python, web, Playwright
 
 ## Introduction
 
