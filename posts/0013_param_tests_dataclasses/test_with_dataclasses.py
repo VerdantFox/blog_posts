@@ -174,7 +174,7 @@ class DivideTestCase:
     log_msg: str | None = None
 
 
-DIVIDE_CASES_EXPANDED_WITH_LOGGING = [
+DIVIDE_CASES_WITH_DATACLASSES = [
     DivideTestCase(num1=4, num2=2, expected=2, id="basic_case"),
     DivideTestCase(num1=2, num2=4, expected=0.5, id="num2_gt_num1"),
     DivideTestCase(num1=0, num2=2, expected=0, id="num1_0"),
@@ -210,7 +210,7 @@ DIVIDE_CASES_EXPANDED_WITH_LOGGING = [
     "test_case",
     [
         pytest.param(test_case, id=test_case.id)
-        for test_case in DIVIDE_CASES_EXPANDED_WITH_LOGGING
+        for test_case in DIVIDE_CASES_WITH_DATACLASSES
     ],
 )
 def test_divide_with_logging_and_dataclass(
