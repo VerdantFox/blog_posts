@@ -107,7 +107,7 @@ def test_divide_with_error(num1, num2, expected, error):
 
 
 DIVIDE_CASES_EXPANDED_WITH_LOGGING = [
-    # (num1, num2, expected, error, log_level, log_msg)
+    # (num1, num2, expected, error, log_level, expected_log_msg)
     pytest.param(4, 2, 2, None, logging.INFO, "", id="basic_case"),
     pytest.param(2, 4, 0.5, None, logging.INFO, "", id="num2_gt_num1"),
     pytest.param(0, 2, 0, None, logging.INFO, "", id="num1_0"),
@@ -143,10 +143,10 @@ DIVIDE_CASES_EXPANDED_WITH_LOGGING = [
 
 
 @pytest.mark.parametrize(
-    ("num1", "num2", "expected", "error", "log_level", "log_msg"),
+    ("num1", "num2", "expected", "error", "log_level", "expected_log_msg"),
     DIVIDE_CASES_EXPANDED_WITH_LOGGING,
 )
-def test_divide_with_logging(num1, num2, expected, error, log_level, log_msg, caplog):
+def test_divide_with_logging(num1, num2, expected, error, log_level, expected_log_msg, caplog):
     """Test the divide_with_logging method with error checking and log checking."""
     caplog.set_level(log_level)
     if error:
@@ -155,8 +155,8 @@ def test_divide_with_logging(num1, num2, expected, error, log_level, log_msg, ca
     else:
         assert divide_with_logging(num1, num2) == expected
 
-    if log_msg:
-        assert log_msg in caplog.text
+    if expected_log_msg:
+        assert expected_log_msg in caplog.text
     else:
         assert len(caplog.text) == 0
 
@@ -171,7 +171,7 @@ class DivideTestCase:
     expected: int | float | None = None
     error: Exception | None = None
     log_level: str = logging.INFO
-    log_msg: str | None = None
+    expected_log_msg: str | None = None
 
 
 DIVIDE_CASES_WITH_DATACLASSES = [
@@ -184,7 +184,7 @@ DIVIDE_CASES_WITH_DATACLASSES = [
         num2=2,
         expected=3,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'int'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'int'>",
         id="debug_basic_case",
     ),
     DivideTestCase(
@@ -192,7 +192,7 @@ DIVIDE_CASES_WITH_DATACLASSES = [
         num2=2.5,
         expected=2,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'float'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'float'>",
         id="debug_int_float",
     ),
     DivideTestCase(
@@ -200,7 +200,7 @@ DIVIDE_CASES_WITH_DATACLASSES = [
         num2="2",
         error=TypeError,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
         id="num1_0",
     ),
 ]
@@ -224,7 +224,7 @@ def test_divide_with_logging_and_dataclass(
     else:
         assert divide_with_logging(test_case.num1, test_case.num2) == test_case.expected
 
-    if test_case.log_msg:
-        assert test_case.log_msg in caplog.text
+    if test_case.expected_log_msg:
+        assert test_case.expected_log_msg in caplog.text
     else:
         assert len(caplog.text) == 0

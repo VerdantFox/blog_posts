@@ -6,7 +6,7 @@ tags: Python, pytest, dataclasses
 
 01_PYTEST_DATACLASSES
 
-Parameterization is a powerful tool in pytest (the most popular Python testing framework) that allows us to write a single test with minimal code that can dynamically expand to become a bunch of similar with minor input differences. In this blog post, I will describe how to write parameterized pytests. And then, we'll expand on the topic and re-write the tests more effectively using dataclasses.
+Parameterization is a powerful tool in pytest (the most popular Python testing framework). It allows us to write a single, simple test that can dynamically expand to become many similar tests with minor input differences. In this blog post, I will describe how to write parameterized pytests and why they are such a powerful tool. And then, I'll show you how to re-write parameterized tests more effectively using dataclasses.
 
 ## Setup
 
@@ -30,7 +30,7 @@ pip install pytest
 
 ## Writing tests with many variations
 
-Let's say we want to test the following example function:
+Let's say we want to test the following extremely derivative example function:
 
 ```python
 def add(num1, num2):
@@ -38,7 +38,7 @@ def add(num1, num2):
     return num1 + num2
 ```
 
-To test this extremely derivative example function, we'd want to test that various input values produce expected output values. How could we do this?
+To test this function, we'd want to test that various input values produce expected output values. How could we do that?
 
 ### Option 1: A series of one-off tests
 
@@ -75,39 +75,39 @@ The second reason this setup is bad is that the test will fail **immediately** o
 
 ### Option 3: Use a parameterized test
 
-The best solution is parameterized tests. Parameterized tests in pytest are powerful. They allow you to write **one** simple test with many input values. Then, at run time, your one test dynamically generates many one-off tests, each using the provided input values. An example looks like this:
+The best solution is to write a parameterized test. Parameterized tests are a powerful pytest tool. They allow you to write **one** simple test with many input value combinations. Then, at run time, your one test dynamically generates **many** one-off tests, each using the provided input values. Here is an example:
 
 ```python
 import pytest
 
 # (num1, num2, expected)
-ADD_CASES = [(1, 2, 3), (5, 0, 5), (0, 5, 5), (-5, 10, 5), (5, -10, -5)]
+INPUTS = [(1, 2, 3), (5, 0, 5), (0, 5, 5), (-5, 10, 5), (5, -10, -5)]
 
 
-@pytest.mark.parametrize(("num1", "num2", "expected"), ADD_CASES)
+@pytest.mark.parametrize(("num1", "num2", "expected"), INPUTS)
 def test_add_parameterized(num1, num2, expected):
     assert add(num1, num2) == expected
 ```
 
-To mark a pytest as a parameterized test, we use the `@pytest.mark.parameterize` decorator. That decorator takes two input arguments. The first argument is either a string or a tuple of strings. Using the string syntax, you can pass in a comma-separated list of strings that might look like `"num1,num2,expected"`. Passing in a single item like `"num"` is also possible. The comma-separated string or tuple of strings (what we did in the above example) correspond to variable names. Then, we provide those same variable names as parameters to the test function, which we can then use as variables in the test itself.
+To mark a pytest as a parameterized test, we use the `@pytest.mark.parameterize` decorator. That decorator takes two input arguments. The first argument is either a string or a tuple of strings. Using the string syntax, you can write a comma-separated list of items like this: `"num1,num2,expected"`. Passing in a single item like `"num"` is also possible. The comma-separated string or tuple of strings (e.g., `("num1", "num2", "expected")`) correspond to variable names. We provide those same variable names as parameters to the test function (`num1, num2, expected`), which we can then use as variables in the test itself.
 
-The second input argument to `@pytest.mark.parameterize` is an iterable (for example, a list). Each item in the list will dynamically generate a new test, passing in the list item to the variable names described in the first argument of `@pytest.mark.parameterize`. If the first argument is a string variable name, each list item can be any object. However, if the first argument corresponds to *multiple* variable names, each list item must be an iterable of the same size to expand to fill out those variable names. In the above example, the list item`(1, 2, 3)` expands to fill out the variable names `("num1", "num2", "expected")`. The simplest way to do this is to pass in a list of uniform tuples like in the above example:
+The second input argument to `@pytest.mark.parameterize` is an iterable (for example, a list). Each item in the list will dynamically generate a new test, passing in the list item to the variable names described in the first argument of `@pytest.mark.parameterize`. If the first argument is a string variable name, each list item can be any object. However, if the first argument corresponds to *multiple* variable names, each list item must be an iterable of the same size to expand to fill out those variable names. In the above example, the list item `(1, 2, 3)` expands to fill out the variable names `("num1", "num2", "expected")`. The simplest way to do this is to pass in a list of uniform tuples like in the above example:
 
 ```python
 # (num1, num2, expected)
-ADD_CASES = [(1, 2, 3), (5, 0, 5), (0, 5, 5), (-5, 10, 5), (5, -10, -5)]
+INPUTS = [(1, 2, 3), (5, 0, 5), (0, 5, 5), (-5, 10, 5), (5, -10, -5)]
 ```
 
 Note: I like to add a comment above the tuples to remind myself what each item in the tuple corresponds to.
 
-In the above example, each tuple in `ADD_CASES` will generate a new test. And in each dynamically generated test, the tuple values correspond to the variables `num1, num2, expected`. For the first test case, `num1` will become `1`, `num2` will become `2`, and `expected` will become `3`. In the second test case, `num1` will become `5`, `num2` will become `0`, and `expected` will become `5`. Here's the whole example again as a reminder:
+In the above example, each tuple in `INPUTS` will generate a new test. And in each dynamically generated test, the tuple values correspond to the variables `num1, num2, expected`. For the first test case, `num1` will become `1`, `num2` will become `2`, and `expected` will become `3`. In the second test case, `num1` will become `5`, `num2` will become `0`, and `expected` will become `5`. Here's the whole example again as a reminder:
 
 ```python
 # (num1, num2, expected)
-ADD_CASES = [(1, 2, 3), (5, 0, 5), (0, 5, 5), (-5, 10, 5), (5, -10, -5)]
+INPUTS = [(1, 2, 3), (5, 0, 5), (0, 5, 5), (-5, 10, 5), (5, -10, -5)]
 
 
-@pytest.mark.parametrize(("num1", "num2", "expected"), ADD_CASES)
+@pytest.mark.parametrize(("num1", "num2", "expected"), INPUTS)
 def test_add_parameterized(num1, num2, expected):
     assert add(num1, num2) == expected
 ```
@@ -131,9 +131,9 @@ test_with_dataclasses.py::test_add_parameterized[5--10--5] PASSED [100%]
 ==================== 5 passed, 0 deselected in 0.04s ====================
 ```
 
-Note `-k test_add_parameterized` ran only tests containing that string in the name, and `-v` made the tests output in "verbose" mode (one line per test). Analyzing these test results, we can see that five tests ran, one for each tuple of inputs we provided. We can also see how pytest named the tests (`test_add_parameterized[1-2-3]`): the test name, with the input values of `[num1-num2-expected]` appended to the end.
+Note `-k test_add_parameterized` ran only tests containing that string in the test name, and `-v` made tests output in "verbose" mode (one line per test). Analyzing these test results, we can see that five tests ran, one for each tuple of the inputs we provided. We can also see how pytest named the tests (`test_add_parameterized[1-2-3]`): the test name, with the input values of `[num1-num2-expected]` appended to the end.
 
-Excellent! 🎉 This parameterized test is precisely what we need. We dynamically generated a series of tests for different inputs by writing one simple test (it only tests a single call of the `add` function). This approach is much cleaner and less work than writing a series of one-off tests. It is also much better than looping over these values with a single test because if one test fails, we can see which test failed, and the tests after that will continue to run. I'll change the middle test tuple to `(0, 5, 4)` to prove this.
+Excellent! 🎉 This parameterized test is precisely what we need. We dynamically generated a series of tests for different inputs by writing one simple test (each test only calls the `add` function once). This approach is much cleaner and less work than writing a series of one-off tests. It is also much better than looping over these values with a single test because if one test fails, we can see which test failed, and the tests after the failing test will continue to run. To demonstrate, I'll change the middle test tuple from `(0, 5, 5)` to `(0, 5, 4)`.
 
 ```bash
 $ pytest -k test_add_parameterized -v
@@ -154,7 +154,7 @@ ____________________ test_add_parameterized[0-5-4] _________________________
 
 num1 = 0, num2 = 5, expected = 4
 
-    @pytest.mark.parametrize(("num1", "num2", "expected"), ADD_CASES)
+    @pytest.mark.parametrize(("num1", "num2", "expected"), INPUTS)
     def test_add_parameterized(num1, num2, expected):
         """Test the add function using a parameterized list of tuples."""
 >       assert add(num1, num2) == expected
@@ -171,7 +171,7 @@ Notice that the middle test "FAILED", while the tests before and after that test
 
 ## Using pytest.param to provide test IDs
 
-One thing I don't like about passing in a series of tuples as the second argument to `@pytest.mark.parametrize` is that the test names generated by pytest are not very expressive. Recall that the test names append all the items in the tuple, separated by dashes (e.g., `test_add_parameterized[0-5-4]`). That's not great. Luckily, we can customize our parameterized test names using `pytest.param()` objects with IDs instead of tuples. The resulting code change looks like this.
+One thing I don't like about passing in a series of tuples as the second argument to `@pytest.mark.parametrize` is that the test names generated by pytest are not very expressive. Recall that the test names append all the items in the tuple, separated by dashes to the end of the parametrized test name (e.g., `test_add_parameterized[0-5-4]`). That's not very descriptive. Luckily, we can customize our parameterized test names by substituting the input tuples with `pytest.param()` objects containing IDs. The resulting code change looks like this.
 
 ```python
 ADD_CASES_WITH_IDS = [
@@ -240,7 +240,7 @@ def test_divide(num1, num2, expected):
     assert divide(num1, num2) == expected
 ```
 
-Let's say we want to test the case where `num2`, the divisor, equals `0`. That's a problem. We know that dividing a number by zero is impossible -- doing so will raise a `ZeroDivisionError`. We can expand our test for this by adding a fourth variable to our list of variables called `error`, like so.
+Now, let's say we want to test the case where `num2`, the divisor, equals `0`. That's a problem. We know that dividing a number by zero is impossible -- doing so will raise a `ZeroDivisionError`. We can expand our test for this by adding a fourth variable to our list of variables called `error`, like so.
 
 ```python
 import pytest
@@ -270,7 +270,7 @@ In the above code, we use `with pytest.raises(error)`, passing in our error to l
 
 I noticed that with four items to keep track of, the `pytest.param()` iterable has become more unwieldy. Furthermore, the last two items in the iterable (corresponding to `expected` and `error`) are a little awkward. `error` doesn't matter for cases that don't error, so we need a series of `None` filler values for `error` in those test cases. And `expected` doesn't matter for the error case since there is no expected value.
 
-Let's expand the example one step further to drive these points home. Let's say we notice that sometimes non-numbers get passed into the `divide` function, causing more problems we need to test for. To compensate, we add a **debug** log statement to check the types of the incoming numbers.
+Keep the above two annoyances in mind as I further expand the example to drive these points home. Let's say we notice that sometimes non-numbers get passed into the `divide` function, causing more problems we need to test for. To compensate, we add a **debug** log statement to check the types of the incoming numbers.
 
 ```python
 import logging
@@ -289,11 +289,11 @@ def divide_with_logging(num1, num2):
 
 We can expand our test to check for the logs under various conditions. When the log level is set to `DEBUG`, we would expect to see this **debug** log statement. When it is set to `INFO`, we would **not** expect to see the log statement.
 
-We'll check for these conditions by adding two more arguments to our `pytest.param()` iterable: `log_level` and `log_msg`.
+We'll check for these conditions by adding two more arguments to our `pytest.param()` iterable: `log_level` and `expected_log_msg`.
 
 ```python
 DIVIDE_CASES_EXPANDED_WITH_LOGGING = [
-    # (num1, num2, expected, error, log_level, log_msg)
+    # (num1, num2, expected, error, log_level, expected_log_msg)
     pytest.param(4, 2, 2, None, logging.INFO, "", id="basic_case"),
     pytest.param(2, 4, 0.5, None, logging.INFO, "", id="num2_gt_num1"),
     pytest.param(0, 2, 0, None, logging.INFO, "", id="num1_0"),
@@ -329,10 +329,10 @@ DIVIDE_CASES_EXPANDED_WITH_LOGGING = [
 
 
 @pytest.mark.parametrize(
-    ("num1", "num2", "expected", "error", "log_level", "log_msg"),
+    ("num1", "num2", "expected", "error", "log_level", "expected_log_msg"),
     DIVIDE_CASES_EXPANDED_WITH_LOGGING,
 )
-def test_divide_with_logging(num1, num2, expected, error, log_level, log_msg, caplog):
+def test_divide_with_logging(num1, num2, expected, error, log_level, expected_log_msg, caplog):
     """Test the divide_with_logging method with error checking and log checking."""
     caplog.set_level(log_level)
     if error:
@@ -341,13 +341,13 @@ def test_divide_with_logging(num1, num2, expected, error, log_level, log_msg, ca
     else:
         assert divide_with_logging(num1, num2) == expected
 
-    if log_msg:
-        assert log_msg in caplog.text
+    if expected_log_msg:
+        assert expected_log_msg in caplog.text
     else:
         assert len(caplog.text) == 0
 ```
 
-Before running `divide_with_logging`, we set the log level according to the passed-in `log_level` argument. After running `divide_with_logging`, we check that the log shows an expected message in cases where we expect it (when the log level is `DEBUG`) and no messages in cases where the log level is `INFO`.
+Let's break down the above test function. Before running `divide_with_logging`, we set the log level according to the passed-in `log_level` argument using the built-in [caplog fixture](https://docs.pytest.org/en/7.1.x/how-to/logging.html#caplog-fixture). After running `divide_with_logging`, we check that the log shows an expected message if we set a message for `expected_log_msg` or that there is no log output if `expected_log_msg` is `None` (again using the caplog fixture).
 
 Notice what has happened to our `pytest.param` iterables. Three problems developed as the test grew more complicated.
 
@@ -428,18 +428,18 @@ class DivideTestCase:
     expected: int | float | None = None
     error: Exception | None = None
     log_level: str = logging.INFO
-    log_msg: str | None = None
+    expected_log_msg: str | None = None
 ```
 
-Notice a couple of things about the test case.
+Notice a few things about the test case.
 
 1. We're using a dataclass to write it, so it looks very clean.
 2. We include a required `id` attribute. Later, we'll use this for the test `id` values.
 3. `num1` and `num2` are **required** attributes (like `id`). They are **required** because they don't have a default value set. These are attributes that make sense to set individually for every test.
-4. `expected`, `error`, `log_level`, and `log_msg` are **optional** attributes. They have default values set that make sense for most tests (or at least for many tests). These are attributes that we no longer need to worry about for tests that don't use them or for tests that typically use them the same way almost every time.
+4. `expected`, `error`, `log_level`, and `expected_log_msg` are **optional** attributes. They have default values set that make sense for most tests (or at least for many tests). These are attributes that we no longer need to worry about for tests that don't use them or for tests that typically use them the same way almost every time.
 5. The type hints will help with auto-complete when we write the actual test cases.
 
-Next, we add the test cases for the parameterized test:
+Next, we add the test cases for the parameterized test using the dataclass we defined above:
 
 ```python
 DIVIDE_TEST_CASES = [
@@ -452,7 +452,7 @@ DIVIDE_TEST_CASES = [
         num2=2,
         expected=3,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'int'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'int'>",
         id="debug_basic_case",
     ),
     DivideTestCase(
@@ -460,7 +460,7 @@ DIVIDE_TEST_CASES = [
         num2=2.5,
         expected=2,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'float'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'float'>",
         id="debug_int_float",
     ),
     DivideTestCase(
@@ -468,13 +468,13 @@ DIVIDE_TEST_CASES = [
         num2="2",
         error=TypeError,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
         id="num1_0",
     ),
 ]
 ```
 
-These test cases are much easier to read and write than the `pytest.param` style test cases. Here is an example comparison of the last test case for each:
+These test cases are much easier to read and write than the `pytest.param`-style test cases. Here is an example comparison of the `pytest.param`-style test case with the equivalent dataclass-style test case:
 
 ```python
 # pytest.param style
@@ -493,7 +493,7 @@ DivideTestCase(
     num2="2",
     error=TypeError,
     log_level=logging.DEBUG,
-    log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
+    expected_log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
     id="num1_0",
 )
 ```
@@ -528,8 +528,8 @@ def test_divide_with_logging_and_dataclass(
     else:
         assert divide_with_logging(test_case.num1, test_case.num2) == test_case.expected
 
-    if test_case.log_msg:
-        assert test_case.log_msg in caplog.text
+    if test_case.expected_log_msg:
+        assert test_case.expected_log_msg in caplog.text
     else:
         assert len(caplog.text) == 0
 ```
@@ -560,8 +560,8 @@ def test_divide_with_logging_and_dataclass(
     else:
         assert divide_with_logging(test_case.num1, test_case.num2) == test_case.expected
 
-    if test_case.log_msg:
-        assert test_case.log_msg in caplog.text
+    if test_case.expected_log_msg:
+        assert test_case.expected_log_msg in caplog.text
     else:
         assert len(caplog.text) == 0
 ```
@@ -579,7 +579,7 @@ class DivideTestCase:
     expected: int | float | None = None
     error: Exception | None = None
     log_level: str = logging.INFO
-    log_msg: str | None = None
+    expected_log_msg: str | None = None
 
 
 DIVIDE_CASES_WITH_DATACLASSES = [
@@ -592,7 +592,7 @@ DIVIDE_CASES_WITH_DATACLASSES = [
         num2=2,
         expected=3,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'int'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'int'>",
         id="debug_basic_case",
     ),
     DivideTestCase(
@@ -600,7 +600,7 @@ DIVIDE_CASES_WITH_DATACLASSES = [
         num2=2.5,
         expected=2,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'float'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'float'>",
         id="debug_int_float",
     ),
     DivideTestCase(
@@ -608,7 +608,7 @@ DIVIDE_CASES_WITH_DATACLASSES = [
         num2="2",
         error=TypeError,
         log_level=logging.DEBUG,
-        log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
+        expected_log_msg="num1=<class 'int'>, type(num2)=<class 'str'>",
         id="num1_0",
     ),
 ]
@@ -632,8 +632,8 @@ def test_divide_with_logging_and_dataclass(
     else:
         assert divide_with_logging(test_case.num1, test_case.num2) == test_case.expected
 
-    if test_case.log_msg:
-        assert test_case.log_msg in caplog.text
+    if test_case.expected_log_msg:
+        assert test_case.expected_log_msg in caplog.text
     else:
         assert len(caplog.text) == 0
 ```
@@ -661,8 +661,8 @@ test_with_dataclasses.py::test_divide_with_logging_and_dataclass[num1_01] PASSED
 
 ## Conclusions
 
-Parameterized tests are a powerful way of writing one test to dynamically generate a range of similar tests, subbing out some of the data for each test. They offer a way to reduce code duplication in your tests without looping over all your data in an individual test.
+Parameterized tests are a powerful way of writing one test to dynamically generate a range of similar tests, subbing out bits of data for each test. They offer a way to reduce code duplication in your tests without looping over all your data in one test.
 
-In a parameterized test, you can supply as many variables as you want in a tuple or `pytest.param` object to make them available in your test. However, having too many variables is unwieldy. If you find yourself writing a parameterized test with many variables, try using a dataclass to contain all those variables, especially if it makes sense for some variables to set default values.
+In a parameterized test, you can supply as many variables as you want in a tuple or `pytest.param` object to make them available to your test. However, having too many variables is unwieldy. If you find yourself writing a parameterized test with many variables, try using a dataclass to contain all those variables, especially if it makes sense for some variables to have default values.
 
 I hope you found this guide to parameterized testing with pytest helpful. If you are interested in more pytest tips and tricks, check out my other blog post, [9 pytest tips and tricks to take your tests to the next level](/blog/view/9-pytest-tips-and-tricks-to-take-your-tests-to-the-next-level).
