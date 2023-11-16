@@ -22,7 +22,7 @@ we're going to be covering today:
 9. Using pytest-cov
 
 All of the code discussed in this article can be found in the following
-[GitHub repository](https://github.com/VerdantFox/pytest_examples){: target="_blank", rel="noopener noreferrer" }
+[GitHub repository](https://github.com/VerdantFox/pytest_examples){: target="\_blank", rel="noopener noreferrer" }
 I created. To run the code, you'll need `pytest` and `pytest-cov`, which you
 can install with `pip install pytest` and `pip install pytest-cov`.
 I recommend doing so in a virtual environment.
@@ -256,8 +256,8 @@ Here's the standard traceback message (or `--tb=auto`):
         """ A test designed to fail, will raise ZeroDivisionError """
 >       example.Math().divide(1, 0)
 
-src/example_test.py:30: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/example_test.py:30:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 first = 1, second = 0
 
@@ -287,8 +287,8 @@ Here's with `--tb=line`:
 ```
 
 With `--tb=no` you will not see any traceback. This can be useful if you just
-want to find out *which* tests fail, then you can re-test an individual test
-with a longer traceback to find out *why* it failed.
+want to find out _which_ tests fail, then you can re-test an individual test
+with a longer traceback to find out _why_ it failed.
 
 ### --lf/--last-failed
 
@@ -347,8 +347,8 @@ def test_skipped_if():
     assert True
 ```
 
-Notice, the first argument to the `skipif` decorator resolves to a *boolean*
-(`True` or `False`) value which will `skip` the test if the *boolean* value
+Notice, the first argument to the `skipif` decorator resolves to a _boolean_
+(`True` or `False`) value which will `skip` the test if the _boolean_ value
 resolves to `True` or run test normally if the value resolves to `False`.
 
 ### `xfail`
@@ -369,11 +369,11 @@ def test_xfail():
 ```
 
 Notice my first parameter is `condition`. Just like with `skipif`, I make a
-*boolean* condition where the test is known to fail. If that condition is *not*
-met, the test is run *normally*. If that condition *is* met, the test is run
-as an `xfail` (meaning you expect the test to fail). If the test *does* fail
+_boolean_ condition where the test is known to fail. If that condition is _not_
+met, the test is run _normally_. If that condition _is_ met, the test is run
+as an `xfail` (meaning you expect the test to fail). If the test _does_ fail
 (as expected), the result is marked with a lower case `x` (or `XFAIL (REASON)`
-in verbose mode). If the test *passes* (not expected), the result is marked
+in verbose mode). If the test _passes_ (not expected), the result is marked
 with an upper case `X`, or `XPASS (REASON)` in verbose mode.
 
 ## 3. Mocking with `monkeypatch`
@@ -410,13 +410,12 @@ Here we use the `monkeypatch` built-in fixture (more on fixtures later)
 as a function argument in our test, allowing us to use `monkeypatch` in the
 test. We call `monkeypatch.setattr(OBJECT, "ATTRIBUTE", ATTRIBUTE_VALUE)`
 to set the object's `ATTRIBUTE` to `ATTRIBUTE_VALUE`. If we want to
-replace a module's global variable with a new one, the `OBJECT` *is* the
+replace a module's global variable with a new one, the `OBJECT` _is_ the
 module containing the global variable (note we had imported the module `example`
 before using it in the test). The second argument is the attribute we want
 to replace as a string (ie, in quotation marks) -- in this case, the module's
 global variable `GLOBAL_SLEEP_SECONDS` is the attribute we want to be replaced.
-Finally, the third argument is the value we want to set the attribute (argument
-2) with. Here we are changing that value to `1`. Now the test will run with
+Finally, the third argument is the value we want to set the attribute (argument 2) with. Here we are changing that value to `1`. Now the test will run with
 a 1-second sleep instead of its original 3-second sleep. After the test is
 over, all objects changed by `monkeypatch` revert to their original values.
 
@@ -447,12 +446,12 @@ def test_mocked_functions(monkeypatch):
 
 Like in the above example, `monkeypatch` is a function argument of our test,
 allowing us to use the `monkeypatch` fixture as an object in our test. We want
-to replace the `slow` function with a fast function that does *nothing* when
+to replace the `slow` function with a fast function that does _nothing_ when
 called. To use monkeypatch that function recall we use
 `monkeypatch.setattr(OBJECT, "ATTRIBUTE", ATTRIBUTE_VALUE)`. In this case, the
 `OBJECT` is the `example.py` module's `Math` class. The `ATTRIBUTE` to be
 replaced is the `slow` method (in quotation marks). For the third argument,
-we replace the `slow` method with a *lambda function* (an inline,
+we replace the `slow` method with a _lambda function_ (an inline,
 nameless function). This lambda function will receive the same arguments
 as the real function would send. In our case, it will receive one argument which
 we don't care about so we replace it with `_` (although if you're interested,
@@ -460,12 +459,12 @@ the argument passed during the test is the class's `self` object). The lambda
 function returns `None`. This means that `time.sleep(GLOBAL_SLEEP_SECS)`
 is no longer called by `Math.slow`, so the test should run almost instantly.
 
-The `multiply` method could also be replaced with a *lambda function*, but
+The `multiply` method could also be replaced with a _lambda function_, but
 here we'll show how to replace it with a named function. First, we create
 the replacement function inside the test. The replacement function here is
 `fake_multiply` and it will receive three arguments. I labeled those arguments
 with leading underscores to indicate they won't be used by our mocked function
-(note, however, if we wanted to, we *could* use those variables in the mocked
+(note, however, if we wanted to, we _could_ use those variables in the mocked
 function). The function simply returns `2` no matter what input it receives.
 We `monkeypatch` replace the `multiply` method the same way we replaced the
 `slow` method, using `fake_multiply` as the replacement
@@ -517,7 +516,7 @@ the value it had before the test ran.
 ## 4. `tmp_path` and `importlib`
 
 Sometimes you will test code that writes to files. Testing
-this type of code can be difficult, as you want all of *your* files to be
+this type of code can be difficult, as you want all of _your_ files to be
 the same before and after your tests run. `importlib` and `tmp_path`
 come in clutch for this type of test.
 
@@ -564,7 +563,7 @@ Let's break down what's happening in this test. First `tmp_path` is a
 `fixture` object (like `monkeypatch` - more on fixtures later) that is
 a function argument for our test. The `tmp_path` fixture creates a
 temporary directory (that will be deleted after the test ends) and returns
-a [pathlib.Path](https://docs.python.org/3/library/pathlib.html){: target="_blank", rel="noopener noreferrer" }
+a [pathlib.Path](https://docs.python.org/3/library/pathlib.html){: target="\_blank", rel="noopener noreferrer" }
 object for that temporary directory. With `test_file = tmp_path.joinpath("testfile.txt")`
 we point to a temporary file in the temporary directory. Next
 
@@ -600,7 +599,7 @@ Each directory (including the base project directory) must be treated as a
 `test_file.write_text(test_path_og.read_text())` we are writing the contents
 of our test `infile.txt` to our temporary file `testfile.txt` in our
 temporary directory. We then proceed to alter our test file using our
-function we are testing `update_file_via_pathlib(PATH)`. The *temporary*
+function we are testing `update_file_via_pathlib(PATH)`. The _temporary_
 file is updated instead of our permanent `test_data/infile.txt` file, and
 we can test the update was successful. The temporary file will be deleted
 after the test concludes.
@@ -615,7 +614,7 @@ simply functions that are used as arguments to your test that do something,
 return an object to use during the test, and then possibly do something else
 after the test completes. We've already used `fixtures` in this article.
 `monkeypatch` and `tmp_path` are built-in fixtures (ie fixtures in `pytest`'s
-code). Creating your own *custom* fixtures is very easy. Just write a
+code). Creating your own _custom_ fixtures is very easy. Just write a
 function that is visible to your test, mark the function as a `fixture`,
 and then insert that function as an argument to your test.
 Let's look at an example:
@@ -702,7 +701,7 @@ it is set to `autouse=True` and to the default `scope="function"`.
 once per testing session. The final new idea introduced here is using, `yield`
 in our fixtures. If `yield` is used instead of `return`, your fixture will first
 perform its setup. It will then yield some value (in our case nothing -- or
-`None` -- is yielded, but any object *can* be yielded to the test). Finally,
+`None` -- is yielded, but any object _can_ be yielded to the test). Finally,
 after the test is run (or all the tests are finished running if the
 `scope="session"`) the code after the `yield` statement will run
 (ie, the teardown).
@@ -711,7 +710,7 @@ Therefore in our example, `time_test` will get the time
 before every test, `yield` to the test run, get the time after each test,
 and then print the difference between those times (ie how long the test took
 to run). Likewise, `time_all_tests` will get the time before the first test is
-run, `yield` to *all* the tests, get the time after the last test has run,
+run, `yield` to _all_ the tests, get the time after the last test has run,
 and report the difference (ie, the time it took for all the tests to run).
 
 ## 6. Testing python exceptions
@@ -763,7 +762,7 @@ is a regex style string matching the expected error message.
 
 Your code may write messages out to a `log`, or it might `print()` messages
 to `std_out` or `std_error`. You might want to test that those messages are
-*actually* `logging` or `print`ing as you expected. To test for those messages
+_actually_ `logging` or `print`ing as you expected. To test for those messages
 we need two new built-in `fixtures` -- `caplog` and `capsys`. For example,
 tests using `caplog` and `capsys` recall that the file we are testing,
 `example.py` has a function `some_math_function` with these lines of
@@ -919,7 +918,6 @@ PARAMS = [
 ]
 ...
 
-@pytest.mark.parametrization
 @pytest.mark.parametrize("first, second, expected", PARAMS)
 @pytest.mark.parametrize("half", (True, False))
 def test_param_multiple_sets(speedup, first, second, expected, half):
@@ -988,8 +986,8 @@ If you have a tool like `VS code` extension
 "open in Default browser" to view the website. The index page shows
 coverage like the above `std_out` report. If you then click on `src/example.py`
 though, you are brought to a page showing `src/example.py` source code,
-highlighted **green** when lines are *covered* and **red** where lines
-are *un-covered*.
+highlighted **green** when lines are _covered_ and **red** where lines
+are _un-covered_.
 
 If there is a line or block of code (like an `if` statement) that you want
 `pytest-cov` to ignore in its coverage calculations, then comment that line
@@ -1002,8 +1000,8 @@ of lines covered vs uncovered.
 Those are my top 9 tips and tricks for using pytest to the fullest. If you
 have any others you think I missed, I'd love to hear about them in the
 comments. Looking for more information about testing with pytest? I recommend
-reading through [pytests thorough documentation](https://docs.pytest.org/en/stable/){: target="_blank", rel="noopener noreferrer" }
+reading through [pytests thorough documentation](https://docs.pytest.org/en/stable/){: target="\_blank", rel="noopener noreferrer" }
 for yourself. For another awesome and much more thorough guide to these pytest
 features and many more, I highly recommend the book
-[Python Testing with pytest: Simple, Rapid, Effective, and Scalable](https://www.amazon.com/Python-Testing-pytest-Effective-Scalable/dp/1680502409){: target="_blank", rel="noopener noreferrer" }
+[Python Testing with pytest: Simple, Rapid, Effective, and Scalable](https://www.amazon.com/Python-Testing-pytest-Effective-Scalable/dp/1680502409){: target="\_blank", rel="noopener noreferrer" }
 by Brian Okken. Happy testing!
