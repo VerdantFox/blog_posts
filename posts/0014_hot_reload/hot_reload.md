@@ -8,11 +8,11 @@ tags: python, fastapi, flask, html, css, javascript, uvicorn, gunicorn, jinja2, 
 
 Getting instant feedback for code changes is essential when developing a web application. Typical workflows for Python web applications involve a _hot-reload_ functionality for the development **web server** that will automatically restart the server when changes to **python** files are detected. However, the server _will not_ automatically restart when changes to **HTML**, **CSS**, or **JavaScript** files are detected. When those files are updated, you _must_ manually restart the server for the changes to occur. Moreover, this typical workflow _will not_ automatically refresh your **web browser** when you update files, so you _must_ manually refresh the web page to see the changes.
 
-In this tutorial, I'll show you how to **automatically** _hot-reload_ your [FastAPI](https://fastapi.tiangolo.com/) and [Flask](https://flask.palletsprojects.com/en/3.0.x/) projects that use template engines like [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) with web servers like [uvicorn](https://www.uvicorn.org/) or [gunicorn](https://gunicorn.org/). After reading, you will be able to **automatically** restart your server and refresh your browser when Python, HTML, CSS, and other files change—no manual intervention is required.
+In this tutorial, I'll show you how to **automatically** _hot-reload_ your [FastAPI](https://fastapi.tiangolo.com/) and [Flask](https://flask.palletsprojects.com/en/3.0.x/) projects that use template engines like [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) with web servers like [uvicorn](https://www.uvicorn.org/) or [gunicorn](https://gunicorn.org/). After reading, you will be able to **automatically** restart your server _and_ refresh your browser when Python, HTML, CSS, and other files change—no manual intervention required.
 
 ## Example
 
-You can find bare-bones example code for this tutorial in my GitHub repository named ["hot-reload-examples", here](https://github.com/VerdantFox/hot-reload-examples). The following GIF shows the example in action, using that repository's `fastapi` example.
+You can find bare-bones example code for this tutorial in my GitHub repository named ["hot-reload-examples", here](https://github.com/VerdantFox/hot-reload-examples). The following video shows the _hot reloading_ in action, using that repository's `fastapi` example.
 
 02_HOT_RELOAD_VIDEO
 
