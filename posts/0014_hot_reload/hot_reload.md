@@ -75,13 +75,17 @@ Here are the steps to get _hot reloads_ working for your FastAPI or Flask projec
 
 3.  Turn off caching in your browser
 
-    By default, browsers will cache static files. Therefore, you might not see changes to CSS and JavaScript files reflected in the browser, as the browser will use the stale cached version after the first load. To fix this, you will need to turn off caching in your browser. For Chrome, you can do this with the following steps:
+    **NOTE:** This third step _might_ not be necessary for you. Playing around with browser-sync, it appears to usually not cache static files. However, it doesn't seem like cache-prevention works 100% of the time, so I'll include this option just in case.
+
+    By default, browsers will cache static files. Therefore, you might not see changes to CSS and JavaScript files reflected in the browser, as the browser will use the stale, cached version after the first load. To fix this, you might need to turn off caching in your browser. For Chrome, you can do this with the following steps:
 
     1. Open the browser to `http://localhost:3000`
     2. Right-click on the browser page
     3. Click "Inspect" to open dev tools
     4. Navigate to the "Network" tab
     5. Check "Disable cache"
+
+    **NOTE:** If you do need this step, disabling the cache this way **only applies while dev tools remains open**.
 
 4.  Update your files as needed and see the changes **automatically** reflected in the browser—no manual intervention required.
 
