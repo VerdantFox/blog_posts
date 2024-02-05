@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="25 55 365 185"
+    xmlns="http://www.w3.org/2000/svg">
+    <rect x="180" y="110" width="200" height="50" style="fill: rgb(241, 245, 174); stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="180" y="160" width="200" height="75" style="fill: rgb(245, 201, 174); stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="190" y="130" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="210" y="180" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="270" y="130" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="210" y="130" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="230" y="195" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="300" y="130" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="230" y="130" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="250" y="210" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="330" y="130" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="30" y="160" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="50" y="160" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="110" y="160" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="30" y="180" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="50" y="180" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="110" y="180" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="30" y="200" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="50" y="200" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <rect x="110" y="200" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="185" y="125" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">Thread 1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="190" y="175" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">I/O</text>
+    <rect x="120" y="60" width="160" height="35" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 22;" x="140" y="85" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">Async/Await</text>
+    <rect x="50" y="120" width="65" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="60" y="140" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">Tasks</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="195" y="141.665" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="341" y="141.801" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">3</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="236" y="141.801" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">3</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="312" y="141.801" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">2</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="217" y="141.665" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">2</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="282" y="141.665" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="121" y="171.758" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="36" y="171.758" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="121" y="211.898" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">3</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="36" y="211.758" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">3</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="121" y="191.758" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">2</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 12px;" x="36" y="191.758" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">2</text>
+</svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="30 0 325 205"
+    xmlns="http://www.w3.org/2000/svg">
+    <rect x="110" y="5" width="175" height="35" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
+    <rect x="200" y="50" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
+    <rect x="200" y="100" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
+    <rect x="200" y="150" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
+    <rect x="35" y="60" width="65" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
+    <rect x="35" y="100" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="55" y="100" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
+    <rect x="115" y="100" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="35" y="120" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="55" y="120" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
+    <rect x="115" y="120" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="35" y="140" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="55" y="140" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
+    <rect x="115" y="140" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="215" y="75" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="235" y="75" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
+    <rect x="295" y="75" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="217" y="120" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="237" y="120" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
+    <rect x="297" y="120" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="220" y="170" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="240" y="170" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
+    <rect x="300" y="170" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="65">process 1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="115">process 2</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="165">process 3</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="45" y="80">Tasks</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 22;" x="120" y="30">Multiprocessing</text>
+</svg>
