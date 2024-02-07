@@ -4,7 +4,7 @@ tags: python, async, threads, multiprocessing, concurrency, parallelism, web scr
 
 ## Introduction
 
-01_INTRO_PIC
+01_INTRO_PIC_MEDIA
 
 One of the best ways to achieve **big** speed improvements in Python code is through concurrency: doing several tasks at the same time. In this post, I briefly describe concurrency in python and give some examples for running code concurrently with "async" functions, "threading", and "multiprocessing".
 
@@ -24,19 +24,19 @@ One of the best ways to achieve **big** speed improvements in Python code is thr
 
 ## Visual Examples
 
-02_SYNC_PIC
+02_SYNC_DIAGRAM_MEDIA
 
 With synchronous code, requests are made sequentially, one after the next.
 
-03_ASYNC_PIC
+03_ASYNC_DIAGRAM_MEDIA
 
 With `async`/`await` code, we split tasks up to run concurrently. We purposefully set `await` steps in our code where we wait for **I/O-bound** work to complete and resume our python code. An **event loop** coordinates waiting tasks, resuming our Python code when background **I/O-bound** work completes. In this paradigm, all Python code runs on a single thread.
 
-04_THREADING_PIC
+04_THREADING_DIAGRAM_MEDIA
 
 With **threaded code**, we split tasks up to run concurrently. Unlike with `async`/`await` style code, we do not set specific places to wait for background tasks to complete. Instead, our **CPU coordinates all threads**, alternating which thread executes code at any given time. Because of the **GIL**, only one thread can run Python code at a time (on a single CPU core). However, many threads can wait on **I/O-bound** work to complete in the background while one active thread runs Python code. The CPU alternates the active thread rapidly, sometimes even alternating between the start of one line of Python code and the end of that same line. Thus race conditions in **threaded** code are less predictable than in `async`/`await` code.
 
-05_MULTIPROCESSING_PIC
+05_MULTIPROCESSING_DIAGRAM_MEDIA
 
 With **multiprocessing** code in Python, we split tasks up to run in **parallel** on multiple CPU cores. **Each** multiprocess task running on a separate core can execute python code **at the same time**. This can vastly speed up Python code that does not involve **I/O** work such as math-heavy operations. However, muliprocessing involves limitations. I won't go into significant detail on those limitations in this article, but they involve a larger startup overhead and limited communication between processes.
 
@@ -57,6 +57,8 @@ pip install beautifulsoup4 rich requests httpx aiohttp
 ```
 
 ## HTTP requests
+
+06_API_PIC_MEDIA
 
 One common use case for concurrency is web requests: usually in the form of [API requests](https://en.wikipedia.org/wiki/API) or [web scraping](https://en.wikipedia.org/wiki/Web_scraping). For this section, we'll be web scraping a Pokémon website to get the names of Pokémon, given their Pokédex number. First, I'll show you how to scrape several pages synchronously. Then we'll see how to get massive speedups using `async`/`await` or threading.
 
@@ -175,7 +177,7 @@ results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
 
 And here's a video showing the code executing in real time with color:
 
-05_WEB_SYNC_VIDEO
+07_WEB_SYNC_VIDEO_MEDIA
 
 Notice how the requests run one after another: "Downloading", then "Retrieving", "Downloading", then "Retrieving". First we kick off a request, then we wait for it to come back, then we kick off the next request and wait for it to come back, etc.
 
@@ -308,7 +310,7 @@ results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
 
 And here's a video showing the code executing in real time with color:
 
-06_WEB_ASYNC_VIDEO
+08_WEB_ASYNC_VIDEO_MEDIA
 
 Notice how the code kicks off all the "Download" steps first, some time passes, and then all the "Retrieved" responses come back out of order. What code did we change?
 
@@ -600,7 +602,7 @@ results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
 
 And here's a video showing the code executing in real time with color:
 
-07_WEB_THREADED_VIDEO
+09_WEB_THREADED_VIDEO_MEDIA
 
 Notice how the executed print statement order is a little more chaotic than either the synchronous script or the async script. Some requests are kicked off immediately, and other requests don't kick off until some other threads have received response data. And as with `async`/`await` code, the resulsts come back out of order compared to the requests. The net result, however, is that the speed of threaded code is comprable to `async`/`await` code (<2 seconds).
 
@@ -637,6 +639,8 @@ There a few ways to run threads in Python, but I think the `ThreadPoolExecutor` 
 The return value of `exector.submit` is a thread `Future` which holds the future return value of its associated thread task function. After the context manager closes, we are garaunteed that all thread task functions have finished and all threads have closed. Then we can call `.result()` on each thread `Future` to get the result of each thread task function.
 
 ## Concurrency safety and locks
+
+10_LOCKS_PIC_MEDIA
 
 As our code runs, it frequently enters "invalid states". An "invalid state" means that the data you are working with is "wrong" (either by itself or in the context of other data) for some reason or another. Usually the code is invalid briefly and is fixed later in the code. When our code runs synchronously, we can usually garauntee that by the time the code finishes running, all "invalid states" are corrected, and the end result is that all data is "valid".
 
@@ -764,7 +768,7 @@ Code run in 2.08 seconds.
 
 And a video in real time, with color:
 
-08_LOCKS_SYNC_VIDEO
+11_LOCKS_SYNC_VIDEO_MEDIA
 
 The example is obviously contrived. It uses the `random` module to randomly make twentry bank account balance transfers between five possible banks. It uses `time.sleep` to simulate talking to external **I/O** services. Conveniently for us, our operating system treats `time.sleep` as an **I/O-bound** operation. One thread can make progress on its `sleep` while another thread actively executes code.
 
@@ -854,23 +858,23 @@ if __name__ == "__main__":
 Here's the results of that python script run on the command line:
 
 ```bash
-❯ python locks/2_async_unsafe.py
+❯ python locks/2_async_unsafe.py                                       17:08:46
 
 initial={'bank_1': 1000, 'bank_2': 1000, 'bank_3': 1000, 'bank_4': 1000,
 'bank_5': 1000}
 
 ....................
 
-final={'bank_1': 1002, 'bank_2': 966, 'bank_3': 939, 'bank_4': 1073, 'bank_5':
-1059}
-sum=5039
+final={'bank_1': 1050, 'bank_2': 1087, 'bank_3': 988, 'bank_4': 981, 'bank_5':
+908}
+sum=5014
 
 Code run in 0.15 seconds.
 ```
 
 And a video in real time, with color:
 
-09_LOCKS_ASYNC_UNSAFE
+12_LOCKS_ASYNC_UNSAFE_VIDEO_MEDIA
 
 Since I already explained the `async`/`await` changes in detail for web scraping above, I won't go into detail on the changes in this script. Suffice it to say, we convert a bunch of functions from `def function` to `async def function` and add `await` statements to wait on **coroutine functions** and **I/O-bound** work. One notible change is I converted all `time.sleep` functions to `asyncio.sleep` functions which are the same but awaitable with the `await` keyword.
 
@@ -977,7 +981,7 @@ Code run in 0.24 seconds.
 
 And a video in real time, with color:
 
-10_LOCKS_ASYNC_SAFE_VIDEO
+13_LOCKS_ASYNC_SAFE_VIDEO_MEDIA
 
 The only changes between this script and the previous script are here:
 
@@ -1080,23 +1084,23 @@ if __name__ == "__main__":
 Here's the results of that python script run on the command line:
 
 ```bash
-❯ python locks/3_threaded_unsafe.py                                ✭ ✱ 14:48:28
+❯ python locks/3_threaded_unsafe.py                                    17:11:10
 
 initial={'bank_1': 1000, 'bank_2': 1000, 'bank_3': 1000, 'bank_4': 1000,
 'bank_5': 1000}
 
 ....................
 
-final={'bank_1': 880, 'bank_2': 903, 'bank_3': 1034, 'bank_4': 1066, 'bank_5':
-1135}
-sum=5018
+final={'bank_1': 1118, 'bank_2': 1056, 'bank_3': 945, 'bank_4': 775, 'bank_5':
+1152}
+sum=5046
 
 Code run in 0.36 seconds.
 ```
 
 And a video in real time, with color:
 
-11_LOCKS_THREAEDED_UNSAFE_VIDEO
+14_LOCKS_THREAEDED_UNSAFE_VIDEO_MEDIA
 
 The difference between this code and the synchronous code is that the bank transaction tasks are run in a `ThreadPoolExecutor` in the `run_transactions` function:
 
@@ -1221,7 +1225,7 @@ Code run in 0.35 seconds.
 
 And a video in real time, with color:
 
-12_LOCKS_THREAEDED_SAFE_VIDEO
+15_LOCKS_THREAEDED_SAFE_VIDEO_MEDIA
 
 Here's just the code changed to add the locks. **Notice** we use `threading.RLock()` instead of `threading.Lock()`. `threading.RLock()` is usually what you want as it wont deadlock when it encounters the same lock (for instance with recursive code).
 
@@ -1242,6 +1246,8 @@ def run_transaction(sending_bank: str, receiving_bank: str, amount) -> None:
 As with `async`/`await`, a thread lock fixes the "race condition" bug and slightly slows down the code.
 
 ## CPU bound parallelism
+
+16_CPU_PIC_MEDIA
 
 As stated earlier in this post, normally Python only executes one instruction at a time, even with **threads** due to the **GIL**. All of our examples thus far have achieved **concurrency** by allowing Python code to run in the foreground while **I/O** waiting happens in the background. Is it possible to execute multiple Python processes in **parallel**, leveraging all our **CPU cores** instead of just one? Yes, with the `multiprocessing` module.
 
@@ -1344,9 +1350,9 @@ results=[2000001.0, 2000002.0, 2000003.0, 2000004.0, 2000005.0, 2000006.0,
 2000014.0, 2000015.0, 2000016.0, 2000017.0, 2000018.0, 2000019.0, 2000020.0]
 ```
 
-And a video of the code run in real time, with color, alongside my task manager:
+And a video of the code run in real time, with color, alongside my task manager (a little slower than the above data for the recording):
 
-13_CPU_BOUND_SYNC
+17_CPU_BOUND_SYNC_VIDEO_MEDIA
 
 Notice that the operations run sequentially, and take a little over 10 seconds. Also notice that one of my CPU cores shoot up to 100% usage during that time and the others stay lower.
 
@@ -1471,9 +1477,9 @@ results=[2000001.0, 2000002.0, 2000003.0, 2000004.0, 2000005.0, 2000006.0,
 2000014.0, 2000015.0, 2000016.0, 2000017.0, 2000018.0, 2000019.0, 2000020.0]
 ```
 
-And a video of the code run in real time, with color, alongside my task manager:
+And a video of the code run in real time, with color, alongside my task manager (a little slower than the above data for the recording):
 
-14_CPU_BOUND_THREADED
+18_CPU_BOUND_THREADED_VIDEO_MEDIA
 
 It looks like the threads are running at the same time since the print statements for the operations occur out of order. However the run time is about the same as the synchronous operations script.
 
@@ -1596,9 +1602,9 @@ results=[2000001.0, 2000002.0, 2000003.0, 2000004.0, 2000005.0, 2000006.0,
 2000014.0, 2000015.0, 2000016.0, 2000017.0, 2000018.0, 2000019.0, 2000020.0]
 ```
 
-And a video of the code run in real time, with color, alongside my task manager:
+And a video of the code run in real time, with color, alongside my task manager (a little slower than the above data for the recording):
 
-15_CPU_BOUND_MULTIPROCESSING
+19_CPU_BOUND_MULTIPROCESSING_VIDEO_MEDIA
 
 This time you can can see that all four of my **CPU cores** are fully utilized and the script runs a little over 3X as fast which is in line with my expectations. We could expect maybe 4X as fast for 4 **CPU cores**, minus some speed for the tasks that aren't run in tasks and the overhead.
 
