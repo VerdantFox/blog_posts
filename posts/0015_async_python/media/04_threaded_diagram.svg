@@ -1,48 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="30 5 400 295"
+<svg viewBox="35 5 390 310"
     xmlns="http://www.w3.org/2000/svg">
-    <rect x="220" y="60" width="200" height="50" style="fill: rgb(241, 245, 174); stroke: rgb(0, 0, 0);"/>
-    <rect x="220" y="110" width="200" height="50" style="fill: rgb(241, 245, 174); stroke: rgb(0, 0, 0);"/>
-    <rect x="220" y="160" width="200" height="50" style="fill: rgb(241, 245, 174); stroke: rgb(0, 0, 0);"/>
-    <rect x="220" y="210" width="200" height="80" style="fill: rgb(245, 201, 174); stroke: rgb(0, 0, 0);"/>
-    <rect x="230" y="85" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="255" y="235" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
-    <rect x="275" y="250" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
-    <rect x="290" y="265" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
-    <rect x="250" y="85" width="10" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="240" y="85" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="245" y="130" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="235" y="130" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="260" y="130" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="270" y="130" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="315" y="85" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="265" y="180" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="275" y="180" width="15" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="390" y="180" width="15" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="380" y="180" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="370" y="180" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="350" y="180" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="385" y="130" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="375" y="130" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="360" y="130" width="10" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="335" y="130" width="10" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="355" y="85" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="345" y="85" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="40" y="130" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="60" y="130" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
-    <rect x="120" y="130" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="40" y="150" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="60" y="150" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
-    <rect x="120" y="150" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="60" y="170" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
-    <rect x="120" y="170" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="40" y="170" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="160" y="15" width="120" height="35" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 22;" x="180" y="40">Threads</text>
-    <rect x="60" y="85" width="65" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="70" y="105">Tasks</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="225" y="75">Thread 1</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="225" y="125">Thread 2</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="225" y="175">Thread 3</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="230" y="225">I/O</text>
+    <line x1="150" y1="157" x2="220" y2="115" style="stroke: rgb(204, 0, 0);"/>
+    <line x1="150" y1="178" x2="220" y2="158" style="stroke: rgb(76, 55, 197);"/>
+    <line x1="150" y1="200" x2="220" y2="208" style="stroke: rgb(45, 204, 0);"/>
+    <rect x="220" y="80" width="200" height="50" style="fill: rgb(241, 245, 174); stroke: rgb(0, 0, 0);" />
+    <rect x="220" y="50" width="200" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
+    <rect x="220" y="130" width="200" height="50" style="fill: rgb(241, 245, 174); stroke: rgb(0, 0, 0);"/>
+    <rect x="220" y="180" width="200" height="50" style="fill: rgb(241, 245, 174); stroke: rgb(0, 0, 0);" />
+    <rect x="220" y="230" width="200" height="80" style="fill: rgb(245, 201, 174); stroke: rgb(0, 0, 0);" />
+    <rect x="230" y="105" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="260" y="255" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);" />
+    <rect x="275" y="270" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
+    <rect x="290" y="285" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
+    <rect x="250" y="105" width="10" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="240" y="105" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="245" y="150" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="235" y="150" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="260" y="150" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="270" y="150" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="320" y="105" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="265" y="200" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="275" y="200" width="15" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="395" y="200" width="15" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="385" y="200" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="375" y="200" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="355" y="200" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="390" y="150" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="380" y="150" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="365" y="150" width="10" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="340" y="150" width="10" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="360" y="105" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="350" y="105" width="5" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="40" y="150" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="60" y="150" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);" />
+    <rect x="120" y="150" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="40" y="170" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="60" y="170" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);" />
+    <rect x="120" y="170" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="60" y="190" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);" />
+    <rect x="120" y="190" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="40" y="190" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);" />
+    <rect x="160" width="120" height="35" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);" y="10" />
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 22;" x="180" y="35">Threads</text>
+    <rect x="60" y="105" width="65" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="70" y="125">Tasks</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="225" y="95">Thread 1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="225" y="145">Thread 2</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="225" y="195">Thread 3</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="230" y="245">I/O</text>
+    <rect x="260" y="105" width="60" height="15" style="stroke: rgb(235, 52, 83); fill: rgb(235, 52, 83); stroke-opacity: 0.15; fill-opacity: 0.15;"/>
+    <rect x="275" y="150" width="60" height="15" style="stroke: rgb(4, 42, 181); fill: rgb(4, 42, 181); stroke-opacity: 0.15; fill-opacity: 0.15;"/>
+    <rect x="290" y="200" width="60" height="15" style="stroke: rgb(4, 181, 19); fill: rgb(4, 181, 19); stroke-opacity: 0.15; fill-opacity: 0.15;"/>
+    <line x1="260" y1="120" x2="260" y2="255" stroke="black" style="stroke-opacity: 0.04;"/>
+    <line x1="320" y1="120" x2="320" y2="255" stroke="black" style="stroke-opacity: 0.04;"/>
+    <line x1="275" y1="165" x2="275" y2="270" stroke="black" style="stroke-opacity: 0.04;"/>
+    <line x1="335" y1="165" x2="335" y2="270" stroke="black" style="stroke-opacity: 0.04;"/>
+    <line x1="290" y1="210" x2="290" y2="285" stroke="black" style="stroke-opacity: 0.04;"/>
+    <line x1="350" y1="210" x2="350" y2="285" stroke="black" style="stroke-opacity: 0.04;"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="295.985" y="68.736">Time</text>
+    <line x1="248" y1="72" x2="395" y2="72" style="stroke: rgb(0, 0, 0);"/>
+    <line x1="384" y1="69" x2="395" y2="72" style="stroke: rgb(0, 0, 0);"/>
+    <line x1="384" y1="75" x2="395" y2="72" style="stroke: rgb(0, 0, 0);"/>
 </svg>

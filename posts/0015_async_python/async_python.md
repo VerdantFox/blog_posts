@@ -1,48 +1,51 @@
-# Concurrent python programming with async, threading, and multiprocessing
+# Concurrent Python programming with async, threading, and multiprocessing
 
-tags: python, async, threads, multiprocessing, concurrency, parallelism, web scraping
+tags: Python, async, threads, multiprocessing, concurrency, parallelism, web scraping
 
 ## Introduction
 
 01_INTRO_PIC_MEDIA
 
-One of the best ways to achieve **big** speed improvements in Python code is through concurrency: doing several tasks at the same time. In this post, I briefly describe concurrency in python and give some examples for running code concurrently with "async" functions, "threading", and "multiprocessing".
+One of the best ways to achieve **significant** speed improvements in Python code is through concurrency: doing several tasks simultaneously. In this post, I briefly describe concurrency in Python and give some examples for running Python code concurrently with "async" functions, "threading," and "multiprocessing."
 
 ## Defining key terms
 
-- **Concurrency**: _Making progress on_ multiple programming tasks at the same time. This does not necessarily mean actively executing multiple lines of code at the same time. It often involves sending multiple requests to another executor to work on tasks in parallel and return the results to the main program.
-- **Parallelism**: A form of **concurrency** which _does_ mean executing multiple lines of code at the same time. It requires breaking code into smaller chunks and making multiple **CPU cores** execute code simultaneously.
-- **CPU (Central Processing Unit) core**: A CPU core executes code, one instruction at a time. Modern computers typically have multiple CPU cores, each able to execute a set of instructions (code) in **parallel** with other CPU cores on the same CPU processor.
-- **I/O (Input/Output)**: "Work" performed by external services (other than the running Python code). Broadly, input refers to "reading" incoming data, while "output" refers to writing outgoing data. Examples of I/O include reading/writing to a file or database or sending/receiving network or web requests. If Python code is structured appropriately, Python code can run multiple I/O-bound tasks **concurrently** in the background, while Python bytecode runs in the foreground. Processes that involve **I/O** tasks are said to be **I/O-bound**. This is opposed to process that have no (or limited) **I/O** tasks, which are said to be **CPU-bound**.
-- **Thread**: A small unit of code to execute in a process. A process is the overall running instance of a program, and within that process, multiple threads can execute **concurrently**. Each thread represents an independent sequence of instructions that can be scheduled and executed by the operating system. In many languages, **threads** can execute code on multiple **CPU cores** at the same time. A Python program can spawn many threads, but _only one can ever execute Python code simultaneously_ due to the **GIL**. However, while only one thread can _execute Python code_ at once, other threads can "wait" to receive the results of I/O-bound work they had previously kicked off.
-- **GIL (Global Interpreter Lock)**: A python implementation detail. The GIL synchronizes access to Python objects by preventing multiple **threads** from executing Python bytecode at once. Because of this, Python is optimized to run very fast on one thread, but cannot execute code on multiple threads simultaneously. This means Python normally only ever runs on _one_ CPU core, even if the machine it runs on has many cores idle.
-- **Async/await**: A way to achieve **concurrency** from a single thread in Python. It involves running an **event loop** and converting regular Python functions to `async` functions (or coroutines) with the `async` keyword. The code then `await`s or pauses execution of the code at key places to allow other coroutines or I/O-bound work to run, resuming work later, once the coroutine or I/O bound task completes.
-- **event loop**: The **event loop** coordinates asynchronous tasks (or coroutines) in Python (code that uses the `async` and `await` keywords). It is responsible for scheduling, pausing, and resuming code execution, ensuring tasks make progress without blocking execution of the entire program. In python, only _one_ **event loop** can run per thread.
-- **coroutine**: In Python, a coroutine often refers interchangeably to two related concepts and I will probably use the two interchangably in this article.
-  1. **coroutine function**: A function defined using the `async def` syntax. The `await` keyword can only be used inside a **coroutine function**.
-  2. **coroutine object**: An object _returned by_ a **coroutine function**. When an `async def` defined **coroutine function** is called (example: `my_coroutine()`), the code inside does not execute immediately. Instead it must be awaited with the `await` keyword, at which time the code defined in the `async def` function will execute. This second definition of **coroutine** is also often called an **awaitable**.
+- **Synchronous**: Code that executes in sequence. Every statement gets executed one by one.
+- **Concurrency**: _Making progress on_ multiple programming tasks at the same time. This does not necessarily mean actively executing multiple lines of code simultaneously. It often involves allowing **I/O-bound** work to run in the background while our code runs synchronously in the foreground.
+- **Parallelism**: A form of **concurrency** which _does_ mean executing multiple lines of code simultaneously. It requires breaking code into smaller chunks and making multiple **CPU cores** execute code simultaneously.
+- **CPU (Central Processing Unit) core**: A CPU core executes code one instruction at a time. Modern computers typically have multiple CPU cores, each able to execute instructions (code) in **parallel** with other CPU cores on the same CPU processor.
+- **I/O (Input/Output)**: "Work" performed by external services (other than the running Python code). Broadly, input refers to "reading" incoming data, while "output" refers to writing outgoing data. Examples of I/O include reading/writing to a file or database or sending/receiving network or web requests. Processes that involve **I/O** work are said to be **I/O-bound**. This is opposed to processes with no (or limited) **I/O** work, which are said to be **CPU-bound**. If Python code is structured appropriately, Python code can run multiple I/O-bound tasks **concurrently** in the background, while Python bytecode runs in the foreground.
+- **Thread**: A small unit of execution in a process. A process is the overall running instance of a program, and within that process, multiple threads can execute **concurrently**. Each thread represents an independent sequence of instructions that can be scheduled and executed by the operating system. In many languages, **threads** can execute code on multiple **CPU cores** at the same time. A Python program can spawn many threads, but _only one can ever execute Python code simultaneously_ due to the **GIL**. However, while only one thread can _execute Python code_ at once, other threads can "wait" to receive the results of I/O-bound work they had previously kicked off.
+- **GIL (Global Interpreter Lock)**: A python implementation detail. The GIL synchronizes access to Python objects by preventing multiple **threads** from executing Python bytecode simultaneously. Because of this, Python is optimized to run very fast on one thread but cannot execute code on multiple threads simultaneously. This means Python normally only runs on _one_ CPU core at a time, even if the machine it runs on has many cores idle.
+- **Async/await**: A way to achieve **concurrency** from a single thread in Python. It involves running an **event loop** and converting regular Python functions to `async` functions (or coroutines) with the `async` keyword. The code then awaits or pauses execution of the code at key places to allow other coroutines or I/O-bound work to run, resuming work later once the coroutine or I/O-bound task completes.
+- **Event loop**: The **event loop** coordinates asynchronous tasks (or coroutines) in Python (code that uses the `async` and `await` keywords). It is responsible for scheduling, pausing, and resuming code execution, ensuring tasks make progress without blocking the execution of the entire program. In Python code, only _one_ **event loop** can run per thread.
+- **Coroutine**: In Python, a coroutine often refers to two related concepts, which I may use interchangeably in this article.
+  1. **Coroutine function**: A function defined using the `async def` syntax. The `await` keyword can only be used inside a **coroutine function**.
+  2. **Coroutine object**: An object _returned by_ a **coroutine function**. When an `async def` defined **coroutine function** is called (example: `my_coroutine()`), the code inside does not execute immediately. Instead, it must be awaited with the `await` keyword, at which time the code defined in the **coroutine function** will execute. This second definition of **coroutine** is also often called an **awaitable**.
 
 ## Visual Examples
 
+Let's further describe the key concurrency paradigms with visual diagrams.
+
 02_SYNC_DIAGRAM_MEDIA
 
-With synchronous code, requests are made sequentially, one after the next.
+**1.** 👆 **Synchronous code**: With synchronous code, requests are made sequentially, one after the next.
 
 03_ASYNC_DIAGRAM_MEDIA
 
-With `async`/`await` code, we split tasks up to run concurrently. We purposefully set `await` steps in our code where we wait for **I/O-bound** work to complete and resume our python code. An **event loop** coordinates waiting tasks, resuming our Python code when background **I/O-bound** work completes. In this paradigm, all Python code runs on a single thread.
+**2.** 👆 **Async/await code**: With `async`/`await`, all Python code runs on a single thread. Tasks run **concurrently** (but not in parallel). We set `await` steps in the code where we wait on **I/O-bound** work to complete and other tasks to continue work on the main thread while waiting. Many tasks **appear to** execute at the same time because many tasks may wait on **I/O** work at the same time. An **event loop** coordinates waiting tasks, resuming Python code when background **I/O-bound** work is completed.
 
 04_THREADING_DIAGRAM_MEDIA
 
-With **threaded code**, we split tasks up to run concurrently. Unlike with `async`/`await` style code, we do not set specific places to wait for background tasks to complete. Instead, our **CPU coordinates all threads**, alternating which thread executes code at any given time. Because of the **GIL**, only one thread can run Python code at a time (on a single CPU core). However, many threads can wait on **I/O-bound** work to complete in the background while one active thread runs Python code. The CPU alternates the active thread rapidly, sometimes even alternating between the start of one line of Python code and the end of that same line. Thus race conditions in **threaded** code are less predictable than in `async`/`await` code.
+**3.** 👆 **Threaded code**: With **threaded code**, tasks run concurrently (but not in parallel). Unlike with the `async`/`await` style code, we do not set specific places to wait for background tasks to complete. Instead, our **CPU coordinates all threads**, alternating which thread executes code at any given time. Because of the **GIL**, only one thread can execute Python code at a time. However, many threads can wait on **I/O-bound** work to complete in the background while one active thread executes Python code. The CPU alternates the active thread rapidly, sometimes even alternating between the start of one line of Python code and the end of that same line. Thus, race conditions in **threaded** code are less predictable than in `async`/`await` code.
 
 05_MULTIPROCESSING_DIAGRAM_MEDIA
 
-With **multiprocessing** code in Python, we split tasks up to run in **parallel** on multiple CPU cores. **Each** multiprocess task running on a separate core can execute python code **at the same time**. This can vastly speed up Python code that does not involve **I/O** work such as math-heavy operations. However, muliprocessing involves limitations. I won't go into significant detail on those limitations in this article, but they involve a larger startup overhead and limited communication between processes.
+**4.** 👆 **Multiprocessing code**: With **multiprocessing** code in Python, tasks execute in **parallel** on multiple CPU cores **at the same time**. _Each_ multiprocess task runs in a separate, mostly isolated Python process. Multiprocessing can vastly speed up Python code that does not involve **I/O** work, such as math-heavy operations. However, multiprocessing has limitations. There is a significant startup cost for new processes, and communication between processes is limited and relatively slow.
 
 ## The code
 
-[The code for this blog article can be found on GitHub here](https://github.com/VerdantFox/async-examples). The code includes the following folders: `web/`, `cpu_bound/`, and `locks/`. Each folder has examples of synchronous code, followed by various examples of code that runs concurrently. The code was written for Python 3.11, but most of the code should work as early as Python version 3.7, and should all work for later versions of Python. You'll need to install the following packages to follow along with the examples:
+[You can find the code for this blog article on GitHub here](https://github.com/VerdantFox/async-examples). The code includes the following folders: `web/`, `cpu_bound/`, and `locks/`. Each folder has examples of synchronous code, followed by various examples of concurrent code. I wrote the code with Python 3.11, but most of the code should work as early as Python version 3.7 and for later versions of Python. You'll need to install the following packages to follow along with the examples:
 
 - [beautifulsoup4](https://beautiful-soup-4.readthedocs.io/en/latest/) (for parsing HTML)
 - [rich](https://rich.readthedocs.io/en/latest/introduction.html) (for pretty printing colors)
@@ -60,15 +63,15 @@ pip install beautifulsoup4 rich requests httpx aiohttp
 
 06_API_PIC_MEDIA
 
-One common use case for concurrency is web requests: usually in the form of [API requests](https://en.wikipedia.org/wiki/API) or [web scraping](https://en.wikipedia.org/wiki/Web_scraping). For this section, we'll be web scraping a Pokémon website to get the names of Pokémon, given their Pokédex number. First, I'll show you how to scrape several pages synchronously. Then we'll see how to get massive speedups using `async`/`await` or threading.
+One common use case for concurrency is web requests, usually in the form of [API requests](https://en.wikipedia.org/wiki/API) or [web scraping](https://en.wikipedia.org/wiki/Web_scraping). For this section, we'll be web scraping a Pokémon website to get the names of Pokémon, given their Pokédex number. First, I'll show you how to scrape several pages synchronously. Then, we'll see how to get massive speedups using `async`/`await` and threading.
 
 ### Synchronous example
 
-The most basic example involves synchronous code execution. We request and process the web pages one-at-a-time. Here's an example:
+The most basic example involves synchronous code execution. We request and process the web pages one at a time. Here's an example:
 
 ```python
 # web/1_sync.py
-"""Download the first 20 pokemon synchronously."""
+"""Download the first 20 Pokémon synchronously."""
 import time
 
 import requests
@@ -77,29 +80,29 @@ from rich import print
 
 
 def main() -> None:
-    print("Starting tasks...", flush=True)
     t0 = time.time()
+    print("Starting coordinating function...", flush=True)
     results = download_pokemon_list()
     total_seconds = time.time() - t0
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
     print(f"\n{results=}", flush=True)
 
 
 def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb'."""
+    """Download a list of Pokémon from 'pokemondb.net.net'."""
     return [download_single_pokemon(num) for num in range(1, 21)]
 
 
 def download_single_pokemon(pokemon_num: int = 1) -> tuple[int, str]:
-    """Get a pokemon from 'pokemondb' by its pokedex number."""
+    """Get a Pokémon from 'pokemondb.net.net' by its pokedex number."""
     print(
-        f"[yellow]Downloading pokemon {pokemon_num:02}... [/yellow]",
+        f"[yellow]Downloading Pokémon {pokemon_num:02}... [/yellow]",
         flush=True,
     )
-    url = f"https://pokemondb.net/pokedex/{pokemon_num}"
+    url = f"https://pokemondb.net.net/pokedex/{pokemon_num}"
     resp = requests.get(url, allow_redirects=True)
     resp.raise_for_status()
     header = get_h1(resp.text)
@@ -120,68 +123,13 @@ if __name__ == "__main__":
     main()
 ```
 
-Here's terminal output from running that code:
-
-```bash
-❯ python web/1_sync.py
-Starting tasks...
-Downloading pokemon 01...
-Retrieved 01=Bulbasaur
-Downloading pokemon 02...
-Retrieved 02=Ivysaur
-Downloading pokemon 03...
-Retrieved 03=Venusaur
-Downloading pokemon 04...
-Retrieved 04=Charmander
-Downloading pokemon 05...
-Retrieved 05=Charmeleon
-Downloading pokemon 06...
-Retrieved 06=Charizard
-Downloading pokemon 07...
-Retrieved 07=Squirtle
-Downloading pokemon 08...
-Retrieved 08=Wartortle
-Downloading pokemon 09...
-Retrieved 09=Blastoise
-Downloading pokemon 10...
-Retrieved 10=Caterpie
-Downloading pokemon 11...
-Retrieved 11=Metapod
-Downloading pokemon 12...
-Retrieved 12=Butterfree
-Downloading pokemon 13...
-Retrieved 13=Weedle
-Downloading pokemon 14...
-Retrieved 14=Kakuna
-Downloading pokemon 15...
-Retrieved 15=Beedrill
-Downloading pokemon 16...
-Retrieved 16=Pidgey
-Downloading pokemon 17...
-Retrieved 17=Pidgeotto
-Downloading pokemon 18...
-Retrieved 18=Pidgeot
-Downloading pokemon 19...
-Retrieved 19=Rattata
-Downloading pokemon 20...
-Retrieved 20=Raticate
-
-Code run in 4.15 seconds.
-
-results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
-(5, 'Charmeleon'), (6, 'Charizard'), (7, 'Squirtle'), (8, 'Wartortle'), (9,
-'Blastoise'), (10, 'Caterpie'), (11, 'Metapod'), (12, 'Butterfree'), (13,
-'Weedle'), (14, 'Kakuna'), (15, 'Beedrill'), (16, 'Pidgey'), (17, 'Pidgeotto'),
-(18, 'Pidgeot'), (19, 'Rattata'), (20, 'Raticate')]
-```
-
-And here's a video showing the code executing in real time with color:
+And here's a video showing the code executing in real-time with color:
 
 07_WEB_SYNC_VIDEO_MEDIA
 
-Notice how the requests run one after another: "Downloading", then "Retrieving", "Downloading", then "Retrieving". First we kick off a request, then we wait for it to come back, then we kick off the next request and wait for it to come back, etc.
+Notice how the requests run one after another: "Downloading", then "Retrieving", "Downloading", then "Retrieving". First, we kick off a request; then we wait for it to come back; then we kick off the following request and wait for it to come back, etc.
 
-In the above code we use [requests](https://requests.readthedocs.io/en/latest/) to request the web pages and [beautiful soup](https://beautiful-soup-4.readthedocs.io/en/latest/) to parse the HTML we get back. We'll also use [rich](https://rich.readthedocs.io/en/latest/introduction.html) to add color to our `print` statements since color can help us visualize the output more easily. `download_pokemon_list` calls `download_single_pokemon` 20X, once for each of the first 20 Pokémon. The requests are made one after another in a list comprehension. Beautiful soup parses the HTML to get the `<h1>` header which corresponds to the Pokémon's name. The code takes `~4-6` seconds to run.
+In the above code, we use [requests](https://requests.readthedocs.io/en/latest/) to request the web pages and [beautiful soup](https://beautiful-soup-4.readthedocs.io/en/latest/) to parse the HTML we get back. We also use [rich](https://rich.readthedocs.io/en/latest/introduction.html) to add color to our `print` statements since color can help us visualize the output more easily. `download_pokemon_list` calls `download_single_pokemon` 20X, once for each of the first 20 Pokémon. The requests are made one after another in a list comprehension. Beautiful Soup parses the HTML to get the `<h1>` header corresponding to the Pokémon's name. The code takes `~4-6` seconds to run.
 
 ### Async/await example
 
@@ -189,7 +137,7 @@ Async/await is the preferred, modern approach to running web requests in paralle
 
 ```python
 # web/2_async_aiohttp.py
-"""Download the first 20 pokemon asynchronously using aiohttp."""
+"""Download the first 20 Pokémon asynchronously using aiohttp."""
 import asyncio
 import time
 
@@ -199,19 +147,20 @@ from rich import print
 
 
 def main() -> None:
-    print("Starting tasks...", flush=True)
     t0 = time.time()
+    print("Starting coordinating coroutine...", flush=True)
     results = asyncio.run(download_pokemon_list())
     total_seconds = time.time() - t0
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
     print(f"\n{results=}", flush=True)
 
 
 async def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb'."""
+    """Download a list of Pokémon from 'pokemondb.net.net'."""
+    print("Creating coroutine objects...", flush=True)
     coroutines = [download_single_pokemon(num) for num in range(1, 21)]
     print("Gathering coroutines into tasks...", flush=True)
     tasks = asyncio.gather(*coroutines)
@@ -222,12 +171,12 @@ async def download_pokemon_list() -> list[tuple[int, str]]:
 
 
 async def download_single_pokemon(pokemon_num: int = 1) -> tuple[int, str]:
-    """Get a pokemon from 'pokemondb' by its pokedex number."""
+    """Get a Pokémon from 'pokemondb.net.net' by its pokedex number."""
     print(
-        f"[yellow]Downloading pokemon {pokemon_num:02}... [/yellow]",
+        f"[yellow]Downloading Pokémon {pokemon_num:02}... [/yellow]",
         flush=True,
     )
-    url = f"https://pokemondb.net/pokedex/{pokemon_num}"
+    url = f"https://pokemondb.net.net/pokedex/{pokemon_num}"
     async with aiohttp.ClientSession() as session, session.get(url) as resp:
         resp.raise_for_status()
         text = await resp.text()
@@ -250,7 +199,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Here's terminal output from running that code:
+Here's the terminal output from running that code:
 
 ```bash
 ❯ python web/2_async_aiohttp.py
@@ -299,7 +248,7 @@ Retrieved 13=Weedle
 Retrieved 20=Raticate
 Done gathering results.
 
-Code run in 1.67 seconds.
+The code ran in 1.67 seconds.
 
 results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
 (5, 'Charmeleon'), (6, 'Charizard'), (7, 'Squirtle'), (8, 'Wartortle'), (9,
@@ -308,13 +257,13 @@ results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
 (18, 'Pidgeot'), (19, 'Rattata'), (20, 'Raticate')]
 ```
 
-And here's a video showing the code executing in real time with color:
+And here's a video showing the code executing in real-time with color:
 
 08_WEB_ASYNC_VIDEO_MEDIA
 
-Notice how the code kicks off all the "Download" steps first, some time passes, and then all the "Retrieved" responses come back out of order. What code did we change?
+Notice how the code kicks off all the "Download" steps, some time passes, and then all the "Retrieved" responses come back out of order. What code did we change?
 
-First, we changed any function that needs `await` **I/O-bound** work into a **coroutine function** by slapping an `async` to the front of it. `async def download_pokemon_list` becomes our coordinating async **coroutine function** and `async def download_single_pokemon` is an another **coroutine function**.
+First, we changed any function that needs `await` **I/O-bound** work into a **coroutine function** by slapping an `async` to the front of it. `async def download_pokemon_list` becomes our coordinating async **coroutine function** and `async def download_single_pokemon` is another **coroutine function**.
 
 ```python
 results = asyncio.run(download_pokemon_list_gather())
@@ -322,29 +271,29 @@ results = asyncio.run(download_pokemon_list_gather())
 
 👆 This line (inside `main`)is how we start our first **coroutine function** from a regular synchronous function. Here's the documentation on `asyncio.run`:
 
-> \[`asyncio.run` executes an async **coroutine function** and returns the results\]. This function runs the passed coroutine, taking care of managing the asyncio event loop, finalizing asynchronous generators, and closing the threadpool. This function cannot be called when another asyncio event loop is running in the same thread... This function always creates a new event loop and closes it at the end. It should be used as a main entry point for asyncio programs, and should ideally only be called once.
+> `asyncio.run` executes an async **coroutine function** and returns the results. This function runs the passed coroutine, taking care of managing the asyncio event loop, finalizing asynchronous generators, and closing the threadpool. This function cannot be called when another asyncio event loop is running in the same thread... This function always creates a new event loop and closes it at the end. It should be used as a main entry point for asyncio programs, and should ideally only be called once.
 
-To highlight, `asyncio.run` runs a single **coroutine** from a synchronous function and will error if called when an event loop is already running the current thread.
+To highlight, `asyncio.run` runs a single **coroutine object** from a synchronous function and will error if called when an event loop is already running in the current thread.
 
 ```python
 coroutines = [download_single_pokemon(num) for num in range(1, 21)]
 ```
 
-👆 This line (inside `download_pokemon_list`) creates our list of **coroutine objects** by calling the async **coroutine functions**. The coroutine functions **do not start** when they are called--they simply create the **coroutine objects** that can be run later.
+👆 This line (inside `download_pokemon_list`) creates our list of **coroutine objects** by calling the async **coroutine functions**. The coroutine functions **do not start** when they are called–they simply create the **coroutine objects** to be run later.
 
-NOTE: **coroutine functions** can be called inside synchronous functions, creating **coroutine objects**. However, they cannot be `await`ed and thus run inside synchronous functions (except with something like `asyncio.run` or some other limited number of methods).
+NOTE: **coroutine functions** can be called inside synchronous functions, creating **coroutine objects**. However, they cannot be `await`ed and thus **executed** inside synchronous functions (except with something like `asyncio.run`).
 
 ```python
 tasks = asyncio.gather(*coroutines)
 ```
 
-👆 This line (inside `download_pokemon_list`) converts the **coroutine objects** into `asyncio.Task` objects known to the **event loop**. Note that the tasks are _still_ not started at this point.
+👆 This line (inside `download_pokemon_list`) converts the **coroutine objects** into `asyncio.Task` objects known to the **event loop**. If you're not familiar, `*coroutines` **unpacks** the coroutines back into arguments: `(*coroutines) == (coroutine_1, coroutine_2, ...)`. Note that the tasks are _still_ not started at this point.
 
 ```python
 results = await tasks
 ```
 
-👆 This line (inside `download_pokemon_list`) finally kicks off all the tasks created by `asyncio.gather` and waits for the results to come back. It stores the results of the completed **coroutine objects** in a list.
+👆 This line (inside `download_pokemon_list`) finally kicks off all the tasks created by `asyncio.gather` and waits for the results to return. It stores the results of the completed **coroutine objects** in a list.
 
 ```python
 async with aiohttp.ClientSession() as session, session.get(url) as resp:
@@ -352,7 +301,7 @@ async with aiohttp.ClientSession() as session, session.get(url) as resp:
     text = await resp.text()
 ```
 
-👆 These lines (inside `download_single_pokemon`) convert the synchronous `requests.get` call to an async call and wait for the response. Without this change, we could not wait for multiple **I/O** responses at once in a single thread.
+👆 These lines (inside `download_single_pokemon`) convert the synchronous `requests.get` call to an async call and await the response. Without this change, we could not wait for multiple **I/O** responses at once in a single thread.
 
 NOTE: these two lines are equivalent:
 
@@ -365,20 +314,22 @@ async with aiohttp.ClientSession() as session:
         ...
 ```
 
+I chose the top for this script because I think it's easier to read.
+
 ### Alternative async/await methods and libraries
 
-Here are a few alterative ways we could have achieved the same goal with `async`/`await`.
+Here are a few alternative ways we could have achieved the same goal with `async`/`await`.
 
 #### httpx instead of aiohttp
 
-[Httpx](https://www.python-httpx.org) is an alternative library to [aiohttp](https://docs.aiohttp.org/en/stable/) for making async web requests. It's a popular library, and I like it for a couple reasons.
+[Httpx](https://www.python-httpx.org) is an alternative library to [aiohttp](https://docs.aiohttp.org/en/stable/) for making async web requests. It's a popular library, and I like it for a couple of reasons.
 
-1. It can make either asynchronous or synchronous web requests. `aiohttp` can only make `async` web requests and `requests` can only make synchronous web requests.
-2. Its methods and syntax are nicer to work with than `aiohttp` in my opinion. Working with `httpx` feels nearly identical to working with `requests`, which I like.
+1. It can make either asynchronous or synchronous web requests. `aiohttp` can only make `async` web requests, and `requests` can only make synchronous web requests.
+2. I think its methods and syntax are nicer to work with than `aiohttp`. Working with `httpx` feels nearly identical to working with `requests`, which I like.
 
-However, with testing, I've found that `httpx` requests are significantly slower than `aiohttp`. It doesn't matter much for a small number of requests, but I think the difference adds up over many requests. With this example code, `aiohttp` averages around 1.6 seconds for 20 requests and `httpx` averages around 2.6 seconds for the same number of requests.
+However, with testing, I've found that `httpx` requests are significantly slower than `aiohttp`. It doesn't matter much for a small number of requests, but the difference adds up over many requests. With this example code, `aiohttp` averages around 1.6 seconds for 20 requests, and `httpx` averages around 2.6 seconds for the same number of requests.
 
-Here's the different code for using `aiohttp` vs `httpx` and `requests` one after the other:
+Here's the different code for using `aiohttp` vs. `httpx` and `requests` one after the other:
 
 ```python
 import aiohttp
@@ -408,12 +359,12 @@ text = resp.text
 
 #### Manually adding tasks to the event loop
 
-Recall that the results of awaiting `asyncio.gather` is always a list. Sometimes you might want more control over the data structure housing your tasks or the means of adding tasks than is offered by `asyncio.gather`. If so you can manually add tasks to the event loop like so:
+Recall that the results of awaiting `asyncio.gather` is always a list. Sometimes, you might want more control over the data structure housing your tasks or the means of adding tasks than is offered by `asyncio.gather`. If so, you can manually add tasks to the event loop like so:
 
 ```python
 # Using asyncio.gather
 async def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb' using  `asyncio.gather`."""
+    """Download a list of pokemon from 'pokemondb.net' using  `asyncio.gather`."""
     coroutines = [download_single_pokemon(num) for num in range(1, 21)]
     tasks = asyncio.gather(*coroutines)
     results = await tasks
@@ -422,7 +373,7 @@ async def download_pokemon_list() -> list[tuple[int, str]]:
 
 # Manual method
 async def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb'.
+    """Download a list of pokemon from 'pokemondb.net'.
 
     Manually get the event loop, create and await tasks."""
     coroutines = [download_single_pokemon(num) for num in range(1, 21)]
@@ -432,12 +383,12 @@ async def download_pokemon_list() -> list[tuple[int, str]]:
     return results
 ```
 
-As of Python 3.11 you can add tasks to task groups like so:
+And as of Python 3.11, you can add tasks to task groups like so:
 
 ```python
-# Manually add tasks to task group
+# Manually add tasks to the task group
 async def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb' using  a task group."""
+    """Download a list of pokemon from 'pokemondb.net' using  a task group."""
     async with asyncio.TaskGroup() as tg:
         results = [tg.create_task(download_single_pokemon(num)) for num in range(1, 21)]
     return [result.result() for result in results]
@@ -446,12 +397,12 @@ async def download_pokemon_list() -> list[tuple[int, str]]:
 Here are some advantages of using an `asyncio.TaskGroup`:
 
 - The tasks automatically start when the `asyncio.TaskGroup` context block ends
-- All running tasks are cancelled automatically if one task raises an exception
-- All running tasks are cancelled if the task group itself is cancelled
+- All running tasks are canceled automatically if one task raises an exception
+- All running tasks are canceled if the task group itself is canceled
 
 #### Alternative method for starting async from sync
 
-So far we've only started an event loop and run a single async **coroutine function** from our sync code using `asyncio.run`. Here's an alternative approach where we create and gather tasks to run from a normal (non-async) function, and then we create an event loop and run the tasks until they are complete:
+So far, we've only started an event loop and run a single async **coroutine function** from our sync code using `asyncio.run`. Here's an alternative approach where we create and gather tasks to run from a standard (non-async) function, and then we create an event loop and run the tasks until they are complete:
 
 ```python
 def coordinate_from_sync():
@@ -466,14 +417,14 @@ def coordinate_from_sync():
 
 While `async`/`await` is my preferred approach for running **concurrent I/O-bound** work, it has limitations.
 
-1. Writing the code looks different. You need to architect your code to use the new `async`/`await` syntax.
-2. You need to use `async`-capable libraries to run code concurrently. Recall, we couldn't use `requests` for making `async` requests and had to use `aiohttp` instead. Sometimes there is no such library to do what you want to do (although, usually there is).
+1. Writing the code looks different. You must architect your code using the new `async`/`await` syntax.
+2. You need to use `async`-capable libraries to run code concurrently. Recall that we couldn't use `requests` to make `async` requests and had to use `aiohttp` instead. Sometimes, there is no such library to do what you want to do (although, usually, there is).
 
-If you can't (or don't want to) use `async`/`await` to run your **I/O-bound** work concurrently, you can use threads instead. Here's what it looks like converting our synchronous Pokémon example to run concurrently with threads:
+If you can't (or don't want to) use `async`/`await` to run your **I/O-bound** work concurrently, you can use **threads** instead. Here's what it looks like converting our synchronous Pokémon example to run concurrently with threads:
 
 ```python
 # web/3_threaded.py
-"""Download the first 20 pokemon with threads."""
+"""Download the first 20 Pokémon with threads."""
 import time
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Callable
@@ -484,12 +435,12 @@ from rich import print
 
 
 def main() -> None:
-    print("Starting tasks...", flush=True)
     t0 = time.time()
+    print("Starting coordinating function...", flush=True)
     results = download_pokemon_list()
     total_seconds = time.time() - t0
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
     print(f"\n{results=}", flush=True)
@@ -499,7 +450,7 @@ TaskType = tuple[Callable[..., Any], tuple[Any, ...], dict[str, Any]]
 
 
 def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb'."""
+    """Download a list of Pokémon from 'pokemondb.net'."""
     print("Defining tasks...", flush=True)
     tasks: list[TaskType] = [
         # Function, args, kwargs
@@ -515,9 +466,9 @@ def download_pokemon_list() -> list[tuple[int, str]]:
 
 
 def download_single_pokemon(pokemon_num: int = 1) -> tuple[int, str]:
-    """Get a pokemon from 'pokemondb' by its pokedex number."""
+    """Get a Pokémon from 'pokemondb.net' by its pokedex number."""
     print(
-        f"[yellow]Downloading pokemon {pokemon_num:02}... [/yellow]",
+        f"[yellow]Downloading Pokémon {pokemon_num:02}... [/yellow]",
         flush=True,
     )
     url = f"https://pokemondb.net/pokedex/{pokemon_num}"
@@ -541,7 +492,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Here's terminal output from running that code:
+Here's the terminal output from running that code:
 
 ```bash
 ❯ python web/3_threaded.py
@@ -591,7 +542,7 @@ Retrieved 19=Rattata
 Retrieved 20=Raticate
 Done
 
-Code run in 1.77 seconds.
+The code ran in 1.77 seconds.
 
 results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
 (5, 'Charmeleon'), (6, 'Charizard'), (7, 'Squirtle'), (8, 'Wartortle'), (9,
@@ -600,26 +551,27 @@ results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'),
 (18, 'Pidgeot'), (19, 'Rattata'), (20, 'Raticate')]
 ```
 
-And here's a video showing the code executing in real time with color:
+And here's a video showing the code executing in real-time with color:
 
 09_WEB_THREADED_VIDEO_MEDIA
 
-Notice how the executed print statement order is a little more chaotic than either the synchronous script or the async script. Some requests are kicked off immediately, and other requests don't kick off until some other threads have received response data. And as with `async`/`await` code, the resulsts come back out of order compared to the requests. The net result, however, is that the speed of threaded code is comprable to `async`/`await` code (<2 seconds).
+Notice how the executed print statement order is slightly more chaotic than the synchronous script and the `async`/`await` script. Some requests started immediately, and others only after other threads received response data. And as with the `async`/`await` code, the results came back out of order compared to the synchronously run requests. The net result, however, is that the speed of threaded code is much faster than synchronous code and is comparable to `async`/`await` code (<2 seconds).
 
-What changes did we make to run code with threads? The difference primarily lies in `doanload_pokemon_list`:
+What changes did we make to run code with threads? The difference primarily lies in `download_pokemon_list`:
 
 ```python
-# Sync
+# Sync (before)
 def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb'."""
+    """Download a list of Pokémon from 'pokemondb.net'."""
     return [download_single_pokemon(num) for num in range(1, 21)]
 
-# Threads
+
+# With threads (after)
 from concurrent.futures import ThreadPoolExecutor
 ...
 
 def download_pokemon_list() -> list[tuple[int, str]]:
-    """Download a list of pokemon from 'pokemondb'."""
+    """Download a list of Pokémon from 'pokemondb.net'."""
     print("Defining tasks...", flush=True)
     tasks: list[TaskType] = [
         # Function, args, kwargs
@@ -634,15 +586,15 @@ def download_pokemon_list() -> list[tuple[int, str]]:
     return [future.result() for future in work]
 ```
 
-There a few ways to run threads in Python, but I think the `ThreadPoolExecutor` is the nicest API, so we used that. First we open a `with` block context manager for the `ThreadPoolExecutor` to handle creating, running, and cleaning up thread tasks. Then, instead of calling our `download_single_pokemon` function directly, as we do when running code synchrously or with async **coroutines**, we call `executor.submit`, passing in the function (uncalled), `args` and `kwargs`.
+There are a few ways to run threads in Python, but I think the `ThreadPoolExecutor` is the nicest API, so we used that. First, we opened a `with` block context manager for the `ThreadPoolExecutor` to create, run, and clean up thread tasks. Then, instead of calling our `download_single_pokemon` function directly as we do when running code synchronously or with async **coroutines**, we called `executor.submit`, passing in each function (uncalled) alongside its `args` and `kwargs`.
 
-The return value of `exector.submit` is a thread `Future` which holds the future return value of its associated thread task function. After the context manager closes, we are garaunteed that all thread task functions have finished and all threads have closed. Then we can call `.result()` on each thread `Future` to get the result of each thread task function.
+The return value of `executor.submit` is a thread `Future`, which holds the future return value of its associated thread task function. The context manager guarantees that when it closes, all thread task functions have finished, and all threads are closed. Then, we can call `.result()` on each thread `Future` to get the result of each thread task function.
 
 ## Concurrency safety and locks
 
 10_LOCKS_PIC_MEDIA
 
-As our code runs, it frequently enters "invalid states". An "invalid state" means that the data you are working with is "wrong" (either by itself or in the context of other data) for some reason or another. Usually the code is invalid briefly and is fixed later in the code. When our code runs synchronously, we can usually garauntee that by the time the code finishes running, all "invalid states" are corrected, and the end result is that all data is "valid".
+As our code runs, it frequently enters "invalid states". An "invalid state" means that the data we are working with is "wrong" (either by itself or in the context of other data) for some reason or another. Usually, the code is briefly "invalid" and is fixed later in the code. When our code runs synchronously, we can usually guarantee that by the time the code finishes running, all "invalid states" are corrected, and the result is that all data is "valid".
 
 Example of one bank transferring $20 to another bank:
 
@@ -653,32 +605,31 @@ bank_data = {
 }
 total = bank_data["bank_1"] + bank_data["bank_2"] # 200
 
-# In "valid state"
+# 👇 "valid state"
 assert bank_data["bank_1"] + bank_data["bank_2"] == total # 200
-
 
 bank_data["bank_1"] - 20
 
-# In "invalid state"
+# 👇 "invalid state"
 assert bank_data["bank_1"] + bank_data["bank_2"] != total # 180
 
 bank_data["bank_2"] + 20
 
-# Back to "valid state"
+# 👇 Back to "valid state"
 assert bank_data["bank_1"] + bank_data["bank_2"] == total # 200
 ```
 
-However, when code runs concurrently, it is possible for one task to bring your data to a temporary "invalid state" and then switch tasks and have another task use the data from the "invalid state" resulting in confusing bugs. Such bugs are often said to be the result of a "race condition", where two tasks "race" towards a goal and bungle each others shared resources in the process. One of our best tools for preventing "race condition" bugs is through **locks** that lock code execution to one task while the lock is in place. More on **locks** soon.
+However, when code runs concurrently, one task can bring your data to a temporary "invalid state"; another concurrently running task might use the data from the "invalid state", resulting in confusing bugs. Such bugs are often said to result from a "race condition", where two tasks "race" towards a goal and bungle each others' shared resources in the process. One of our best tools for preventing "race condition" bugs is a **concurrency lock**. **Concurrency locks** lock code execution to one task while the lock is in place. More on **locks** soon.
 
-Race condition bugs can occur in both `async`/`await` code running on a single thread and **threaded** code because both can create "invalid states" and release code execution so that another task sees the "invalid state" shared resource. However, threaded code is more likely to result in a bug than `async`/`await` code mainly because of who controls when one task gives up execution to another task.
+Race condition bugs can occur in both `async`/`await` code running on a single thread and **threaded** code running on multiple threads. Both concurrency paradigms can create "invalid states" and release code execution so that other tasks see the "invalid state" shared resources before fixing them. However, threaded code is _more likely_ to result in a bug than `async`/`await` code primarily because of who controls when one task gives up execution to another task.
 
-With `async`/`await` code, we explicitly set places in our code to wait and let another task start working (with the `await` statement or through `async with` context managers). Between those special waiting places, we are sure the same task is executing code continuously.
+With the `async`/`await` code, we explicitly set places in our code to wait and let another task start working (with the `await` statement or through `async with` context managers). Between those special waiting places, we are sure the same task is executing code continuously.
 
-However, with **threaded** code, the **CPU** controls which task is running at any given moment, and the **CPU** tends to rapidly alternate between different tasks, even changing from one task (one thread) to another mid-line of code. Therefore, there are more places that one task could create "invalid state" for another task to see. Ensuring tasks can safely run with threads in such a way that tasks never switch during an invalid state is called "thread-safety".
+However, with **threaded** code, the **CPU** controls which task is executing at any given moment, and the **CPU** tends to rapidly alternate between different tasks (threads), sometimes even alternating which thread is executing in the middle of a line of code. Therefore, there are more places where one task might create an "invalid state" for another task to "see" in threaded code. Ensuring tasks can safely run with threads so tasks never switch during an invalid state is called "thread safety."
 
 ### Sync bank transfers
 
-Let's look at some examples. First we'll expand our banking example above. The example makes banking transactions between bank customers synchronously, one after the other:
+Let's look at some examples. First, we'll expand on our banking example above. This example makes banking transactions between bank customers synchronously, one after the other:
 
 ```python
 # locks/1_sync.py
@@ -763,25 +714,25 @@ final={'bank_1': 846, 'bank_2': 986, 'bank_3': 1072, 'bank_4': 1056, 'bank_5':
 1040}
 sum=5000
 
-Code run in 2.08 seconds.
+The code ran in 2.08 seconds.
 ```
 
-And a video in real time, with color:
+And a video in real-time, with color:
 
 11_LOCKS_SYNC_VIDEO_MEDIA
 
-The example is obviously contrived. It uses the `random` module to randomly make twentry bank account balance transfers between five possible banks. It uses `time.sleep` to simulate talking to external **I/O** services. Conveniently for us, our operating system treats `time.sleep` as an **I/O-bound** operation. One thread can make progress on its `sleep` while another thread actively executes code.
+The example is contrived. It uses the `random` module to transfer twenty bank account balances between five possible banks. It uses `time.sleep` to simulate talking to external **I/O** services (such as a database). Conveniently for us, our operating system treats `time.sleep` as an **I/O-bound** operation. One thread can progress on its `sleep` while another actively executes code.
 
-Also, notice there are a couple opportunities for "invalid state" in this example.
+Notice a couple of opportunities for an "invalid state" in this example.
 
-1. Like our previous example, in `run_transaction` the state is invalid between subtracting money from one bank account and adding it to the next.
-2. In `update_bank` first we get a bank's account balance and, after a tiny delay, we update the bank account balance. In between the retrieving and the updating, the bank account balance information is stale, and another bank account could theoretically alter the balance in that window--an opportunity for "invalid state".
+1. In `run_transaction`, the state is invalid between subtracting money from one bank account and adding it to the next.
+2. In `update_bank`, first, we get a bank's account balance, and after a tiny delay, we update the bank account balance. Between the retrieving and the updating, the bank account balance information is stale, and another bank account could theoretically alter the balance in that window–an opportunity for an "invalid state".
 
-However, since the code runs synchronously, we can garauntee that these "invalid states" are fixed before a transaction finishes, and thus all is correct when the script completes.
+However, since The code ran synchronously, we can guarantee that these "invalid states" are fixed before a transaction finishes, and thus, all is correct when the script completes.
 
 ### Unsafe async bank transfers
 
-Let's speed up these bank transfers by converting them to the `async`/`await` syntax to run all bank transfers concurrently.
+Let's speed up these bank transfers by converting them to the `async`/`await` syntax to run all bank transfers concurrently. First, we'll run the bank transfers without any locks and see how we get a "race condition" bug.
 
 ```python
 # locks/2_async_unsafe.py
@@ -811,7 +762,7 @@ def main() -> None:
     print(f"\n\nfinal={BANK_DATA}", flush=True)
     print(f"sum={sum(BANK_DATA.values())}", flush=True)
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
 
@@ -869,23 +820,23 @@ final={'bank_1': 1050, 'bank_2': 1087, 'bank_3': 988, 'bank_4': 981, 'bank_5':
 908}
 sum=5014
 
-Code run in 0.15 seconds.
+The code ran in 0.15 seconds.
 ```
 
-And a video in real time, with color:
+And a video in real-time, with color:
 
 12_LOCKS_ASYNC_UNSAFE_VIDEO_MEDIA
 
-Since I already explained the `async`/`await` changes in detail for web scraping above, I won't go into detail on the changes in this script. Suffice it to say, we convert a bunch of functions from `def function` to `async def function` and add `await` statements to wait on **coroutine functions** and **I/O-bound** work. One notible change is I converted all `time.sleep` functions to `asyncio.sleep` functions which are the same but awaitable with the `await` keyword.
+Since I explained the `async`/`await` changes in detail for web scraping above, I won't go into detail about the changes in this script. Suffice it to say, we convert a bunch of functions from `def function` to `async def function` and add `await` statements to wait on **coroutine functions** and **I/O-bound** work. One noticeable change is I converted all `time.sleep` functions to `asyncio.sleep` functions, which are the same but are awaitable with the `await` keyword.
 
-What are the results of changing this function to `async`/`await` concurrent tasks? For one it completed more than 10X faster. For antoher, _it created a race condition bug_. The bug arises because of the two invalid state opportunities I listed previously:
+What are the results of changing this script to use `async`/`await` concurrent tasks? For one, it completed more than 10X faster. For another, _it created a race condition bug_. The bug arises because of the two invalid state opportunities I listed previously:
 
-1. In `run_transaction` the state is invalid between subtracting money from one bank account and adding it to the next. One bank fund transfer can use the "invalid" funds from one bank account that is mid-transfer of another transaction.
-2. In `update_bank` first we get a bank's account balance and, after a tiny delay, we update the bank account balance. In between the retrieving and the updating, the bank account balance information is stale, and another bank account could theoretically alter the balance in that window--an opportunity for "invalid state".
+1. In `run_transaction`, the state is invalid between subtracting money from one bank account and adding it to the next. One bank fund transfer can use the "invalid" funds from one bank account that is mid-transfer of another transaction.
+2. In `update_bank`, first, we get a bank's account balance, and after a tiny delay, we update the bank account balance. Between the retrieving and the updating, the bank account balance information is stale, and another bank account could theoretically alter the balance in that window–an opportunity for an "invalid state".
 
 ### Safe async bank transfers
 
-How do we fix this bug? The simplest fix is to introduce a **lock** which looks like this:
+How do we fix this bug? The most straightforward fix is to introduce a **lock** which looks like this:
 
 ```python
 # locks/2_async_safe.py
@@ -917,7 +868,7 @@ def main() -> None:
     print(f"\n\nfinal={BANK_DATA}", flush=True)
     print(f"sum={sum(BANK_DATA.values())}", flush=True)
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
 
@@ -976,10 +927,10 @@ final={'bank_1': 966, 'bank_2': 1122, 'bank_3': 1034, 'bank_4': 931, 'bank_5':
 947}
 sum=5000
 
-Code run in 0.24 seconds.
+The code ran in 0.24 seconds.
 ```
 
-And a video in real time, with color:
+And a video in real-time, with color:
 
 13_LOCKS_ASYNC_SAFE_VIDEO_MEDIA
 
@@ -999,11 +950,11 @@ async def run_transaction(sending_bank: str, receiving_bank: str, amount) -> Non
         await update_bank(receiving_bank, amount)
 ```
 
-We use a `asyncio.Lock()` while executing the two `update_bank` functions. The lock prevents the **event loop** from releasing the current task to other tasks when it hits `await` statements for I/O-bound tasks as it normally does. The result? The bug goes away. Because of the lock, the task fixes the "invalid state" **_before_** releasing execution to another task. However, the script also runs slower because it doesn't release for some of the waiting steps and thus runs less code concurrently.
+We use an `asyncio.Lock()` while executing the two `update_bank` functions. The lock prevents the **event loop** from releasing the current task to other tasks when it hits `await` statements as it usually does. The result? The bug goes away. Because of the lock, the task fixes the "invalid state" **_before_** releasing execution to another task. However, the script also runs slower because it doesn't release for some of the waiting steps and thus runs less code concurrently.
 
 ### Unsafe threaded bank transfers
 
-Alternatively to `async`/`await`, we can perform the bank transfers concurrently with **threads**. Here's how that looks:
+Alternatively to `async`/`await`, we can perform the bank transfers concurrently with **threads**. Again, I'll first show how adding threads introduces a "race condition" bug. Here's the code:
 
 ```python
 # locks/3_threaded_unsafe.py
@@ -1033,7 +984,7 @@ def main() -> None:
     print(f"\n\nfinal={BANK_DATA}", flush=True)
     print(f"sum={sum(BANK_DATA.values())}", flush=True)
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
 
@@ -1095,10 +1046,10 @@ final={'bank_1': 1118, 'bank_2': 1056, 'bank_3': 945, 'bank_4': 775, 'bank_5':
 1152}
 sum=5046
 
-Code run in 0.36 seconds.
+The code ran in 0.36 seconds.
 ```
 
-And a video in real time, with color:
+And a video in real-time, with color:
 
 14_LOCKS_THREAEDED_UNSAFE_VIDEO_MEDIA
 
@@ -1120,11 +1071,11 @@ def run_transactions() -> None:
         [executor.submit(func, *args, **kwargs) for func, args, kwargs in tasks]
 ```
 
-Here we see the same race condition bug as we do with the `async`/`await` script before adding locks. And the fix is almost identical to the `async`/`await` fix: using a lock.
+Here, we see the same race condition bug as we do with the `async`/`await` script before adding locks. The fix is almost identical to the `async`/`await` fix: add a **lock**.
 
 ### Safe threaded bank transfers
 
-Here's the code for safe threaded bank transfers:
+Here's the code for safe threaded bank transfers after adding a **lock**:
 
 ```python
 # locks/3_threaded_safe.py
@@ -1157,7 +1108,7 @@ def main() -> None:
     print(f"\n\nfinal={BANK_DATA}", flush=True)
     print(f"sum={sum(BANK_DATA.values())}", flush=True)
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
 
@@ -1220,14 +1171,14 @@ final={'bank_1': 1071, 'bank_2': 894, 'bank_3': 1029, 'bank_4': 1129, 'bank_5':
 877}
 sum=5000
 
-Code run in 0.35 seconds.
+The code ran in 0.35 seconds.
 ```
 
-And a video in real time, with color:
+And a video in real-time, with color:
 
 15_LOCKS_THREAEDED_SAFE_VIDEO_MEDIA
 
-Here's just the code changed to add the locks. **Notice** we use `threading.RLock()` instead of `threading.Lock()`. `threading.RLock()` is usually what you want as it wont deadlock when it encounters the same lock (for instance with recursive code).
+Here's just the code changed to add the locks. **Notice** we use `threading.RLock()` instead of `threading.Lock()`. `threading.RLock()` is usually what you want as it won't deadlock when it encounters the same lock (for instance, with recursive code).
 
 ```python
 import threading
@@ -1249,11 +1200,11 @@ As with `async`/`await`, a thread lock fixes the "race condition" bug and slight
 
 16_CPU_PIC_MEDIA
 
-As stated earlier in this post, normally Python only executes one instruction at a time, even with **threads** due to the **GIL**. All of our examples thus far have achieved **concurrency** by allowing Python code to run in the foreground while **I/O** waiting happens in the background. Is it possible to execute multiple Python processes in **parallel**, leveraging all our **CPU cores** instead of just one? Yes, with the `multiprocessing` module.
+As stated earlier in this post, typically, Python code only executes one instruction at a time, even with **threads**, due to the **GIL**. Our examples thus far have achieved **concurrency** by allowing Python code to run in the foreground while **I/O** waiting happens in the background. Can multiple Python processes be executed in **parallel**, leveraging all our **CPU cores** instead of just one? Yes, with the `multiprocessing` module.
 
 ### CPU-bound Sync example
 
-I'll lay out a contrived example to show how multiprocessing works. First, lets see an example of **CPU-bound** bound (no **I/O** work) code run synchrounously:
+I'll lay out a contrived example to show how multiprocessing works. First, lets see an example of **CPU-bound** bound (no **I/O** work) code run synchronously:
 
 ```python
 # cpu_bound/1_sync.py
@@ -1269,7 +1220,7 @@ def main():
     results = do_lots_of_math()
     total_seconds = time.time() - t0
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
     print(f"\n{results=}", flush=True)
@@ -1343,24 +1294,24 @@ Done with math, starting_number=19.
 Doing math, starting_number=20...
 Done with math, starting_number=20.
 
-Code run in 10.57 seconds.
+The code ran in 10.57 seconds.
 
 results=[2000001.0, 2000002.0, 2000003.0, 2000004.0, 2000005.0, 2000006.0,
 2000007.0, 2000008.0, 2000009.0, 2000010.0, 2000011.0, 2000012.0, 2000013.0,
 2000014.0, 2000015.0, 2000016.0, 2000017.0, 2000018.0, 2000019.0, 2000020.0]
 ```
 
-And a video of the code run in real time, with color, alongside my task manager (a little slower than the above data for the recording):
+And a video of the code run in real-time, with color, alongside my task manager (a little slower than the above data for the recording):
 
 17_CPU_BOUND_SYNC_VIDEO_MEDIA
 
-Notice that the operations run sequentially, and take a little over 10 seconds. Also notice that one of my CPU cores shoot up to 100% usage during that time and the others stay lower.
+Notice that the operations run sequentially and take a little over 10 seconds. Also, notice that one of my CPU cores shoots up to 100% usage during that time, and the others stay lower than 100%–although interestingly not at their previous levels.
 
-The code performs simple, non-sensical math operations run over a loop with many iterations. The math isn't important, just the fact that it takes some time and there are no **I/O** processes.
+The code performs simple, non-sensical math operations run over a loop with many iterations. The math isn't important; it's just the fact that it takes some time, and there are no **I/O** processes.
 
 ### CPU-bound threaded example
 
-I know I said threading won't speed up CPU-bound operations, but let's try anyways just to see what happens:
+I know I said threading won't speed up CPU-bound operations, but let's try anyway to see what happens:
 
 ```python
 # cpu_bound/2_threaded_no_improvement.py
@@ -1378,7 +1329,7 @@ def main():
     results = do_lots_of_math()
     total_seconds = time.time() - t0
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
     print(f"\n{results=}", flush=True)
@@ -1470,22 +1421,22 @@ Done with math, starting_number=19.
 Done with math, starting_number=20.
 Done with work
 
-Code run in 10.79 seconds.
+The code ran in 10.79 seconds.
 
 results=[2000001.0, 2000002.0, 2000003.0, 2000004.0, 2000005.0, 2000006.0,
 2000007.0, 2000008.0, 2000009.0, 2000010.0, 2000011.0, 2000012.0, 2000013.0,
 2000014.0, 2000015.0, 2000016.0, 2000017.0, 2000018.0, 2000019.0, 2000020.0]
 ```
 
-And a video of the code run in real time, with color, alongside my task manager (a little slower than the above data for the recording):
+And a video of the code run in real-time, with color, alongside my task manager (a little slower than the above data for the recording):
 
 18_CPU_BOUND_THREADED_VIDEO_MEDIA
 
-It looks like the threads are running at the same time since the print statements for the operations occur out of order. However the run time is about the same as the synchronous operations script.
+It appears that the threads are running simultaneously since the print statements for the operations occur out of order. However, the run time is about the same as the synchronous operations script. Also, notice that while our CPU usage increases on all cores, it never maxes out on any of them, as we might expect when fully utilizing our computer's processing power.
 
 ### CPU-bound multiprocessing example
 
-In this final example we use the multiprocessing module to run the **CPU-bound** operations in parallel on multiple cores.
+In this final example, we use the multiprocessing module to run the **CPU-bound** operations in parallel on multiple cores.
 
 ```python
 # cpu_bound/3_multiprocess.py
@@ -1503,7 +1454,7 @@ def main():
     results = do_lots_of_math()
     total_seconds = time.time() - t0
     print(
-        f"\n[bold green]Code run in [cyan]{total_seconds:,.2f}[green] seconds.",
+        f"\n[bold green]The code ran in [cyan]{total_seconds:,.2f}[green] seconds.",
         flush=True,
     )
     print(f"\n{results=}", flush=True)
@@ -1595,28 +1546,28 @@ Done with math, starting_number=19.
 Done with math, starting_number=20.
 Done with work
 
-Code run in 2.99 seconds.
+The code ran in 2.99 seconds.
 
 results=[2000001.0, 2000002.0, 2000003.0, 2000004.0, 2000005.0, 2000006.0,
 2000007.0, 2000008.0, 2000009.0, 2000010.0, 2000011.0, 2000012.0, 2000013.0,
 2000014.0, 2000015.0, 2000016.0, 2000017.0, 2000018.0, 2000019.0, 2000020.0]
 ```
 
-And a video of the code run in real time, with color, alongside my task manager (a little slower than the above data for the recording):
+And a video of the code run in real-time, with color, alongside my task manager (a little slower than the above data for the recording):
 
 19_CPU_BOUND_MULTIPROCESSING_VIDEO_MEDIA
 
-This time you can can see that all four of my **CPU cores** are fully utilized and the script runs a little over 3X as fast which is in line with my expectations. We could expect maybe 4X as fast for 4 **CPU cores**, minus some speed for the tasks that aren't run in tasks and the overhead.
+This time, you can see that all four of my **CPU cores** are fully utilized. The script runs slightly over 3X faster than the synchronous (and threaded) code, which aligns with my expectations. We could expect a 4X speedup since we use four **CPU cores** instead of one, minus the overhead costs (and CPU processing power used by other operations on my computer, such as the recording software).
 
-Also, notice the difference between running **threaded** code and **multiprocessing** code is quite minimal since the `ProcessPoolExecutor` implements the same interface as the `ThreadPoolExecutor`, and since I aliased both to `PoolExecutor`, I only had to change one line (the rest of the code is exactly the same):
+Also, notice the difference between writing **threaded** code and **multiprocessing** code is minimal. The `ProcessPoolExecutor` implements the same interface as the `ThreadPoolExecutor`, and since I aliased both to `PoolExecutor`, I only had to change one line of code (the rest of the code is the same):
 
 ```python
 from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from concurrent.futures.process import ProcessPoolExecutor as PoolExecutor
 ```
 
-`ProcessPoolExecutor` is great because it intelligently runs the same number of multiprocesses as my computer has **CPU cores** and cleans up those processes when the `with` block context manager closes.
+`ProcessPoolExecutor` is excellent because it intelligently runs the same number of multiprocesses as my computer has **CPU cores** and cleans up those processes when the `with` block context manager closes.
 
 ## Conclusions
 
-In this article I [discussed key terms](#defining-key-terms) related to **concurrency** in python and [gave visual explanations of the three concurrent programming paradigms](#visual-examples). Then I went through concrete examples of running concurrent **I/O-bound** Python code by [web scraping pages of a Pokémon website](#http-requests). Then I discussed ["race conditions" in concurrent code and showed how to solve them with locks](#concurrency-safety-and-locks). Finally, I [gave some examples of running **CPU-bound** python code in parallel with the multiprocessing module](#cpu-bound-parallelism). I hope this intro to concurrent programing gives you ideas for speeding up your next project!
+In this article, I [discussed key terms](#defining-key-terms) related to **concurrency** in Python and [gave visual explanations of the three concurrent programming paradigms](#visual-examples): `async`/`await`, **threads** and **multiprocessing**. Next, I went through concrete examples of running concurrent **I/O-bound** Python code by [web scraping pages of a Pokémon website](#http-requests). Then I discussed ["race condition" bugs in concurrent code and showed how to solve them with locks](#concurrency-safety-and-locks). Finally, I [gave examples of running **CPU-bound** python code in parallel with the multiprocessing module](#cpu-bound-parallelism). I hope this intro to concurrent programming gives you ideas for speeding up your next project!

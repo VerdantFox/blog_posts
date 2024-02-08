@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="30 0 325 205"
+<svg viewBox="30 0 325 230"
     xmlns="http://www.w3.org/2000/svg">
-    <rect x="110" y="5" width="175" height="35" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
-    <rect x="200" y="50" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
-    <rect x="200" y="100" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
-    <rect x="200" y="150" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
-    <rect x="35" y="60" width="65" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
-    <rect x="35" y="100" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="55" y="100" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
-    <rect x="115" y="100" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="35" y="120" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="55" y="120" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
-    <rect x="115" y="120" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="35" y="140" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="55" y="140" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
-    <rect x="115" y="140" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="215" y="75" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="235" y="75" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
-    <rect x="295" y="75" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="217" y="120" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="237" y="120" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
-    <rect x="297" y="120" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="220" y="170" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <rect x="240" y="170" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
-    <rect x="300" y="170" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="65">process 1</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="115">process 2</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="165">process 3</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="45" y="80">Tasks</text>
-    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 22;" x="120" y="30">Multiprocessing</text>
+    <line x1="145" y1="133" x2="200" y2="110" style="stroke: rgb(204, 0, 0);"/>
+    <line x1="145" y1="153" x2="200" y2="154" style="stroke: rgb(76, 55, 197);"/>
+    <line x1="145" y1="172" x2="200" y2="203" style="stroke: rgb(45, 204, 0);"/>
+    <rect x="110" width="175" height="35" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);" y="5"/>
+    <rect x="200" y="75" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
+    <rect x="200" y="125" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
+    <rect x="200" y="175" width="150" height="50" style="fill: rgb(182, 219, 222); stroke: rgb(0, 0, 0);"/>
+    <rect x="50" y="85" width="65" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
+    <rect x="35" y="125" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="55" y="125" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
+    <rect x="115" y="125" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="35" y="145" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="55" y="145" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
+    <rect x="115" y="145" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="35" y="165" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="55" y="165" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
+    <rect x="115" y="165" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="215" y="100" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="235" y="100" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(235, 52, 83);"/>
+    <rect x="295" y="100" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="217" y="145" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="237" y="145" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 42, 181);"/>
+    <rect x="297" y="145" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="220" y="195" width="20" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <rect x="240" y="195" width="60" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(4, 181, 19);"/>
+    <rect x="300" y="195" width="30" height="15" style="stroke: rgb(0, 0, 0); fill: rgb(207, 179, 0);"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="92">process 1</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="140">process 2</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="205" y="190">process 3</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="60" y="105">Tasks</text>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 22;" x="120" y="29">Multiprocessing</text>
+    <rect x="200" y="45" width="150" height="30" style="fill: rgb(182, 176, 207); stroke: rgb(0, 0, 0);"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 17.6px;" x="251.985" y="63.736">Time</text>
+    <line x1="212" y1="67" x2="332" y2="67" style="stroke: rgb(0, 0, 0);"/>
+    <line x1="322" y1="64" x2="333" y2="67" style="stroke: rgb(0, 0, 0);"/>
+    <line x1="322" y1="70" x2="333" y2="67" style="stroke: rgb(0, 0, 0);"/>
 </svg>
