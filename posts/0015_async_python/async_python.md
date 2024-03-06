@@ -6,7 +6,7 @@ tags: Python, async, threads, multiprocessing, concurrency, parallelism, web scr
 
 01_INTRO_PIC_MEDIA
 
-One of the best ways to achieve **significant** speed improvements in Python code is through concurrency: doing several tasks simultaneously. In this post, I briefly describe concurrency in Python and give some examples for running Python code concurrently with "async" functions, "threading," and "multiprocessing."
+One of the best ways to achieve **significant** speed improvements in Python code is through concurrency: doing several tasks simultaneously. In this article, I describe concurrency in Python and give some examples of running Python code concurrently with "async" functions, "threading," and "multiprocessing."
 
 ## Defining key terms
 
@@ -29,7 +29,7 @@ Let's further describe the key concurrency paradigms with visual diagrams.
 
 02_SYNC_DIAGRAM_MEDIA
 
-**1.** 👆 **Synchronous code**: With synchronous code, requests are made sequentially, one after the next.
+**1.** 👆 **Synchronous code**: With synchronous code, tasks run sequentially, one after the next.
 
 03_ASYNC_DIAGRAM_MEDIA
 
@@ -121,6 +121,61 @@ def get_h1(html: str) -> str:
 
 if __name__ == "__main__":
     main()
+```
+
+Here's the terminal output from running that code:
+
+```bash
+❯ python web/1_sync.py
+Starting coordinating function...
+Downloading Pokémon 01... 
+Retrieved 01=Bulbasaur
+Downloading Pokémon 02... 
+Retrieved 02=Ivysaur
+Downloading Pokémon 03... 
+Retrieved 03=Venusaur
+Downloading Pokémon 04... 
+Retrieved 04=Charmander
+Downloading Pokémon 05... 
+Retrieved 05=Charmeleon
+Downloading Pokémon 06... 
+Retrieved 06=Charizard
+Downloading Pokémon 07... 
+Retrieved 07=Squirtle
+Downloading Pokémon 08... 
+Retrieved 08=Wartortle
+Downloading Pokémon 09... 
+Retrieved 09=Blastoise
+Downloading Pokémon 10... 
+Retrieved 10=Caterpie
+Downloading Pokémon 11... 
+Retrieved 11=Metapod
+Downloading Pokémon 12... 
+Retrieved 12=Butterfree
+Downloading Pokémon 13... 
+Retrieved 13=Weedle
+Downloading Pokémon 14... 
+Retrieved 14=Kakuna
+Downloading Pokémon 15... 
+Retrieved 15=Beedrill
+Downloading Pokémon 16... 
+Retrieved 16=Pidgey
+Downloading Pokémon 17... 
+Retrieved 17=Pidgeotto
+Downloading Pokémon 18... 
+Retrieved 18=Pidgeot
+Downloading Pokémon 19... 
+Retrieved 19=Rattata
+Downloading Pokémon 20... 
+Retrieved 20=Raticate
+
+The code ran in 4.31 seconds.
+
+results=[(1, 'Bulbasaur'), (2, 'Ivysaur'), (3, 'Venusaur'), (4, 'Charmander'), 
+(5, 'Charmeleon'), (6, 'Charizard'), (7, 'Squirtle'), (8, 'Wartortle'), (9, 
+'Blastoise'), (10, 'Caterpie'), (11, 'Metapod'), (12, 'Butterfree'), (13, 
+'Weedle'), (14, 'Kakuna'), (15, 'Beedrill'), (16, 'Pidgey'), (17, 'Pidgeotto'), 
+(18, 'Pidgeot'), (19, 'Rattata'), (20, 'Raticate')]
 ```
 
 And here's a video showing the code executing in real-time with color:
