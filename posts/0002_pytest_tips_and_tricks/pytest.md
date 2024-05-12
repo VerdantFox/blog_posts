@@ -21,13 +21,13 @@ we're going to be covering today:
 8. Parameterizing tests
 9. Using pytest-cov
 
+## Setup
+
 All of the code discussed in this article can be found in the following
 [GitHub repository](https://github.com/VerdantFox/pytest_examples){: target="\_blank", rel="noopener noreferrer" }
 I created. To run the code, you'll need `pytest` and `pytest-cov`, which you
 can install with `pip install pytest` and `pip install pytest-cov`.
 I recommend doing so in a virtual environment.
-
-## Setup
 
 First, we'll take a quick look at the example code that we are going to
 create tests for. The code contains a fairly simple `Math` class, with a

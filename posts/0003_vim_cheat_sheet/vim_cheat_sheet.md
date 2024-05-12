@@ -6,18 +6,18 @@ tags: vim, editors, settings
 
 VIM IMAGE
 
-The command line text editor `vim` is *popular* in the world of programming,
+The command line text editor `vim` is _popular_ in the world of programming,
 and for good reason. It can be found on nearly any Unix (and often Windows)
 system, making it ideal for loading into remote machines and making quick edits
 to files. It is also very powerful in the right hands. If you watch an
 expert `vim` user code with `vim`, the cursor is bouncing all over
 as they quickly write or edit their files, all without ever touching a mouse...
 
-I am *not* one of those people. I picked up `vim` out of necessity while
+I am _not_ one of those people. I picked up `vim` out of necessity while
 working on remote hosts without access to a GUI text editor (I'm partial
 to VS Code). But since I needed to use `vim`, I wanted to get better at it, so I
 took a
-[vim Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/){: target="_blank", rel="noopener noreferrer" },
+[vim Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/){: target="\_blank", rel="noopener noreferrer" },
 and I've been using what I've learned to get a little more efficient in `vim`.
 If you're a `vim` beginner, this post will teach you the commands I found
 most useful while learning `vim`. And if you're a casual `vim` user
@@ -38,7 +38,7 @@ and get out (with or without saving).
 
 3. **Save a file and exit:** First press `ESC` to enter `Normal Mode`.
    Then type `:wq` + `ENTER`. `w` means "write" here so you can also just
-   use `:w` + `ENTER` without `q` to save the file *without* exiting.
+   use `:w` + `ENTER` without `q` to save the file _without_ exiting.
 
 4. **Enter `Insert Mode`:** This is the mode where you can add text to the file.
    While in `Normal Mode`, press `i` (for "insert"). Recall that you can press
@@ -54,7 +54,7 @@ unless otherwise specified, I'll assume you are in `Normal Mode`
 
 1. **Move up, down, left, and right:** There are two main ways to move in
    these directions. You can use the `up`, `down`, `left`, and `right` arrow
-   keys in *any* mode. If you are in `Insert Mode`, these are the *only* keys
+   keys in _any_ mode. If you are in `Insert Mode`, these are the _only_ keys
    for navigating. However, from `Normal Mode`, you can navigate in these
    directions without leaving typing position: `h` is `left`, `j` is `up`,
    `k` is `down`, and `l` is `right`. Notice the left-most key of these 4
@@ -71,18 +71,18 @@ unless otherwise specified, I'll assume you are in `Normal Mode`
 
 5. **Go to the start of the current line:** Type `0` (zero) to go to the
    start of the current line. You can
-   also press `^` (carrot)(ie `SHIFT-6`) to go to the first *non-blank*
+   also press `^` (carrot)(ie `SHIFT-6`) to go to the first _non-blank_
    character of the line. You might recall that `^` is the **start** character
    for `regex` expressions.
 
-6. **Go to the end of the current line:**  Type `$` (dollar sign)(ie`SHIFT-4`)
+6. **Go to the end of the current line:** Type `$` (dollar sign)(ie`SHIFT-4`)
    to go to the end of the current line.
    You might recall `$` is the **end** character for `regex` expressions.
 
-7. **Move forward one word:**  Type `w` to move your cursor to the next word.
+7. **Move forward one word:** Type `w` to move your cursor to the next word.
    I find this to be a quick way of moving through a line.
 
-8. **Search for a word:**  type `/` + **SEARCH** + `ENTER` to search for a word.
+8. **Search for a word:** type `/` + **SEARCH** + `ENTER` to search for a word.
    E.g. `/foo` + `ENTER` will search for all instances of "foo" in the text.
    Note if the `hlsearch` setting is set, found searches will start highlighting
    as you type. To go to the next found search item, press `n`, or to go to the previous
@@ -98,24 +98,24 @@ new text. Here are the most useful ones. For all these
 commands, I will assume you are already in `Normal mode` (`ESC`).
 
 1. **Enter `Insert Mode` in place:** Press `i` to enter `Insert Mode` one
-   character *before* the character your cursor is on. I already mentioned
+   character _before_ the character your cursor is on. I already mentioned
    this one in section one.
 
 2. **Enter `Insert Mode` at line beginning:** Press capital `I` to enter
-   `Insert Mode` at the *beginning* of the line containing your cursor.
+   `Insert Mode` at the _beginning_ of the line containing your cursor.
 
 3. **Enter `Insert Mode` with append:** Press `a` to enter `Insert Mode` one
-   character *after* the character your cursor is on.
+   character _after_ the character your cursor is on.
 
 4. **Enter `Insert Mode` at line end:** Press capital `A`
-   to enter `Insert Mode` at the *end* of the line containing your cursor.
+   to enter `Insert Mode` at the _end_ of the line containing your cursor.
 
 5. **Enter `Insert Mode` below your current line:** Press `o` to create
-   a new line *below* the line containing your cursor and enter `Insert Mode`
-   there. Note this will *not* break the line in half if your cursor is mid-line.
+   a new line _below_ the line containing your cursor and enter `Insert Mode`
+   there. Note this will _not_ break the line in half if your cursor is mid-line.
 
 6. **Enter `Insert Mode` above your current line:** Press capital `O` to
-   create a new line *above* the line containing your cursor and enter
+   create a new line _above_ the line containing your cursor and enter
    `Insert Mode` there.
 
 ## Undo, Redo
@@ -134,7 +134,7 @@ less drastic solution. These commands should be performed from
 
 There are multiple ways to delete different-sized chunks of code in vim.
 Let's take a look at some of the more common ones. `d` stands for delete in `vim` so
-commands focus around this key. Note that `vim` *always* saves the last deleted
+commands focus around this key. Note that `vim` _always_ saves the last deleted
 thing to the default `register` (more on `registers` later). So in a sense,
 there is no `delete`, just `cut` with short-term memory. All these commands
 should be performed from `Normal Mode` (`ESC`).
@@ -149,7 +149,7 @@ should be performed from `Normal Mode` (`ESC`).
    default `register`.
 
 Also, note that while in `Insert Mode` you can use `BACKSPACE` and `DEL`, as usual,
-to delete characters *before* or *after* your cursor respectively. This form
+to delete characters _before_ or _after_ your cursor respectively. This form
 of deletion does not save to the default `register`.
 
 ## Copy/paste
@@ -166,21 +166,21 @@ All these commands should be performed from `Normal Mode` (`ESC`).
 3. **Copy/yank a line:** Press `y` + `y` to copy a line to the default `register`.
 
 4. **Paste after the cursor:** Press `p` to paste whatever is in the default `register`
-   immediately *after* the character the cursor is hovering over.
+   immediately _after_ the character the cursor is hovering over.
 
 5. **Paste before the cursor:** Press capital `P` to paste whatever is in the
-   default `register` immediately *before* the character the cursor is hovering over.
+   default `register` immediately _before_ the character the cursor is hovering over.
 
 What is this `register` I keep mentioning? Briefly, a `register` can store
 copied/cut text. A register can be "named". For example, to copy to the `b`
-*named* `register` you could type `"b` followed by your `yank`. And then to
-use that `yank`ed text, type `"b` + `p`. The *default* `register` is where
+_named_ `register` you could type `"b` followed by your `yank`. And then to
+use that `yank`ed text, type `"b` + `p`. The _default_ `register` is where
 text is stored and pasted from if you don't use a named register.
-Only the *latest* copy/cut text is stored in a `register`. Subsequent
+Only the _latest_ copy/cut text is stored in a `register`. Subsequent
 stores override the previous store. If `registers` interests you,
 give them a quick google search for more details.
 
-Also, note these commands are only for copy/paste from *within* vim. Copying and pasting
+Also, note these commands are only for copy/paste from _within_ vim. Copying and pasting
 from the system clipboard is trickier. While it is possible with key
 commands, usually I've had success just using a good old fashion mouse
 `right-click` + `click dropdown item` for this purpose, so just do that.
@@ -216,11 +216,11 @@ actions I could type `4` + `u`. Neat, eh?
 ## Bonus: Vim settings
 
 I think `vim` is much nicer when it is configured the way you like it. Here's
-a list of settings *I* like to use when running vim. Put these settings
-(plus or minus the ones *you* like) into a file at `~/.vimrc`. In the file,
+a list of settings _I_ like to use when running vim. Put these settings
+(plus or minus the ones _you_ like) into a file at `~/.vimrc`. In the file,
 `"` at the start of a line means it is a comment.
 
-```vimrc
+```vim
 " use syntax highlighting
 syntax on
 " Show line number
@@ -259,8 +259,8 @@ using `vim` commands more complicated than the ones I listed in "vim essentials"
 But now that I've learned some of these neat commands, I have to say,
 vim is not so scary anymore and is even pretty pleasant to code in.
 
-Vim is very powerful and there is a *lot* you can do with it. I'm sure vim
-experts would disagree with some of my  choices for a curated list of commands.
+Vim is very powerful and there is a _lot_ you can do with it. I'm sure vim
+experts would disagree with some of my choices for a curated list of commands.
 A couple of other `vim` topics I left out that you should look into if you want
 to get "good" with `vim` are:
 
@@ -271,6 +271,6 @@ to get "good" with `vim` are:
 - Many others I can't think of right now
 
 If you are interested in a `vim` deep dive, I highly recommend the
-[Vim masterclass Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/){: target="_blank", rel="noopener noreferrer" }
+[Vim masterclass Udemy course](https://www.udemy.com/course/vim-commands-cheat-sheet/){: target="\_blank", rel="noopener noreferrer" }
 where you can learn these commands and many others and how to
-"think like a `vim` user" to *really* speed up your `vim` coding.
+"think like a `vim` user" to _really_ speed up your `vim` coding.
