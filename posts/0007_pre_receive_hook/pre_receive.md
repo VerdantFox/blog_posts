@@ -7,19 +7,19 @@ tags: git, git hooks
 GIT HOOK IMG
 
 In the last blog post
-[we talked about git pre-commit hooks](https://verdantfox.com/blog/view/how-to-use-git-pre-commit-hooks-the-hard-way-and-the-easy-way){: target="_blank", rel="noopener noreferrer" }.
-In this article we'll discuss git *pre-receive* hooks -- what they are,
+[we talked about git pre-commit hooks](https://codewithteddy.dev/blog/how-to-use-git-pre-commit-hooks-the-hard-way-and-the-easy-way){: target="\_blank", rel="noopener noreferrer" }.
+In this article we'll discuss git _pre-receive_ hooks -- what they are,
 why they are useful, how to write them, and how to install them on a gitlab
 server.
 
 ## What is a git pre-receive hook?
 
 For a refresher on git hooks in general, check out the last post,
-[How to use git pre-commit hooks, the hard way and the easy way](https://verdantfox.com/blog/view/how-to-use-git-pre-commit-hooks-the-hard-way-and-the-easy-way){: target="_blank", rel="noopener noreferrer" }.
+[How to use git pre-commit hooks, the hard way and the easy way](https://codewithteddy.dev/blog/how-to-use-git-pre-commit-hooks-the-hard-way-and-the-easy-way){: target="\_blank", rel="noopener noreferrer" }.
 The pre-receive git hook is a server-side script that runs when the
 server receives a commit from your `git push` command (or from server-generated
 commits like those created by GitLab or GitHub). Once installed, the hook
-script will run just *before* a commit is accepted. If the script succeeds
+script will run just _before_ a commit is accepted. If the script succeeds
 (if it returns an exit code of `0`), the commit is accepted. If the script
 returns a non-zero exit code, the commit is rejected.
 
@@ -192,7 +192,7 @@ the commit doesn't meet our commit style standards, and it exits the script
 with an exit code of `1`. Recall, this means the commit push will be rejected.
 Why do the `echo` statements start with `GL-HOOK-ERR`? This script was written
 for a `GitLab` server, and
-[gitlab specifies](https://docs.gitlab.com/ee/administration/server_hooks.html#custom-error-messages){: target="_blank", rel="noopener noreferrer" }
+[gitlab specifies](https://docs.gitlab.com/ee/administration/server_hooks.html#custom-error-messages){: target="\_blank", rel="noopener noreferrer" }
 it will display error messages sent
 to `stdout` in its user interface only if they begin with `GL-HOOK-ERR`.
 
@@ -314,5 +314,3 @@ exit 0
 In this case, the pushed commit(s) will be accepted.
 
 ## How to test and install a pre-receive hook in GitLab
-
-
